@@ -1,0 +1,26 @@
+{
+ "lego": {
+  "seed_number": 481,
+  "lego_index": 3,
+  "known": "for us",
+  "target": "우리에게"
+ },
+ "at": "2026-11-26T07:38:42.746Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "vocab"
+ ],
+ "attempts": 2,
+ "secs": 142,
+ "floorsOnly": false,
+ "lastReasons": [
+  "vocab: 1 phrase(s) use target words not yet introduced: [{\"phrase\":\"우리에게 남은 희망\",\"unknown\":\"희망\"}]",
+  "BUILD \"hope left for us\" → \"우리에게 남은 희망\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"우리에게 남은 희망\",\"unknown\":\"희망\"}],\"total\":1}"
+ ],
+ "rows": [],
+ "keep": false
+}

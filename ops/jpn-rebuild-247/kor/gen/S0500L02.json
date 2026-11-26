@@ -1,0 +1,112 @@
+{
+ "lego": {
+  "seed_number": 500,
+  "lego_index": 2,
+  "known": "between",
+  "target": "사이에"
+ },
+ "at": "2026-11-26T11:09:02.354Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 217,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 500,
+   "lego_index": 2,
+   "lego_known": "between",
+   "lego_target": "사이에",
+   "phrase_role": "build",
+   "known_text": "between the two children",
+   "target_text": "두 아이 사이에",
+   "pad": []
+  },
+  {
+   "seed_number": 500,
+   "lego_index": 2,
+   "lego_known": "between",
+   "lego_target": "사이에",
+   "phrase_role": "build",
+   "known_text": "between the two children over there",
+   "target_text": "저기 두 아이 사이에",
+   "pad": []
+  },
+  {
+   "seed_number": 500,
+   "lego_index": 2,
+   "lego_known": "between",
+   "lego_target": "사이에",
+   "phrase_role": "build",
+   "known_text": "sit down between the two children",
+   "target_text": "두 아이 사이에 앉고",
+   "pad": []
+  },
+  {
+   "seed_number": 500,
+   "lego_index": 2,
+   "lego_known": "between",
+   "lego_target": "사이에",
+   "phrase_role": "build",
+   "known_text": "who's sitting between the two children",
+   "target_text": "두 아이 사이에 앉아 있는",
+   "pad": []
+  },
+  {
+   "seed_number": 500,
+   "lego_index": 2,
+   "lego_known": "between",
+   "lego_target": "사이에",
+   "phrase_role": "use",
+   "known_text": "he said that he wants to sit between the two children",
+   "target_text": "두 아이 사이에 앉고 싶다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 500,
+   "lego_index": 2,
+   "lego_known": "between",
+   "lego_target": "사이에",
+   "phrase_role": "use",
+   "known_text": "she said that she doesn't want to sit between the two children",
+   "target_text": "두 아이 사이에 앉고 싶지 않다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 500,
+   "lego_index": 2,
+   "lego_known": "between",
+   "lego_target": "사이에",
+   "phrase_role": "use",
+   "known_text": "what's that blue thing between the two children?",
+   "target_text": "두 아이 사이에 그 파란 것은 뭐예요",
+   "pad": []
+  },
+  {
+   "seed_number": 500,
+   "lego_index": 2,
+   "lego_known": "between",
+   "lego_target": "사이에",
+   "phrase_role": "use",
+   "known_text": "could I put the cat between the two children?",
+   "target_text": "고양이를 두 아이 사이에 놓을 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 500,
+   "lego_index": 2,
+   "lego_known": "between",
+   "lego_target": "사이에",
+   "phrase_role": "use",
+   "known_text": "the student who's sitting between the two children has a kind heart",
+   "target_text": "두 아이 사이에 앉아 있는 학생은 마음이 착해요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

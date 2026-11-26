@@ -1,0 +1,30 @@
+{
+ "lego": {
+  "seed_number": 460,
+  "lego_index": 1,
+  "known": "looking for and",
+  "target": "찾고"
+ },
+ "at": "2026-11-26T01:05:59.162Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "vocab"
+ ],
+ "attempts": 2,
+ "secs": 196,
+ "floorsOnly": false,
+ "lastReasons": [
+  "vocab: 1 phrase(s) use target words not yet introduced: [{\"phrase\":\"표지판을 찾고 모퉁이에서 돌아야\",\"unknown\":\"표지판을\"}]",
+  "USE \"in my opinion our friends want to find a new life\": stapled opener (a detachable interjection at the front earns no frame and is refused) — rewrite it without",
+  "BUILD \"need to find the sign and turn at the corner\" → \"표지판을 찾고 모퉁이에서 돌아야\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"표지판을 찾고 모퉁이에서 돌아야\",\"unknown\":\"표지판을\"}],\"total\":1}",
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"looking for and\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

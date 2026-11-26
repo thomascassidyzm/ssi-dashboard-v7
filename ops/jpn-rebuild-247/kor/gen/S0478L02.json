@@ -1,0 +1,136 @@
+{
+ "lego": {
+  "seed_number": 478,
+  "lego_index": 2,
+  "known": "is kind",
+  "target": "착해요"
+ },
+ "at": "2026-11-26T06:03:15.451Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 158,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"is kind\" initially, medially AND finally.",
+  "NEIGH 0.14 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.18 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 478,
+   "lego_index": 2,
+   "lego_known": "is kind",
+   "lego_target": "착해요",
+   "phrase_role": "build",
+   "known_text": "is very kind",
+   "target_text": "아주 착해요",
+   "pad": []
+  },
+  {
+   "seed_number": 478,
+   "lego_index": 2,
+   "lego_known": "is kind",
+   "lego_target": "착해요",
+   "phrase_role": "build",
+   "known_text": "has a kind heart",
+   "target_text": "마음이 착해요",
+   "pad": []
+  },
+  {
+   "seed_number": 478,
+   "lego_index": 2,
+   "lego_known": "is kind",
+   "lego_target": "착해요",
+   "phrase_role": "build",
+   "known_text": "is kind but busy",
+   "target_text": "착해요 하지만 바빠요",
+   "pad": []
+  },
+  {
+   "seed_number": 478,
+   "lego_index": 2,
+   "lego_known": "is kind",
+   "lego_target": "착해요",
+   "phrase_role": "build",
+   "known_text": "is kind so I'm grateful",
+   "target_text": "착해요 그래서 감사해요",
+   "pad": []
+  },
+  {
+   "seed_number": 478,
+   "lego_index": 2,
+   "lego_known": "is kind",
+   "lego_target": "착해요",
+   "phrase_role": "use",
+   "known_text": "is your grandfather kind",
+   "target_text": "할아버지는 착해요",
+   "pad": []
+  },
+  {
+   "seed_number": 478,
+   "lego_index": 2,
+   "lego_known": "is kind",
+   "lego_target": "착해요",
+   "phrase_role": "use",
+   "known_text": "the children are kind so I'm grateful",
+   "target_text": "아이들이 착해요 그래서 감사해요",
+   "pad": []
+  },
+  {
+   "seed_number": 478,
+   "lego_index": 2,
+   "lego_known": "is kind",
+   "lego_target": "착해요",
+   "phrase_role": "use",
+   "known_text": "my father is unhappy but kind",
+   "target_text": "제 아버지는 불행해요 하지만 착해요",
+   "pad": []
+  },
+  {
+   "seed_number": 478,
+   "lego_index": 2,
+   "lego_known": "is kind",
+   "lego_target": "착해요",
+   "phrase_role": "use",
+   "known_text": "my daughter is busy but very kind",
+   "target_text": "제 딸은 바빠요 하지만 아주 착해요",
+   "pad": []
+  },
+  {
+   "seed_number": 478,
+   "lego_index": 2,
+   "lego_known": "is kind",
+   "lego_target": "착해요",
+   "phrase_role": "use",
+   "known_text": "my mother still has a very kind heart",
+   "target_text": "제 어머니는 아직도 마음이 아주 착해요",
+   "pad": []
+  },
+  {
+   "seed_number": 478,
+   "lego_index": 2,
+   "lego_known": "is kind",
+   "lego_target": "착해요",
+   "phrase_role": "use",
+   "known_text": "our friends are certainly kind",
+   "target_text": "친구들이 분명 착해요",
+   "pad": []
+  },
+  {
+   "seed_number": 478,
+   "lego_index": 2,
+   "lego_known": "is kind",
+   "lego_target": "착해요",
+   "phrase_role": "use",
+   "known_text": "is the student very kind",
+   "target_text": "학생은 아주 착해요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

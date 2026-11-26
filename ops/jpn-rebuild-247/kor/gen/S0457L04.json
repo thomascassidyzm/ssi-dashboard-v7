@@ -1,0 +1,31 @@
+{
+ "lego": {
+  "seed_number": 457,
+  "lego_index": 4,
+  "known": "is the number",
+  "target": "수예요"
+ },
+ "at": "2026-11-26T01:00:21.105Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "vocab"
+ ],
+ "attempts": 2,
+ "secs": 192,
+ "floorsOnly": false,
+ "lastReasons": [
+  "vocab: 3 phrase(s) use target words not yet introduced: [{\"phrase\":\"이메일 수예요\",\"unknown\":\"이메일\"},{\"phrase\":\"올해 이유가 이메일 수예요\",\"unknown\":\"이메일\"},{\"phrase\":\"이유가 화요일에 받는 이메일 수예요\",\"unknown\":\"이메일\"}]",
+  "BUILD \"is the number of emails\" → \"이메일 수예요\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"이메일 수예요\",\"unknown\":\"이메일\"}],\"total\":1}",
+  "USE \"this year the reason is the number of emails\" → \"올해 이유가 이메일 수예요\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"올해 이유가 이메일 수예요\",\"unknown\":\"이메일\"}],\"total\":1}",
+  "USE \"the reason is the number of emails I'm receiving on tuesday\" → \"이유가 화요일에 받는 이메일 수예요\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"이유가 화요일에 받는 이메일 수예요\",\"unknown\":\"이메일\"}],\"total\":1}",
+  "FRAME 0.30 < 0.34: your matrix clauses collapse to 3 shape(s) against a declared pool of 40. Vary the MATRIX CLAUSE, not the tail — a swapped tail is the same frame stamped again.",
+  "NEIGH 0.15 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.20 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

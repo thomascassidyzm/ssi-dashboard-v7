@@ -1,0 +1,115 @@
+{
+ "lego": {
+  "seed_number": 461,
+  "lego_index": 1,
+  "known": "shop",
+  "target": "가게"
+ },
+ "at": "2026-11-26T02:36:53.822Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 182,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.28 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.44 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 461,
+   "lego_index": 1,
+   "lego_known": "shop",
+   "lego_target": "가게",
+   "phrase_role": "build",
+   "known_text": "in front of the shop",
+   "target_text": "가게 앞에",
+   "pad": []
+  },
+  {
+   "seed_number": 461,
+   "lego_index": 1,
+   "lego_known": "shop",
+   "lego_target": "가게",
+   "phrase_role": "build",
+   "known_text": "a local shop",
+   "target_text": "지역 가게",
+   "pad": []
+  },
+  {
+   "seed_number": 461,
+   "lego_index": 1,
+   "lego_known": "shop",
+   "lego_target": "가게",
+   "phrase_role": "build",
+   "known_text": "opposite the shop",
+   "target_text": "가게 맞은편에",
+   "pad": []
+  },
+  {
+   "seed_number": 461,
+   "lego_index": 1,
+   "lego_known": "shop",
+   "lego_target": "가게",
+   "phrase_role": "build",
+   "known_text": "a local shop that doesn't have a sign",
+   "target_text": "표지판 없는 지역 가게",
+   "pad": []
+  },
+  {
+   "seed_number": 461,
+   "lego_index": 1,
+   "lego_known": "shop",
+   "lego_target": "가게",
+   "phrase_role": "use",
+   "known_text": "the children came near the shop entrance because they were tired",
+   "target_text": "아이들이 피곤해서 가게 입구 근처에 왔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 461,
+   "lego_index": 1,
+   "lego_known": "shop",
+   "lego_target": "가게",
+   "phrase_role": "use",
+   "known_text": "why did our friends come to the front of the shop",
+   "target_text": "왜 친구들이 가게 앞에 왔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 461,
+   "lego_index": 1,
+   "lego_known": "shop",
+   "lego_target": "가게",
+   "phrase_role": "use",
+   "known_text": "could the children carry that suitcase towards the shop",
+   "target_text": "아이들이 그 가방을 가게 쪽으로 들 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 461,
+   "lego_index": 1,
+   "lego_known": "shop",
+   "lego_target": "가게",
+   "phrase_role": "use",
+   "known_text": "on wednesday our friends went to the front of a local shop",
+   "target_text": "수요일에 친구들이 지역 가게 앞에 갔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 461,
+   "lego_index": 1,
+   "lego_known": "shop",
+   "lego_target": "가게",
+   "phrase_role": "use",
+   "known_text": "at about five our friends came towards the shop",
+   "target_text": "다섯 시쯤 친구들이 가게 쪽으로 왔어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,28 @@
+{
+ "lego": {
+  "seed_number": 463,
+  "lego_index": 1,
+  "known": "a room",
+  "target": "방"
+ },
+ "at": "2026-11-26T02:42:55.573Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "vocab"
+ ],
+ "attempts": 2,
+ "secs": 218,
+ "floorsOnly": false,
+ "lastReasons": [
+  "vocab: 1 phrase(s) use target words not yet introduced: [{\"phrase\":\"호텔 방 예약할까요\",\"unknown\":\"예약할까요\"}]",
+  "USE \"should we make a hotel room reservation\" → \"호텔 방 예약할까요\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"호텔 방 예약할까요\",\"unknown\":\"예약할까요\"}],\"total\":1}",
+  "NEIGH 0.20 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.20 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

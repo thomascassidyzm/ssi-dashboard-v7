@@ -1,0 +1,25 @@
+{
+ "lego": {
+  "seed_number": 480,
+  "lego_index": 1,
+  "known": "not far",
+  "target": "멀지"
+ },
+ "at": "2026-11-26T06:05:57.518Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 186,
+ "floorsOnly": false,
+ "lastReasons": [
+  "USE \"in my opinion it's not far\": stapled opener (a detachable interjection at the front earns no frame and is refused) — rewrite it without",
+  "NEIGH 0.22 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.33 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

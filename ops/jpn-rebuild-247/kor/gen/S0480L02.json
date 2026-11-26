@@ -1,0 +1,125 @@
+{
+ "lego": {
+  "seed_number": 480,
+  "lego_index": 2,
+  "known": "whatever",
+  "target": "하든"
+ },
+ "at": "2026-11-26T07:37:26.962Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 5652,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.25 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.40 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 480,
+   "lego_index": 2,
+   "lego_known": "whatever",
+   "lego_target": "하든",
+   "phrase_role": "build",
+   "known_text": "whatever the children say",
+   "target_text": "아이들이 뭐라고 하든",
+   "pad": []
+  },
+  {
+   "seed_number": 480,
+   "lego_index": 2,
+   "lego_known": "whatever",
+   "lego_target": "하든",
+   "phrase_role": "build",
+   "known_text": "whatever our friends say next time",
+   "target_text": "친구들이 다음에 뭐라고 하든",
+   "pad": []
+  },
+  {
+   "seed_number": 480,
+   "lego_index": 2,
+   "lego_known": "whatever",
+   "lego_target": "하든",
+   "phrase_role": "build",
+   "known_text": "whatever the children say it's not far",
+   "target_text": "아이들이 뭐라고 하든 멀지 않아요",
+   "pad": []
+  },
+  {
+   "seed_number": 480,
+   "lego_index": 2,
+   "lego_known": "whatever",
+   "lego_target": "하든",
+   "phrase_role": "build",
+   "known_text": "grandfather is kind whatever our friends say",
+   "target_text": "친구들이 뭐라고 하든 할아버지는 착해요",
+   "pad": []
+  },
+  {
+   "seed_number": 480,
+   "lego_index": 2,
+   "lego_known": "whatever",
+   "lego_target": "하든",
+   "phrase_role": "use",
+   "known_text": "whatever the children say you must understand",
+   "target_text": "아이들이 뭐라고 하든 이해해야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 480,
+   "lego_index": 2,
+   "lego_known": "whatever",
+   "lego_target": "하든",
+   "phrase_role": "use",
+   "known_text": "whatever our friends say would they want to travel",
+   "target_text": "친구들이 뭐라고 하든 여행하고 싶어할까요",
+   "pad": []
+  },
+  {
+   "seed_number": 480,
+   "lego_index": 2,
+   "lego_known": "whatever",
+   "lego_target": "하든",
+   "phrase_role": "use",
+   "known_text": "grandfather whatever the children say fought in italy",
+   "target_text": "할아버지는 아이들이 뭐라고 하든 이탈리아에서 싸웠어요",
+   "pad": []
+  },
+  {
+   "seed_number": 480,
+   "lego_index": 2,
+   "lego_known": "whatever",
+   "lego_target": "하든",
+   "phrase_role": "use",
+   "known_text": "whatever our friends say you need to get ready",
+   "target_text": "친구들이 뭐라고 하든 준비해야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 480,
+   "lego_index": 2,
+   "lego_known": "whatever",
+   "lego_target": "하든",
+   "phrase_role": "use",
+   "known_text": "whatever the children say the world is wide",
+   "target_text": "아이들이 뭐라고 하든 세상은 넓어요",
+   "pad": []
+  },
+  {
+   "seed_number": 480,
+   "lego_index": 2,
+   "lego_known": "whatever",
+   "lego_target": "하든",
+   "phrase_role": "use",
+   "known_text": "whatever our friends say it was easy in the past",
+   "target_text": "친구들이 뭐라고 하든 과거에는 쉬웠어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

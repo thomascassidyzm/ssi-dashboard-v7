@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 443,
+  "lego_index": 1,
+  "known": "same way",
+  "target": "방식으로"
+ },
+ "at": "2026-11-25T21:40:54.589Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 160,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.23 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.36 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 443,
+   "lego_index": 1,
+   "lego_known": "same way",
+   "lego_target": "방식으로",
+   "phrase_role": "build",
+   "known_text": "continue the same way",
+   "target_text": "같은 방식으로 계속",
+   "pad": []
+  },
+  {
+   "seed_number": 443,
+   "lego_index": 1,
+   "lego_known": "same way",
+   "lego_target": "방식으로",
+   "phrase_role": "build",
+   "known_text": "still the same way",
+   "target_text": "아직도 같은 방식으로",
+   "pad": []
+  },
+  {
+   "seed_number": 443,
+   "lego_index": 1,
+   "lego_known": "same way",
+   "lego_target": "방식으로",
+   "phrase_role": "build",
+   "known_text": "already the same way",
+   "target_text": "이미 같은 방식으로",
+   "pad": []
+  },
+  {
+   "seed_number": 443,
+   "lego_index": 1,
+   "lego_known": "same way",
+   "lego_target": "방식으로",
+   "phrase_role": "build",
+   "known_text": "develop the same way and",
+   "target_text": "같은 방식으로 개발하고",
+   "pad": []
+  },
+  {
+   "seed_number": 443,
+   "lego_index": 1,
+   "lego_known": "same way",
+   "lego_target": "방식으로",
+   "phrase_role": "use",
+   "known_text": "if I had known what you wanted I would have done it the same way",
+   "target_text": "뭘 원했는지 알았더라면 같은 방식으로 했을 거예요",
+   "pad": []
+  },
+  {
+   "seed_number": 443,
+   "lego_index": 1,
+   "lego_known": "same way",
+   "lego_target": "방식으로",
+   "phrase_role": "use",
+   "known_text": "I wouldn't have said it in exactly the same way",
+   "target_text": "정확히 같은 방식으로 말하지 않았을 거예요",
+   "pad": []
+  },
+  {
+   "seed_number": 443,
+   "lego_index": 1,
+   "lego_known": "same way",
+   "lego_target": "방식으로",
+   "phrase_role": "use",
+   "known_text": "why do you want to do it the same way",
+   "target_text": "왜 같은 방식으로 하고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 443,
+   "lego_index": 1,
+   "lego_known": "same way",
+   "lego_target": "방식으로",
+   "phrase_role": "use",
+   "known_text": "should we do it the same way on Tuesday",
+   "target_text": "화요일에 같은 방식으로 할까요",
+   "pad": []
+  },
+  {
+   "seed_number": 443,
+   "lego_index": 1,
+   "lego_known": "same way",
+   "lego_target": "방식으로",
+   "phrase_role": "use",
+   "known_text": "I can write it the same way",
+   "target_text": "같은 방식으로 쓸 수 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 443,
+   "lego_index": 1,
+   "lego_known": "same way",
+   "lego_target": "방식으로",
+   "phrase_role": "use",
+   "known_text": "my father still works the same way",
+   "target_text": "제 아버지는 아직도 같은 방식으로 일해요",
+   "pad": []
+  },
+  {
+   "seed_number": 443,
+   "lego_index": 1,
+   "lego_known": "same way",
+   "lego_target": "방식으로",
+   "phrase_role": "use",
+   "known_text": "when you work the same way it's not a problem",
+   "target_text": "같은 방식으로 일하면 문제가 안 돼요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,115 @@
+{
+ "lego": {
+  "seed_number": 432,
+  "lego_index": 1,
+  "known": "could mean",
+  "target": "뜻일 수"
+ },
+ "at": "2026-11-25T19:52:39.589Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 688,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.17 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.22 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 432,
+   "lego_index": 1,
+   "lego_known": "could mean",
+   "lego_target": "뜻일 수",
+   "phrase_role": "build",
+   "known_text": "it could mean",
+   "target_text": "뜻일 수 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 432,
+   "lego_index": 1,
+   "lego_known": "could mean",
+   "lego_target": "뜻일 수",
+   "phrase_role": "build",
+   "known_text": "it could mean that",
+   "target_text": "그런 뜻일 수 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 432,
+   "lego_index": 1,
+   "lego_known": "could mean",
+   "lego_target": "뜻일 수",
+   "phrase_role": "build",
+   "known_text": "it could mean that her book was good",
+   "target_text": "그녀의 책이 좋았다는 뜻일 수 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 432,
+   "lego_index": 1,
+   "lego_known": "could mean",
+   "lego_target": "뜻일 수",
+   "phrase_role": "build",
+   "known_text": "it could mean that it is getting weak",
+   "target_text": "약해지고 있다는 뜻일 수 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 432,
+   "lego_index": 1,
+   "lego_known": "could mean",
+   "lego_target": "뜻일 수",
+   "phrase_role": "use",
+   "known_text": "I believe it could mean that it is getting weak",
+   "target_text": "약해지고 있다는 뜻일 수 있다고 믿어요",
+   "pad": []
+  },
+  {
+   "seed_number": 432,
+   "lego_index": 1,
+   "lego_known": "could mean",
+   "lego_target": "뜻일 수",
+   "phrase_role": "use",
+   "known_text": "I don't think it could mean that her book was good",
+   "target_text": "그녀의 책이 좋았다는 뜻일 수 있다고 생각하지 않아요",
+   "pad": []
+  },
+  {
+   "seed_number": 432,
+   "lego_index": 1,
+   "lego_known": "could mean",
+   "lego_target": "뜻일 수",
+   "phrase_role": "use",
+   "known_text": "it could still mean that",
+   "target_text": "아직도 그런 뜻일 수 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 432,
+   "lego_index": 1,
+   "lego_known": "could mean",
+   "lego_target": "뜻일 수",
+   "phrase_role": "use",
+   "known_text": "if it could mean that, you must ask",
+   "target_text": "그런 뜻일 수 있으면 물어봐야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 432,
+   "lego_index": 1,
+   "lego_known": "could mean",
+   "lego_target": "뜻일 수",
+   "phrase_role": "use",
+   "known_text": "for them it could mean that",
+   "target_text": "그들에게 그런 뜻일 수 있어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

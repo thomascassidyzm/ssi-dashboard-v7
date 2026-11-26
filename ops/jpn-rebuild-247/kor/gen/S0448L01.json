@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 448,
+  "lego_index": 1,
+  "known": "happy to help",
+  "target": "기꺼이"
+ },
+ "at": "2026-11-25T23:16:07.730Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 195,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.18 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.27 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 448,
+   "lego_index": 1,
+   "lego_known": "happy to help",
+   "lego_target": "기꺼이",
+   "phrase_role": "build",
+   "known_text": "if she could she'd be happy to help",
+   "target_text": "할 수 있다면 기꺼이 도와줄 텐데요",
+   "pad": []
+  },
+  {
+   "seed_number": 448,
+   "lego_index": 1,
+   "lego_known": "happy to help",
+   "lego_target": "기꺼이",
+   "phrase_role": "build",
+   "known_text": "would the student be happy to help",
+   "target_text": "학생은 기꺼이 도와줄까요",
+   "pad": []
+  },
+  {
+   "seed_number": 448,
+   "lego_index": 1,
+   "lego_known": "happy to help",
+   "lego_target": "기꺼이",
+   "phrase_role": "build",
+   "known_text": "a person who'd be happy to help",
+   "target_text": "기꺼이 도와줄 사람",
+   "pad": []
+  },
+  {
+   "seed_number": 448,
+   "lego_index": 1,
+   "lego_known": "happy to help",
+   "lego_target": "기꺼이",
+   "phrase_role": "build",
+   "known_text": "on tuesday she'd be happy to help",
+   "target_text": "화요일에 기꺼이 도와줄 텐데요",
+   "pad": []
+  },
+  {
+   "seed_number": 448,
+   "lego_index": 1,
+   "lego_known": "happy to help",
+   "lego_target": "기꺼이",
+   "phrase_role": "use",
+   "known_text": "my father said he'd be happy to help",
+   "target_text": "제 아버지는 기꺼이 도와주겠다고 말했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 448,
+   "lego_index": 1,
+   "lego_known": "happy to help",
+   "lego_target": "기꺼이",
+   "phrase_role": "use",
+   "known_text": "I'm grateful because you were happy to help",
+   "target_text": "기꺼이 도와줘서 감사해요",
+   "pad": []
+  },
+  {
+   "seed_number": 448,
+   "lego_index": 1,
+   "lego_known": "happy to help",
+   "lego_target": "기꺼이",
+   "phrase_role": "use",
+   "known_text": "I want to meet a person who'd be happy to help",
+   "target_text": "기꺼이 도와줄 사람을 만나고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 448,
+   "lego_index": 1,
+   "lego_known": "happy to help",
+   "lego_target": "기꺼이",
+   "phrase_role": "use",
+   "known_text": "my mother didn't ask if they'd be happy to help",
+   "target_text": "제 어머니는 기꺼이 도와줄 수 있는지 물어보지 않았어요",
+   "pad": []
+  },
+  {
+   "seed_number": 448,
+   "lego_index": 1,
+   "lego_known": "happy to help",
+   "lego_target": "기꺼이",
+   "phrase_role": "use",
+   "known_text": "if you go on wednesday they'll be happy to help",
+   "target_text": "수요일에 가면 기꺼이 도와줄 거예요",
+   "pad": []
+  },
+  {
+   "seed_number": 448,
+   "lego_index": 1,
+   "lego_known": "happy to help",
+   "lego_target": "기꺼이",
+   "phrase_role": "use",
+   "known_text": "the student will be happy to help before the weekend",
+   "target_text": "학생은 주말 전에 기꺼이 도와줄 거예요",
+   "pad": []
+  },
+  {
+   "seed_number": 448,
+   "lego_index": 1,
+   "lego_known": "happy to help",
+   "lego_target": "기꺼이",
+   "phrase_role": "use",
+   "known_text": "before you start I'll be happy to come and help",
+   "target_text": "시작하기 전에 기꺼이 와서 도와줄 거예요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

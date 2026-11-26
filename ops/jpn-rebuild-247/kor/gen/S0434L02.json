@@ -1,0 +1,124 @@
+{
+ "lego": {
+  "seed_number": 434,
+  "lego_index": 2,
+  "known": "pupil",
+  "target": "학생"
+ },
+ "at": "2026-11-25T19:58:30.251Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 199,
+ "floorsOnly": true,
+ "lastReasons": [
+  "JUNCT 0.40 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 434,
+   "lego_index": 2,
+   "lego_known": "pupil",
+   "lego_target": "학생",
+   "phrase_role": "build",
+   "known_text": "a pupil I know",
+   "target_text": "아는 학생",
+   "pad": []
+  },
+  {
+   "seed_number": 434,
+   "lego_index": 2,
+   "lego_known": "pupil",
+   "lego_target": "학생",
+   "phrase_role": "build",
+   "known_text": "the pupil wearing a green shirt",
+   "target_text": "초록색 셔츠를 입은 학생",
+   "pad": []
+  },
+  {
+   "seed_number": 434,
+   "lego_index": 2,
+   "lego_known": "pupil",
+   "lego_target": "학생",
+   "phrase_role": "build",
+   "known_text": "to love the pupil's cat",
+   "target_text": "학생 고양이를 사랑하고",
+   "pad": []
+  },
+  {
+   "seed_number": 434,
+   "lego_index": 2,
+   "lego_known": "pupil",
+   "lego_target": "학생",
+   "phrase_role": "build",
+   "known_text": "the pupil who left on tuesday",
+   "target_text": "화요일에 떠난 학생",
+   "pad": []
+  },
+  {
+   "seed_number": 434,
+   "lego_index": 2,
+   "lego_known": "pupil",
+   "lego_target": "학생",
+   "phrase_role": "use",
+   "known_text": "i want to meet the family of a local pupil",
+   "target_text": "지역 학생 가족을 만나고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 434,
+   "lego_index": 2,
+   "lego_known": "pupil",
+   "lego_target": "학생",
+   "phrase_role": "use",
+   "known_text": "on wednesday i went to see the pupil's brother",
+   "target_text": "수요일에 학생 남동생을 보러 갔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 434,
+   "lego_index": 2,
+   "lego_known": "pupil",
+   "lego_target": "학생",
+   "phrase_role": "use",
+   "known_text": "i couldn't hear the message of the pupil wearing a yellow dress",
+   "target_text": "노란 원피스를 입은 학생 메시지를 못 들었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 434,
+   "lego_index": 2,
+   "lego_known": "pupil",
+   "lego_target": "학생",
+   "phrase_role": "use",
+   "known_text": "i agreed with the words of a pupil i know",
+   "target_text": "아는 학생 말에 동의했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 434,
+   "lego_index": 2,
+   "lego_known": "pupil",
+   "lego_target": "학생",
+   "phrase_role": "use",
+   "known_text": "we must book a table for the pupil's brother",
+   "target_text": "학생 남동생을 위해 자리를 예약해야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 434,
+   "lego_index": 2,
+   "lego_known": "pupil",
+   "lego_target": "학생",
+   "phrase_role": "use",
+   "known_text": "would they want to grow tomatoes for the family of the pupil who left",
+   "target_text": "떠난 학생 가족을 위해 토마토를 키우고 싶어할까요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

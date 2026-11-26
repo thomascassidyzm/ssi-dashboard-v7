@@ -1,0 +1,25 @@
+{
+ "lego": {
+  "seed_number": 497,
+  "lego_index": 3,
+  "known": "seems like",
+  "target": "같네요"
+ },
+ "at": "2026-11-26T11:04:01.881Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 210,
+ "floorsOnly": false,
+ "lastReasons": [
+  "USE \"in my opinion it seems like it's going to be okay\": stapled opener (a detachable interjection at the front earns no frame and is refused) — rewrite it without",
+  "NEIGH 0.25 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.40 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

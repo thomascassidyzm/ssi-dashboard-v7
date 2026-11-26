@@ -1,0 +1,114 @@
+{
+ "lego": {
+  "seed_number": 481,
+  "lego_index": 4,
+  "known": "is hope",
+  "target": "희망이에요"
+ },
+ "at": "2026-11-26T07:40:06.392Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 178,
+ "floorsOnly": true,
+ "lastReasons": [
+  "FRAME 0.22 < 0.34: your matrix clauses collapse to 2 shape(s) against a declared pool of 40. Vary the MATRIX CLAUSE, not the tail — a swapped tail is the same frame stamped again."
+ ],
+ "rows": [
+  {
+   "seed_number": 481,
+   "lego_index": 4,
+   "lego_known": "is hope",
+   "lego_target": "희망이에요",
+   "phrase_role": "build",
+   "known_text": "is hope for us",
+   "target_text": "우리에게 희망이에요",
+   "pad": []
+  },
+  {
+   "seed_number": 481,
+   "lego_index": 4,
+   "lego_known": "is hope",
+   "lego_target": "희망이에요",
+   "phrase_role": "build",
+   "known_text": "is hope but",
+   "target_text": "희망이에요 하지만",
+   "pad": []
+  },
+  {
+   "seed_number": 481,
+   "lego_index": 4,
+   "lego_known": "is hope",
+   "lego_target": "희망이에요",
+   "phrase_role": "build",
+   "known_text": "my son is hope",
+   "target_text": "제 아들은 희망이에요",
+   "pad": []
+  },
+  {
+   "seed_number": 481,
+   "lego_index": 4,
+   "lego_known": "is hope",
+   "lego_target": "희망이에요",
+   "phrase_role": "build",
+   "known_text": "the possibility is hope for them",
+   "target_text": "가능성이 그들에게 희망이에요",
+   "pad": []
+  },
+  {
+   "seed_number": 481,
+   "lego_index": 4,
+   "lego_known": "is hope",
+   "lego_target": "희망이에요",
+   "phrase_role": "use",
+   "known_text": "my father is hope for us but my mother was sick",
+   "target_text": "제 아버지는 우리에게 희망이에요 하지만 제 어머니는 아팠어요",
+   "pad": []
+  },
+  {
+   "seed_number": 481,
+   "lego_index": 4,
+   "lego_known": "is hope",
+   "lego_target": "희망이에요",
+   "phrase_role": "use",
+   "known_text": "the student who works at home is hope for us",
+   "target_text": "집에서 일하는 학생은 우리에게 희망이에요",
+   "pad": []
+  },
+  {
+   "seed_number": 481,
+   "lego_index": 4,
+   "lego_known": "is hope",
+   "lego_target": "희망이에요",
+   "phrase_role": "use",
+   "known_text": "my son is hope for us this year",
+   "target_text": "올해 제 아들은 우리에게 희망이에요",
+   "pad": []
+  },
+  {
+   "seed_number": 481,
+   "lego_index": 4,
+   "lego_known": "is hope",
+   "lego_target": "희망이에요",
+   "phrase_role": "use",
+   "known_text": "my daughter is hope and my son is kind",
+   "target_text": "제 딸은 희망이에요 그리고 제 아들은 착해요",
+   "pad": []
+  },
+  {
+   "seed_number": 481,
+   "lego_index": 4,
+   "lego_known": "is hope",
+   "lego_target": "희망이에요",
+   "phrase_role": "use",
+   "known_text": "the second half is hope for them",
+   "target_text": "후반전이 그들에게 희망이에요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,116 @@
+{
+ "lego": {
+  "seed_number": 439,
+  "lego_index": 1,
+  "known": "die and",
+  "target": "죽고"
+ },
+ "at": "2026-11-25T21:35:13.620Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 143,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"die and\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 439,
+   "lego_index": 1,
+   "lego_known": "die and",
+   "lego_target": "죽고",
+   "phrase_role": "build",
+   "known_text": "want to die but",
+   "target_text": "죽고 싶어하지만",
+   "pad": []
+  },
+  {
+   "seed_number": 439,
+   "lego_index": 1,
+   "lego_known": "die and",
+   "lego_target": "죽고",
+   "phrase_role": "build",
+   "known_text": "would they want to die",
+   "target_text": "죽고 싶어할까요",
+   "pad": []
+  },
+  {
+   "seed_number": 439,
+   "lego_index": 1,
+   "lego_known": "die and",
+   "lego_target": "죽고",
+   "phrase_role": "build",
+   "known_text": "live and die",
+   "target_text": "살고 죽고",
+   "pad": []
+  },
+  {
+   "seed_number": 439,
+   "lego_index": 1,
+   "lego_known": "die and",
+   "lego_target": "죽고",
+   "phrase_role": "build",
+   "known_text": "a person who doesn't want to die",
+   "target_text": "죽고 싶어하지 않는 사람",
+   "pad": []
+  },
+  {
+   "seed_number": 439,
+   "lego_index": 1,
+   "lego_known": "die and",
+   "lego_target": "죽고",
+   "phrase_role": "use",
+   "known_text": "nobody wants to die alone",
+   "target_text": "아무도 혼자 죽고 싶어하지 않아요",
+   "pad": []
+  },
+  {
+   "seed_number": 439,
+   "lego_index": 1,
+   "lego_known": "die and",
+   "lego_target": "죽고",
+   "phrase_role": "use",
+   "known_text": "my mother said that she doesn't want to die at home",
+   "target_text": "제 어머니는 집에서 죽고 싶지 않다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 439,
+   "lego_index": 1,
+   "lego_known": "die and",
+   "lego_target": "죽고",
+   "phrase_role": "use",
+   "known_text": "would they want to die in a city",
+   "target_text": "도시에서 죽고 싶어할까요",
+   "pad": []
+  },
+  {
+   "seed_number": 439,
+   "lego_index": 1,
+   "lego_known": "die and",
+   "lego_target": "죽고",
+   "phrase_role": "use",
+   "known_text": "why don't they want to die",
+   "target_text": "왜 죽고 싶어하지 않아요",
+   "pad": []
+  },
+  {
+   "seed_number": 439,
+   "lego_index": 1,
+   "lego_known": "die and",
+   "lego_target": "죽고",
+   "phrase_role": "use",
+   "known_text": "a student who wants to die is unhappy",
+   "target_text": "죽고 싶어하는 학생은 불행해요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

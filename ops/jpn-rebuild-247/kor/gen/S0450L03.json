@@ -1,0 +1,122 @@
+{
+ "lego": {
+  "seed_number": 450,
+  "lego_index": 3,
+  "known": "train",
+  "target": "기차를"
+ },
+ "at": "2026-11-25T23:20:03.972Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 152,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 450,
+   "lego_index": 3,
+   "lego_known": "train",
+   "lego_target": "기차를",
+   "phrase_role": "build",
+   "known_text": "the yellow train",
+   "target_text": "노란 기차를",
+   "pad": []
+  },
+  {
+   "seed_number": 450,
+   "lego_index": 3,
+   "lego_known": "train",
+   "lego_target": "기차를",
+   "phrase_role": "build",
+   "known_text": "have to catch the black train",
+   "target_text": "검은 기차를 타야",
+   "pad": []
+  },
+  {
+   "seed_number": 450,
+   "lego_index": 3,
+   "lego_known": "train",
+   "lego_target": "기차를",
+   "phrase_role": "build",
+   "known_text": "have never seen the train",
+   "target_text": "기차를 본 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 450,
+   "lego_index": 3,
+   "lego_known": "train",
+   "lego_target": "기차를",
+   "phrase_role": "build",
+   "known_text": "have to catch the same train tomorrow",
+   "target_text": "내일 같은 기차를 타야",
+   "pad": []
+  },
+  {
+   "seed_number": 450,
+   "lego_index": 3,
+   "lego_known": "train",
+   "lego_target": "기차를",
+   "phrase_role": "use",
+   "known_text": "I have never seen a yellow train",
+   "target_text": "노란 기차를 본 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 450,
+   "lego_index": 3,
+   "lego_known": "train",
+   "lego_target": "기차를",
+   "phrase_role": "use",
+   "known_text": "why do I have to catch the train alone",
+   "target_text": "왜 혼자 기차를 타야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 450,
+   "lego_index": 3,
+   "lego_known": "train",
+   "lego_target": "기차를",
+   "phrase_role": "use",
+   "known_text": "should we catch the green train on wednesday",
+   "target_text": "수요일에 초록색 기차를 타야 할까요",
+   "pad": []
+  },
+  {
+   "seed_number": 450,
+   "lego_index": 3,
+   "lego_known": "train",
+   "lego_target": "기차를",
+   "phrase_role": "use",
+   "known_text": "I'm trying to find the train",
+   "target_text": "기차를 찾으려고 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 450,
+   "lego_index": 3,
+   "lego_known": "train",
+   "lego_target": "기차를",
+   "phrase_role": "use",
+   "known_text": "I have to catch the same train tomorrow",
+   "target_text": "내일 같은 기차를 타야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 450,
+   "lego_index": 3,
+   "lego_known": "train",
+   "lego_target": "기차를",
+   "phrase_role": "use",
+   "known_text": "you have to catch the black train on tuesday",
+   "target_text": "화요일에 검은 기차를 타야 해요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

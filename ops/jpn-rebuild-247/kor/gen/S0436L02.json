@@ -1,0 +1,124 @@
+{
+ "lego": {
+  "seed_number": 436,
+  "lego_index": 2,
+  "known": "number of people",
+  "target": "인원이"
+ },
+ "at": "2026-11-25T20:04:12.828Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 150,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"number of people\" initially, medially AND finally."
+ ],
+ "rows": [
+  {
+   "seed_number": 436,
+   "lego_index": 2,
+   "lego_known": "number of people",
+   "lego_target": "인원이",
+   "phrase_role": "build",
+   "known_text": "the number of people isn't enough",
+   "target_text": "인원이 충분하지 않아요",
+   "pad": []
+  },
+  {
+   "seed_number": 436,
+   "lego_index": 2,
+   "lego_known": "number of people",
+   "lego_target": "인원이",
+   "phrase_role": "build",
+   "known_text": "the number of people still isn't enough",
+   "target_text": "아직도 인원이 충분하지 않아요",
+   "pad": []
+  },
+  {
+   "seed_number": 436,
+   "lego_index": 2,
+   "lego_known": "number of people",
+   "lego_target": "인원이",
+   "phrase_role": "build",
+   "known_text": "the minimum number of people is more important",
+   "target_text": "최소 인원이 더 중요해요",
+   "pad": []
+  },
+  {
+   "seed_number": 436,
+   "lego_index": 2,
+   "lego_known": "number of people",
+   "lego_target": "인원이",
+   "phrase_role": "build",
+   "known_text": "is the minimum number of people important?",
+   "target_text": "최소 인원이 중요해요",
+   "pad": []
+  },
+  {
+   "seed_number": 436,
+   "lego_index": 2,
+   "lego_known": "number of people",
+   "lego_target": "인원이",
+   "phrase_role": "use",
+   "known_text": "why is the number of people important",
+   "target_text": "왜 인원이 중요해요",
+   "pad": []
+  },
+  {
+   "seed_number": 436,
+   "lego_index": 2,
+   "lego_known": "number of people",
+   "lego_target": "인원이",
+   "phrase_role": "use",
+   "known_text": "on tuesday the number of people wasn't sufficient",
+   "target_text": "화요일에 인원이 충분하지 않았어요",
+   "pad": []
+  },
+  {
+   "seed_number": 436,
+   "lego_index": 2,
+   "lego_known": "number of people",
+   "lego_target": "인원이",
+   "phrase_role": "use",
+   "known_text": "for them the number of people is more important",
+   "target_text": "그들에게 인원이 더 중요해요",
+   "pad": []
+  },
+  {
+   "seed_number": 436,
+   "lego_index": 2,
+   "lego_known": "number of people",
+   "lego_target": "인원이",
+   "phrase_role": "use",
+   "known_text": "I didn't think the number of people was right",
+   "target_text": "인원이 맞다고 생각하지 않았어요",
+   "pad": []
+  },
+  {
+   "seed_number": 436,
+   "lego_index": 2,
+   "lego_known": "number of people",
+   "lego_target": "인원이",
+   "phrase_role": "use",
+   "known_text": "could the number of people be perfect for them",
+   "target_text": "그들에게 인원이 완벽할 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 436,
+   "lego_index": 2,
+   "lego_known": "number of people",
+   "lego_target": "인원이",
+   "phrase_role": "use",
+   "known_text": "the number of people certainly isn't enough",
+   "target_text": "인원이 분명 충분하지 않아요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

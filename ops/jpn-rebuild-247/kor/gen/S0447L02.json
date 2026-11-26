@@ -1,0 +1,136 @@
+{
+ "lego": {
+  "seed_number": 447,
+  "lego_index": 2,
+  "known": "to home",
+  "target": "집까지"
+ },
+ "at": "2026-11-25T23:14:12.693Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 5266,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"to home\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 447,
+   "lego_index": 2,
+   "lego_known": "to home",
+   "lego_target": "집까지",
+   "phrase_role": "build",
+   "known_text": "walk home",
+   "target_text": "집까지 걸어갈",
+   "pad": []
+  },
+  {
+   "seed_number": 447,
+   "lego_index": 2,
+   "lego_known": "to home",
+   "lego_target": "집까지",
+   "phrase_role": "build",
+   "known_text": "carry that suitcase home",
+   "target_text": "그 가방을 집까지 들",
+   "pad": []
+  },
+  {
+   "seed_number": 447,
+   "lego_index": 2,
+   "lego_known": "to home",
+   "lego_target": "집까지",
+   "phrase_role": "build",
+   "known_text": "directly home",
+   "target_text": "바로 집까지",
+   "pad": []
+  },
+  {
+   "seed_number": 447,
+   "lego_index": 2,
+   "lego_known": "to home",
+   "lego_target": "집까지",
+   "phrase_role": "build",
+   "known_text": "need to run home alone",
+   "target_text": "혼자 집까지 뛰어야",
+   "pad": []
+  },
+  {
+   "seed_number": 447,
+   "lego_index": 2,
+   "lego_known": "to home",
+   "lego_target": "집까지",
+   "phrase_role": "use",
+   "known_text": "could you carry that suitcase home",
+   "target_text": "그 가방을 집까지 들 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 447,
+   "lego_index": 2,
+   "lego_known": "to home",
+   "lego_target": "집까지",
+   "phrase_role": "use",
+   "known_text": "why do you need to run home",
+   "target_text": "왜 집까지 뛰어야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 447,
+   "lego_index": 2,
+   "lego_known": "to home",
+   "lego_target": "집까지",
+   "phrase_role": "use",
+   "known_text": "I wonder if she will be able to walk home alone",
+   "target_text": "혼자 집까지 걸어갈 수 있을지 궁금해요",
+   "pad": []
+  },
+  {
+   "seed_number": 447,
+   "lego_index": 2,
+   "lego_known": "to home",
+   "lego_target": "집까지",
+   "phrase_role": "use",
+   "known_text": "after stopping by a restaurant I went home",
+   "target_text": "식당에 들러서 집까지 갔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 447,
+   "lego_index": 2,
+   "lego_known": "to home",
+   "lego_target": "집까지",
+   "phrase_role": "use",
+   "known_text": "if you go home on tuesday could you carry that suitcase",
+   "target_text": "화요일에 집까지 가면 그 가방을 들 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 447,
+   "lego_index": 2,
+   "lego_known": "to home",
+   "lego_target": "집까지",
+   "phrase_role": "use",
+   "known_text": "I went directly home on wednesday",
+   "target_text": "수요일에 바로 집까지 갔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 447,
+   "lego_index": 2,
+   "lego_known": "to home",
+   "lego_target": "집까지",
+   "phrase_role": "use",
+   "known_text": "can you bring your brother home on monday",
+   "target_text": "월요일에 남동생을 집까지 데려올 수 있을까요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

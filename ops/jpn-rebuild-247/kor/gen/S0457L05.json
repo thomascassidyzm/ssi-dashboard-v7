@@ -1,0 +1,125 @@
+{
+ "lego": {
+  "seed_number": 457,
+  "lego_index": 5,
+  "known": "part of",
+  "target": "일부는"
+ },
+ "at": "2026-11-26T01:00:26.597Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 156,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.25 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.40 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 457,
+   "lego_index": 5,
+   "lego_known": "part of",
+   "lego_target": "일부는",
+   "phrase_role": "build",
+   "known_text": "part of the problem",
+   "target_text": "문제의 일부는",
+   "pad": []
+  },
+  {
+   "seed_number": 457,
+   "lego_index": 5,
+   "lego_known": "part of",
+   "lego_target": "일부는",
+   "phrase_role": "build",
+   "known_text": "part of the area",
+   "target_text": "분야의 일부는",
+   "pad": []
+  },
+  {
+   "seed_number": 457,
+   "lego_index": 5,
+   "lego_known": "part of",
+   "lego_target": "일부는",
+   "phrase_role": "build",
+   "known_text": "part of my brain",
+   "target_text": "뇌의 일부는",
+   "pad": []
+  },
+  {
+   "seed_number": 457,
+   "lego_index": 5,
+   "lego_known": "part of",
+   "lego_target": "일부는",
+   "phrase_role": "build",
+   "known_text": "part of the problem is certainly",
+   "target_text": "문제의 일부는 분명",
+   "pad": []
+  },
+  {
+   "seed_number": 457,
+   "lego_index": 5,
+   "lego_known": "part of",
+   "lego_target": "일부는",
+   "phrase_role": "use",
+   "known_text": "part of the problem is more important",
+   "target_text": "문제의 일부는 더 중요해요",
+   "pad": []
+  },
+  {
+   "seed_number": 457,
+   "lego_index": 5,
+   "lego_known": "part of",
+   "lego_target": "일부는",
+   "phrase_role": "use",
+   "known_text": "when I learn part of my brain changes",
+   "target_text": "배우면 뇌의 일부는 바뀌어요",
+   "pad": []
+  },
+  {
+   "seed_number": 457,
+   "lego_index": 5,
+   "lego_known": "part of",
+   "lego_target": "일부는",
+   "phrase_role": "use",
+   "known_text": "part of my brain is getting weak",
+   "target_text": "뇌의 일부는 약해지고 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 457,
+   "lego_index": 5,
+   "lego_known": "part of",
+   "lego_target": "일부는",
+   "phrase_role": "use",
+   "known_text": "part of the area is certainly important",
+   "target_text": "분야의 일부는 분명 중요해요",
+   "pad": []
+  },
+  {
+   "seed_number": 457,
+   "lego_index": 5,
+   "lego_known": "part of",
+   "lego_target": "일부는",
+   "phrase_role": "use",
+   "known_text": "why is part of the problem still important",
+   "target_text": "왜 문제의 일부는 아직도 중요해요",
+   "pad": []
+  },
+  {
+   "seed_number": 457,
+   "lego_index": 5,
+   "lego_known": "part of",
+   "lego_target": "일부는",
+   "phrase_role": "use",
+   "known_text": "part of the problem is the number",
+   "target_text": "문제의 일부는 수예요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

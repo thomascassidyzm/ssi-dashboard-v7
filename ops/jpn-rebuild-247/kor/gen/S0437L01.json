@@ -1,0 +1,116 @@
+{
+ "lego": {
+  "seed_number": 437,
+  "lego_index": 1,
+  "known": "collect and",
+  "target": "모으고"
+ },
+ "at": "2026-11-25T21:32:51.036Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 5340,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"collect and\" initially, medially AND finally.",
+  "NEIGH 0.11 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.11 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 437,
+   "lego_index": 1,
+   "lego_known": "collect and",
+   "lego_target": "모으고",
+   "phrase_role": "build",
+   "known_text": "collect and send a message",
+   "target_text": "모으고 메시지를 보내고",
+   "pad": []
+  },
+  {
+   "seed_number": 437,
+   "lego_index": 1,
+   "lego_known": "collect and",
+   "lego_target": "모으고",
+   "phrase_role": "build",
+   "known_text": "on tuesday collect the tomatoes and",
+   "target_text": "화요일에 토마토를 모으고",
+   "pad": []
+  },
+  {
+   "seed_number": 437,
+   "lego_index": 1,
+   "lego_known": "collect and",
+   "lego_target": "모으고",
+   "phrase_role": "build",
+   "known_text": "collect ants and grow tomatoes",
+   "target_text": "개미들을 모으고 토마토를 키우고",
+   "pad": []
+  },
+  {
+   "seed_number": 437,
+   "lego_index": 1,
+   "lego_known": "collect and",
+   "lego_target": "모으고",
+   "phrase_role": "build",
+   "known_text": "if you collect the tomatoes and eat",
+   "target_text": "토마토를 모으고 먹으면",
+   "pad": []
+  },
+  {
+   "seed_number": 437,
+   "lego_index": 1,
+   "lego_known": "collect and",
+   "lego_target": "모으고",
+   "phrase_role": "use",
+   "known_text": "they want to collect the tomatoes and go out on wednesday",
+   "target_text": "수요일에 토마토를 모으고 나가고 싶어해요",
+   "pad": []
+  },
+  {
+   "seed_number": 437,
+   "lego_index": 1,
+   "lego_known": "collect and",
+   "lego_target": "모으고",
+   "phrase_role": "use",
+   "known_text": "he said that he wants to collect ants and put them in the garden",
+   "target_text": "개미들을 모으고 정원에 놓고 싶다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 437,
+   "lego_index": 1,
+   "lego_known": "collect and",
+   "lego_target": "모으고",
+   "phrase_role": "use",
+   "known_text": "could they collect the tomatoes and watch the film",
+   "target_text": "토마토를 모으고 영화를 볼 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 437,
+   "lego_index": 1,
+   "lego_known": "collect and",
+   "lego_target": "모으고",
+   "phrase_role": "use",
+   "known_text": "the student who doesn't want to collect ants and kill them is unhappy",
+   "target_text": "개미들을 모으고 죽이고 싶어하지 않는 학생은 불행해요",
+   "pad": []
+  },
+  {
+   "seed_number": 437,
+   "lego_index": 1,
+   "lego_known": "collect and",
+   "lego_target": "모으고",
+   "phrase_role": "use",
+   "known_text": "they want to collect some old friends and go out but they still fight",
+   "target_text": "오래된 친구들을 모으고 나가고 싶어하지만 아직도 싸워요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

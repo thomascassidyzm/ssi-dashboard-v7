@@ -1,0 +1,26 @@
+{
+ "lego": {
+  "seed_number": 476,
+  "lego_index": 2,
+  "known": "second half",
+  "target": "후반전이"
+ },
+ "at": "2026-11-26T05:59:56.488Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 164,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"I hope the second half ends soon\" (unknown gloss \"ends\")",
+  "USE \"I hope the second half ends soon\" → \"후반전이 곧 끝나면 좋겠어요\": popty:knownSide [{\"known\":\"I hope the second half ends soon\",\"target\":\"후반전이 곧 끝나면 좋겠어요\",\"problem\":\"unknown gloss \\\"ends\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

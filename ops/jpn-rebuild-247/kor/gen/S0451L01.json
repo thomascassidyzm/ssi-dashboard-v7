@@ -1,0 +1,116 @@
+{
+ "lego": {
+  "seed_number": 451,
+  "lego_index": 1,
+  "known": "do and",
+  "target": "하고"
+ },
+ "at": "2026-11-25T23:22:09.275Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 196,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"do and\" initially, medially AND finally.",
+  "NEIGH 0.11 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.11 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 451,
+   "lego_index": 1,
+   "lego_known": "do and",
+   "lego_target": "하고",
+   "phrase_role": "build",
+   "known_text": "do and go out",
+   "target_text": "하고 나가고",
+   "pad": []
+  },
+  {
+   "seed_number": 451,
+   "lego_index": 1,
+   "lego_known": "do and",
+   "lego_target": "하고",
+   "phrase_role": "build",
+   "known_text": "do it alone and",
+   "target_text": "그걸 혼자 하고",
+   "pad": []
+  },
+  {
+   "seed_number": 451,
+   "lego_index": 1,
+   "lego_known": "do and",
+   "lego_target": "하고",
+   "phrase_role": "build",
+   "known_text": "do it efficiently and relax",
+   "target_text": "그걸 효율적으로 하고 쉬고",
+   "pad": []
+  },
+  {
+   "seed_number": 451,
+   "lego_index": 1,
+   "lego_known": "do and",
+   "lego_target": "하고",
+   "phrase_role": "build",
+   "known_text": "do it at home and send a message",
+   "target_text": "그걸 집에서 하고 메시지를 보내고",
+   "pad": []
+  },
+  {
+   "seed_number": 451,
+   "lego_index": 1,
+   "lego_known": "do and",
+   "lego_target": "하고",
+   "phrase_role": "use",
+   "known_text": "I want to do it and relax",
+   "target_text": "그걸 하고 쉬고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 451,
+   "lego_index": 1,
+   "lego_known": "do and",
+   "lego_target": "하고",
+   "phrase_role": "use",
+   "known_text": "why do you want to do it alone and go to a restaurant",
+   "target_text": "왜 그걸 혼자 하고 식당에 가고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 451,
+   "lego_index": 1,
+   "lego_known": "do and",
+   "lego_target": "하고",
+   "phrase_role": "use",
+   "known_text": "she said that she doesn't want to do it on tuesday and travel",
+   "target_text": "그걸 화요일에 하고 여행하고 싶지 않다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 451,
+   "lego_index": 1,
+   "lego_known": "do and",
+   "lego_target": "하고",
+   "phrase_role": "use",
+   "known_text": "he said that he wants to do it efficiently and go out",
+   "target_text": "그걸 효율적으로 하고 나가고 싶다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 451,
+   "lego_index": 1,
+   "lego_known": "do and",
+   "lego_target": "하고",
+   "phrase_role": "use",
+   "known_text": "let's do it on wednesday and talk",
+   "target_text": "그걸 수요일에 하고 이야기해요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,124 @@
+{
+ "lego": {
+  "seed_number": 440,
+  "lego_index": 1,
+  "known": "young",
+  "target": "젊을"
+ },
+ "at": "2026-11-25T21:36:19.220Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 182,
+ "floorsOnly": true,
+ "lastReasons": [
+  "JUNCT 0.40 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 440,
+   "lego_index": 1,
+   "lego_known": "young",
+   "lego_target": "젊을",
+   "phrase_role": "build",
+   "known_text": "while you're young",
+   "target_text": "젊을 때",
+   "pad": []
+  },
+  {
+   "seed_number": 440,
+   "lego_index": 1,
+   "lego_known": "young",
+   "lego_target": "젊을",
+   "phrase_role": "build",
+   "known_text": "while you're still young",
+   "target_text": "아직도 젊을 때",
+   "pad": []
+  },
+  {
+   "seed_number": 440,
+   "lego_index": 1,
+   "lego_known": "young",
+   "lego_target": "젊을",
+   "phrase_role": "build",
+   "known_text": "while you're very young",
+   "target_text": "아주 젊을 때",
+   "pad": []
+  },
+  {
+   "seed_number": 440,
+   "lego_index": 1,
+   "lego_known": "young",
+   "lego_target": "젊을",
+   "phrase_role": "build",
+   "known_text": "to live alone while you're young",
+   "target_text": "젊을 때 혼자 살고",
+   "pad": []
+  },
+  {
+   "seed_number": 440,
+   "lego_index": 1,
+   "lego_known": "young",
+   "lego_target": "젊을",
+   "phrase_role": "use",
+   "known_text": "you must work hard while you're young",
+   "target_text": "젊을 때 열심히 해야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 440,
+   "lego_index": 1,
+   "lego_known": "young",
+   "lego_target": "젊을",
+   "phrase_role": "use",
+   "known_text": "why are you unhappy while you're young",
+   "target_text": "왜 젊을 때 불행해요",
+   "pad": []
+  },
+  {
+   "seed_number": 440,
+   "lego_index": 1,
+   "lego_known": "young",
+   "lego_target": "젊을",
+   "phrase_role": "use",
+   "known_text": "he said that he wants to go to Africa while he's still young",
+   "target_text": "아직도 젊을 때 아프리카에 가고 싶다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 440,
+   "lego_index": 1,
+   "lego_known": "young",
+   "lego_target": "젊을",
+   "phrase_role": "use",
+   "known_text": "you shouldn't worry about that while you're very young",
+   "target_text": "아주 젊을 때 그거에 대해서 걱정하면 안 돼요",
+   "pad": []
+  },
+  {
+   "seed_number": 440,
+   "lego_index": 1,
+   "lego_known": "young",
+   "lego_target": "젊을",
+   "phrase_role": "use",
+   "known_text": "they want to live in a city while they're young but they're unhappy",
+   "target_text": "젊을 때 도시에서 살고 싶어하지만 불행해요",
+   "pad": []
+  },
+  {
+   "seed_number": 440,
+   "lego_index": 1,
+   "lego_known": "young",
+   "lego_target": "젊을",
+   "phrase_role": "use",
+   "known_text": "I want to meet some old friends while I'm still young",
+   "target_text": "아직도 젊을 때 오래된 친구들을 만나고 싶어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

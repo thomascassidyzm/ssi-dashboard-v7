@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 440,
+  "lego_index": 2,
+  "known": "travel and",
+  "target": "여행하고"
+ },
+ "at": "2026-11-25T21:38:14.336Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 181,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.23 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.27 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 440,
+   "lego_index": 2,
+   "lego_known": "travel and",
+   "lego_target": "여행하고",
+   "phrase_role": "build",
+   "known_text": "travel and send a message",
+   "target_text": "여행하고 메시지를 보내고",
+   "pad": []
+  },
+  {
+   "seed_number": 440,
+   "lego_index": 2,
+   "lego_known": "travel and",
+   "lego_target": "여행하고",
+   "phrase_role": "build",
+   "known_text": "travel and live in a city",
+   "target_text": "여행하고 도시에서 살고",
+   "pad": []
+  },
+  {
+   "seed_number": 440,
+   "lego_index": 2,
+   "lego_known": "travel and",
+   "lego_target": "여행하고",
+   "phrase_role": "build",
+   "known_text": "still wants to travel",
+   "target_text": "아직도 여행하고 싶어해요",
+   "pad": []
+  },
+  {
+   "seed_number": 440,
+   "lego_index": 2,
+   "lego_known": "travel and",
+   "lego_target": "여행하고",
+   "phrase_role": "build",
+   "known_text": "a pupil who doesn't want to travel",
+   "target_text": "여행하고 싶어하지 않는 학생",
+   "pad": []
+  },
+  {
+   "seed_number": 440,
+   "lego_index": 2,
+   "lego_known": "travel and",
+   "lego_target": "여행하고",
+   "phrase_role": "use",
+   "known_text": "my son wants to travel on tuesday but he's busy",
+   "target_text": "제 아들은 화요일에 여행하고 싶어하지만 바빠요",
+   "pad": []
+  },
+  {
+   "seed_number": 440,
+   "lego_index": 2,
+   "lego_known": "travel and",
+   "lego_target": "여행하고",
+   "phrase_role": "use",
+   "known_text": "my father said that he wants to travel with a friend",
+   "target_text": "제 아버지는 친구와 여행하고 싶다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 440,
+   "lego_index": 2,
+   "lego_known": "travel and",
+   "lego_target": "여행하고",
+   "phrase_role": "use",
+   "known_text": "would they want to travel to africa",
+   "target_text": "아프리카에 여행하고 싶어할까요",
+   "pad": []
+  },
+  {
+   "seed_number": 440,
+   "lego_index": 2,
+   "lego_known": "travel and",
+   "lego_target": "여행하고",
+   "phrase_role": "use",
+   "known_text": "she said that she doesn't want to travel alone",
+   "target_text": "혼자 여행하고 싶지 않다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 440,
+   "lego_index": 2,
+   "lego_known": "travel and",
+   "lego_target": "여행하고",
+   "phrase_role": "use",
+   "known_text": "my daughter wants to travel and meet some old friends",
+   "target_text": "제 딸은 여행하고 오래된 친구들을 만나고 싶어해요",
+   "pad": []
+  },
+  {
+   "seed_number": 440,
+   "lego_index": 2,
+   "lego_known": "travel and",
+   "lego_target": "여행하고",
+   "phrase_role": "use",
+   "known_text": "why do they want to travel on wednesday",
+   "target_text": "왜 수요일에 여행하고 싶어해요",
+   "pad": []
+  },
+  {
+   "seed_number": 440,
+   "lego_index": 2,
+   "lego_known": "travel and",
+   "lego_target": "여행하고",
+   "phrase_role": "use",
+   "known_text": "my mother still wants to travel to africa",
+   "target_text": "제 어머니는 아직도 아프리카에 여행하고 싶어해요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

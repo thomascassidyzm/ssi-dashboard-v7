@@ -1,0 +1,27 @@
+{
+ "lego": {
+  "seed_number": 462,
+  "lego_index": 1,
+  "known": "war",
+  "target": "전쟁"
+ },
+ "at": "2026-11-26T02:38:43.579Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 205,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 2 phrase(s) use English the learner has not been given. \"watch several war films\" (unknown gloss \"films\"); \"on wednesday i went to see different war films\" (unknown gloss \"films\")",
+  "BUILD \"watch several war films\" → \"여러 전쟁 영화를 볼\": popty:knownSide [{\"known\":\"watch several war films\",\"target\":\"여러 전쟁 영화를 볼\",\"problem\":\"unknown gloss \\\"films\\\"\"}]",
+  "USE \"on wednesday i went to see different war films\" → \"수요일에 다양한 전쟁 영화를 보러 갔어요\": popty:knownSide [{\"known\":\"on wednesday i went to see different war films\",\"target\":\"수요일에 다양한 전쟁 영화를 보러 갔어요\",\"problem\":\"unknown gloss \\\"films\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

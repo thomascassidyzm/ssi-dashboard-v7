@@ -1,0 +1,31 @@
+{
+ "lego": {
+  "seed_number": 431,
+  "lego_index": 2,
+  "known": "wasn't done but",
+  "target": "됐지만"
+ },
+ "at": "2026-11-25T19:52:56.764Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 705,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 2 phrase(s) use English the learner has not been given. \"the reservation hasn't been made yet but soon\" (unknown gloss \"made\"); \"the reservation hasn't been made yet but if we go directly it would be better\" (unknown gloss \"made\")",
+  "BUILD \"the reservation hasn't been made yet but soon\" → \"아직 예약 안 됐지만 곧\": popty:knownSide [{\"known\":\"the reservation hasn't been made yet but soon\",\"target\":\"아직 예약 안 됐지만 곧\",\"problem\":\"unknown gloss \\\"made\\\"\"}]",
+  "USE \"the reservation hasn't been made yet but if we go directly it would be better\" → \"아직 예약 안 됐지만 바로 가면 나을 거예요\": popty:knownSide [{\"known\":\"the reservation hasn't been made yet but if we go directly it would be better\",\"target\":\"아직 예약 안 됐지만 바로 가면 나을 거예요\",\"problem\":\"unknown gloss \\\"made\\\"\"}]",
+  "FRAME 0.18 < 0.34: your matrix clauses collapse to 2 shape(s) against a declared pool of 39. Vary the MATRIX CLAUSE, not the tail — a swapped tail is the same frame stamped again.",
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"wasn't done but\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

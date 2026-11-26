@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 436,
+  "lego_index": 1,
+  "known": "minimum",
+  "target": "최소"
+ },
+ "at": "2026-11-25T20:03:51.493Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 183,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"minimum\" initially, medially AND finally.",
+  "NEIGH 0.10 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.10 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 436,
+   "lego_index": 1,
+   "lego_known": "minimum",
+   "lego_target": "최소",
+   "phrase_role": "build",
+   "known_text": "a minimum of a few days",
+   "target_text": "최소 며칠",
+   "pad": []
+  },
+  {
+   "seed_number": 436,
+   "lego_index": 1,
+   "lego_known": "minimum",
+   "lego_target": "최소",
+   "phrase_role": "build",
+   "known_text": "a minimum of ten kinds of problems",
+   "target_text": "최소 열 가지 문제를",
+   "pad": []
+  },
+  {
+   "seed_number": 436,
+   "lego_index": 1,
+   "lego_known": "minimum",
+   "lego_target": "최소",
+   "phrase_role": "build",
+   "known_text": "this year a minimum of five games",
+   "target_text": "올해 최소 다섯 경기를",
+   "pad": []
+  },
+  {
+   "seed_number": 436,
+   "lego_index": 1,
+   "lego_known": "minimum",
+   "lego_target": "최소",
+   "phrase_role": "build",
+   "known_text": "why a minimum of a few minutes",
+   "target_text": "왜 최소 몇 분",
+   "pad": []
+  },
+  {
+   "seed_number": 436,
+   "lego_index": 1,
+   "lego_known": "minimum",
+   "lego_target": "최소",
+   "phrase_role": "use",
+   "known_text": "you should consider a minimum of ten kinds of problems",
+   "target_text": "최소 열 가지 문제를 생각해 봐야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 436,
+   "lego_index": 1,
+   "lego_known": "minimum",
+   "lego_target": "최소",
+   "phrase_role": "use",
+   "known_text": "if you go on Tuesday you must book a table a minimum of a few days before",
+   "target_text": "화요일에 가면 최소 며칠 전에 자리를 예약해야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 436,
+   "lego_index": 1,
+   "lego_known": "minimum",
+   "lego_target": "최소",
+   "phrase_role": "use",
+   "known_text": "why do you need to run around the field for a minimum of a few minutes",
+   "target_text": "왜 최소 몇 분 운동장 주위를 뛰어야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 436,
+   "lego_index": 1,
+   "lego_known": "minimum",
+   "lego_target": "최소",
+   "phrase_role": "use",
+   "known_text": "I want to spend a minimum of a few days alone",
+   "target_text": "혼자 최소 며칠 보내고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 436,
+   "lego_index": 1,
+   "lego_known": "minimum",
+   "lego_target": "최소",
+   "phrase_role": "use",
+   "known_text": "she said that she doesn't want to spend a minimum of a few days with the group",
+   "target_text": "모임과 최소 며칠 보내고 싶지 않다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 436,
+   "lego_index": 1,
+   "lego_known": "minimum",
+   "lego_target": "최소",
+   "phrase_role": "use",
+   "known_text": "this year I can watch a minimum of five games",
+   "target_text": "올해 최소 다섯 경기를 볼 수 있어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

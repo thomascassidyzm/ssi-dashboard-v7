@@ -1,0 +1,125 @@
+{
+ "lego": {
+  "seed_number": 442,
+  "lego_index": 1,
+  "known": "develop and",
+  "target": "개발하고"
+ },
+ "at": "2026-11-25T21:39:52.049Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 213,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.20 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.30 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 442,
+   "lego_index": 1,
+   "lego_known": "develop and",
+   "lego_target": "개발하고",
+   "phrase_role": "build",
+   "known_text": "develop and lead the way",
+   "target_text": "개발하고 앞장서고",
+   "pad": []
+  },
+  {
+   "seed_number": 442,
+   "lego_index": 1,
+   "lego_known": "develop and",
+   "lego_target": "개발하고",
+   "phrase_role": "build",
+   "known_text": "would they want to develop",
+   "target_text": "개발하고 싶어할까요",
+   "pad": []
+  },
+  {
+   "seed_number": 442,
+   "lego_index": 1,
+   "lego_known": "develop and",
+   "lego_target": "개발하고",
+   "phrase_role": "build",
+   "known_text": "a person who wants to develop and travel",
+   "target_text": "개발하고 여행하고 싶어하는 사람",
+   "pad": []
+  },
+  {
+   "seed_number": 442,
+   "lego_index": 1,
+   "lego_known": "develop and",
+   "lego_target": "개발하고",
+   "phrase_role": "build",
+   "known_text": "on tuesday develop a new approach and",
+   "target_text": "화요일에 새로운 접근법 개발하고",
+   "pad": []
+  },
+  {
+   "seed_number": 442,
+   "lego_index": 1,
+   "lego_known": "develop and",
+   "lego_target": "개발하고",
+   "phrase_role": "use",
+   "known_text": "would they want to develop such an approach",
+   "target_text": "그런 접근법 개발하고 싶어할까요",
+   "pad": []
+  },
+  {
+   "seed_number": 442,
+   "lego_index": 1,
+   "lego_known": "develop and",
+   "lego_target": "개발하고",
+   "phrase_role": "use",
+   "known_text": "why do they want to develop such an approach",
+   "target_text": "왜 그런 접근법 개발하고 싶어해요",
+   "pad": []
+  },
+  {
+   "seed_number": 442,
+   "lego_index": 1,
+   "lego_known": "develop and",
+   "lego_target": "개발하고",
+   "phrase_role": "use",
+   "known_text": "they want to develop a new approach but they still fight",
+   "target_text": "새로운 접근법 개발하고 싶어하지만 아직도 싸워요",
+   "pad": []
+  },
+  {
+   "seed_number": 442,
+   "lego_index": 1,
+   "lego_known": "develop and",
+   "lego_target": "개발하고",
+   "phrase_role": "use",
+   "known_text": "they don't want to develop a new approach alone",
+   "target_text": "혼자 새로운 접근법 개발하고 싶어하지 않아요",
+   "pad": []
+  },
+  {
+   "seed_number": 442,
+   "lego_index": 1,
+   "lego_known": "develop and",
+   "lego_target": "개발하고",
+   "phrase_role": "use",
+   "known_text": "on tuesday they want to decide and develop",
+   "target_text": "화요일에 결정하고 개발하고 싶어해요",
+   "pad": []
+  },
+  {
+   "seed_number": 442,
+   "lego_index": 1,
+   "lego_known": "develop and",
+   "lego_target": "개발하고",
+   "phrase_role": "use",
+   "known_text": "they themselves want to develop and lead the way",
+   "target_text": "자기들이 개발하고 앞장서고 싶어해요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

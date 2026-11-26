@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 434,
+  "lego_index": 5,
+  "known": "could it?",
+  "target": "수 있을까요"
+ },
+ "at": "2026-11-25T20:00:48.945Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 148,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"could it?\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 434,
+   "lego_index": 5,
+   "lego_known": "could it?",
+   "lego_target": "수 있을까요",
+   "phrase_role": "build",
+   "known_text": "could they cut",
+   "target_text": "줄일 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 434,
+   "lego_index": 5,
+   "lego_known": "could it?",
+   "lego_target": "수 있을까요",
+   "phrase_role": "build",
+   "known_text": "could we reach the top",
+   "target_text": "꼭대기에 닿을 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 434,
+   "lego_index": 5,
+   "lego_known": "could it?",
+   "lego_target": "수 있을까요",
+   "phrase_role": "build",
+   "known_text": "could you agree with her",
+   "target_text": "그녀에게 동의할 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 434,
+   "lego_index": 5,
+   "lego_known": "could it?",
+   "lego_target": "수 있을까요",
+   "phrase_role": "build",
+   "known_text": "could we allow them to win",
+   "target_text": "이기게 할 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 434,
+   "lego_index": 5,
+   "lego_known": "could it?",
+   "lego_target": "수 있을까요",
+   "phrase_role": "use",
+   "known_text": "could they cut the number this year",
+   "target_text": "올해 수를 줄일 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 434,
+   "lego_index": 5,
+   "lego_known": "could it?",
+   "lego_target": "수 있을까요",
+   "phrase_role": "use",
+   "known_text": "if we go directly could we reach the top",
+   "target_text": "바로 가면 꼭대기에 닿을 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 434,
+   "lego_index": 5,
+   "lego_known": "could it?",
+   "lego_target": "수 있을까요",
+   "phrase_role": "use",
+   "known_text": "could we discuss before you start",
+   "target_text": "시작하기 전에 논의할 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 434,
+   "lego_index": 5,
+   "lego_known": "could it?",
+   "lego_target": "수 있을까요",
+   "phrase_role": "use",
+   "known_text": "could the boy wearing a green shirt walk to school alone",
+   "target_text": "초록색 셔츠를 입은 남자아이 혼자 학교까지 걸어갈 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 434,
+   "lego_index": 5,
+   "lego_known": "could it?",
+   "lego_target": "수 있을까요",
+   "phrase_role": "use",
+   "known_text": "could we spend a few days with the group",
+   "target_text": "모임과 며칠 보낼 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 434,
+   "lego_index": 5,
+   "lego_known": "could it?",
+   "lego_target": "수 있을까요",
+   "phrase_role": "use",
+   "known_text": "could they sell the company this time",
+   "target_text": "이번에는 회사를 팔 수 있을까요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

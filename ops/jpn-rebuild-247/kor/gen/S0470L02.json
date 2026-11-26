@@ -1,0 +1,114 @@
+{
+ "lego": {
+  "seed_number": 470,
+  "lego_index": 2,
+  "known": "stopping",
+  "target": "멈추기"
+ },
+ "at": "2026-11-26T04:23:08.594Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 157,
+ "floorsOnly": true,
+ "lastReasons": [
+  "JUNCT 0.44 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 470,
+   "lego_index": 2,
+   "lego_known": "stopping",
+   "lego_target": "멈추기",
+   "phrase_role": "build",
+   "known_text": "before stopping",
+   "target_text": "멈추기 전에",
+   "pad": []
+  },
+  {
+   "seed_number": 470,
+   "lego_index": 2,
+   "lego_known": "stopping",
+   "lego_target": "멈추기",
+   "phrase_role": "build",
+   "known_text": "before the children stop",
+   "target_text": "아이들이 멈추기 전에",
+   "pad": []
+  },
+  {
+   "seed_number": 470,
+   "lego_index": 2,
+   "lego_known": "stopping",
+   "lego_target": "멈추기",
+   "phrase_role": "build",
+   "known_text": "stopping was easy",
+   "target_text": "멈추기 쉬웠어요",
+   "pad": []
+  },
+  {
+   "seed_number": 470,
+   "lego_index": 2,
+   "lego_known": "stopping",
+   "lego_target": "멈추기",
+   "phrase_role": "build",
+   "known_text": "in the past stopping was easy",
+   "target_text": "과거에는 멈추기 쉬웠어요",
+   "pad": []
+  },
+  {
+   "seed_number": 470,
+   "lego_index": 2,
+   "lego_known": "stopping",
+   "lego_target": "멈추기",
+   "phrase_role": "use",
+   "known_text": "let me throw that suitcase over the wall before stopping",
+   "target_text": "멈추기 전에 그 가방을 담 너머로 던질게요",
+   "pad": []
+  },
+  {
+   "seed_number": 470,
+   "lego_index": 2,
+   "lego_known": "stopping",
+   "lego_target": "멈추기",
+   "phrase_role": "use",
+   "known_text": "I think I'll be ready before the children stop",
+   "target_text": "아이들이 멈추기 전에 준비될 것 같아요",
+   "pad": []
+  },
+  {
+   "seed_number": 470,
+   "lego_index": 2,
+   "lego_known": "stopping",
+   "lego_target": "멈추기",
+   "phrase_role": "use",
+   "known_text": "next time I have to find out before stopping",
+   "target_text": "다음에 멈추기 전에 알아내야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 470,
+   "lego_index": 2,
+   "lego_known": "stopping",
+   "lego_target": "멈추기",
+   "phrase_role": "use",
+   "known_text": "I didn't ask him before stopping",
+   "target_text": "멈추기 전에 그한테 물어보지 않았어요",
+   "pad": []
+  },
+  {
+   "seed_number": 470,
+   "lego_index": 2,
+   "lego_known": "stopping",
+   "lego_target": "멈추기",
+   "phrase_role": "use",
+   "known_text": "stopping near the hotel was easy",
+   "target_text": "호텔 근처에서 멈추기 쉬웠어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

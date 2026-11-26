@@ -1,0 +1,124 @@
+{
+ "lego": {
+  "seed_number": 463,
+  "lego_index": 2,
+  "known": "number",
+  "target": "번호"
+ },
+ "at": "2026-11-26T02:41:54.171Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 126,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"number\" initially, medially AND finally."
+ ],
+ "rows": [
+  {
+   "seed_number": 463,
+   "lego_index": 2,
+   "lego_known": "number",
+   "lego_target": "번호",
+   "phrase_role": "build",
+   "known_text": "the post office number",
+   "target_text": "우체국 번호",
+   "pad": []
+  },
+  {
+   "seed_number": 463,
+   "lego_index": 2,
+   "lego_known": "number",
+   "lego_target": "번호",
+   "phrase_role": "build",
+   "known_text": "the hotel number",
+   "target_text": "호텔 번호",
+   "pad": []
+  },
+  {
+   "seed_number": 463,
+   "lego_index": 2,
+   "lego_known": "number",
+   "lego_target": "번호",
+   "phrase_role": "build",
+   "known_text": "didn't know the number",
+   "target_text": "번호 몰랐어요",
+   "pad": []
+  },
+  {
+   "seed_number": 463,
+   "lego_index": 2,
+   "lego_known": "number",
+   "lego_target": "번호",
+   "phrase_role": "build",
+   "known_text": "wanted to know the shop number",
+   "target_text": "가게 번호 알고 싶었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 463,
+   "lego_index": 2,
+   "lego_known": "number",
+   "lego_target": "번호",
+   "phrase_role": "use",
+   "known_text": "I've forgotten my room number",
+   "target_text": "제 방 번호 잊어버렸어요",
+   "pad": []
+  },
+  {
+   "seed_number": 463,
+   "lego_index": 2,
+   "lego_known": "number",
+   "lego_target": "번호",
+   "phrase_role": "use",
+   "known_text": "why did you want to know my father's number",
+   "target_text": "왜 제 아버지의 번호 알고 싶었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 463,
+   "lego_index": 2,
+   "lego_known": "number",
+   "lego_target": "번호",
+   "phrase_role": "use",
+   "known_text": "I wonder if the children know the hotel number",
+   "target_text": "아이들이 호텔 번호 알고 있는지 궁금해요",
+   "pad": []
+  },
+  {
+   "seed_number": 463,
+   "lego_index": 2,
+   "lego_known": "number",
+   "lego_target": "번호",
+   "phrase_role": "use",
+   "known_text": "I have to find out the post office number",
+   "target_text": "우체국 번호 알아내야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 463,
+   "lego_index": 2,
+   "lego_known": "number",
+   "lego_target": "번호",
+   "phrase_role": "use",
+   "known_text": "what's the shop number",
+   "target_text": "가게 번호 뭐예요",
+   "pad": []
+  },
+  {
+   "seed_number": 463,
+   "lego_index": 2,
+   "lego_known": "number",
+   "lego_target": "번호",
+   "phrase_role": "use",
+   "known_text": "my grandfather didn't know my room number",
+   "target_text": "제 할아버지는 제 방 번호 몰랐어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

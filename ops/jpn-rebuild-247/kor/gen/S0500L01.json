@@ -1,0 +1,114 @@
+{
+ "lego": {
+  "seed_number": 500,
+  "lego_index": 1,
+  "known": "two",
+  "target": "두"
+ },
+ "at": "2026-11-26T11:06:45.488Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 164,
+ "floorsOnly": true,
+ "lastReasons": [
+  "JUNCT 0.44 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 500,
+   "lego_index": 1,
+   "lego_known": "two",
+   "lego_target": "두",
+   "phrase_role": "build",
+   "known_text": "two kinds",
+   "target_text": "두 가지",
+   "pad": []
+  },
+  {
+   "seed_number": 500,
+   "lego_index": 1,
+   "lego_known": "two",
+   "lego_target": "두",
+   "phrase_role": "build",
+   "known_text": "two kinds of problems",
+   "target_text": "두 가지 문제를",
+   "pad": []
+  },
+  {
+   "seed_number": 500,
+   "lego_index": 1,
+   "lego_known": "two",
+   "lego_target": "두",
+   "phrase_role": "build",
+   "known_text": "at about two",
+   "target_text": "두 시쯤",
+   "pad": []
+  },
+  {
+   "seed_number": 500,
+   "lego_index": 1,
+   "lego_known": "two",
+   "lego_target": "두",
+   "phrase_role": "build",
+   "known_text": "two kinds of possible problems",
+   "target_text": "두 가지 가능한 문제",
+   "pad": []
+  },
+  {
+   "seed_number": 500,
+   "lego_index": 1,
+   "lego_known": "two",
+   "lego_target": "두",
+   "phrase_role": "use",
+   "known_text": "our friends came at about two",
+   "target_text": "친구들이 두 시쯤 왔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 500,
+   "lego_index": 1,
+   "lego_known": "two",
+   "lego_target": "두",
+   "phrase_role": "use",
+   "known_text": "the children have to catch the train at about two",
+   "target_text": "아이들이 두 시쯤 기차를 타야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 500,
+   "lego_index": 1,
+   "lego_known": "two",
+   "lego_target": "두",
+   "phrase_role": "use",
+   "known_text": "we must close the shop at about two",
+   "target_text": "두 시쯤 가게를 닫아야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 500,
+   "lego_index": 1,
+   "lego_known": "two",
+   "lego_target": "두",
+   "phrase_role": "use",
+   "known_text": "I want to reserve a table for two",
+   "target_text": "두 명 자리를 예약하고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 500,
+   "lego_index": 1,
+   "lego_known": "two",
+   "lego_target": "두",
+   "phrase_role": "use",
+   "known_text": "why does the student need to consider two kinds of problems",
+   "target_text": "왜 학생은 두 가지 문제를 생각해 봐야 해요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,25 @@
+{
+ "lego": {
+  "seed_number": 449,
+  "lego_index": 2,
+  "known": "was ready",
+  "target": "준비됐다고"
+ },
+ "at": "2026-11-25T23:17:24.965Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "buildUseFloors"
+ ],
+ "attempts": 2,
+ "secs": 162,
+ "floorsOnly": false,
+ "lastReasons": [
+  "buildUseFloors: 1 duplicate phrase(s) within this LEGO: \"준비됐다고 말한 적 없어요\""
+ ],
+ "rows": [],
+ "keep": false
+}

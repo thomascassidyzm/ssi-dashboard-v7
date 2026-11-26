@@ -1,0 +1,116 @@
+{
+ "lego": {
+  "seed_number": 456,
+  "lego_index": 2,
+  "known": "might be but",
+  "target": "있지만"
+ },
+ "at": "2026-11-26T00:55:45.331Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 176,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"might be but\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 456,
+   "lego_index": 2,
+   "lego_known": "might be but",
+   "lego_target": "있지만",
+   "phrase_role": "build",
+   "known_text": "might be over there but",
+   "target_text": "저기 있을 수도 있지만",
+   "pad": []
+  },
+  {
+   "seed_number": 456,
+   "lego_index": 2,
+   "lego_known": "might be but",
+   "lego_target": "있지만",
+   "phrase_role": "build",
+   "known_text": "the children might be near the entrance but",
+   "target_text": "아이들이 입구 근처에 있을 수도 있지만",
+   "pad": []
+  },
+  {
+   "seed_number": 456,
+   "lego_index": 2,
+   "lego_known": "might be but",
+   "lego_target": "있지만",
+   "phrase_role": "build",
+   "known_text": "her book might be on the table but",
+   "target_text": "그녀의 책이 탁자 위에 있을 수도 있지만",
+   "pad": []
+  },
+  {
+   "seed_number": 456,
+   "lego_index": 2,
+   "lego_known": "might be but",
+   "lego_target": "있지만",
+   "phrase_role": "build",
+   "known_text": "our friends might be opposite the post office but",
+   "target_text": "친구들이 우체국 맞은편에 있을 수도 있지만",
+   "pad": []
+  },
+  {
+   "seed_number": 456,
+   "lego_index": 2,
+   "lego_known": "might be but",
+   "lego_target": "있지만",
+   "phrase_role": "use",
+   "known_text": "I can manage on my own although my son might be at work",
+   "target_text": "제 아들은 직장에 있을 수도 있지만 혼자서 할 수 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 456,
+   "lego_index": 2,
+   "lego_known": "might be but",
+   "lego_target": "있지만",
+   "phrase_role": "use",
+   "known_text": "I haven't seen it although it might be over there",
+   "target_text": "저기 있을 수도 있지만 못 봤어요",
+   "pad": []
+  },
+  {
+   "seed_number": 456,
+   "lego_index": 2,
+   "lego_known": "might be but",
+   "lego_target": "있지만",
+   "phrase_role": "use",
+   "known_text": "I want to relax although our friends might be in the pub",
+   "target_text": "친구들이 술집에 있을 수도 있지만 쉬고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 456,
+   "lego_index": 2,
+   "lego_known": "might be but",
+   "lego_target": "있지만",
+   "phrase_role": "use",
+   "known_text": "do you want to go to a restaurant although our friends might be in the pub",
+   "target_text": "친구들이 술집에 있을 수도 있지만 식당에 가고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 456,
+   "lego_index": 2,
+   "lego_known": "might be but",
+   "lego_target": "있지만",
+   "phrase_role": "use",
+   "known_text": "I hope you'll be able to come to the party although our friends might be at work",
+   "target_text": "친구들이 직장에 있을 수도 있지만 파티에 올 수 있으면 좋겠어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

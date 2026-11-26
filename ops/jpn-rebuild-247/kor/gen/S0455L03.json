@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 455,
+  "lego_index": 3,
+  "known": "because tired",
+  "target": "피곤해서"
+ },
+ "at": "2026-11-26T00:53:44.053Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 5385,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"because tired\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 455,
+   "lego_index": 3,
+   "lego_known": "because tired",
+   "lego_target": "피곤해서",
+   "phrase_role": "build",
+   "known_text": "because the children were tired",
+   "target_text": "아이들이 피곤해서",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 3,
+   "lego_known": "because tired",
+   "lego_target": "피곤해서",
+   "phrase_role": "build",
+   "known_text": "I want to relax because I'm tired",
+   "target_text": "피곤해서 쉬고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 3,
+   "lego_known": "because tired",
+   "lego_target": "피곤해서",
+   "phrase_role": "build",
+   "known_text": "our friends were quiet because they were tired",
+   "target_text": "친구들이 피곤해서 조용했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 3,
+   "lego_known": "because tired",
+   "lego_target": "피곤해서",
+   "phrase_role": "build",
+   "known_text": "I almost couldn't hear because I was tired",
+   "target_text": "피곤해서 거의 못 들었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 3,
+   "lego_known": "because tired",
+   "lego_target": "피곤해서",
+   "phrase_role": "use",
+   "known_text": "the children couldn't hear because they were tired",
+   "target_text": "아이들이 피곤해서 못 들었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 3,
+   "lego_known": "because tired",
+   "lego_target": "피곤해서",
+   "phrase_role": "use",
+   "known_text": "she said that she doesn't want to go out because she's tired",
+   "target_text": "피곤해서 나가고 싶지 않다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 3,
+   "lego_known": "because tired",
+   "lego_target": "피곤해서",
+   "phrase_role": "use",
+   "known_text": "I want to relax at home tonight because I'm tired",
+   "target_text": "피곤해서 오늘 밤에 집에서 쉬고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 3,
+   "lego_known": "because tired",
+   "lego_target": "피곤해서",
+   "phrase_role": "use",
+   "known_text": "the children were quiet because they were tired",
+   "target_text": "아이들이 피곤해서 조용했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 3,
+   "lego_known": "because tired",
+   "lego_target": "피곤해서",
+   "phrase_role": "use",
+   "known_text": "do you want to relax at home because you're tired",
+   "target_text": "피곤해서 집에서 쉬고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 455,
+   "lego_index": 3,
+   "lego_known": "because tired",
+   "lego_target": "피곤해서",
+   "phrase_role": "use",
+   "known_text": "our friends almost couldn't hear because they were tired",
+   "target_text": "친구들이 피곤해서 거의 못 들었어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

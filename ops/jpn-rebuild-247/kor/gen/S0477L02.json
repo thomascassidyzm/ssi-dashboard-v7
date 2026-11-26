@@ -1,0 +1,26 @@
+{
+ "lego": {
+  "seed_number": 477,
+  "lego_index": 2,
+  "known": "since the day",
+  "target": "날부터"
+ },
+ "at": "2026-11-26T06:00:22.084Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 156,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"it was much quieter since the day you left\" (unknown gloss \"quieter\")",
+  "USE \"it was much quieter since the day you left\" → \"떠난 날부터 훨씬 조용했어요\": popty:knownSide [{\"known\":\"it was much quieter since the day you left\",\"target\":\"떠난 날부터 훨씬 조용했어요\",\"problem\":\"unknown gloss \\\"quieter\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

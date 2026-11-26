@@ -1,0 +1,27 @@
+{
+ "lego": {
+  "seed_number": 468,
+  "lego_index": 2,
+  "known": "is wide",
+  "target": "넓어요"
+ },
+ "at": "2026-11-26T04:18:54.104Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 157,
+ "floorsOnly": false,
+ "lastReasons": [
+  "USE \"in my opinion the world is very wide\": stapled opener (a detachable interjection at the front earns no frame and is refused) — rewrite it without",
+  "FRAME 0.30 < 0.34: your matrix clauses collapse to 3 shape(s) against a declared pool of 40. Vary the MATRIX CLAUSE, not the tail — a swapped tail is the same frame stamped again.",
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"is wide\" initially, medially AND finally.",
+  "NEIGH 0.15 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.20 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

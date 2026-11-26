@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 470,
+  "lego_index": 3,
+  "known": "climb and",
+  "target": "오르고"
+ },
+ "at": "2026-11-26T04:24:05.770Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 182,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"climb and\" initially, medially AND finally.",
+  "NEIGH 0.10 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.10 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 470,
+   "lego_index": 3,
+   "lego_known": "climb and",
+   "lego_target": "오르고",
+   "phrase_role": "build",
+   "known_text": "climb high and",
+   "target_text": "높이 오르고",
+   "pad": []
+  },
+  {
+   "seed_number": 470,
+   "lego_index": 3,
+   "lego_known": "climb and",
+   "lego_target": "오르고",
+   "phrase_role": "build",
+   "known_text": "climb and send a message",
+   "target_text": "오르고 메시지를 보내고",
+   "pad": []
+  },
+  {
+   "seed_number": 470,
+   "lego_index": 3,
+   "lego_known": "climb and",
+   "lego_target": "오르고",
+   "phrase_role": "build",
+   "known_text": "climb over the wall and",
+   "target_text": "담 너머로 오르고",
+   "pad": []
+  },
+  {
+   "seed_number": 470,
+   "lego_index": 3,
+   "lego_known": "climb and",
+   "lego_target": "오르고",
+   "phrase_role": "build",
+   "known_text": "before stopping climb high and send a message",
+   "target_text": "멈추기 전에 높이 오르고 메시지를 보내고",
+   "pad": []
+  },
+  {
+   "seed_number": 470,
+   "lego_index": 3,
+   "lego_known": "climb and",
+   "lego_target": "오르고",
+   "phrase_role": "use",
+   "known_text": "could we climb high and reach the top",
+   "target_text": "높이 오르고 꼭대기에 닿을 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 470,
+   "lego_index": 3,
+   "lego_known": "climb and",
+   "lego_target": "오르고",
+   "phrase_role": "use",
+   "known_text": "he said that he wants to climb",
+   "target_text": "오르고 싶다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 470,
+   "lego_index": 3,
+   "lego_known": "climb and",
+   "lego_target": "오르고",
+   "phrase_role": "use",
+   "known_text": "she said that she doesn't want to climb high",
+   "target_text": "높이 오르고 싶지 않다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 470,
+   "lego_index": 3,
+   "lego_known": "climb and",
+   "lego_target": "오르고",
+   "phrase_role": "use",
+   "known_text": "before we stop would our friends want to climb to the top",
+   "target_text": "멈추기 전에 친구들이 꼭대기에 오르고 싶어할까요",
+   "pad": []
+  },
+  {
+   "seed_number": 470,
+   "lego_index": 3,
+   "lego_known": "climb and",
+   "lego_target": "오르고",
+   "phrase_role": "use",
+   "known_text": "next time would the children want to climb over the wall",
+   "target_text": "다음에 아이들이 담 너머로 오르고 싶어할까요",
+   "pad": []
+  },
+  {
+   "seed_number": 470,
+   "lego_index": 3,
+   "lego_known": "climb and",
+   "lego_target": "오르고",
+   "phrase_role": "use",
+   "known_text": "grandfather said that he wants to climb high next time",
+   "target_text": "할아버지는 다음에 높이 오르고 싶다고 했어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

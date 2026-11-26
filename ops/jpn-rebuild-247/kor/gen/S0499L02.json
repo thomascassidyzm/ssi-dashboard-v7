@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 499,
+  "lego_index": 2,
+  "known": "open and",
+  "target": "열고"
+ },
+ "at": "2026-11-26T11:05:25.614Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 176,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"open and\" initially, medially AND finally.",
+  "NEIGH 0.10 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.10 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 499,
+   "lego_index": 2,
+   "lego_known": "open and",
+   "lego_target": "열고",
+   "phrase_role": "build",
+   "known_text": "open and go out",
+   "target_text": "열고 나가고",
+   "pad": []
+  },
+  {
+   "seed_number": 499,
+   "lego_index": 2,
+   "lego_known": "open and",
+   "lego_target": "열고",
+   "phrase_role": "build",
+   "known_text": "open the door and",
+   "target_text": "문을 열고",
+   "pad": []
+  },
+  {
+   "seed_number": 499,
+   "lego_index": 2,
+   "lego_known": "open and",
+   "lego_target": "열고",
+   "phrase_role": "build",
+   "known_text": "open the window and climb",
+   "target_text": "창문을 열고 오르고",
+   "pad": []
+  },
+  {
+   "seed_number": 499,
+   "lego_index": 2,
+   "lego_known": "open and",
+   "lego_target": "열고",
+   "phrase_role": "build",
+   "known_text": "open the door right now and",
+   "target_text": "당장 문을 열고",
+   "pad": []
+  },
+  {
+   "seed_number": 499,
+   "lego_index": 2,
+   "lego_known": "open and",
+   "lego_target": "열고",
+   "phrase_role": "use",
+   "known_text": "is it possible to open the door and turn to the left",
+   "target_text": "문을 열고 왼쪽으로 돌 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 499,
+   "lego_index": 2,
+   "lego_known": "open and",
+   "lego_target": "열고",
+   "phrase_role": "use",
+   "known_text": "let me open the window and throw that suitcase over the wall",
+   "target_text": "창문을 열고 그 가방을 담 너머로 던질게요",
+   "pad": []
+  },
+  {
+   "seed_number": 499,
+   "lego_index": 2,
+   "lego_known": "open and",
+   "lego_target": "열고",
+   "phrase_role": "use",
+   "known_text": "our friends have to open the door and catch the train",
+   "target_text": "친구들이 문을 열고 기차를 타야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 499,
+   "lego_index": 2,
+   "lego_known": "open and",
+   "lego_target": "열고",
+   "phrase_role": "use",
+   "known_text": "the children need to open the door and run around the field",
+   "target_text": "아이들이 문을 열고 운동장 주위를 뛰어야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 499,
+   "lego_index": 2,
+   "lego_known": "open and",
+   "lego_target": "열고",
+   "phrase_role": "use",
+   "known_text": "grandfather must open the window and ask",
+   "target_text": "할아버지는 창문을 열고 물어봐야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 499,
+   "lego_index": 2,
+   "lego_known": "open and",
+   "lego_target": "열고",
+   "phrase_role": "use",
+   "known_text": "the children open the door and still fight",
+   "target_text": "아이들이 문을 열고 아직도 싸워요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

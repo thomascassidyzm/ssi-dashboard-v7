@@ -1,0 +1,27 @@
+{
+ "lego": {
+  "seed_number": 475,
+  "lego_index": 2,
+  "known": "there are many",
+  "target": "많아요"
+ },
+ "at": "2026-11-26T05:57:46.311Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "buildUseFloors"
+ ],
+ "attempts": 2,
+ "secs": 140,
+ "floorsOnly": false,
+ "lastReasons": [
+  "buildUseFloors: 1 duplicate phrase(s) within this LEGO: \"입구 근처에 아이들이 많아요\"",
+  "NEIGH 0.28 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.44 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

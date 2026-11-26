@@ -1,0 +1,116 @@
+{
+ "lego": {
+  "seed_number": 482,
+  "lego_index": 1,
+  "known": "not",
+  "target": "않다는"
+ },
+ "at": "2026-11-26T07:40:37.380Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 190,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"not\" initially, medially AND finally.",
+  "NEIGH 0.17 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.22 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 482,
+   "lego_index": 1,
+   "lego_known": "not",
+   "lego_target": "않다는",
+   "phrase_role": "build",
+   "known_text": "that it's not far",
+   "target_text": "멀지 않다는",
+   "pad": []
+  },
+  {
+   "seed_number": 482,
+   "lego_index": 1,
+   "lego_known": "not",
+   "lego_target": "않다는",
+   "phrase_role": "build",
+   "known_text": "that the children don't think",
+   "target_text": "아이들이 생각하지 않다는",
+   "pad": []
+  },
+  {
+   "seed_number": 482,
+   "lego_index": 1,
+   "lego_known": "not",
+   "lego_target": "않다는",
+   "phrase_role": "build",
+   "known_text": "to the words that it isn't important",
+   "target_text": "중요하지 않다는 말에",
+   "pad": []
+  },
+  {
+   "seed_number": 482,
+   "lego_index": 1,
+   "lego_known": "not",
+   "lego_target": "않다는",
+   "phrase_role": "build",
+   "known_text": "the reason that it isn't enough",
+   "target_text": "충분하지 않다는 이유가",
+   "pad": []
+  },
+  {
+   "seed_number": 482,
+   "lego_index": 1,
+   "lego_known": "not",
+   "lego_target": "않다는",
+   "phrase_role": "use",
+   "known_text": "it doesn't mean that it's not far",
+   "target_text": "멀지 않다는 뜻은 아니에요",
+   "pad": []
+  },
+  {
+   "seed_number": 482,
+   "lego_index": 1,
+   "lego_known": "not",
+   "lego_target": "않다는",
+   "phrase_role": "use",
+   "known_text": "could it mean that the children don't think",
+   "target_text": "아이들이 생각하지 않다는 뜻일 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 482,
+   "lego_index": 1,
+   "lego_known": "not",
+   "lego_target": "않다는",
+   "phrase_role": "use",
+   "known_text": "I agreed with the words that it isn't important",
+   "target_text": "중요하지 않다는 말에 동의했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 482,
+   "lego_index": 1,
+   "lego_known": "not",
+   "lego_target": "않다는",
+   "phrase_role": "use",
+   "known_text": "it might mean that it isn't enough but it doesn't mean that it's not important",
+   "target_text": "충분하지 않다는 뜻일 수도 있지만 중요하지 않다는 뜻은 아니에요",
+   "pad": []
+  },
+  {
+   "seed_number": 482,
+   "lego_index": 1,
+   "lego_known": "not",
+   "lego_target": "않다는",
+   "phrase_role": "use",
+   "known_text": "on Tuesday the children agreed with the words that it's not far",
+   "target_text": "화요일에 아이들이 멀지 않다는 말에 동의했어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

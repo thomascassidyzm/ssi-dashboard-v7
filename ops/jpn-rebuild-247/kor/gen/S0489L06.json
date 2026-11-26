@@ -1,0 +1,116 @@
+{
+ "lego": {
+  "seed_number": 489,
+  "lego_index": 6,
+  "known": "if not",
+  "target": "않으면"
+ },
+ "at": "2026-11-26T09:30:51.133Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 219,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"if not\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 489,
+   "lego_index": 6,
+   "lego_known": "if not",
+   "lego_target": "않으면",
+   "phrase_role": "build",
+   "known_text": "if you don't give",
+   "target_text": "주지 않으면",
+   "pad": []
+  },
+  {
+   "seed_number": 489,
+   "lego_index": 6,
+   "lego_known": "if not",
+   "lego_target": "않으면",
+   "phrase_role": "build",
+   "known_text": "if it's not far",
+   "target_text": "멀지 않으면",
+   "pad": []
+  },
+  {
+   "seed_number": 489,
+   "lego_index": 6,
+   "lego_known": "if not",
+   "lego_target": "않으면",
+   "phrase_role": "build",
+   "known_text": "if you're not serious",
+   "target_text": "진지하지 않으면",
+   "pad": []
+  },
+  {
+   "seed_number": 489,
+   "lego_index": 6,
+   "lego_known": "if not",
+   "lego_target": "않으면",
+   "phrase_role": "build",
+   "known_text": "if you don't give the room number right now",
+   "target_text": "당장 번호를 주지 않으면",
+   "pad": []
+  },
+  {
+   "seed_number": 489,
+   "lego_index": 6,
+   "lego_known": "if not",
+   "lego_target": "않으면",
+   "phrase_role": "use",
+   "known_text": "if you're not serious why did you come",
+   "target_text": "진지하지 않으면 왜 왔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 489,
+   "lego_index": 6,
+   "lego_known": "if not",
+   "lego_target": "않으면",
+   "phrase_role": "use",
+   "known_text": "if it's not far could the children walk to school",
+   "target_text": "멀지 않으면 아이들이 학교까지 걸어갈 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 489,
+   "lego_index": 6,
+   "lego_known": "if not",
+   "lego_target": "않으면",
+   "phrase_role": "use",
+   "known_text": "if you don't think that it's right let's talk",
+   "target_text": "맞다고 생각하지 않으면 이야기해요",
+   "pad": []
+  },
+  {
+   "seed_number": 489,
+   "lego_index": 6,
+   "lego_known": "if not",
+   "lego_target": "않으면",
+   "phrase_role": "use",
+   "known_text": "if it's not enough shall I help",
+   "target_text": "충분하지 않으면 도와줄까요",
+   "pad": []
+  },
+  {
+   "seed_number": 489,
+   "lego_index": 6,
+   "lego_known": "if not",
+   "lego_target": "않으면",
+   "phrase_role": "use",
+   "known_text": "he said that he wants to go if it's not far",
+   "target_text": "멀지 않으면 가고 싶다고 했어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

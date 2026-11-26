@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 435,
+  "lego_index": 1,
+  "known": "if want",
+  "target": "원하면"
+ },
+ "at": "2026-11-25T20:01:43.051Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 193,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"if want\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 435,
+   "lego_index": 1,
+   "lego_known": "if want",
+   "lego_target": "원하면",
+   "phrase_role": "build",
+   "known_text": "if they themselves want",
+   "target_text": "자기들이 원하면",
+   "pad": []
+  },
+  {
+   "seed_number": 435,
+   "lego_index": 1,
+   "lego_known": "if want",
+   "lego_target": "원하면",
+   "phrase_role": "build",
+   "known_text": "if you want alone",
+   "target_text": "원하면 혼자",
+   "pad": []
+  },
+  {
+   "seed_number": 435,
+   "lego_index": 1,
+   "lego_known": "if want",
+   "lego_target": "원하면",
+   "phrase_role": "build",
+   "known_text": "on wednesday if you want",
+   "target_text": "수요일에 원하면",
+   "pad": []
+  },
+  {
+   "seed_number": 435,
+   "lego_index": 1,
+   "lego_known": "if want",
+   "lego_target": "원하면",
+   "phrase_role": "build",
+   "known_text": "tomorrow if you want directly",
+   "target_text": "내일 원하면 바로",
+   "pad": []
+  },
+  {
+   "seed_number": 435,
+   "lego_index": 1,
+   "lego_known": "if want",
+   "lego_target": "원하면",
+   "phrase_role": "use",
+   "known_text": "if they themselves want they must work hard",
+   "target_text": "자기들이 원하면 열심히 해야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 435,
+   "lego_index": 1,
+   "lego_known": "if want",
+   "lego_target": "원하면",
+   "phrase_role": "use",
+   "known_text": "if you want could we cut the number",
+   "target_text": "원하면 수를 줄일 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 435,
+   "lego_index": 1,
+   "lego_known": "if want",
+   "lego_target": "원하면",
+   "phrase_role": "use",
+   "known_text": "this isn't very difficult so if you want you can write",
+   "target_text": "이건 별로 어렵지 않으니까 원하면 쓸 수 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 435,
+   "lego_index": 1,
+   "lego_known": "if want",
+   "lego_target": "원하면",
+   "phrase_role": "use",
+   "known_text": "tomorrow if you want I can stay longer",
+   "target_text": "내일 원하면 더 오래 있을 수 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 435,
+   "lego_index": 1,
+   "lego_known": "if want",
+   "lego_target": "원하면",
+   "phrase_role": "use",
+   "known_text": "on tuesday if you want I'll be able to come and help",
+   "target_text": "화요일에 원하면 와서 도와줄 수 있을 거예요",
+   "pad": []
+  },
+  {
+   "seed_number": 435,
+   "lego_index": 1,
+   "lego_known": "if want",
+   "lego_target": "원하면",
+   "phrase_role": "use",
+   "known_text": "if you want let's talk about something else",
+   "target_text": "원하면 다른 것에 대해 이야기해요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

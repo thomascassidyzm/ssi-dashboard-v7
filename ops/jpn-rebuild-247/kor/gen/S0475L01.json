@@ -1,0 +1,114 @@
+{
+ "lego": {
+  "seed_number": 475,
+  "lego_index": 1,
+  "known": "to consider",
+  "target": "고려할"
+ },
+ "at": "2026-11-26T05:57:29.476Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 5494,
+ "floorsOnly": true,
+ "lastReasons": [
+  "JUNCT 0.44 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 475,
+   "lego_index": 1,
+   "lego_known": "to consider",
+   "lego_target": "고려할",
+   "phrase_role": "build",
+   "known_text": "could we consider",
+   "target_text": "고려할 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 475,
+   "lego_index": 1,
+   "lego_known": "to consider",
+   "lego_target": "고려할",
+   "phrase_role": "build",
+   "known_text": "a chance to consider",
+   "target_text": "고려할 기회가",
+   "pad": []
+  },
+  {
+   "seed_number": 475,
+   "lego_index": 1,
+   "lego_known": "to consider",
+   "lego_target": "고려할",
+   "phrase_role": "build",
+   "known_text": "to consider a new life",
+   "target_text": "새로운 삶을 고려할",
+   "pad": []
+  },
+  {
+   "seed_number": 475,
+   "lego_index": 1,
+   "lego_known": "to consider",
+   "lego_target": "고려할",
+   "phrase_role": "build",
+   "known_text": "might consider such an obvious question",
+   "target_text": "그런 뻔한 질문을 고려할 수도",
+   "pad": []
+  },
+  {
+   "seed_number": 475,
+   "lego_index": 1,
+   "lego_known": "to consider",
+   "lego_target": "고려할",
+   "phrase_role": "use",
+   "known_text": "could we consider a new approach",
+   "target_text": "새로운 접근법을 고려할 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 475,
+   "lego_index": 1,
+   "lego_known": "to consider",
+   "lego_target": "고려할",
+   "phrase_role": "use",
+   "known_text": "that isn't the reason to consider a new approach",
+   "target_text": "그건 새로운 접근법을 고려할 이유가 아니에요",
+   "pad": []
+  },
+  {
+   "seed_number": 475,
+   "lego_index": 1,
+   "lego_known": "to consider",
+   "lego_target": "고려할",
+   "phrase_role": "use",
+   "known_text": "it doesn't mean we can't consider a new life",
+   "target_text": "새로운 삶을 고려할 수 없다는 뜻은 아니에요",
+   "pad": []
+  },
+  {
+   "seed_number": 475,
+   "lego_index": 1,
+   "lego_known": "to consider",
+   "lego_target": "고려할",
+   "phrase_role": "use",
+   "known_text": "could we consider it next time",
+   "target_text": "다음에 고려할 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 475,
+   "lego_index": 1,
+   "lego_known": "to consider",
+   "lego_target": "고려할",
+   "phrase_role": "use",
+   "known_text": "I wonder if we'll be able to consider such an obvious question",
+   "target_text": "그런 뻔한 질문을 고려할 수 있을지 궁금해요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}
