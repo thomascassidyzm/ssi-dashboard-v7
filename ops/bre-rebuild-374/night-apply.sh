@@ -42,7 +42,7 @@ gate() { # 0 = go; 1 = the night window closed (only once this night has started
   done
 }
 liveread() { local f="$EV/live-$1.json"; for t in 1 2 3 4; do curl -s -m 300 "http://localhost:3470/api/production/bre_for_fra/seeds" -o "$f"; [ "$(stat -c%s "$f" 2>/dev/null || echo 0)" -gt 1000000 ] && { echo "$f"; return 0; }; sleep 60; done; return 1; }
-commitrun() { local g; for g in ops/bre-rebuild-374/cs/*.applied.jsonl ops/bre-rebuild-374/cs/*.undone.* ops/bre-rebuild-374/drift.jsonl ops/bre-rebuild-374/verify-*.json; do [ -e "$g" ] && git add "$g"; done  # one add per path: a glob that matches nothing made the old single add fail and nothing got committed (25 Nov)
+commitrun() { local g; for g in ops/bre-rebuild-374/cs/*.applied.jsonl ops/bre-rebuild-374/cs/fix-*.changeset.jsonl ops/bre-rebuild-374/cs/*.undone.* ops/bre-rebuild-374/drift.jsonl ops/bre-rebuild-374/verify-*.json; do [ -e "$g" ] && git add "$g"; done  # one add per path: a glob that matches nothing made the old single add fail and nothing got committed (25 Nov)
   git commit -q -m "bre-rebuild-374 (cs #374·AL): night run — $1" && git push -q origin HEAD:$RUN_BRANCH || true; }
 undo_seed() { # $1 seed, $2.. undo files
   local n=$1; shift; local u
@@ -56,6 +56,14 @@ while :; do
   gate || continue
   git fetch -q origin "$SRC_BRANCH" && git merge -q --no-edit "origin/$SRC_BRANCH" >>"$LOG" 2>&1 || say "merge of $SRC_BRANCH failed (carrying on with what is here)"
   STAMP=$(date -u +%Y%m%dT%H%M%SZ)
+  # Ruled one-off fixes, applied BEFORE the pre read so tonight's precheck sees them (cs #447·AL): cs/fix-*.changeset.jsonl, each behind the same gate; the applier's own ledger makes
+  # a re-run a no-op, and each op carries an expect (live pre-check) so a mismatch is refused, never forced.
+  for F in ops/bre-rebuild-374/cs/fix-*.changeset.jsonl; do [ -e "$F" ] || continue
+    grep -q '"status":"applied"' "$F.applied.jsonl" 2>/dev/null && continue
+    gate || break
+    node tools/changeset/apply-changeset.cjs "$F" --check >>"$LOG" 2>&1 || { say "fix $F --check failed; skipped"; continue; }
+    node tools/changeset/apply-changeset.cjs "$F" --key kai --agent $AGENT --batch 100 >>"$LOG" 2>&1 || say "fix $F: applier exit $? (see log)"
+  done
   PRE=$(liveread "pre-$STAMP") || { wake "WAKE: cs374 bre live read failed; nothing written tonight"; sleep 3600; continue; }
   OK=$(node $T precheck 1-300 "$PRE" 2>>"$LOG") || { wake "WAKE: cs374 bre precheck FAILED (see $LOG); nothing written"; exit 1; }
   applied=0; held=0; closed=""
@@ -86,6 +94,8 @@ while :; do
     case "$HELDS" in *" $n "*) continue ;; esac
     grep -q "\"seed\":$n," ops/bre-rebuild-374/drift.jsonl 2>/dev/null && continue
     st=$(node $T ledger "$n" 2>/dev/null); [ "$st" = complete ] && continue
+    # live readback says applied (seed 152, 26 Nov: the server committed though the client timed out, ledger 'none')
+    node -e "process.exit(require('./ops/bre-rebuild-374/verify-1-300.json').applied.includes($n)?0:1)" 2>/dev/null && continue
     TODO=$((TODO+1)); [ "$st" = nocs ] && NOCS=$((NOCS+1))
   done
   [ "$HELDS" = "  " ] && TODO="?"   # holds.json unreadable: never claim DONE
