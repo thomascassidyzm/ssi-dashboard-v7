@@ -38,6 +38,7 @@ apply() {   # $1 file $2 label → 0 carry on, 1 stop the night
   late && { stop="window closing before $n"; return 1; }
   waitw || { stop="writer cap still full at $(ukh)h UK before $n"; return 1; }
   green || { stop="load gate not green for 20 min before $n"; return 1; }
+  node $T/absent.cjs "$f" || { report="$report $n: absent-check could not read live, skipped;"; return 0; }   # rows another job already deleted → "already" (a 404 stops the batch)
   node $P/precheck-guards.cjs "$f" || { report="$report $n: precheck could not read live, skipped;"; return 0; }
   node tools/changeset/apply-changeset.cjs "$f" --key kai --agent kai-236 --batch 25; rc=$?
   read -r l1 a1 < <(state "$f"); report="$report $n: +$((l0-l1-(a1-a0))) left $l1 aside $a1;"
