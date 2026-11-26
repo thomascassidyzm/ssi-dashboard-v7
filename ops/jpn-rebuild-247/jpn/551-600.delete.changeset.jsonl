@@ -1,0 +1,791 @@
+{"format":"ssi-changeset/1","id":"jpn_for_eng-cs247-551-600-delete","course":"jpn_for_eng","job":"#247·AL","why":"rebuilt baskets 551-600: old rows of LEGOs whose new basket landed fully voiced (94); 0 LEGOs kept old","computed_from":"551-600.insert.changeset.jsonl.applied.jsonl + plan-551-600.json","created_at":"2026-11-26T22:23:58.077Z","ops":790,"kai_go":"kai:2026-11-24T17:26Z \"sounds like we need to build first, then rescan to make sure we're up to date with the fixes\""}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0551L01B01","expect":{"seed_number":551,"lego_index":1,"known_text":"church","target_text":"教会から"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0551L01B03","expect":{"seed_number":551,"lego_index":1,"known_text":"the church is there","target_text":"教会があることがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0551L01U01","expect":{"seed_number":551,"lego_index":1,"known_text":"where's the church?","target_text":"教会はどこ？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0551L01U02","expect":{"seed_number":551,"lego_index":1,"known_text":"the church is important","target_text":"教会は大事だと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0551L01U03","expect":{"seed_number":551,"lego_index":1,"known_text":"is there a church?","target_text":"教会がある？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0551L01U04","expect":{"seed_number":551,"lego_index":1,"known_text":"the church at the end of the village","target_text":"村の端の教会と言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0551L01U05","expect":{"seed_number":551,"lego_index":1,"known_text":"I heard about the church","target_text":"教会と話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0551L01U06","expect":{"seed_number":551,"lego_index":1,"known_text":"I want to show you the church","target_text":"教会を見せたい"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0551L01U07","expect":{"seed_number":551,"lego_index":1,"known_text":"I'm not going to wait at the church","target_text":"教会で待たない"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0551L01B04","expect":{"seed_number":551,"lego_index":1,"known_text":"was able to go to the church","target_text":"教会に行けた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0551L01U08","expect":{"seed_number":551,"lego_index":1,"known_text":"we have to be quiet in the church","target_text":"教会で静かにしなきゃいけない"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0551L01U09","expect":{"seed_number":551,"lego_index":1,"known_text":"he doesn't like the church","target_text":"彼は教会が好きじゃない"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0551L02B01","expect":{"seed_number":551,"lego_index":2,"known_text":"ugly","target_text":"醜いから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0551L02B02","expect":{"seed_number":551,"lego_index":2,"known_text":"the church is ugly","target_text":"教会は醜いことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0551L02U01","expect":{"seed_number":551,"lego_index":2,"known_text":"the church is ugly","target_text":"教会は醜い"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0551L02U02","expect":{"seed_number":551,"lego_index":2,"known_text":"it's ugly","target_text":"醜いと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0551L02U03","expect":{"seed_number":551,"lego_index":2,"known_text":"is it ugly?","target_text":"醜い？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0551L02U04","expect":{"seed_number":551,"lego_index":2,"known_text":"I think it's ugly","target_text":"醜いと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0551L02U05","expect":{"seed_number":551,"lego_index":2,"known_text":"the church looks ugly","target_text":"教会は醜いと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0551L02U06","expect":{"seed_number":551,"lego_index":2,"known_text":"I was thinking that the church is ugly","target_text":"教会は醜いと思ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0551L02U07","expect":{"seed_number":551,"lego_index":2,"known_text":"the church is ugly but the village is beautiful","target_text":"教会は醜いけど、村はきれい"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0551L02U08","expect":{"seed_number":551,"lego_index":2,"known_text":"I met someone who said the church is ugly","target_text":"教会は醜いって言ってた人に会った"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0552L01B01","expect":{"seed_number":552,"lego_index":1,"known_text":"the other side","target_text":"反対側の"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0552L01B02","expect":{"seed_number":552,"lego_index":1,"known_text":"the other side","target_text":"反対側のから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0552L01U01","expect":{"seed_number":552,"lego_index":1,"known_text":"the church at the other end of the village is ugly","target_text":"村の反対側の教会は醜い"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0552L01U04","expect":{"seed_number":552,"lego_index":1,"known_text":"is it on the other side?","target_text":"反対側の？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0552L01U05","expect":{"seed_number":552,"lego_index":1,"known_text":"the church on the other side","target_text":"反対側の教会は醜いと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0552L01U06","expect":{"seed_number":552,"lego_index":1,"known_text":"I think the house on the other side is good","target_text":"反対側の家はいいと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0554L01B01","expect":{"seed_number":554,"lego_index":1,"known_text":"towel","target_text":"タオルから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0554L01B03","expect":{"seed_number":554,"lego_index":1,"known_text":"the towel is here","target_text":"タオルがあることがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0554L01U01","expect":{"seed_number":554,"lego_index":1,"known_text":"where's the towel?","target_text":"タオルはどこ？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0554L01U02","expect":{"seed_number":554,"lego_index":1,"known_text":"the towel is important","target_text":"タオルは大事だと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0554L01U03","expect":{"seed_number":554,"lego_index":1,"known_text":"is there a towel?","target_text":"タオルがある？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0554L01U04","expect":{"seed_number":554,"lego_index":1,"known_text":"this towel","target_text":"このタオルと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0554L01U05","expect":{"seed_number":554,"lego_index":1,"known_text":"a towel is needed","target_text":"タオルがいると話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0554L01U06","expect":{"seed_number":554,"lego_index":1,"known_text":"I don't like this towel","target_text":"このタオルは好きじゃない"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0554L02B01","expect":{"seed_number":554,"lego_index":2,"known_text":"isn't dry","target_text":"乾いてないから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0554L02B02","expect":{"seed_number":554,"lego_index":2,"known_text":"this towel isn't dry","target_text":"このタオルは乾いてないことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0554L02U01","expect":{"seed_number":554,"lego_index":2,"known_text":"this towel isn't dry","target_text":"このタオルは乾いてない"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0554L02U02","expect":{"seed_number":554,"lego_index":2,"known_text":"it isn't dry","target_text":"乾いてないと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0554L02U03","expect":{"seed_number":554,"lego_index":2,"known_text":"is it dry?","target_text":"乾いてない？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0554L02U04","expect":{"seed_number":554,"lego_index":2,"known_text":"the towel isn't dry","target_text":"タオルは乾いてないと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0554L02U05","expect":{"seed_number":554,"lego_index":2,"known_text":"the towel isn't dried yet","target_text":"タオルは乾いてないと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0554L02U06","expect":{"seed_number":554,"lego_index":2,"known_text":"I was thinking that the towel isn't dry","target_text":"タオルは乾いてないと思ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0554L02U07","expect":{"seed_number":554,"lego_index":2,"known_text":"the towel isn't dry but it's okay","target_text":"タオルは乾いてないけど、大丈夫"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0555L01B01","expect":{"seed_number":555,"lego_index":1,"known_text":"one","target_text":"一枚"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0555L01B02","expect":{"seed_number":555,"lego_index":1,"known_text":"one more","target_text":"一枚から"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0555L01B03","expect":{"seed_number":555,"lego_index":1,"known_text":"fetch another one","target_text":"もう一枚取ることがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0555L01B04","expect":{"seed_number":555,"lego_index":1,"known_text":"one towel","target_text":"一枚のタオルがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0555L01U01","expect":{"seed_number":555,"lego_index":1,"known_text":"just one more","target_text":"もう一枚と言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0555L01U02","expect":{"seed_number":555,"lego_index":1,"known_text":"one more is needed","target_text":"もう一枚がいると話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0555L01U03","expect":{"seed_number":555,"lego_index":1,"known_text":"just one","target_text":"一枚と言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0555L01U04","expect":{"seed_number":555,"lego_index":1,"known_text":"one more towel","target_text":"もう一枚のタオルがいると思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0555L01U05","expect":{"seed_number":555,"lego_index":1,"known_text":"one towel","target_text":"一枚のタオルはいいと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0555L03B01","expect":{"seed_number":555,"lego_index":3,"known_text":"no energy","target_text":"元気がない"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0555L03B02","expect":{"seed_number":555,"lego_index":3,"known_text":"no energy","target_text":"元気がないから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0555L03B03","expect":{"seed_number":555,"lego_index":3,"known_text":"too tired to fetch a new one","target_text":"もう一枚取りに行く元気がないことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0555L03U01","expect":{"seed_number":555,"lego_index":3,"known_text":"and I'm too tired to fetch a new one","target_text":"もう一枚取りに行く元気がない"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0555L03U02","expect":{"seed_number":555,"lego_index":3,"known_text":"I have no energy","target_text":"元気がない"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0555L03U03","expect":{"seed_number":555,"lego_index":3,"known_text":"do you have energy?","target_text":"元気がない？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0555L03U04","expect":{"seed_number":555,"lego_index":3,"known_text":"too tired to go","target_text":"取りに行く元気がないと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0555L03U05","expect":{"seed_number":555,"lego_index":3,"known_text":"I think I have no energy","target_text":"元気がないと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0556L01B01","expect":{"seed_number":556,"lego_index":1,"known_text":"late at night","target_text":"夜遅く"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0556L01B02","expect":{"seed_number":556,"lego_index":1,"known_text":"late at night","target_text":"夜遅くから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0556L01B03","expect":{"seed_number":556,"lego_index":1,"known_text":"the time is late","target_text":"夜遅くあることがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0556L01U01","expect":{"seed_number":556,"lego_index":1,"known_text":"late at night","target_text":"夜遅くと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0556L01U02","expect":{"seed_number":556,"lego_index":1,"known_text":"she stays up late at night","target_text":"夜遅くにいると話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0556L01U03","expect":{"seed_number":556,"lego_index":1,"known_text":"late at night is quiet","target_text":"夜遅くがいいと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0556L01U04","expect":{"seed_number":556,"lego_index":1,"known_text":"late nights are common","target_text":"夜遅くにあると言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0556L01U05","expect":{"seed_number":556,"lego_index":1,"known_text":"it happens late at night","target_text":"夜遅くにあると話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0556L01U06","expect":{"seed_number":556,"lego_index":1,"known_text":"I'm not sure if I'll be able to come late at night","target_text":"夜遅く来られるか分からない"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0556L02B01","expect":{"seed_number":556,"lego_index":2,"known_text":"music","target_text":"音楽から"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0556L02B03","expect":{"seed_number":556,"lego_index":2,"known_text":"music at night","target_text":"夜遅く音楽があることがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0556L02U01","expect":{"seed_number":556,"lego_index":2,"known_text":"the music is good","target_text":"音楽はいいと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0556L02U02","expect":{"seed_number":556,"lego_index":2,"known_text":"what music?","target_text":"音楽は？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0556L02U04","expect":{"seed_number":556,"lego_index":2,"known_text":"music at night is important","target_text":"夜遅く音楽は大事だと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0556L02B04","expect":{"seed_number":556,"lego_index":2,"known_text":"music is good","target_text":"音楽はいい"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0556L02U06","expect":{"seed_number":556,"lego_index":2,"known_text":"she said music is good","target_text":"音楽はいいと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0556L02U07","expect":{"seed_number":556,"lego_index":2,"known_text":"I think music is good late at night","target_text":"夜遅く音楽はいいと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0556L03B01","expect":{"seed_number":556,"lego_index":3,"known_text":"play","target_text":"かけるから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0556L03B02","expect":{"seed_number":556,"lego_index":3,"known_text":"play music","target_text":"音楽をかけることがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0556L03U01","expect":{"seed_number":556,"lego_index":3,"known_text":"they play music late at night","target_text":"夜遅く音楽をかける"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0556L03U02","expect":{"seed_number":556,"lego_index":3,"known_text":"they play it","target_text":"かけると言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0556L03U03","expect":{"seed_number":556,"lego_index":3,"known_text":"can you play some music?","target_text":"音楽をかける？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0556L03U04","expect":{"seed_number":556,"lego_index":3,"known_text":"they play music","target_text":"音楽をかけると思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0556L03U05","expect":{"seed_number":556,"lego_index":3,"known_text":"she plays music at night","target_text":"夜遅く音楽をかけると話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0556L03U06","expect":{"seed_number":556,"lego_index":3,"known_text":"they might put on music late at night","target_text":"夜遅く音楽をかけるかもしれない"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0557L01B03","expect":{"seed_number":557,"lego_index":1,"known_text":"so much of it","target_text":"あんなにあることがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0557L01U01","expect":{"seed_number":557,"lego_index":1,"known_text":"like that","target_text":"あんなにと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0557L01U02","expect":{"seed_number":557,"lego_index":1,"known_text":"so much?","target_text":"あんなに？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0557L01U03","expect":{"seed_number":557,"lego_index":1,"known_text":"like that it's too much","target_text":"あんなにはよくないと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0557L01U04","expect":{"seed_number":557,"lego_index":1,"known_text":"so much music","target_text":"あんなに音楽をかけると話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0557L01U05","expect":{"seed_number":557,"lego_index":1,"known_text":"that much is too much","target_text":"あんなには大事じゃないと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0557L02B01","expect":{"seed_number":557,"lego_index":2,"known_text":"at loud volume","target_text":"大きな音で"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0557L02B02","expect":{"seed_number":557,"lego_index":2,"known_text":"at loud volume","target_text":"大きな音でから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0557L02B03","expect":{"seed_number":557,"lego_index":2,"known_text":"play at loud volume","target_text":"大きな音でかけることがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0557L02U01","expect":{"seed_number":557,"lego_index":2,"known_text":"at such loud volume","target_text":"あんなに大きな音でと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0557L02U02","expect":{"seed_number":557,"lego_index":2,"known_text":"they play it so loud","target_text":"あんなに大きな音でかけると話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0557L02U03","expect":{"seed_number":557,"lego_index":2,"known_text":"with such loud noise","target_text":"大きな音でと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0557L02U04","expect":{"seed_number":557,"lego_index":2,"known_text":"playing at loud volume","target_text":"大きな音でかけると言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0557L02U05","expect":{"seed_number":557,"lego_index":2,"known_text":"so loud it's a problem","target_text":"あんなに大きな音でよくないと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0557L03B01","expect":{"seed_number":557,"lego_index":3,"known_text":"if only they wouldn't play","target_text":"かけなければ"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0557L03B02","expect":{"seed_number":557,"lego_index":3,"known_text":"if they wouldn't play","target_text":"かけなければから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0557L03B03","expect":{"seed_number":557,"lego_index":3,"known_text":"if they wouldn't play so loud","target_text":"大きな音でかけなければことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0557L03U01","expect":{"seed_number":557,"lego_index":3,"known_text":"if they wouldn't play it","target_text":"かけなければいいと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0557L03U03","expect":{"seed_number":557,"lego_index":3,"known_text":"if only they wouldn't play loud","target_text":"大きな音でかけなければと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0557L03U04","expect":{"seed_number":557,"lego_index":3,"known_text":"wouldn't play?","target_text":"かけなければ？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0557L03U05","expect":{"seed_number":557,"lego_index":3,"known_text":"if they wouldn't play like that","target_text":"あんなにかけなければと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0557L03U06","expect":{"seed_number":557,"lego_index":3,"known_text":"I think it would be good if they did not play so loud","target_text":"大きな音でかけなければいいと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0558L01B01","expect":{"seed_number":558,"lego_index":1,"known_text":"it's late at night","target_text":"夜遅い"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0558L01B02","expect":{"seed_number":558,"lego_index":1,"known_text":"late at night","target_text":"夜遅いから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0558L01B03","expect":{"seed_number":558,"lego_index":1,"known_text":"so late at night","target_text":"もう夜遅いことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0558L01U01","expect":{"seed_number":558,"lego_index":1,"known_text":"it's so late at night","target_text":"もう夜遅い"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0558L01U02","expect":{"seed_number":558,"lego_index":1,"known_text":"it's late at night","target_text":"夜遅いと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0558L01U03","expect":{"seed_number":558,"lego_index":1,"known_text":"is it late at night?","target_text":"夜遅い？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0558L01U04","expect":{"seed_number":558,"lego_index":1,"known_text":"already so late at night","target_text":"もう夜遅いと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0558L01U05","expect":{"seed_number":558,"lego_index":1,"known_text":"late at night is fine","target_text":"夜遅いのはいいと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0559L01B01","expect":{"seed_number":559,"lego_index":1,"known_text":"forest","target_text":"森から"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0559L01B02","expect":{"seed_number":559,"lego_index":1,"known_text":"forest is good","target_text":"森があることがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0559L01U01","expect":{"seed_number":559,"lego_index":1,"known_text":"in the forest","target_text":"森にいると言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0559L01U02","expect":{"seed_number":559,"lego_index":1,"known_text":"the forest is important","target_text":"森は大事だと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0559L01U03","expect":{"seed_number":559,"lego_index":1,"known_text":"the forest is here","target_text":"森にあると話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0559L01U04","expect":{"seed_number":559,"lego_index":1,"known_text":"is there a forest?","target_text":"森がある？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0559L01U05","expect":{"seed_number":559,"lego_index":1,"known_text":"the forest is beautiful","target_text":"森はいいと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0559L01U06","expect":{"seed_number":559,"lego_index":1,"known_text":"the church isn't as interesting as the forest","target_text":"教会は森ほど面白くない"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0559L03B01","expect":{"seed_number":559,"lego_index":3,"known_text":"path","target_text":"道から"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0559L03U01","expect":{"seed_number":559,"lego_index":3,"known_text":"have you found the path through the wood?","target_text":"森を通る道、見つけた？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0559L03U02","expect":{"seed_number":559,"lego_index":3,"known_text":"the path is there","target_text":"道があると言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0559L03U03","expect":{"seed_number":559,"lego_index":3,"known_text":"what path?","target_text":"道は？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0559L03U04","expect":{"seed_number":559,"lego_index":3,"known_text":"I found the path through the forest","target_text":"森を通る道を見つけたと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0559L03U05","expect":{"seed_number":559,"lego_index":3,"known_text":"the path is important","target_text":"道は大事だと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0559L03B02","expect":{"seed_number":559,"lego_index":3,"known_text":"if I had known the path through the forest","target_text":"森を通る道、知ってたら"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0560L01B01","expect":{"seed_number":560,"lego_index":1,"known_text":"to the beach","target_text":"浜まで"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0560L01B02","expect":{"seed_number":560,"lego_index":1,"known_text":"to the beach","target_text":"浜までから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0560L01B03","expect":{"seed_number":560,"lego_index":1,"known_text":"the beach is nearby","target_text":"浜までがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0560L01U01","expect":{"seed_number":560,"lego_index":1,"known_text":"to the beach","target_text":"浜までと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0560L01U02","expect":{"seed_number":560,"lego_index":1,"known_text":"all the way to the beach","target_text":"浜まで行くと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0560L01U03","expect":{"seed_number":560,"lego_index":1,"known_text":"to the beach is important","target_text":"浜までは大事だと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0560L01U04","expect":{"seed_number":560,"lego_index":1,"known_text":"how far to the beach?","target_text":"浜まで？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0560L01U05","expect":{"seed_number":560,"lego_index":1,"known_text":"the forest path goes to the beach","target_text":"森を通る道が浜まであると言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0560L01U06","expect":{"seed_number":560,"lego_index":1,"known_text":"I was able to go to the beach","target_text":"浜まで行けた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0560L01B04","expect":{"seed_number":560,"lego_index":1,"known_text":"if I had known the path to the beach","target_text":"浜までの道、知ってたら"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0560L02B01","expect":{"seed_number":560,"lego_index":2,"known_text":"go down","target_text":"下りるから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0560L02B02","expect":{"seed_number":560,"lego_index":2,"known_text":"go down to the beach","target_text":"浜まで下りることがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0560L02U01","expect":{"seed_number":560,"lego_index":2,"known_text":"it goes down to the beach","target_text":"浜まで下りる"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0560L02U02","expect":{"seed_number":560,"lego_index":2,"known_text":"shall I go down?","target_text":"下りる？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0560L02U03","expect":{"seed_number":560,"lego_index":2,"known_text":"I'll go down to the beach","target_text":"浜まで下りる"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0560L02U04","expect":{"seed_number":560,"lego_index":2,"known_text":"go down the path","target_text":"道を下りると思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0560L02U05","expect":{"seed_number":560,"lego_index":2,"known_text":"she said she'll go down","target_text":"下りると話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0561L01B01","expect":{"seed_number":561,"lego_index":1,"known_text":"fast","target_text":"速いから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0561L01B03","expect":{"seed_number":561,"lego_index":1,"known_text":"fast is good","target_text":"速いがあることがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0561L01U01","expect":{"seed_number":561,"lego_index":1,"known_text":"it's fast","target_text":"速いと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0561L01U02","expect":{"seed_number":561,"lego_index":1,"known_text":"is it fast?","target_text":"速い？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0561L01U03","expect":{"seed_number":561,"lego_index":1,"known_text":"a fast car","target_text":"速い車だと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0561L01U04","expect":{"seed_number":561,"lego_index":1,"known_text":"fast is important","target_text":"速いのは大事だと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0561L01U05","expect":{"seed_number":561,"lego_index":1,"known_text":"that car is fast","target_text":"速い車だと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0562L02B02","expect":{"seed_number":562,"lego_index":2,"known_text":"getting there safely","target_text":"安全にそこにいることがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0562L02U01","expect":{"seed_number":562,"lego_index":2,"known_text":"she said she wants to be there","target_text":"そこにいたいと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0562L02U02","expect":{"seed_number":562,"lego_index":2,"known_text":"is there anyone there?","target_text":"そこに誰かいると思う？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0562L02U03","expect":{"seed_number":562,"lego_index":2,"known_text":"she's there","target_text":"そこにいると話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0562L02U04","expect":{"seed_number":562,"lego_index":2,"known_text":"she was there","target_text":"そこにいたと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0562L02U05","expect":{"seed_number":562,"lego_index":2,"known_text":"I want to be there safely","target_text":"安全にそこにいたいと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0562L03B01","expect":{"seed_number":562,"lego_index":3,"known_text":"want to get there","target_text":"着きたい"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0562L03B02","expect":{"seed_number":562,"lego_index":3,"known_text":"want to arrive","target_text":"着きたいから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0562L03B03","expect":{"seed_number":562,"lego_index":3,"known_text":"want to get there safely","target_text":"安全に着きたいことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0562L03U01","expect":{"seed_number":562,"lego_index":3,"known_text":"she wants to arrive safely","target_text":"安全に着きたいと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0562L03U02","expect":{"seed_number":562,"lego_index":3,"known_text":"she just wants to get there","target_text":"着きたいと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0562L03U03","expect":{"seed_number":562,"lego_index":3,"known_text":"I want to get there safely","target_text":"安全にそこに着きたいと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0562L03U04","expect":{"seed_number":562,"lego_index":3,"known_text":"she wants to arrive somewhere","target_text":"どこかに着きたいと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0562L03U05","expect":{"seed_number":562,"lego_index":3,"known_text":"do you want to get there?","target_text":"着きたいと思う？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0562L04B01","expect":{"seed_number":562,"lego_index":4,"known_text":"just want to get there","target_text":"着きたいだけ"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0562L04B02","expect":{"seed_number":562,"lego_index":4,"known_text":"just want to arrive","target_text":"着きたいだけから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0562L04B03","expect":{"seed_number":562,"lego_index":4,"known_text":"just want to get there safely","target_text":"安全に着きたいだけことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0562L04U01","expect":{"seed_number":562,"lego_index":4,"known_text":"I just want to get there safely","target_text":"安全にそこに着きたいだけ"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0562L04U02","expect":{"seed_number":562,"lego_index":4,"known_text":"she just wants to arrive","target_text":"着きたいだけと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0562L04U03","expect":{"seed_number":562,"lego_index":4,"known_text":"she just wants to get there safely","target_text":"安全に着きたいだけと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0562L04U04","expect":{"seed_number":562,"lego_index":4,"known_text":"I just want to arrive","target_text":"着きたいだけと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0562L04U05","expect":{"seed_number":562,"lego_index":4,"known_text":"she said she just wants to get there","target_text":"そこに着きたいだけと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0563L01B01","expect":{"seed_number":563,"lego_index":1,"known_text":"any longer","target_text":"これ以上から"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0563L01B02","expect":{"seed_number":563,"lego_index":1,"known_text":"no longer","target_text":"もうこれ以上ことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0563L01U01","expect":{"seed_number":563,"lego_index":1,"known_text":"she can't do it any longer","target_text":"これ以上できないと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0563L01U02","expect":{"seed_number":563,"lego_index":1,"known_text":"any longer is too much","target_text":"これ以上は無理だと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0563L01U03","expect":{"seed_number":563,"lego_index":1,"known_text":"she said she can't go any further","target_text":"これ以上は難しいと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0563L01U04","expect":{"seed_number":563,"lego_index":1,"known_text":"I can't do this any longer","target_text":"もうこれ以上はできないと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0563L01U05","expect":{"seed_number":563,"lego_index":1,"known_text":"she doesn't want any more","target_text":"これ以上はいらないと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0563L02B01","expect":{"seed_number":563,"lego_index":2,"known_text":"keep going","target_text":"続けられなかった"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0563L02B02","expect":{"seed_number":563,"lego_index":2,"known_text":"wasn't able to keep going","target_text":"続けられなかったから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0563L02B03","expect":{"seed_number":563,"lego_index":2,"known_text":"couldn't continue any longer","target_text":"もうこれ以上続けられなかったことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0563L02U01","expect":{"seed_number":563,"lego_index":2,"known_text":"I wouldn't have been able to keep going any longer","target_text":"これ以上続けられなかった"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0563L02U02","expect":{"seed_number":563,"lego_index":2,"known_text":"she said she couldn't continue","target_text":"続けられなかったと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0563L02U03","expect":{"seed_number":563,"lego_index":2,"known_text":"she couldn't keep going any longer","target_text":"もうこれ以上続けられなかったと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0563L02U04","expect":{"seed_number":563,"lego_index":2,"known_text":"she wasn't able to continue","target_text":"続けられなかったと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0563L02U05","expect":{"seed_number":563,"lego_index":2,"known_text":"I don't think she could have kept going","target_text":"もう続けられなかったと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0564L02B01","expect":{"seed_number":564,"lego_index":2,"known_text":"without your help","target_text":"君の助けなし"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0564L02B02","expect":{"seed_number":564,"lego_index":2,"known_text":"without your help","target_text":"君の助けなしから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0564L02B03","expect":{"seed_number":564,"lego_index":2,"known_text":"without your help at all","target_text":"君の助けなしことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0564L02U01","expect":{"seed_number":564,"lego_index":2,"known_text":"without your help it would be impossible","target_text":"君の助けなしでは無理だと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0564L02U02","expect":{"seed_number":564,"lego_index":2,"known_text":"she can't do it without your help","target_text":"君の助けなしでは難しいと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0564L02U03","expect":{"seed_number":564,"lego_index":2,"known_text":"without your help she can't manage","target_text":"君の助けなしではできないと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0564L02U04","expect":{"seed_number":564,"lego_index":2,"known_text":"without your help nothing works","target_text":"君の助けなしでは何もできないと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0564L02U05","expect":{"seed_number":564,"lego_index":2,"known_text":"without your help everything is impossible","target_text":"君の助けなしでは何もできないと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0564L03B01","expect":{"seed_number":564,"lego_index":3,"known_text":"was impossible","target_text":"では無理だった"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0564L03B02","expect":{"seed_number":564,"lego_index":3,"known_text":"was impossible","target_text":"では無理だったから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0564L03B03","expect":{"seed_number":564,"lego_index":3,"known_text":"without your help was impossible","target_text":"君の助けなしでは無理だったことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0564L03U01","expect":{"seed_number":564,"lego_index":3,"known_text":"I wouldn't have been able to without your help","target_text":"君の助けなしでは無理だった"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0564L03U02","expect":{"seed_number":564,"lego_index":3,"known_text":"she said without your help it was impossible","target_text":"君の助けなしでは無理だったと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0564L03U03","expect":{"seed_number":564,"lego_index":3,"known_text":"without that it was impossible","target_text":"では無理だったと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0564L03U04","expect":{"seed_number":564,"lego_index":3,"known_text":"she said it would have been impossible","target_text":"君の助けなしでは無理だったと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0564L03U05","expect":{"seed_number":564,"lego_index":3,"known_text":"it really was impossible without your support","target_text":"助けなしでは無理だったと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0565L01B01","expect":{"seed_number":565,"lego_index":1,"known_text":"more carefully","target_text":"よくから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0565L01B02","expect":{"seed_number":565,"lego_index":1,"known_text":"thought about it more carefully","target_text":"もっとよく考えたことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0565L01U01","expect":{"seed_number":565,"lego_index":1,"known_text":"she said she thought about it more carefully","target_text":"よく考えたと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0565L01U02","expect":{"seed_number":565,"lego_index":1,"known_text":"think more carefully","target_text":"もっとよく考えると思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0565L01U03","expect":{"seed_number":565,"lego_index":1,"known_text":"she wants to do it more carefully","target_text":"よくやりたいと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0565L01U04","expect":{"seed_number":565,"lego_index":1,"known_text":"she thinks about things more carefully","target_text":"もっとよく考えると話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0565L01U05","expect":{"seed_number":565,"lego_index":1,"known_text":"she looked at it more carefully","target_text":"よく見たと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0566L02B01","expect":{"seed_number":566,"lego_index":2,"known_text":"if it had been my choice","target_text":"自分の選択だったら"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0566L02B02","expect":{"seed_number":566,"lego_index":2,"known_text":"if it had been my choice","target_text":"自分の選択だったらから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0566L02B03","expect":{"seed_number":566,"lego_index":2,"known_text":"if it had been my choice","target_text":"自分の選択だったらことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0566L02U01","expect":{"seed_number":566,"lego_index":2,"known_text":"if it had been her choice","target_text":"自分の選択だったらと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0566L02U03","expect":{"seed_number":566,"lego_index":2,"known_text":"if that had been her choice she would have done it","target_text":"自分の選択だったらと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0566L02U04","expect":{"seed_number":566,"lego_index":2,"known_text":"it would have been better if it had been her choice","target_text":"自分の選択だったらよかったと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0566L02U05","expect":{"seed_number":566,"lego_index":2,"known_text":"if it had been her choice she'd have been happier","target_text":"自分の選択だったらよかったと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0566L02U06","expect":{"seed_number":566,"lego_index":2,"known_text":"she said it would have been good if it had been her choice","target_text":"自分の選択だったらよかったと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0566L03B01","expect":{"seed_number":566,"lego_index":3,"known_text":"would have thought more","target_text":"もっと考えた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0566L03B02","expect":{"seed_number":566,"lego_index":3,"known_text":"would have thought more","target_text":"もっと考えたから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0566L03B03","expect":{"seed_number":566,"lego_index":3,"known_text":"if my choice, would have thought more","target_text":"自分の選択だったら、もっと考えたことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0566L03U01","expect":{"seed_number":566,"lego_index":3,"known_text":"I'd have thought more if it had been my choice","target_text":"自分の選択だったら、もっと考えた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0566L03U02","expect":{"seed_number":566,"lego_index":3,"known_text":"she would have thought more","target_text":"もっと考えたと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0566L03U03","expect":{"seed_number":566,"lego_index":3,"known_text":"if it had been her choice she would have thought more","target_text":"自分の選択だったら、もっと考えたと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0566L03U04","expect":{"seed_number":566,"lego_index":3,"known_text":"she said she would have thought more carefully","target_text":"もっと考えたと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0566L03U05","expect":{"seed_number":566,"lego_index":3,"known_text":"she would have thought about it more","target_text":"もっと考えたと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0567L01B01","expect":{"seed_number":567,"lego_index":1,"known_text":"play","target_text":"遊ぶから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0567L01B02","expect":{"seed_number":567,"lego_index":1,"known_text":"children play","target_text":"子どもが遊ぶことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0567L01U01","expect":{"seed_number":567,"lego_index":1,"known_text":"the children play outside","target_text":"子どもが外で遊ぶと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0567L01U02","expect":{"seed_number":567,"lego_index":1,"known_text":"she likes watching them play","target_text":"遊ぶのを見るのが好きだと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0567L01U04","expect":{"seed_number":567,"lego_index":1,"known_text":"she plays outside with everyone","target_text":"みんなと外で遊ぶと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0567L01U05","expect":{"seed_number":567,"lego_index":1,"known_text":"they play outdoors","target_text":"外で遊ぶと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0567L01B03","expect":{"seed_number":567,"lego_index":1,"known_text":"play outside","target_text":"外で遊ぶ"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0567L01U06","expect":{"seed_number":567,"lego_index":1,"known_text":"I think the children play outside","target_text":"子どもが外で遊ぶと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0567L02B01","expect":{"seed_number":567,"lego_index":2,"known_text":"watching children play","target_text":"子どもが遊ぶのを"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0567L02B02","expect":{"seed_number":567,"lego_index":2,"known_text":"watching children play","target_text":"子どもが遊ぶのをから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0567L02B03","expect":{"seed_number":567,"lego_index":2,"known_text":"watching children play outdoors","target_text":"子どもが遊ぶのを外でことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0567L02U01","expect":{"seed_number":567,"lego_index":2,"known_text":"watching children play is wonderful","target_text":"子どもが遊ぶのを見るのは楽しかった"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0567L02U02","expect":{"seed_number":567,"lego_index":2,"known_text":"she loves watching children play","target_text":"子どもが遊ぶのを見るのが好きだと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0567L02U03","expect":{"seed_number":567,"lego_index":2,"known_text":"watching children play outdoors is the best","target_text":"子どもが遊ぶのを外で見るのが好きだと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0567L02U04","expect":{"seed_number":567,"lego_index":2,"known_text":"it was lovely watching children play","target_text":"子どもが遊ぶのを見るのは楽しかったと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0567L02U05","expect":{"seed_number":567,"lego_index":2,"known_text":"she enjoyed watching them play","target_text":"子どもが遊ぶのを見るのは楽しかったと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0567L03B01","expect":{"seed_number":567,"lego_index":3,"known_text":"watching outdoors","target_text":"外で見るのは"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0567L03B02","expect":{"seed_number":567,"lego_index":3,"known_text":"watching outdoors","target_text":"外で見るのはから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0567L03B03","expect":{"seed_number":567,"lego_index":3,"known_text":"watching children play outdoors","target_text":"子どもが遊ぶのを外で見るのはことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0567L03U01","expect":{"seed_number":567,"lego_index":3,"known_text":"it's been lovely spending time outdoors watching the children play","target_text":"子どもが遊ぶのを外で見るのは楽しかった"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0567L03U02","expect":{"seed_number":567,"lego_index":3,"known_text":"watching outdoors is wonderful","target_text":"外で見るのは楽しかったと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0567L03U03","expect":{"seed_number":567,"lego_index":3,"known_text":"watching children play outdoors was fun","target_text":"子どもが遊ぶのを外で見るのは楽しかったと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0567L03U04","expect":{"seed_number":567,"lego_index":3,"known_text":"watching outdoors is enjoyable","target_text":"外で見るのは楽しかったと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0567L03U05","expect":{"seed_number":567,"lego_index":3,"known_text":"spending time outdoors watching them play was great","target_text":"子どもが遊ぶのを外で見るのは楽しかったと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0568L01U01","expect":{"seed_number":568,"lego_index":1,"known_text":"next time will be better","target_text":"次にはよくなると思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0568L01U02","expect":{"seed_number":568,"lego_index":1,"known_text":"next time we can try","target_text":"次にやってみると言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0568L01U03","expect":{"seed_number":568,"lego_index":1,"known_text":"next time she wants to come","target_text":"次に来たいと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0568L01U04","expect":{"seed_number":568,"lego_index":1,"known_text":"next time will be different","target_text":"次には違うと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0568L01U05","expect":{"seed_number":568,"lego_index":1,"known_text":"next time she'll do it better","target_text":"次によくやると言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0568L01B03","expect":{"seed_number":568,"lego_index":1,"known_text":"try next time","target_text":"次にやってみる"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0568L01B04","expect":{"seed_number":568,"lego_index":1,"known_text":"want to come next time","target_text":"次に来たい"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0568L01B05","expect":{"seed_number":568,"lego_index":1,"known_text":"do well next time","target_text":"次によくやる"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0568L02B01","expect":{"seed_number":568,"lego_index":2,"known_text":"next time we meet","target_text":"次に会うとき"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0568L02B02","expect":{"seed_number":568,"lego_index":2,"known_text":"next time we meet","target_text":"次に会うときから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0568L02B03","expect":{"seed_number":568,"lego_index":2,"known_text":"next time we meet it'll be good","target_text":"次に会うときことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0568L02U01","expect":{"seed_number":568,"lego_index":2,"known_text":"next time we meet she'll be ready","target_text":"次に会うときには準備できてると言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0568L02U02","expect":{"seed_number":568,"lego_index":2,"known_text":"when we next meet things will be better","target_text":"次に会うときと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0568L02U03","expect":{"seed_number":568,"lego_index":2,"known_text":"next time we meet she wants to show me","target_text":"次に会うとき見せたいと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0568L02U05","expect":{"seed_number":568,"lego_index":2,"known_text":"the next time we meet she'll be ready","target_text":"次に会うとき準備できてると思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0568L03B01","expect":{"seed_number":568,"lego_index":3,"known_text":"should be better","target_text":"良くなってるはず"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0568L03B02","expect":{"seed_number":568,"lego_index":3,"known_text":"should be better","target_text":"良くなってるはずから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0568L03B03","expect":{"seed_number":568,"lego_index":3,"known_text":"next time will be better","target_text":"次に会うとき、良くなってるはずことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0568L03U01","expect":{"seed_number":568,"lego_index":3,"known_text":"I'm expecting to see an improvement next time we meet","target_text":"次に会うとき、良くなってるはず"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0568L03U02","expect":{"seed_number":568,"lego_index":3,"known_text":"she should be improving by then","target_text":"良くなってるはずと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0568L03U03","expect":{"seed_number":568,"lego_index":3,"known_text":"next time we meet she should be better","target_text":"次に会うとき、良くなってるはずと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0568L03U04","expect":{"seed_number":568,"lego_index":3,"known_text":"she's expecting an improvement","target_text":"良くなってるはずと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0568L03U05","expect":{"seed_number":568,"lego_index":3,"known_text":"by next time she should be much better","target_text":"次に会うとき、良くなってるはずだと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0569L01B01","expect":{"seed_number":569,"lego_index":1,"known_text":"how much","target_text":"いくらから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0569L01B02","expect":{"seed_number":569,"lego_index":1,"known_text":"how much do you need","target_text":"いくら必要かことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0569L01U02","expect":{"seed_number":569,"lego_index":1,"known_text":"do you know how much it is?","target_text":"いくらか知ってると言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0569L01U03","expect":{"seed_number":569,"lego_index":1,"known_text":"how much did she say she needs?","target_text":"いくら必要と話してた？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0569L01U04","expect":{"seed_number":569,"lego_index":1,"known_text":"she asked how much it was","target_text":"いくらか聞いたと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0569L01U05","expect":{"seed_number":569,"lego_index":1,"known_text":"how much can we use?","target_text":"いくら使えるかと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0569L02B01","expect":{"seed_number":569,"lego_index":2,"known_text":"are willing to pay","target_text":"払えるか"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0569L02B02","expect":{"seed_number":569,"lego_index":2,"known_text":"can pay","target_text":"払えるかから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0569L02B03","expect":{"seed_number":569,"lego_index":2,"known_text":"how much can you pay","target_text":"いくら払えるかことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0569L02U01","expect":{"seed_number":569,"lego_index":2,"known_text":"how much are you willing to pay?","target_text":"いくら払えるか"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0569L02U03","expect":{"seed_number":569,"lego_index":2,"known_text":"she wondered how much she could pay","target_text":"いくら払えるかと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0569L02U04","expect":{"seed_number":569,"lego_index":2,"known_text":"how much can she pay?","target_text":"いくら払えるかと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0569L02U05","expect":{"seed_number":569,"lego_index":2,"known_text":"she was thinking about how much she could pay","target_text":"払えるか考えてると言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0569L02U06","expect":{"seed_number":569,"lego_index":2,"known_text":"I think she is thinking about how much she can pay","target_text":"いくら払えるか考えてると思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0569L03B01","expect":{"seed_number":569,"lego_index":3,"known_text":"have you decided?","target_text":"決めた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0569L03B02","expect":{"seed_number":569,"lego_index":3,"known_text":"decided","target_text":"決めたから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0569L03B03","expect":{"seed_number":569,"lego_index":3,"known_text":"have you decided how much","target_text":"いくら払えるか決めたことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0569L03U01","expect":{"seed_number":569,"lego_index":3,"known_text":"have you decided how much you are willing to pay?","target_text":"いくら払えるか決めた？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0569L03U02","expect":{"seed_number":569,"lego_index":3,"known_text":"have you decided yet?","target_text":"決めたと言ってた？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0569L03U03","expect":{"seed_number":569,"lego_index":3,"known_text":"she decided how much to pay","target_text":"いくら払えるか決めたと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0569L03U04","expect":{"seed_number":569,"lego_index":3,"known_text":"has she decided?","target_text":"決めたと思う？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0569L03U05","expect":{"seed_number":569,"lego_index":3,"known_text":"she's already decided how much she'll pay","target_text":"いくら払えるか決めたと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0570L01B01","expect":{"seed_number":570,"lego_index":1,"known_text":"ticket","target_text":"チケットから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0570L01B02","expect":{"seed_number":570,"lego_index":1,"known_text":"for your ticket","target_text":"チケットにいくらことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0570L01U01","expect":{"seed_number":570,"lego_index":1,"known_text":"how much for a ticket?","target_text":"チケットにいくらと思う？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0570L01U02","expect":{"seed_number":570,"lego_index":1,"known_text":"she has a ticket","target_text":"チケットを持ってると言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0570L01U03","expect":{"seed_number":570,"lego_index":1,"known_text":"she needs a ticket","target_text":"チケットが必要だと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0570L01U04","expect":{"seed_number":570,"lego_index":1,"known_text":"she's looking for a ticket","target_text":"チケットを探してると言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0570L01U05","expect":{"seed_number":570,"lego_index":1,"known_text":"the ticket is important","target_text":"チケットは大事だと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0570L02B01","expect":{"seed_number":570,"lego_index":2,"known_text":"how much can you pay","target_text":"いくら払える"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0570L02B02","expect":{"seed_number":570,"lego_index":2,"known_text":"how much can you pay","target_text":"いくら払えるから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0570L02B03","expect":{"seed_number":570,"lego_index":2,"known_text":"how much for a ticket","target_text":"チケットにいくら払えるかことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0570L02U01","expect":{"seed_number":570,"lego_index":2,"known_text":"how much are you willing to pay for your ticket?","target_text":"チケットにいくら払える？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0570L02U02","expect":{"seed_number":570,"lego_index":2,"known_text":"how much can you pay?","target_text":"いくら払えると思う？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0570L02U03","expect":{"seed_number":570,"lego_index":2,"known_text":"she asked how much he could pay","target_text":"いくら払えるか聞いたと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0570L02U04","expect":{"seed_number":570,"lego_index":2,"known_text":"how much can she pay for a ticket?","target_text":"チケットにいくら払えると話してた？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0570L02U05","expect":{"seed_number":570,"lego_index":2,"known_text":"how much is she willing to pay?","target_text":"いくら払えると言ってた？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0571L02B01","expect":{"seed_number":571,"lego_index":2,"known_text":"can't think it's","target_text":"だとは思えない"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0571L02B02","expect":{"seed_number":571,"lego_index":2,"known_text":"can't think it's","target_text":"だとは思えないから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0571L02B03","expect":{"seed_number":571,"lego_index":2,"known_text":"can't believe it's a good idea","target_text":"良い考えだとは思えないことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0571L02U01","expect":{"seed_number":571,"lego_index":2,"known_text":"I'm not convinced that would be a very good idea","target_text":"それは良い考えだとは思えない"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0571L02U02","expect":{"seed_number":571,"lego_index":2,"known_text":"I don't think that's a good idea","target_text":"良い考えだとは思えないと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0571L02U03","expect":{"seed_number":571,"lego_index":2,"known_text":"she doesn't believe that's a good idea","target_text":"良い考えだとは思えないと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0571L02U04","expect":{"seed_number":571,"lego_index":2,"known_text":"she's not convinced it's a good idea","target_text":"それが良い考えだとは思えないと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0571L02U05","expect":{"seed_number":571,"lego_index":2,"known_text":"that can't be right","target_text":"そうだとは思えないと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0572L01B01","expect":{"seed_number":572,"lego_index":1,"known_text":"what happened?","target_text":"何が起きたか"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0572L01B02","expect":{"seed_number":572,"lego_index":1,"known_text":"what happened","target_text":"何が起きたかから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0572L01B03","expect":{"seed_number":572,"lego_index":1,"known_text":"what happened last time","target_text":"前に何が起きたかことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0572L01U01","expect":{"seed_number":572,"lego_index":1,"known_text":"she asked what happened","target_text":"何が起きたか聞いたと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0572L01U02","expect":{"seed_number":572,"lego_index":1,"known_text":"do you know what happened?","target_text":"何が起きたか知ってると思う？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0572L01U03","expect":{"seed_number":572,"lego_index":1,"known_text":"she wanted to know what happened","target_text":"何が起きたか知りたいと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0572L01U05","expect":{"seed_number":572,"lego_index":1,"known_text":"what happened last time?","target_text":"前に何が起きたかと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0572L01U06","expect":{"seed_number":572,"lego_index":1,"known_text":"I think she wants to know what happened","target_text":"何が起きたか知りたいと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0572L02B01","expect":{"seed_number":572,"lego_index":2,"known_text":"have you forgotten?","target_text":"忘れた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0572L02B02","expect":{"seed_number":572,"lego_index":2,"known_text":"forgotten","target_text":"忘れたから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0572L02B03","expect":{"seed_number":572,"lego_index":2,"known_text":"forgotten what happened","target_text":"何が起きたか忘れたことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0572L02U01","expect":{"seed_number":572,"lego_index":2,"known_text":"have you forgotten what happened the last time they visited us?","target_text":"前に何が起きたか忘れた？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0572L02U02","expect":{"seed_number":572,"lego_index":2,"known_text":"have you forgotten?","target_text":"忘れたと思う？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0572L02U03","expect":{"seed_number":572,"lego_index":2,"known_text":"she forgot what happened","target_text":"何が起きたか忘れたと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0572L02U04","expect":{"seed_number":572,"lego_index":2,"known_text":"she forgot everything they told her","target_text":"忘れたと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0572L02U05","expect":{"seed_number":572,"lego_index":2,"known_text":"have you forgotten what happened before?","target_text":"前に何が起きたか忘れたと思う？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0573L02B01","expect":{"seed_number":573,"lego_index":2,"known_text":"special","target_text":"特別から"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0573L02B02","expect":{"seed_number":573,"lego_index":2,"known_text":"very special","target_text":"特別にすることがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0573L02U01","expect":{"seed_number":573,"lego_index":2,"known_text":"that's very special","target_text":"特別だと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0573L02U02","expect":{"seed_number":573,"lego_index":2,"known_text":"she thinks it's special","target_text":"特別だと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0573L02U03","expect":{"seed_number":573,"lego_index":2,"known_text":"that's what makes it special","target_text":"特別にするものだと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0573L02U04","expect":{"seed_number":573,"lego_index":2,"known_text":"the holidays are special","target_text":"休みは特別だと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0573L02U05","expect":{"seed_number":573,"lego_index":2,"known_text":"she wants to make it special","target_text":"特別にしたいと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0573L03B01","expect":{"seed_number":573,"lego_index":3,"known_text":"make the holidays special","target_text":"休みを特別にする"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0573L03B02","expect":{"seed_number":573,"lego_index":3,"known_text":"make the holidays special","target_text":"休みを特別にするから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0573L03B03","expect":{"seed_number":573,"lego_index":3,"known_text":"the kind of thing that makes it special","target_text":"休みを特別にするようなことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0573L03U01","expect":{"seed_number":573,"lego_index":3,"known_text":"it's the kind of thing that makes the holidays very special","target_text":"休みを特別にするようなこと"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0573L03U02","expect":{"seed_number":573,"lego_index":3,"known_text":"it's what makes the holidays special","target_text":"休みを特別にすると言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0573L03U03","expect":{"seed_number":573,"lego_index":3,"known_text":"the thing that makes holidays special","target_text":"休みを特別にするようなことだと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0573L03U04","expect":{"seed_number":573,"lego_index":3,"known_text":"she wants to do something that makes the holidays special","target_text":"休みを特別にするようなことをしたいと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0573L03U05","expect":{"seed_number":573,"lego_index":3,"known_text":"that's what makes it all special","target_text":"休みを特別にするようなことだと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0574L01B01","expect":{"seed_number":574,"lego_index":1,"known_text":"for everyone","target_text":"みんなにとって"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0574L01B02","expect":{"seed_number":574,"lego_index":1,"known_text":"for everyone","target_text":"みんなにとってから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0574L01B03","expect":{"seed_number":574,"lego_index":1,"known_text":"special for everyone","target_text":"みんなにとって特別ことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0574L01U01","expect":{"seed_number":574,"lego_index":1,"known_text":"it's important for everyone","target_text":"みんなにとって大事だと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0574L01U02","expect":{"seed_number":574,"lego_index":1,"known_text":"it's special for everyone","target_text":"みんなにとって特別だと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0574L01U03","expect":{"seed_number":574,"lego_index":1,"known_text":"that's hard for everyone","target_text":"みんなにとって難しいと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0574L01U05","expect":{"seed_number":574,"lego_index":1,"known_text":"for everyone it's different","target_text":"みんなにとって違うと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0574L01U06","expect":{"seed_number":574,"lego_index":1,"known_text":"I think it is difficult for everyone","target_text":"みんなにとって難しいと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0575L01B01","expect":{"seed_number":575,"lego_index":1,"known_text":"was upsetting","target_text":"つらかったから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0575L01B02","expect":{"seed_number":575,"lego_index":1,"known_text":"it's been upsetting","target_text":"つらかった"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0575L01U01","expect":{"seed_number":575,"lego_index":1,"known_text":"it's been really upsetting","target_text":"つらかったと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0575L01U02","expect":{"seed_number":575,"lego_index":1,"known_text":"that was hard for everyone","target_text":"みんなつらかったと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0575L01U03","expect":{"seed_number":575,"lego_index":1,"known_text":"it was difficult and upsetting","target_text":"つらかったと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0575L01U04","expect":{"seed_number":575,"lego_index":1,"known_text":"she found it upsetting","target_text":"とてもつらかったと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0575L01U05","expect":{"seed_number":575,"lego_index":1,"known_text":"it's been upsetting for a while","target_text":"ずっとつらかったと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0576L01B01","expect":{"seed_number":576,"lego_index":1,"known_text":"waiting is","target_text":"待つのは"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0576L01B02","expect":{"seed_number":576,"lego_index":1,"known_text":"waiting is","target_text":"待つのはから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0576L01B03","expect":{"seed_number":576,"lego_index":1,"known_text":"waiting was upsetting","target_text":"待つのはつらかったことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0576L01U01","expect":{"seed_number":576,"lego_index":1,"known_text":"waiting is hard","target_text":"待つのはつらかったと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0576L01U02","expect":{"seed_number":576,"lego_index":1,"known_text":"it has been very upsetting waiting","target_text":"待つのはとてもつらかった"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0576L01U03","expect":{"seed_number":576,"lego_index":1,"known_text":"waiting was upsetting","target_text":"待つのはつらかったと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0576L01U04","expect":{"seed_number":576,"lego_index":1,"known_text":"waiting was very hard","target_text":"待つのはとてもつらかったと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0576L01U05","expect":{"seed_number":576,"lego_index":1,"known_text":"she found waiting very upsetting","target_text":"待つのはとてもつらかったと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0577L01B01","expect":{"seed_number":577,"lego_index":1,"known_text":"hospital","target_text":"病院から"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0577L01U01","expect":{"seed_number":577,"lego_index":1,"known_text":"the hospital is important","target_text":"病院は大事だと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0577L01U02","expect":{"seed_number":577,"lego_index":1,"known_text":"she went to the hospital","target_text":"病院に行ったと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0577L01U03","expect":{"seed_number":577,"lego_index":1,"known_text":"she's at the hospital","target_text":"病院にいると話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0577L01U04","expect":{"seed_number":577,"lego_index":1,"known_text":"she's waiting for the hospital","target_text":"病院を待ってると言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0577L01B02","expect":{"seed_number":577,"lego_index":1,"known_text":"go to the hospital","target_text":"病院に行く"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0577L01B03","expect":{"seed_number":577,"lego_index":1,"known_text":"the hospital is important","target_text":"病院は大事"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0577L01U06","expect":{"seed_number":577,"lego_index":1,"known_text":"I think she went to the hospital","target_text":"病院に行ったと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0577L02B01","expect":{"seed_number":577,"lego_index":2,"known_text":"news","target_text":"病院からの連絡"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0577L02B02","expect":{"seed_number":577,"lego_index":2,"known_text":"news from the hospital","target_text":"病院からの連絡から"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0577L02B03","expect":{"seed_number":577,"lego_index":2,"known_text":"waiting for the news from the hospital","target_text":"病院からの連絡を待ってたことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0577L02U01","expect":{"seed_number":577,"lego_index":2,"known_text":"we've been waiting for the news from the hospital","target_text":"病院からの連絡を待ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0577L02U02","expect":{"seed_number":577,"lego_index":2,"known_text":"she was waiting for news from the hospital","target_text":"病院からの連絡を待ってたと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0577L02U03","expect":{"seed_number":577,"lego_index":2,"known_text":"waiting for news from the hospital is hard","target_text":"病院からの連絡を待つのはつらかったと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0577L02U04","expect":{"seed_number":577,"lego_index":2,"known_text":"she got news from the hospital","target_text":"病院からの連絡があったと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0577L02U05","expect":{"seed_number":577,"lego_index":2,"known_text":"she's still waiting for news from the hospital","target_text":"病院からの連絡を待ってたと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0578L01B01","expect":{"seed_number":578,"lego_index":1,"known_text":"warm","target_text":"暖かいから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0578L01B02","expect":{"seed_number":578,"lego_index":1,"known_text":"warmer","target_text":"もっと暖かいことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0578L01U01","expect":{"seed_number":578,"lego_index":1,"known_text":"it's warm here","target_text":"暖かいと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0578L01U03","expect":{"seed_number":578,"lego_index":1,"known_text":"it's warmer here","target_text":"もっと暖かいと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0578L01U04","expect":{"seed_number":578,"lego_index":1,"known_text":"she prefers warmer places","target_text":"もっと暖かいのが好きだと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0578L01U05","expect":{"seed_number":578,"lego_index":1,"known_text":"warm weather is nice","target_text":"暖かい天気がいいと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0578L01B03","expect":{"seed_number":578,"lego_index":1,"known_text":"warm weather","target_text":"暖かい天気"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0578L01U06","expect":{"seed_number":578,"lego_index":1,"known_text":"I think she likes it warmer","target_text":"もっと暖かいのが好きだと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0579L01B01","expect":{"seed_number":579,"lego_index":1,"known_text":"many times","target_text":"何度もから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0579L01B02","expect":{"seed_number":579,"lego_index":1,"known_text":"many times over","target_text":"何度もやることがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0579L01U01","expect":{"seed_number":579,"lego_index":1,"known_text":"she's done it many times","target_text":"何度もやったと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0579L01U02","expect":{"seed_number":579,"lego_index":1,"known_text":"many times is necessary","target_text":"何度もやることが大事だと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0579L01U03","expect":{"seed_number":579,"lego_index":1,"known_text":"she's practiced many times","target_text":"何度も練習したと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0579L01U04","expect":{"seed_number":579,"lego_index":1,"known_text":"doing it many times helps","target_text":"何度もやるといいと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0579L01U05","expect":{"seed_number":579,"lego_index":1,"known_text":"she's asked many times","target_text":"何度も聞いたと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0579L02B01","expect":{"seed_number":579,"lego_index":2,"known_text":"have tried","target_text":"試した"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0579L02B02","expect":{"seed_number":579,"lego_index":2,"known_text":"tried","target_text":"試したから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0579L02B03","expect":{"seed_number":579,"lego_index":2,"known_text":"tried many times","target_text":"何度も試したことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0579L02U01","expect":{"seed_number":579,"lego_index":2,"known_text":"we've often tried","target_text":"何度も試した"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0579L02U02","expect":{"seed_number":579,"lego_index":2,"known_text":"she's tried many times","target_text":"何度も試したと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0579L02U03","expect":{"seed_number":579,"lego_index":2,"known_text":"she's tried everything","target_text":"試したと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0579L02U04","expect":{"seed_number":579,"lego_index":2,"known_text":"she tried again","target_text":"試したと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0579L02U05","expect":{"seed_number":579,"lego_index":2,"known_text":"she tried it several times","target_text":"何度も試したと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0580L01B01","expect":{"seed_number":580,"lego_index":1,"known_text":"a place","target_text":"所から"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0580L01B02","expect":{"seed_number":580,"lego_index":1,"known_text":"warm place","target_text":"暖かい所ことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0580L01U01","expect":{"seed_number":580,"lego_index":1,"known_text":"a warm place is nice","target_text":"暖かい所がいいと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0580L01U02","expect":{"seed_number":580,"lego_index":1,"known_text":"she wants to go somewhere warm","target_text":"暖かい所にいたいと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0580L01U03","expect":{"seed_number":580,"lego_index":1,"known_text":"that's a nice place","target_text":"いい所だと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0580L01U04","expect":{"seed_number":580,"lego_index":1,"known_text":"a warm place would be good","target_text":"暖かい所がいいと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0580L01U05","expect":{"seed_number":580,"lego_index":1,"known_text":"she knows a warm place","target_text":"暖かい所を知ってると言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0580L02B01","expect":{"seed_number":580,"lego_index":2,"known_text":"take along","target_text":"連れて行く"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0580L02B02","expect":{"seed_number":580,"lego_index":2,"known_text":"take them","target_text":"連れて行くから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0580L02B03","expect":{"seed_number":580,"lego_index":2,"known_text":"take the children","target_text":"子どもを連れて行くことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0580L02U01","expect":{"seed_number":580,"lego_index":2,"known_text":"she said she'll take the children","target_text":"子どもを連れて行くと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0580L02U02","expect":{"seed_number":580,"lego_index":2,"known_text":"she'll take them somewhere warm","target_text":"暖かい所に連れて行くと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0580L02U03","expect":{"seed_number":580,"lego_index":2,"known_text":"taking the children somewhere","target_text":"子どもを連れて行くと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0580L02U04","expect":{"seed_number":580,"lego_index":2,"known_text":"she needs to take the children somewhere","target_text":"子どもを連れて行くことが必要だと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0580L02U05","expect":{"seed_number":580,"lego_index":2,"known_text":"she said she'll take them somewhere special","target_text":"特別な所に連れて行くと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0580L03B01","expect":{"seed_number":580,"lego_index":3,"known_text":"wanted to take them there","target_text":"連れて行きたかった"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0580L03B02","expect":{"seed_number":580,"lego_index":3,"known_text":"wanted to take them","target_text":"連れて行きたかったから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0580L03B03","expect":{"seed_number":580,"lego_index":3,"known_text":"wanted to take the children","target_text":"子どもを連れて行きたかったことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0580L03U01","expect":{"seed_number":580,"lego_index":3,"known_text":"we've often wanted to take the children somewhere a little warmer","target_text":"子どもを暖かい所に連れて行きたかった"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0580L03U02","expect":{"seed_number":580,"lego_index":3,"known_text":"she'd always wanted to take the children","target_text":"子どもを連れて行きたかったと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0580L03U03","expect":{"seed_number":580,"lego_index":3,"known_text":"she wanted to take them somewhere warm","target_text":"暖かい所に連れて行きたかったと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0580L03U04","expect":{"seed_number":580,"lego_index":3,"known_text":"she'd wanted to take them there","target_text":"連れて行きたかったと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0580L03U05","expect":{"seed_number":580,"lego_index":3,"known_text":"she'd wanted to take the children somewhere warmer","target_text":"子どもを暖かい所に連れて行きたかったと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0581L02B01","expect":{"seed_number":581,"lego_index":2,"known_text":"what it's like","target_text":"どんな感じか"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0581L02B02","expect":{"seed_number":581,"lego_index":2,"known_text":"what it's like","target_text":"どんな感じかから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0581L02B03","expect":{"seed_number":581,"lego_index":2,"known_text":"what is it like","target_text":"どんな感じかことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0581L02U01","expect":{"seed_number":581,"lego_index":2,"known_text":"what does it feel like?","target_text":"どんな感じか"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0581L02U02","expect":{"seed_number":581,"lego_index":2,"known_text":"she wonders what it's like","target_text":"どんな感じかと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0581L02U03","expect":{"seed_number":581,"lego_index":2,"known_text":"she wants to know what it's like","target_text":"どんな感じかを知りたいと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0581L02U04","expect":{"seed_number":581,"lego_index":2,"known_text":"she asked what it was like","target_text":"どんな感じかと聞いたと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0581L02U05","expect":{"seed_number":581,"lego_index":2,"known_text":"she knows what it's like","target_text":"どんな感じかを知ってると思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0581L03B01","expect":{"seed_number":581,"lego_index":3,"known_text":"want to know more","target_text":"もっと知りたい"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0581L03B02","expect":{"seed_number":581,"lego_index":3,"known_text":"want to know more","target_text":"もっと知りたいから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0581L03B03","expect":{"seed_number":581,"lego_index":3,"known_text":"want to know more about it","target_text":"もっと知りたいことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0581L03U01","expect":{"seed_number":581,"lego_index":3,"known_text":"he'd like to know a little more about what it's like","target_text":"どんな感じかもっと知りたい"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0581L03U02","expect":{"seed_number":581,"lego_index":3,"known_text":"she wants to know more","target_text":"もっと知りたいと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0581L03U03","expect":{"seed_number":581,"lego_index":3,"known_text":"she'd like to know more about what it's like","target_text":"どんな感じかもっと知りたいと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0581L03U04","expect":{"seed_number":581,"lego_index":3,"known_text":"she wants to understand more","target_text":"もっと知りたいと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0581L03U05","expect":{"seed_number":581,"lego_index":3,"known_text":"she'd like to find out more about what it's like","target_text":"どんな感じかもっと知りたいと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0582L01B01","expect":{"seed_number":582,"lego_index":1,"known_text":"grow up","target_text":"育つから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0582L01U03","expect":{"seed_number":582,"lego_index":1,"known_text":"children grow up so fast","target_text":"育つのは早いと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0582L01U04","expect":{"seed_number":582,"lego_index":1,"known_text":"growing up in a warm place","target_text":"暖かい所で育つと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0582L01B03","expect":{"seed_number":582,"lego_index":1,"known_text":"grow up in a warm place","target_text":"暖かい所で育つ"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0582L01B04","expect":{"seed_number":582,"lego_index":1,"known_text":"growing up is fast","target_text":"育つのは早い"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0582L01U06","expect":{"seed_number":582,"lego_index":1,"known_text":"I think they grow up in a warm place","target_text":"暖かい所で育つと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0582L01U07","expect":{"seed_number":582,"lego_index":1,"known_text":"she said growing up is fast","target_text":"育つのは早いって言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0582L01U08","expect":{"seed_number":582,"lego_index":1,"known_text":"she said they grow up in a warm place","target_text":"暖かい所で育つって言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0582L02B01","expect":{"seed_number":582,"lego_index":2,"known_text":"grow up here","target_text":"ここで育つ"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0582L02B02","expect":{"seed_number":582,"lego_index":2,"known_text":"grow up here","target_text":"ここで育つから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0582L02B03","expect":{"seed_number":582,"lego_index":2,"known_text":"what it's like to grow up here","target_text":"ここで育つのはどんな感じことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0582L02U01","expect":{"seed_number":582,"lego_index":2,"known_text":"what's it like to grow up here?","target_text":"ここで育つのはどんな感じ？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0582L02U02","expect":{"seed_number":582,"lego_index":2,"known_text":"she asked what it's like to grow up here","target_text":"ここで育つのはどんな感じかと聞いた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0582L02U03","expect":{"seed_number":582,"lego_index":2,"known_text":"she wonders what it's like growing up here","target_text":"ここで育つのはどんな感じかと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0582L02U04","expect":{"seed_number":582,"lego_index":2,"known_text":"she's curious about growing up here","target_text":"ここで育つのはどんな感じと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0582L02U05","expect":{"seed_number":582,"lego_index":2,"known_text":"I wonder what growing up here feels like","target_text":"ここで育つのはどんな感じかと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0583L02B01","expect":{"seed_number":583,"lego_index":2,"known_text":"what's it like in this area?","target_text":"この辺はどんな感じ"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0583L02B02","expect":{"seed_number":583,"lego_index":2,"known_text":"what's it like here","target_text":"この辺はどんな感じから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0583L02B03","expect":{"seed_number":583,"lego_index":2,"known_text":"wondering what this area is like","target_text":"この辺はどんな感じことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0583L02U01","expect":{"seed_number":583,"lego_index":2,"known_text":"what's it like in this part of the world?","target_text":"この辺はどんな感じ？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0583L02U02","expect":{"seed_number":583,"lego_index":2,"known_text":"she asked what it's like in this area","target_text":"この辺はどんな感じかと聞いた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0583L02U03","expect":{"seed_number":583,"lego_index":2,"known_text":"she wonders what this area is like","target_text":"この辺はどんな感じかと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0583L02U04","expect":{"seed_number":583,"lego_index":2,"known_text":"she's curious what it's like around here","target_text":"この辺はどんな感じと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0583L02U05","expect":{"seed_number":583,"lego_index":2,"known_text":"I wonder what this area is like","target_text":"この辺はどんな感じかと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0584L01B01","expect":{"seed_number":584,"lego_index":1,"known_text":"every morning","target_text":"毎朝から"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0584L01B02","expect":{"seed_number":584,"lego_index":1,"known_text":"every morning is good","target_text":"毎朝がいいことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0584L01U01","expect":{"seed_number":584,"lego_index":1,"known_text":"she does it every morning","target_text":"毎朝やってると言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0584L01U02","expect":{"seed_number":584,"lego_index":1,"known_text":"every morning is important","target_text":"毎朝が大事だと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0584L01U03","expect":{"seed_number":584,"lego_index":1,"known_text":"she wakes up every morning early","target_text":"毎朝早く起きると話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0584L01U04","expect":{"seed_number":584,"lego_index":1,"known_text":"every morning she sees something beautiful","target_text":"毎朝何か見ると言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0584L01U05","expect":{"seed_number":584,"lego_index":1,"known_text":"every morning is a new start","target_text":"毎朝新しいと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0584L02B01","expect":{"seed_number":584,"lego_index":2,"known_text":"seeing the mountains every morning","target_text":"毎朝山を見るのは"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0584L02B02","expect":{"seed_number":584,"lego_index":2,"known_text":"seeing the mountains every morning","target_text":"毎朝山を見るのはから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0584L02B03","expect":{"seed_number":584,"lego_index":2,"known_text":"what it's like seeing mountains every morning","target_text":"毎朝山を見るのはどんな感じことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0584L02U01","expect":{"seed_number":584,"lego_index":2,"known_text":"what's it like to wake up every morning and see the mountains?","target_text":"毎朝山を見るのはどんな感じ？"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0584L02U02","expect":{"seed_number":584,"lego_index":2,"known_text":"she asked what it's like to see mountains every morning","target_text":"毎朝山を見るのはどんな感じかと聞いた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0584L02U03","expect":{"seed_number":584,"lego_index":2,"known_text":"seeing mountains every morning must be wonderful","target_text":"毎朝山を見るのはどんな感じかと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0584L02U04","expect":{"seed_number":584,"lego_index":2,"known_text":"she wonders what it's like to see mountains every morning","target_text":"毎朝山を見るのはどんな感じと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0584L02U05","expect":{"seed_number":584,"lego_index":2,"known_text":"what a feeling, to see the mountains every morning","target_text":"毎朝山を見るのはどんな感じかと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0585L02B01","expect":{"seed_number":585,"lego_index":2,"known_text":"from the bedroom window","target_text":"寝室の窓から"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0585L02B02","expect":{"seed_number":585,"lego_index":2,"known_text":"from the bedroom window","target_text":"寝室の窓からから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0585L02B03","expect":{"seed_number":585,"lego_index":2,"known_text":"from the bedroom window you can see","target_text":"寝室の窓からことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0585L02U01","expect":{"seed_number":585,"lego_index":2,"known_text":"from the bedroom window","target_text":"寝室の窓からと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0585L02U02","expect":{"seed_number":585,"lego_index":2,"known_text":"she looked out from the bedroom window","target_text":"寝室の窓から見てると話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0585L02U03","expect":{"seed_number":585,"lego_index":2,"known_text":"every morning from the bedroom window","target_text":"毎朝寝室の窓から見てると言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0585L02U04","expect":{"seed_number":585,"lego_index":2,"known_text":"she looks out from the bedroom window every morning","target_text":"毎朝寝室の窓から見てると思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0585L02U05","expect":{"seed_number":585,"lego_index":2,"known_text":"the bedroom window has a wonderful view","target_text":"寝室の窓からがいいと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0585L03B01","expect":{"seed_number":585,"lego_index":3,"known_text":"the mountains can be seen","target_text":"山が見える"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0585L03B02","expect":{"seed_number":585,"lego_index":3,"known_text":"mountains can be seen","target_text":"山が見えるから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0585L03B03","expect":{"seed_number":585,"lego_index":3,"known_text":"from the bedroom the mountains can be seen","target_text":"寝室の窓から山が見えることがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0585L03U01","expect":{"seed_number":585,"lego_index":3,"known_text":"I can see the mountains out of my bedroom window","target_text":"寝室の窓から山が見える"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0585L03U02","expect":{"seed_number":585,"lego_index":3,"known_text":"the mountains can be seen from here","target_text":"山が見えると言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0585L03U03","expect":{"seed_number":585,"lego_index":3,"known_text":"she can see the mountains from her bedroom","target_text":"寝室の窓から山が見えると話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0585L03U04","expect":{"seed_number":585,"lego_index":3,"known_text":"from the bedroom window the mountains are visible","target_text":"寝室の窓から山が見えると思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0585L03U05","expect":{"seed_number":585,"lego_index":3,"known_text":"every morning she can see the mountains","target_text":"毎朝山が見えると言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0586L01B01","expect":{"seed_number":586,"lego_index":1,"known_text":"boiled egg","target_text":"ゆで卵から"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0586L01U01","expect":{"seed_number":586,"lego_index":1,"known_text":"boiled eggs are good","target_text":"ゆで卵がいいと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0586L01U02","expect":{"seed_number":586,"lego_index":1,"known_text":"she likes boiled eggs","target_text":"ゆで卵が好きだと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0586L01U03","expect":{"seed_number":586,"lego_index":1,"known_text":"she wants some boiled eggs","target_text":"ゆで卵がほしいと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0586L01U04","expect":{"seed_number":586,"lego_index":1,"known_text":"boiled eggs are healthy","target_text":"ゆで卵はいいと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0586L01U05","expect":{"seed_number":586,"lego_index":1,"known_text":"she has a boiled egg every morning","target_text":"毎朝ゆで卵があると言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0586L02B01","expect":{"seed_number":586,"lego_index":2,"known_text":"twenty","target_text":"二十個から"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0586L02B02","expect":{"seed_number":586,"lego_index":2,"known_text":"twenty of them","target_text":"二十個ことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0586L02U01","expect":{"seed_number":586,"lego_index":2,"known_text":"she wants twenty","target_text":"二十個ほしいと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0586L02U02","expect":{"seed_number":586,"lego_index":2,"known_text":"twenty is a lot","target_text":"二十個は多いと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0586L02U03","expect":{"seed_number":586,"lego_index":2,"known_text":"she has twenty","target_text":"二十個あると思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0586L02U04","expect":{"seed_number":586,"lego_index":2,"known_text":"she needs twenty of them","target_text":"二十個が必要だと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0586L02U05","expect":{"seed_number":586,"lego_index":2,"known_text":"twenty is enough","target_text":"二十個でいいと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0587L01B01","expect":{"seed_number":587,"lego_index":1,"known_text":"supper","target_text":"夕食から"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0587L01B02","expect":{"seed_number":587,"lego_index":1,"known_text":"for supper","target_text":"夕食はことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0587L01U01","expect":{"seed_number":587,"lego_index":1,"known_text":"supper is ready","target_text":"夕食の準備ができてると言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0587L01U02","expect":{"seed_number":587,"lego_index":1,"known_text":"she cooks supper","target_text":"夕食を作ってると話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0587L01U03","expect":{"seed_number":587,"lego_index":1,"known_text":"supper at home","target_text":"夕食は家でと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0587L01U04","expect":{"seed_number":587,"lego_index":1,"known_text":"she likes supper together","target_text":"一緒に夕食がいいと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0587L01U05","expect":{"seed_number":587,"lego_index":1,"known_text":"supper is important","target_text":"夕食は大事だと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0587L02B01","expect":{"seed_number":587,"lego_index":2,"known_text":"was told it was eggs","target_text":"卵って言われてた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0587L02B02","expect":{"seed_number":587,"lego_index":2,"known_text":"was told it was eggs","target_text":"卵って言われてたから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0587L02B03","expect":{"seed_number":587,"lego_index":2,"known_text":"was told eggs for supper","target_text":"夕食は卵って言われてたことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0587L02U01","expect":{"seed_number":587,"lego_index":2,"known_text":"she used to insist that we had eggs for supper","target_text":"夕食は卵って言われてた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0587L02U02","expect":{"seed_number":587,"lego_index":2,"known_text":"she was always told it was eggs","target_text":"卵って言われてたと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0587L02U03","expect":{"seed_number":587,"lego_index":2,"known_text":"she was told every evening it was eggs","target_text":"夕食は卵って言われてたと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0587L02U04","expect":{"seed_number":587,"lego_index":2,"known_text":"she was told it was important to eat eggs","target_text":"卵って言われてたと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0587L02U05","expect":{"seed_number":587,"lego_index":2,"known_text":"she was always being told about eggs","target_text":"卵って言われてたと聞いた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0588L01B01","expect":{"seed_number":588,"lego_index":1,"known_text":"adult","target_text":"大人"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0588L01B02","expect":{"seed_number":588,"lego_index":1,"known_text":"become an adult","target_text":"大人になる"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0588L01U01","expect":{"seed_number":588,"lego_index":1,"known_text":"I want to become an adult","target_text":"大人になりたい。"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0588L01U03","expect":{"seed_number":588,"lego_index":1,"known_text":"the adult said something","target_text":"大人が何か言ってた。"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0588L01U04","expect":{"seed_number":588,"lego_index":1,"known_text":"she spoke with an adult","target_text":"大人と話した。"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0588L01U05","expect":{"seed_number":588,"lego_index":1,"known_text":"she thinks he's an adult","target_text":"大人だと思う。"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0588L02B01","expect":{"seed_number":588,"lego_index":2,"known_text":"wanted to leave home","target_text":"家を出たかった"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0588L02B02","expect":{"seed_number":588,"lego_index":2,"known_text":"wanted to leave home soon","target_text":"もう家を出たかった"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0588L02B03","expect":{"seed_number":588,"lego_index":2,"known_text":"wanted to leave home eventually","target_text":"いつか家を出たかった"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0588L02U01","expect":{"seed_number":588,"lego_index":2,"known_text":"I wanted to grow up and leave home","target_text":"大人になって家を出たかった。"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0588L02U02","expect":{"seed_number":588,"lego_index":2,"known_text":"she wanted to leave home too","target_text":"彼女も家を出たかった。"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0588L02U03","expect":{"seed_number":588,"lego_index":2,"known_text":"she wanted to leave home before","target_text":"前に家を出たかった。"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0588L02U04","expect":{"seed_number":588,"lego_index":2,"known_text":"I think I wanted to leave home","target_text":"家を出たかったと思う。"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0588L02U05","expect":{"seed_number":588,"lego_index":2,"known_text":"she wanted to leave home when she was ready","target_text":"準備できたら家を出たかった。"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0588L02U06","expect":{"seed_number":588,"lego_index":2,"known_text":"so I wanted to grow up and leave home","target_text":"大人になって家を出たかった。"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0589L03B01","expect":{"seed_number":589,"lego_index":3,"known_text":"the last bus","target_text":"最後のバス"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0589L03B02","expect":{"seed_number":589,"lego_index":3,"known_text":"the last bus","target_text":"最後のバスから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0589L03B03","expect":{"seed_number":589,"lego_index":3,"known_text":"she saw the last bus","target_text":"最後のバスを見たことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0589L03U01","expect":{"seed_number":589,"lego_index":3,"known_text":"the last bus had just been there","target_text":"最後のバスがあったと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0589L03U02","expect":{"seed_number":589,"lego_index":3,"known_text":"the last bus was visible","target_text":"最後のバスが見えると言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0589L03U03","expect":{"seed_number":589,"lego_index":3,"known_text":"she told me about the last bus","target_text":"最後のバスのことを言ってたと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0589L03U04","expect":{"seed_number":589,"lego_index":3,"known_text":"the last bus was still running","target_text":"最後のバスが来てると言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0589L03U05","expect":{"seed_number":589,"lego_index":3,"known_text":"she pointed out the last bus","target_text":"最後のバスを教えてくれたと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0589L04B01","expect":{"seed_number":589,"lego_index":4,"known_text":"saw it and told me","target_text":"を見たって言った"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0589L04B02","expect":{"seed_number":589,"lego_index":4,"known_text":"said she saw","target_text":"を見たって言ったから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0589L04B03","expect":{"seed_number":589,"lego_index":4,"known_text":"she told me she saw the last bus","target_text":"最後のバスを見たって言ったことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0589L04U01","expect":{"seed_number":589,"lego_index":4,"known_text":"she told me she'd just seen the last bus","target_text":"彼女は最後のバスを見たって言った"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0589L04U02","expect":{"seed_number":589,"lego_index":4,"known_text":"she told me she saw it","target_text":"を見たって言ったと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0589L04U03","expect":{"seed_number":589,"lego_index":4,"known_text":"she told me she'd just seen it","target_text":"最後のバスを見たって言ったと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0589L04U04","expect":{"seed_number":589,"lego_index":4,"known_text":"she mentioned she'd seen the last bus","target_text":"最後のバスを見たって言ったと聞いた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0589L04U05","expect":{"seed_number":589,"lego_index":4,"known_text":"she said she'd just seen the last bus","target_text":"最後のバスを見たって言ったと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0590L01B01","expect":{"seed_number":590,"lego_index":1,"known_text":"station","target_text":"駅から"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0590L01U01","expect":{"seed_number":590,"lego_index":1,"known_text":"she's at the station","target_text":"駅にいると言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0590L01U02","expect":{"seed_number":590,"lego_index":1,"known_text":"she went to the station","target_text":"駅に行ったと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0590L01U03","expect":{"seed_number":590,"lego_index":1,"known_text":"the station is important","target_text":"駅が大事だと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0590L01U04","expect":{"seed_number":590,"lego_index":1,"known_text":"she waited at the station","target_text":"駅で待ってたと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0590L01U05","expect":{"seed_number":590,"lego_index":1,"known_text":"she found the station","target_text":"駅を見つけたと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0590L01B03","expect":{"seed_number":590,"lego_index":1,"known_text":"go to the station","target_text":"駅に行く"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0590L01B04","expect":{"seed_number":590,"lego_index":1,"known_text":"wait at the station","target_text":"駅で待つ"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0590L02B01","expect":{"seed_number":590,"lego_index":2,"known_text":"leaving the station","target_text":"駅を出る"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0590L02B02","expect":{"seed_number":590,"lego_index":2,"known_text":"leaving the station","target_text":"駅を出るから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0590L02B03","expect":{"seed_number":590,"lego_index":2,"known_text":"the bus leaving the station","target_text":"駅を出る最後のバスことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0590L02U01","expect":{"seed_number":590,"lego_index":2,"known_text":"the bus was leaving the station","target_text":"駅を出るバスだと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0590L02U02","expect":{"seed_number":590,"lego_index":2,"known_text":"the last bus was leaving the station","target_text":"駅を出る最後のバスだと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0590L02U03","expect":{"seed_number":590,"lego_index":2,"known_text":"she saw the bus at the exit","target_text":"駅を出るところで見たと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0590L02U04","expect":{"seed_number":590,"lego_index":2,"known_text":"she watched the bus leave","target_text":"駅を出るバスを見てたと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0590L02U05","expect":{"seed_number":590,"lego_index":2,"known_text":"the bus was just leaving the station","target_text":"駅を出るところだったと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0590L03B01","expect":{"seed_number":590,"lego_index":3,"known_text":"saw the last bus leaving","target_text":"最後のバスを見た"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0590L03B02","expect":{"seed_number":590,"lego_index":3,"known_text":"saw the last bus","target_text":"最後のバスを見たから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0590L03B03","expect":{"seed_number":590,"lego_index":3,"known_text":"saw the last bus leaving the station","target_text":"駅を出る最後のバスを見たことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0590L03U01","expect":{"seed_number":590,"lego_index":3,"known_text":"I saw the last bus leaving the station","target_text":"駅を出る最後のバスを見た"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0590L03U02","expect":{"seed_number":590,"lego_index":3,"known_text":"she saw the last bus leaving the station","target_text":"駅を出る最後のバスを見たと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0590L03U03","expect":{"seed_number":590,"lego_index":3,"known_text":"I saw the last bus leave","target_text":"最後のバスを見た"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0590L03U04","expect":{"seed_number":590,"lego_index":3,"known_text":"she just saw the last bus","target_text":"最後のバスを見たと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0590L03U05","expect":{"seed_number":590,"lego_index":3,"known_text":"she saw the last bus from the platform","target_text":"最後のバスを見たと聞いた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0591L02B01","expect":{"seed_number":591,"lego_index":2,"known_text":"followed me","target_text":"ついて来た"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0591L02B02","expect":{"seed_number":591,"lego_index":2,"known_text":"followed me","target_text":"ついて来たから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0591L02B03","expect":{"seed_number":591,"lego_index":2,"known_text":"followed me to the shops","target_text":"店までついて来たことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0591L02U01","expect":{"seed_number":591,"lego_index":2,"known_text":"she followed me down to the shops","target_text":"店までついて来た"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0591L02U02","expect":{"seed_number":591,"lego_index":2,"known_text":"she followed me everywhere","target_text":"ついて来たと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0591L02U03","expect":{"seed_number":591,"lego_index":2,"known_text":"she came along to the shops","target_text":"店までついて来たと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0591L02U04","expect":{"seed_number":591,"lego_index":2,"known_text":"she followed me there","target_text":"ついて来たと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0591L02U05","expect":{"seed_number":591,"lego_index":2,"known_text":"she followed me to the station","target_text":"駅までついて来たと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0591L02B04","expect":{"seed_number":591,"lego_index":2,"known_text":"people who followed me","target_text":"ついて来た人"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0592L01B01","expect":{"seed_number":592,"lego_index":1,"known_text":"main road","target_text":"大通りから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0592L01B02","expect":{"seed_number":592,"lego_index":1,"known_text":"along the main road","target_text":"大通りことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0592L01U01","expect":{"seed_number":592,"lego_index":1,"known_text":"the main road is busy","target_text":"大通りは人が多いと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0592L01U02","expect":{"seed_number":592,"lego_index":1,"known_text":"the main road is important","target_text":"大通りが大事だと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0592L01U03","expect":{"seed_number":592,"lego_index":1,"known_text":"she lives near the main road","target_text":"大通りの近くにいると思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0592L01U04","expect":{"seed_number":592,"lego_index":1,"known_text":"the main road is nearby","target_text":"大通りがそこにあると言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0592L01U05","expect":{"seed_number":592,"lego_index":1,"known_text":"the main road has many shops","target_text":"大通りに店が多いと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0592L01U06","expect":{"seed_number":592,"lego_index":1,"known_text":"I'm not going to wait on the main road","target_text":"大通りで待たない"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0592L01U07","expect":{"seed_number":592,"lego_index":1,"known_text":"he might be on the main road","target_text":"彼は大通りにいるかもしれない"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0592L01U08","expect":{"seed_number":592,"lego_index":1,"known_text":"turn left at the main road","target_text":"大通りで左に曲がって"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0592L01U09","expect":{"seed_number":592,"lego_index":1,"known_text":"what's the main road like?","target_text":"大通りはどんな感じ"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0592L02B01","expect":{"seed_number":592,"lego_index":2,"known_text":"along","target_text":"大通りを通って"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0592L02B02","expect":{"seed_number":592,"lego_index":2,"known_text":"along the main road","target_text":"大通りを通ってから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0592L02B03","expect":{"seed_number":592,"lego_index":2,"known_text":"walking along the main road","target_text":"大通りを通っていくことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0592L02U01","expect":{"seed_number":592,"lego_index":2,"known_text":"and along the main road","target_text":"大通りを通って"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0592L02U02","expect":{"seed_number":592,"lego_index":2,"known_text":"she followed me along the main road","target_text":"大通りを通ってついて来たと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0592L02U03","expect":{"seed_number":592,"lego_index":2,"known_text":"they went along the main road","target_text":"大通りを通ってと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0592L02U04","expect":{"seed_number":592,"lego_index":2,"known_text":"she walked along the main road and found the shop","target_text":"大通りを通って店を見つけたと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0592L02U05","expect":{"seed_number":592,"lego_index":2,"known_text":"she walked along the main road","target_text":"大通りを通っていくと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0592L02U06","expect":{"seed_number":592,"lego_index":2,"known_text":"you should go along the main road","target_text":"大通りを通って行ったほうがいい"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0592L02U07","expect":{"seed_number":592,"lego_index":2,"known_text":"it's better to go along the main road","target_text":"大通りを通って行くほうがいい"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0593L01U01","expect":{"seed_number":593,"lego_index":1,"known_text":"however much she tried","target_text":"どんなにやっても難しいと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0593L01U02","expect":{"seed_number":593,"lego_index":1,"known_text":"no matter how much","target_text":"どんなにと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0593L01U03","expect":{"seed_number":593,"lego_index":1,"known_text":"however much she does it","target_text":"どんなにやっても無理だと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0593L01U04","expect":{"seed_number":593,"lego_index":1,"known_text":"however long it takes","target_text":"どんなに時間がかかってもと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0593L01U05","expect":{"seed_number":593,"lego_index":1,"known_text":"however hard she tries","target_text":"どんなにやっても難しいと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0593L02B01","expect":{"seed_number":593,"lego_index":2,"known_text":"even if I argued","target_text":"言い争っても"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0593L02B02","expect":{"seed_number":593,"lego_index":2,"known_text":"even if argued","target_text":"言い争ってもから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0593L02B03","expect":{"seed_number":593,"lego_index":2,"known_text":"even if argued a lot","target_text":"どんなに言い争ってもことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0593L02U01","expect":{"seed_number":593,"lego_index":2,"known_text":"however much I argued","target_text":"どんなに言い争っても無理だと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0593L02U02","expect":{"seed_number":593,"lego_index":2,"known_text":"even if she argues","target_text":"言い争っても無理だと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0593L02U03","expect":{"seed_number":593,"lego_index":2,"known_text":"even though she argued","target_text":"言い争っても無理だったと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0593L02U04","expect":{"seed_number":593,"lego_index":2,"known_text":"however much she argued","target_text":"どんなに言い争ってもと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0593L02U05","expect":{"seed_number":593,"lego_index":2,"known_text":"she argued but it didn't help","target_text":"言い争っても無理だったと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0593L03B01","expect":{"seed_number":593,"lego_index":3,"known_text":"had to share","target_text":"分けなきゃいけなかった"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0593L03B02","expect":{"seed_number":593,"lego_index":3,"known_text":"had to share","target_text":"分けなきゃいけなかったから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0593L03B03","expect":{"seed_number":593,"lego_index":3,"known_text":"still had to share","target_text":"分けなきゃいけなかったことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0593L03U01","expect":{"seed_number":593,"lego_index":3,"known_text":"however much I argued I still had to share","target_text":"どんなに言い争っても、分けなきゃいけなかった"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0593L03U02","expect":{"seed_number":593,"lego_index":3,"known_text":"she had to share","target_text":"分けなきゃいけなかったと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0593L03U03","expect":{"seed_number":593,"lego_index":3,"known_text":"even if she argued she had to share","target_text":"言い争っても分けなきゃいけなかったと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0593L03U04","expect":{"seed_number":593,"lego_index":3,"known_text":"she still had to share in the end","target_text":"分けなきゃいけなかったと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0593L03U05","expect":{"seed_number":593,"lego_index":3,"known_text":"however much she argued she still had to share","target_text":"どんなに言い争っても、分けなきゃいけなかったと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0594L02B01","expect":{"seed_number":594,"lego_index":2,"known_text":"toy","target_text":"おもちゃから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0594L02B02","expect":{"seed_number":594,"lego_index":2,"known_text":"my toys","target_text":"おもちゃをことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0594L02U01","expect":{"seed_number":594,"lego_index":2,"known_text":"the toy was fun","target_text":"おもちゃが楽しかったと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0594L02U02","expect":{"seed_number":594,"lego_index":2,"known_text":"she loves toys","target_text":"おもちゃが好きだと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0594L02U03","expect":{"seed_number":594,"lego_index":2,"known_text":"the toy is mine","target_text":"おもちゃは自分のだと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0594L02U04","expect":{"seed_number":594,"lego_index":2,"known_text":"she had many toys","target_text":"おもちゃがたくさんあったと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0594L02U05","expect":{"seed_number":594,"lego_index":2,"known_text":"the toy was special","target_text":"おもちゃが特別だと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0595L02B01","expect":{"seed_number":595,"lego_index":2,"known_text":"want to lie down","target_text":"横になりたい"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0595L02B02","expect":{"seed_number":595,"lego_index":2,"known_text":"want to lie down","target_text":"横になりたいから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0595L02B03","expect":{"seed_number":595,"lego_index":2,"known_text":"want to lie down in the garden","target_text":"庭で横になりたいことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0595L02U01","expect":{"seed_number":595,"lego_index":2,"known_text":"I need to lie down in the garden","target_text":"庭で横になりたい"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0595L02U02","expect":{"seed_number":595,"lego_index":2,"known_text":"she wants to lie down","target_text":"横になりたいと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0595L02U03","expect":{"seed_number":595,"lego_index":2,"known_text":"she wants to lie down in the garden","target_text":"庭で横になりたいと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0595L02U04","expect":{"seed_number":595,"lego_index":2,"known_text":"she needs to lie down","target_text":"横になりたいと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0595L02U05","expect":{"seed_number":595,"lego_index":2,"known_text":"she wants to lie down somewhere quiet","target_text":"庭で横になりたいと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0595L02U06","expect":{"seed_number":595,"lego_index":2,"known_text":"I want to lie down until everybody is ready","target_text":"みんなが準備できるまで横になりたい"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0595L02U07","expect":{"seed_number":595,"lego_index":2,"known_text":"I want to lie down somewhere warmer","target_text":"もっと暖かい場所で横になりたい"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0595L02B04","expect":{"seed_number":595,"lego_index":2,"known_text":"people who want to lie down","target_text":"横になりたい人"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0596L01B01","expect":{"seed_number":596,"lego_index":1,"known_text":"eyes","target_text":"目から"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0596L01U01","expect":{"seed_number":596,"lego_index":1,"known_text":"her eyes are tired","target_text":"目が疲れてると思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0596L01U02","expect":{"seed_number":596,"lego_index":1,"known_text":"she has beautiful eyes","target_text":"目がきれいだと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0596L01U03","expect":{"seed_number":596,"lego_index":1,"known_text":"she has big eyes","target_text":"目が大きいと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0596L01U04","expect":{"seed_number":596,"lego_index":1,"known_text":"she opened her eyes","target_text":"目を開けたと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0596L01U05","expect":{"seed_number":596,"lego_index":1,"known_text":"her eyes hurt","target_text":"目が痛いと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0596L01U06","expect":{"seed_number":596,"lego_index":1,"known_text":"I can't open my eyes","target_text":"目を開けられない"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0596L02B01","expect":{"seed_number":596,"lego_index":2,"known_text":"want to close eyes for a while","target_text":"少し目を閉じたい"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0596L02B02","expect":{"seed_number":596,"lego_index":2,"known_text":"want to close eyes for a while","target_text":"少し目を閉じたいから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0596L02B03","expect":{"seed_number":596,"lego_index":2,"known_text":"need to close eyes","target_text":"少し目を閉じたいことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0596L02U01","expect":{"seed_number":596,"lego_index":2,"known_text":"and I need to close my eyes for a while","target_text":"少し目を閉じたい"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0596L02U02","expect":{"seed_number":596,"lego_index":2,"known_text":"she needs to close her eyes for a while","target_text":"少し目を閉じたいと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0596L02U03","expect":{"seed_number":596,"lego_index":2,"known_text":"she wants to close her eyes for a bit","target_text":"少し目を閉じたいと話してた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0596L02U04","expect":{"seed_number":596,"lego_index":2,"known_text":"she said she wants to close her eyes","target_text":"少し目を閉じたいと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0596L02U05","expect":{"seed_number":596,"lego_index":2,"known_text":"she wants to close her eyes here","target_text":"ここで少し目を閉じたいと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0597L01B01","expect":{"seed_number":597,"lego_index":1,"known_text":"already","target_text":"もうから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0597L01B02","expect":{"seed_number":597,"lego_index":1,"known_text":"already done","target_text":"もうことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0597L01U01","expect":{"seed_number":597,"lego_index":1,"known_text":"she's already tired","target_text":"もう疲れてると言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0597L01U02","expect":{"seed_number":597,"lego_index":1,"known_text":"she's already here","target_text":"もうここにいると思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0597L01U03","expect":{"seed_number":597,"lego_index":1,"known_text":"she already knows","target_text":"もう知ってると言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0597L01U04","expect":{"seed_number":597,"lego_index":1,"known_text":"she's already gone home","target_text":"もう家に帰ったと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0597L01U05","expect":{"seed_number":597,"lego_index":1,"known_text":"she already said that","target_text":"もうそれを言ったと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0597L01B03","expect":{"seed_number":597,"lego_index":1,"known_text":"already going to be late","target_text":"もう遅れそう"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0597L01U06","expect":{"seed_number":597,"lego_index":1,"known_text":"he might have already heard","target_text":"もう聞いたかもしれない"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0597L01U07","expect":{"seed_number":597,"lego_index":1,"known_text":"I'm not sure if he's already heard","target_text":"もう聞いたかどうか分からない"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0597L02B01","expect":{"seed_number":597,"lego_index":2,"known_text":"a hundred times","target_text":"百回はから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0597L02B02","expect":{"seed_number":597,"lego_index":2,"known_text":"done a hundred times","target_text":"百回はことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0597L02U01","expect":{"seed_number":597,"lego_index":2,"known_text":"she's heard it a hundred times","target_text":"百回は聞いたと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0597L02U02","expect":{"seed_number":597,"lego_index":2,"known_text":"she's tried it a hundred times","target_text":"百回は試したと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0597L02U03","expect":{"seed_number":597,"lego_index":2,"known_text":"she's said that a hundred times","target_text":"百回はそれを言ったと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0597L02U04","expect":{"seed_number":597,"lego_index":2,"known_text":"she's done it a hundred times","target_text":"百回はやったと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0597L02U05","expect":{"seed_number":597,"lego_index":2,"known_text":"she's already tried it a hundred times","target_text":"もう百回は試したと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0597L03B01","expect":{"seed_number":597,"lego_index":3,"known_text":"think that he heard","target_text":"聞いたと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0597L03B02","expect":{"seed_number":597,"lego_index":3,"known_text":"heard and think","target_text":"聞いたと思うから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0597L03B03","expect":{"seed_number":597,"lego_index":3,"known_text":"think he heard","target_text":"聞いたと思うことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0597L03U01","expect":{"seed_number":597,"lego_index":3,"known_text":"I suspect that he's heard a hundred stories about it","target_text":"もう百回は聞いたと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0597L03U02","expect":{"seed_number":597,"lego_index":3,"known_text":"she thinks she heard it a hundred times","target_text":"百回は聞いたと思うと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0597L03U03","expect":{"seed_number":597,"lego_index":3,"known_text":"I think he heard it already","target_text":"もう聞いたと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0597L03U04","expect":{"seed_number":597,"lego_index":3,"known_text":"she thinks he heard it","target_text":"聞いたと思うと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0597L03U05","expect":{"seed_number":597,"lego_index":3,"known_text":"I think he already heard it somewhere","target_text":"どこかでもう聞いたと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0598L01B01","expect":{"seed_number":598,"lego_index":1,"known_text":"a thousand times","target_text":"千回はから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0598L01B02","expect":{"seed_number":598,"lego_index":1,"known_text":"done a thousand times","target_text":"千回はことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0598L01U02","expect":{"seed_number":598,"lego_index":1,"known_text":"she's tried it a thousand times","target_text":"千回は試したと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0598L01U03","expect":{"seed_number":598,"lego_index":1,"known_text":"he's said that a thousand times","target_text":"千回はそれを言ったと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0598L01U04","expect":{"seed_number":598,"lego_index":1,"known_text":"she's already done it a thousand times","target_text":"もう千回はやったと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0598L01U05","expect":{"seed_number":598,"lego_index":1,"known_text":"he's been there a thousand times","target_text":"千回はそこに行ったと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0598L01B03","expect":{"seed_number":598,"lego_index":1,"known_text":"tried a thousand times","target_text":"千回は試した"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0598L01U06","expect":{"seed_number":598,"lego_index":1,"known_text":"she said she has already done it a thousand times","target_text":"もう千回はやったと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0598L02B01","expect":{"seed_number":598,"lego_index":2,"known_text":"he's heard a thousand times","target_text":"千回は聞いた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0598L02B02","expect":{"seed_number":598,"lego_index":2,"known_text":"he's heard a thousand times","target_text":"千回は聞いたから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0598L02B03","expect":{"seed_number":598,"lego_index":2,"known_text":"heard it a thousand times","target_text":"千回は聞いたことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0598L02U01","expect":{"seed_number":598,"lego_index":2,"known_text":"he's heard a thousand stories about what they were doing","target_text":"千回は聞いた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0598L02U02","expect":{"seed_number":598,"lego_index":2,"known_text":"he's already heard it a thousand times","target_text":"もう千回は聞いたと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0598L02U03","expect":{"seed_number":598,"lego_index":2,"known_text":"she's heard that a thousand times","target_text":"千回は聞いたと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0598L02U04","expect":{"seed_number":598,"lego_index":2,"known_text":"he heard it a thousand times over there","target_text":"あそこで千回は聞いたと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0598L02U05","expect":{"seed_number":598,"lego_index":2,"known_text":"she's heard it a thousand times somewhere","target_text":"どこかで千回は聞いたと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0599L01B01","expect":{"seed_number":599,"lego_index":1,"known_text":"if you'd told me","target_text":"言ってくれてたら"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0599L01B02","expect":{"seed_number":599,"lego_index":1,"known_text":"if you'd told me","target_text":"言ってくれてたらから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0599L01B03","expect":{"seed_number":599,"lego_index":1,"known_text":"told me first","target_text":"言ってくれてたらことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0599L01U01","expect":{"seed_number":599,"lego_index":1,"known_text":"if you'd told me I would have come","target_text":"言ってくれてたら来たのに"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0599L01U02","expect":{"seed_number":599,"lego_index":1,"known_text":"if you'd told me I would have helped","target_text":"言ってくれてたら助けたのに"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0599L01U03","expect":{"seed_number":599,"lego_index":1,"known_text":"if you'd told me earlier I would have waited","target_text":"言ってくれてたら待ったのに"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0599L01U04","expect":{"seed_number":599,"lego_index":1,"known_text":"if he'd told me I would have stayed","target_text":"言ってくれてたらいたのに"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0599L01U05","expect":{"seed_number":599,"lego_index":1,"known_text":"she said if I'd told her she would have come","target_text":"言ってくれてたら来たのにと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0599L02B01","expect":{"seed_number":599,"lego_index":2,"known_text":"would have driven","target_text":"運転したのに"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0599L02U01","expect":{"seed_number":599,"lego_index":2,"known_text":"I'd have been happy to drive if you'd told me","target_text":"言ってくれてたら運転したのに"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0599L02U02","expect":{"seed_number":599,"lego_index":2,"known_text":"she would have driven if you'd told her","target_text":"言ってくれてたら運転したのにと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0599L02U03","expect":{"seed_number":599,"lego_index":2,"known_text":"he would have driven but you didn't tell him","target_text":"言ってくれてたら運転したのにと思う"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0599L02U04","expect":{"seed_number":599,"lego_index":2,"known_text":"she said she would have driven","target_text":"運転したのにと言ってた"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0599L02U05","expect":{"seed_number":599,"lego_index":2,"known_text":"I would have driven if I'd known","target_text":"知ってたら運転したのに"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0600L01B01","expect":{"seed_number":600,"lego_index":1,"known_text":"if you'd told me that","target_text":"って言ってくれてたら"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0600L01B02","expect":{"seed_number":600,"lego_index":1,"known_text":"if you'd told me that","target_text":"って言ってくれてたらから"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0600L01B03","expect":{"seed_number":600,"lego_index":1,"known_text":"said that to me","target_text":"って言ってくれてたらことがある"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0600L01U01","expect":{"seed_number":600,"lego_index":1,"known_text":"I'd have driven if you'd told me how tired you were","target_text":"疲れてるって言ってくれてたら運転した"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0600L01U02","expect":{"seed_number":600,"lego_index":1,"known_text":"if you'd told me you were coming I would have waited","target_text":"来るって言ってくれてたら待ったのに"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0600L01U03","expect":{"seed_number":600,"lego_index":1,"known_text":"if he'd told me he was tired I would have helped","target_text":"疲れてるって言ってくれてたら助けたのに"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0600L01U04","expect":{"seed_number":600,"lego_index":1,"known_text":"if she'd told me that I would have come","target_text":"そうって言ってくれてたら来たのに"}}
+{"op":"phrase.delete","phrase_id":"jpn_for_eng:S0600L01U05","expect":{"seed_number":600,"lego_index":1,"known_text":"he said if she'd told him that he would have stayed","target_text":"そうって言ってくれてたらいたのにと言ってた"}}
+{"op":"seed.update","seed_number":551,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":552,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":554,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":555,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":556,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":557,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":558,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":559,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":560,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":561,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":562,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":563,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":564,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":565,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":566,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":567,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":568,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":569,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":570,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":571,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":572,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":573,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":574,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":575,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":576,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":577,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":578,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":579,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":580,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":581,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":582,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":583,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":584,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":585,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":586,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":587,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":588,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":589,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":590,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":591,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":592,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":593,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":594,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":595,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":596,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":597,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":598,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":599,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":600,"set":{"approved_at":null}}
