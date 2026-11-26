@@ -13,6 +13,18 @@
         <span class="count"><b>{{ flaggedCount }}</b> flagged · {{ total }}</span>
         <button class="pill" @click="exportFlags">Export</button>
       </div>
+      <!-- Whole-course search (Welsh and English, case and accents ignored): the list is windowed, so the browser's own
+           find only sees the rows near the screen. Enter = next, Shift+Enter = previous, Esc clears. -->
+      <div class="bar find" role="search">
+        <input class="findinp" type="search" :value="query" placeholder="Search the whole course" aria-label="Search the whole course"
+               enterkeyhint="search" autocomplete="off" autocapitalize="off" spellcheck="false"
+               @input="onQuery($event.target.value)" @keydown.enter.prevent="step($event.shiftKey ? -1 : 1)" @keydown.esc="onQuery('')" />
+        <span v-if="qTrim" class="hits" aria-live="polite">{{ hits.length ? `${cur + 1} / ${hits.length}` : 'no match' }}</span>
+        <button class="pill nav" :disabled="!hits.length" aria-label="Previous match" @click="step(-1)">‹</button>
+        <button class="pill nav" :disabled="!hits.length" aria-label="Next match" @click="step(1)">›</button>
+      </div>
+      <p v-if="hiddenHits" class="back">{{ hiddenHits }} more {{ hiddenHits === 1 ? 'match is' : 'matches are' }} hidden by Flagged only ·
+        <a href="#" @click.prevent="setFlaggedOnly(false)">show all</a></p>
       <p v-if="msg" class="msg" :class="{ bad: msgBad }">{{ msg }}</p>
       <!-- Shown when a load put the reader back at a remembered row: the row it went to, and the way out to the top. -->
       <p v-if="cameBack" class="back">
@@ -38,16 +50,16 @@
     <!-- Windowed: only the rows near the viewport are in the DOM; the two spacers stand in for the rest. -->
     <div class="list" ref="listEl">
       <div :style="{ height: padTop + 'px' }"></div>
-      <div v-for="r in rendered" :key="r.p.id" class="row" :class="{ flagged: flagOf(r.p).flagged }" :data-k="r.k">
+      <div v-for="r in rendered" :key="r.p.id" class="row" :class="{ flagged: flagOf(r.p).flagged, hit: r.hit, current: r.current }" :data-k="r.k" :data-id="r.p.id">
         <span class="stripe" :class="{ white: r.belt === 0 }" :style="{ background: BELTS[r.belt].color }"></span>
         <div v-if="r.marker" class="mk">{{ legos[r.p.l]?.cy }}</div>
         <div class="line">
           <span class="num">{{ r.p.n }}</span>
           <div class="text">
             <!-- The last word and the flag never part, so the flag cannot wrap onto a line of its own. -->
-            <span class="cy" @click="toggle(r.p.id)">{{ r.head }}<span class="tail">{{ r.tail }}<button class="flag" :class="{ on: flagOf(r.p).flagged }"
+            <span class="cy" @click="toggle(r.p.id)"><template v-for="(s, j) in r.head" :key="'h' + j"><mark v-if="s.hit">{{ s.t }}</mark><template v-else>{{ s.t }}</template></template><span class="tail"><template v-for="(s, j) in r.tail" :key="'t' + j"><mark v-if="s.hit">{{ s.t }}</mark><template v-else>{{ s.t }}</template></template><button class="flag" :class="{ on: flagOf(r.p).flagged }"
               :aria-pressed="flagOf(r.p).flagged" :aria-label="(flagOf(r.p).flagged ? 'Unflag ' : 'Flag ') + r.p.id" @click.stop="flip(r.p)">{{ flagOf(r.p).flagged ? '⚑' : '⚐' }}</button></span></span>
-            <div v-if="showEnglish || open[r.p.id]" class="en" @click="toggle(r.p.id)">{{ r.p.en || '— no English —' }}</div>
+            <div v-if="showEnglish || open[r.p.id] || r.enHit" class="en" @click="toggle(r.p.id)"><template v-if="r.p.en"><template v-for="(s, j) in r.en" :key="'e' + j"><mark v-if="s.hit">{{ s.t }}</mark><template v-else>{{ s.t }}</template></template></template><template v-else>— no English —</template></div>
             <div v-if="flagOf(r.p).flagged || flagOf(r.p).note" class="notewrap">
               <input class="noteinp" type="text" :value="flagOf(r.p).note" maxlength="1000" placeholder="Note (optional)"
                      enterkeyhint="done" @input="onNote(r.p, $event.target.value)" @blur="saveNow(r.p)" @keyup.enter="$event.target.blur()" />
@@ -72,6 +84,7 @@ import { ref, reactive, computed, shallowRef, onMounted, onBeforeUnmount, nextTi
 import { useRoute, useRouter } from 'vue-router'
 import { getApiBaseUrl } from '../../services/api'
 import { BELTS, beltIndex, prefixTops, rowAt, windowRange } from './phraseProofWindow.js'
+import { fold, findHits, markParts, splitParts, firstHitFrom } from './proofSearch.js'
 
 const COURSES = [
   { code: 'cym_nv2_for_eng', label: 'North' },
@@ -109,6 +122,38 @@ const flaggedCount = computed(() => Object.values(flags).filter((f) => f.flagged
 
 function say(text, bad = false) { msg.value = text; msgBad.value = bad }
 
+// ---- whole-course search -----------------------------------------------------------------------------------------
+// Every phrase's Welsh and English, folded once per load; a query is matched against all of them, not the DOM.
+const folded = computed(() => phrases.value.map((p) => [fold(p.cy), fold(p.en)]))
+const foldedById = computed(() => new Map(phrases.value.map((p, i) => [p.id, folded.value[i]])))
+const query = ref('')
+const qTrim = ref('')              // the query actually searched (debounced)
+const cur = ref(-1)                // index into `hits` of the match on screen
+const hits = computed(() => findHits(shown.value, qTrim.value, (p) => foldedById.value.get(p.id) || []))
+const hitSet = computed(() => new Set(hits.value))
+const hiddenHits = computed(() => flaggedOnly.value && qTrim.value ? findHits(phrases.value, qTrim.value, (p) => foldedById.value.get(p.id) || []).length - hits.value.length : 0)
+let qTimer = 0
+function onQuery(v) {
+  query.value = v
+  clearTimeout(qTimer)
+  qTimer = setTimeout(() => { qTrim.value = v.trim(); startSearch() }, v.trim() ? 200 : 0)
+}
+// A new query starts at the first match at or after the row being read, as a browser's find does.
+function startSearch(go = true) {
+  const at = shown.value.length ? rowAt(tops.value, viewTop.value + coveredTop()) : 0
+  cur.value = firstHitFrom(hits.value, at)
+  if (go && cur.value >= 0) nextTick(() => scrollToRow(hits.value[cur.value]))
+}
+function step(d) {
+  const n = hits.value.length
+  if (!n) return
+  cur.value = cur.value < 0 ? (d > 0 ? 0 : n - 1) : (cur.value + d + n) % n
+  scrollToRow(hits.value[cur.value])
+}
+// Flagged only changes the list under the matches: start again from where the reader is. (A load does the same after
+// it has put the reader back at their place, without moving them: see load().)
+watch(flaggedOnly, () => { if (qTrim.value) nextTick(() => startSearch()) })
+
 // ---- windowing ----------------------------------------------------------------------------------------------------
 // A row's height is its MEASURED height once it has been rendered at this width, else an estimate from its text length.
 // The measurement is keyed by id + whether the row carries a LEGO marker (a filter can change that).
@@ -145,8 +190,13 @@ const rendered = computed(() => {
   const out = []
   for (let i = a; i < b; i++) {
     const marker = markerAt(list, i)
-    const cut = list[i].cy.lastIndexOf(' ') + 1
-    out.push({ p: list[i], marker, k: keyOf2(list[i], marker), belt: beltIndex(list[i].n, total.value), head: list[i].cy.slice(0, cut), tail: list[i].cy.slice(cut) })
+    const p = list[i]
+    const cut = p.cy.lastIndexOf(' ') + 1
+    const hit = hitSet.value.has(i)
+    const [head, tail] = splitParts(hit ? markParts(p.cy, qTrim.value) : [{ t: p.cy, hit: false }], cut)
+    const en = hit ? markParts(p.en || '', qTrim.value) : [{ t: p.en || '', hit: false }]
+    out.push({ p, marker, k: keyOf2(p, marker), belt: beltIndex(p.n, total.value), head, tail, en,
+      hit, current: hit && hits.value[cur.value] === i, enHit: en.some((s) => s.hit) })
   }
   return out
 })
@@ -223,9 +273,17 @@ function rememberPlace() {
 }
 // Closing the tab or switching app inside the 400 ms must not lose the last scroll.
 function flushPlace() { clearTimeout(placeTimer); readView(); savePlace(course.value) }
+// Rows far from the screen hold estimated heights, so a long jump can land a little off once the rows around it are
+// measured; a few more frames put the row right under the header.
+let settle = 0
 function scrollToRow(i) {
-  window.scrollTo(0, i > 0 ? listTop() + tops.value[i] - coveredTop() : 0)
-  readView()
+  cancelAnimationFrame(settle)
+  const at = () => window.scrollTo(0, i > 0 ? listTop() + tops.value[i] - coveredTop() : 0)
+  at(); readView()
+  if (i <= 0) return
+  let tries = 4
+  const again = () => { at(); readView(); if (--tries > 0) settle = requestAnimationFrame(again) }
+  settle = requestAnimationFrame(again)
 }
 // `announce` (a fresh load) shows the "Back to where you were" line; leaving Flagged only restores quietly.
 async function restorePlace(announce = false) {
@@ -265,7 +323,7 @@ async function load() {
   } catch (e) {
     if (gen === loadGen) loadError.value = `Could not load ${code}: ${e.message}`
   } finally { if (gen === loadGen) loading.value = false }
-  if (gen === loadGen && !loadError.value) { onWindowResize(); await restorePlace(true) }
+  if (gen === loadGen && !loadError.value) { onWindowResize(); await restorePlace(true); if (qTrim.value) startSearch(false) }
 }
 
 function pick(code) {
@@ -278,6 +336,7 @@ function pick(code) {
 }
 function setFlaggedOnly(v) {
   flaggedOnly.value = v
+  if (qTrim.value) return              // a search is on: the watch on flaggedOnly takes the reader to a match instead
   nextTick(() => { if (v) window.scrollTo(0, 0); else restorePlace() })
 }
 // Every row changes height at once, so the old measurements are dropped and the row being read is put back on screen.
@@ -423,6 +482,15 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .back a { color: var(--pp-en); text-decoration: underline; padding: 0.35rem 0; font-variant-numeric: tabular-nums; }
 .back .x { margin-left: auto; border: 0; background: transparent; color: var(--pp-muted); font-size: 1.1rem; line-height: 1; min-width: 36px; min-height: 32px; }
 .note { color: var(--pp-muted); padding: 1rem 0.25rem; }
+.find { flex-wrap: nowrap; }
+.findinp { flex: 1; min-width: 0; font: inherit; font-size: 16px; color: var(--pp-ink); background: #fff; border: 1px solid #94a3b8; border-radius: 8px; padding: 0.3rem 0.55rem; min-height: 36px; }
+.findinp::placeholder { color: #64748b; }
+.hits { font-size: 0.82rem; color: var(--pp-muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.pill.nav { min-width: 40px; font-size: 1.1rem; line-height: 1; padding: 0.3rem 0.6rem; }
+.pill:disabled { opacity: 0.45; cursor: default; }
+/* Matches: the matched letters marked; the match the arrows are on gets a blue edge. #fde68a under #0b1220 is 15.8:1. */
+mark { background: #fde68a; color: inherit; border-radius: 2px; }
+.row.current { box-shadow: inset 0 0 0 2px #1d4ed8; }
 .export-overlay { position: fixed; inset: 0; z-index: 1000; background: rgba(15,23,42,.55); display: flex; align-items: center; justify-content: center; padding: 0.75rem; }
 .export { background: #fff; color: var(--pp-ink); border-radius: 12px; padding: 0.75rem; width: min(900px, 100%); max-height: 100%; display: flex; flex-direction: column; }
 .export textarea { flex: 1; min-height: 50vh; resize: none; width: 100%; font: 0.8rem ui-monospace, monospace; background: #f8fafc; color: var(--pp-ink); border: 1px dashed #94a3b8; border-radius: 8px; padding: 0.5rem; margin-top: 0.5rem; }

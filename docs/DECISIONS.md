@@ -1,3 +1,12 @@
+## 2026-11-26 — Proof pages: whole-course search finds in context, it does not hide the list
+
+/proof/phrases and /proof/legos get a header search box over every row of the course (Welsh and English, case,
+accents and curly apostrophes ignored), with "3 / 47" and ‹ › jumps. Matches are marked in place and the list stays
+whole, rather than shrinking to the matches: a proofreader needs the rows around a hit, and the jump already makes the
+whole course reachable (the browser's own find cannot, because the phrase list is windowed and the LEGO list hides
+taught rows). Matches hidden by Flagged only / the LEGO pills are counted with a "show all" link. Browser-only, no
+server change.
+
 ## 2026-11-26 — Auto-deploy posts a notice only when a service restarted (cs #621, design-sweep row 10)
 
 Popty's channel took 218 auto-deploy notices in 7 days (~31 a day), most of them for deploys that restarted
