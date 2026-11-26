@@ -159,16 +159,19 @@ async function main() {
           }
         } catch (e) { console.log(`  batch ${batchNo}: could not locate the failing op (${e.message})`) }
       }
-      if ((r.status === 409 || r.status === 400) && idx !== null) {
+      // A 404 names one op whose row is not there (cs #338·AL, 26 Nov: jpn 451-500 delete stopped three times on
+      // S0470L02B03, gone live between the 22:00 plan read and the 01:40 delete). For a phrase.delete the target state
+      // (no row) already holds, so it is "already"; any other op on a missing row is set aside as refused. Never forced.
+      if ((r.status === 409 || r.status === 400 || r.status === 404) && idx !== null) {
         const opi = pending[idx], o = ops[opi]
-        let status = r.json.code === 'DRIFT' ? 'drift' : 'refused'
+        let status = r.status === 404 ? (o.op === 'phrase.delete' ? 'already' : 'refused') : r.json.code === 'DRIFT' ? 'drift' : 'refused'
         if (status === 'drift' && o.set && typeof o.set === 'object') {
           // Already applied? Dry-run the op alone, expecting its TARGET values.
           const probe = { ops: [{ ...o, expect: { ...(o.expect || {}), ...o.set } }], apply: false, changeset: { id: header.id, batch: batchNo, probe: true }, ...extras }
           const p = await gov.run(() => post(args, course, probe)).catch(() => ({ status: 0, json: {} }))
           if (p.status === 200 && p.json.ok) status = 'already'
         }
-        record(status, [opi], { batch: batchNo, detail: status === 'already' ? 'live already holds the target' : String(r.json.error || '').slice(0, 400) })
+        record(status, [opi], { batch: batchNo, detail: status === 'already' ? (r.status === 404 ? 'row already gone live' : 'live already holds the target') : String(r.json.error || '').slice(0, 400) })
         console.log(`  batch ${batchNo}: op ${opi} ${status}${status === 'already' ? '' : ` — ${String(r.json.error || '').slice(0, 200)}`}`)
         pending = pending.filter((i) => i !== opi)
         continue

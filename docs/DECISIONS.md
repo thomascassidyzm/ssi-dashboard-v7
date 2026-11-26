@@ -1,3 +1,35 @@
+## 2026-11-26 — popty.app is built on watson-1 and uploaded prebuilt, hourly, only on deployable change (cs #537, amended)
+
+Tom: "popty will have to build locally too - perhaps on a schedule, to not choke the machines". Supersedes the API-build
+step of the entry below and the weekly [release] (popty-weekly-release.timer disabled). `tools/release/prod-deploy.cjs`
+on `popty-prod-deploy.timer` (10-min tick): ships when deployed-changed.cjs says a shipped file changed since the commit
+popty.app serves, at most once per ~hour, sooner on a [hotfix]/[release] subject; `popty-prod-ship-now.service` = manual
+ship-now. Runs in popty-build.slice (CPUQuota 400%, MemoryMax 8G), Nice 19, idle IO; one flock. Vercel build minutes: 0.
+
+## 2026-11-26 — popty.app builds only from the API; a push creates no Vercel deployment (cs #537)
+
+Tom: "259????!!!!! that's too many - it's screwing us". The 7 days to 26 Nov had 264 production deployments: 14 real
+builds (12 [hotfix], 1 [release], ~85 s each) and 250 CANCELED by the cs #948 ignore step (~12 s each). Vercel's docs
+bill an ignore-step cancel as a full deployment, so the gate stopped the build but not the charge. Fix: `vercel.json` `git.deploymentEnabled.main = false` (the project setting
+`gitProviderOptions.createDeployments` was tried first and reverted: it governs GitHub deployment records, not builds)
+and `popty-prod-deploy.timer` → `tools/release/prod-deploy.cjs`, which every 10 min builds the newest
+[release]/[hotfix] main commit through `POST /v13/deployments` unless a production deployment already contains it.
+Better (no queue of skips; hotfix bursts inside a tick fold into one build), simpler (the marker contract workers
+already follow is unchanged), cheaper (250 billed skips a week → 0). Cost: a hotfix goes live up to ~10 min later.
+
+## 2026-11-26 — Round-map refresh: at most once a minute per process (cs #528·AL)
+
+Supabase emailed >80% CPU on ssi-popty. The live activity recorder (5 s samples) put
+`REFRESH MATERIALIZED VIEW CONCURRENTLY course_round_index` first by active time in every
+content-writing hour of 25-26 Nov (63, 116, 50 samples/h at 22Z, 23Z, 01Z; 46% of all active
+samples at 23Z). Cause: the 2 s debounce in services/shared/round-index-refresh.cjs only folds
+bursts, and governor-paced writers write every few seconds, so each write bought a whole-estate
+refresh. Fix: a 60 s floor between refreshes (ROUND_INDEX_MIN_INTERVAL_MS), an armed timer is no
+longer pushed back by later writes, the last write is still always followed by a refresh;
+`immediate` callers are unaffected. Better (less CPU on the learners' DB), simpler (one floor, no
+schema), cheaper (one refresh a minute instead of one per write). Cost: the round map can lag a
+write by up to a minute; the nightly backstop is unchanged.
+
 ## 2026-11-22 — An agreed audio job reserves its size once, then renders 15 at a time (cs #502·AK)
 
 **Tom, 2026-11-22** (r-2026-11-22-once-an-audio-job-is-agreed): "There's no particular reason, once we've agreed to a job, for that job to be running in series. One clip at a time. The size of the job is a fixed thing." The guards stay.
@@ -1825,3 +1857,7 @@ ops/account-routing.json (beside the usage file; `SSI_CLAUDE_ROUTING_FILE` overr
 min(its pct, WEEKLY_FULL_PCT 98) in the spawn pick, the hammer, alternativeAccount, overspill and the bulk pace.
 claude@ is 85 so Aran, who uses it directly on the web, keeps headroom. One number serves the surface allocator and
 Popty; unreadable file = no reserve. A person's one-off call is still never refused (the pick falls back as before).
+
+## 2026-11-26 — the round map is rebuilt only for the edited course (cs #533·AL)
+
+**Tom, 26 Nov,** on hearing each of Kai's edits rebuilt the round map: "ok, that's dumb that each Kai edit does this". **Supersedes, for scoping, the 2026-09-20 option (A)** (whole-view `REFRESH MATERIALIZED VIEW CONCURRENTLY`, coalesced): that choice priced one refresh at 0.8 s and judged scoping unneeded; #528·AL measured the refresh at up to 46% of active backend samples on the live DB in an hour under a paced writer, with Supabase's >80% CPU alarm tripped (d/037ac318). Refresh-by-construction on every lego write path (Tom 2026-09-20, #373·H) is unchanged. **Decision:** `ops/sql/20261126-round-index-table.sql` makes `course_round_index` an ordinary table of the same name, columns, indexes and readers, defined once by the view `course_round_index_source` (copied from the live matview's own text at apply, so learners see no difference), rebuilt per course by `course_round_index_rebuild(course)` as a diff in one transaction (an unchanged course writes nothing; readers never see it empty). anon/authenticated keep read only, as with the matview. `services/shared/round-index-refresh.cjs` coalesces per course with #528·AL's one-a-minute floor now per course, and probes for the function on each run: before the migration it falls back to the whole-view refresh under a process-wide floor, so the code lands first. The nightly (`tools/refresh-round-index.cjs`) rebuilds only drifted courses and measures drift against the source view, which also ends the false nightly drift on the woven cym_sv2/cym_nv2 courses (its window predated #949). A trigger on course_legos stays rejected: it would rebuild inside the writer's transaction on every row. **The live apply is Tom's go** (`sudo -u popty -H tools/migrations-20261126-round-index-table.sh apply`); **undo:** the same with `rollback`, after which the code returns to the whole-view path by itself.
