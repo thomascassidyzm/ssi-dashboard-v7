@@ -1,3 +1,14 @@
+## 2026-11-26 — popty.app builds only from the API; a push creates no Vercel deployment (cs #537)
+
+Tom: "259????!!!!! that's too many - it's screwing us". The 7 days to 26 Nov had 264 production deployments: 14 real
+builds (12 [hotfix], 1 [release], ~85 s each) and 250 CANCELED by the cs #948 ignore step (~12 s each). Vercel's docs
+bill an ignore-step cancel as a full deployment, so the gate stopped the build but not the charge. Fix: `vercel.json` `git.deploymentEnabled.main = false` (the project setting
+`gitProviderOptions.createDeployments` was tried first and reverted: it governs GitHub deployment records, not builds)
+and `popty-prod-deploy.timer` → `tools/release/prod-deploy.cjs`, which every 10 min builds the newest
+[release]/[hotfix] main commit through `POST /v13/deployments` unless a production deployment already contains it.
+Better (no queue of skips; hotfix bursts inside a tick fold into one build), simpler (the marker contract workers
+already follow is unchanged), cheaper (250 billed skips a week → 0). Cost: a hotfix goes live up to ~10 min later.
+
 ## 2026-11-26 — Round-map refresh: at most once a minute per process (cs #528·AL)
 
 Supabase emailed >80% CPU on ssi-popty. The live activity recorder (5 s samples) put

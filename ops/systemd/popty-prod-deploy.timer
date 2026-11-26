@@ -1,0 +1,10 @@
+[Unit]
+Description=Popty production deploy every 10 minutes; a no-op unless a new [release]/[hotfix] commit is on main (cs #537)
+
+[Timer]
+OnCalendar=*:0/10
+Persistent=true
+Unit=popty-prod-deploy.service
+
+[Install]
+WantedBy=timers.target

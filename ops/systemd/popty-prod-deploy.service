@@ -1,0 +1,15 @@
+# cs #537: git pushes no longer create popty.app deployments (vercel.json git.deploymentEnabled.main=false); this builds the newest
+# [release]/[hotfix] commit on main through the API, once. Install alongside popty-weekly-release:
+#   cp ops/systemd/popty-prod-deploy.{service,timer} ~/.config/systemd/user/ && systemctl --user daemon-reload &&
+#   systemctl --user enable --now popty-prod-deploy.timer
+[Unit]
+Description=Popty production deploy: build the newest [release]/[hotfix] main commit on Vercel if not yet built (cs #537)
+
+[Service]
+Type=oneshot
+ExecStartPre=/bin/sh -c '[ -d %h/.cs-builds/popty-prod-deploy/.git ] || git clone -q --depth 300 --branch main https://github.com/thomascassidyzm/ssi-dashboard-v7.git %h/.cs-builds/popty-prod-deploy'
+ExecStartPre=/bin/sh -c 'cd %h/.cs-builds/popty-prod-deploy && git fetch -q --depth 300 origin main && git reset -q --hard origin/main'
+ExecStart=/usr/bin/env node %h/.cs-builds/popty-prod-deploy/tools/release/prod-deploy.cjs
+Slice=cs-workers.slice
+Nice=10
+TimeoutStartSec=5min
