@@ -4,6 +4,9 @@
 // curl -d, #323) and reads the conversation token from a 0600 FILE, never argv (job #801).
 //   node ops/nightly-course-scan/dispatch.cjs worker <night-label> <course> [<course> ...]   the night hand-check worker
 //   node ops/nightly-course-scan/dispatch.cjs notice "<text>"                               a short relay of a skip/failure
+//   node ops/nightly-course-scan/dispatch.cjs judge [--dry-run]       (cs #387·AL) the one-shot Thu 26 Nov BIG/NOT BIG judge;
+//        parent JUDGE_ROOM; retries ~10 min, then exits 1 so its OnFailure unit relays; --dry-run prints the body, sends nothing
+//   node ops/nightly-course-scan/dispatch.cjs judge-notice "<text>"   that relay, into JUDGE_ROOM (never toPerson: Kai is away)
 // Both are dispatched with parent = Kai's room, so the report lands there. Token: $SCAN_TOK_FILE or ~/.cs-long/nightly-course-scan/.tok
 // If the dispatch itself is refused, falls back to waking the arming job (cs-wake-send.cjs) so a failure is never silent.
 const fs = require('fs')
@@ -13,10 +16,12 @@ const http = require('http')
 const { spawnSync } = require('child_process')
 
 const KAI_ROOM = '9ee96cbd-470d-4215-97d1-7f60b527a03f'
+const JUDGE_ROOM = '0771c4ec-a4cd-44f4-b21e-fe0bc5e6a9cc' // Kai's room of 25 Nov (cs #387·AL); KAI_ROOM above is his older one
 const ARMING_JOB = '78276ec4-3d92-4870-b145-de7d178ce00e' // cs #237·AL, which armed this; its token is the one in the file
 const POPTY = '/home/tomcassidy/SSi/ssi-dashboard-v7-clean'
 const D = path.join(os.homedir(), '.cs-long/nightly-course-scan')
 const tok = fs.readFileSync(process.env.SCAN_TOK_FILE || path.join(D, '.tok'), 'utf8').trim()
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
 function post(body) {
   return new Promise((resolve) => {
@@ -54,7 +59,21 @@ async function main() {
   } else if (mode === 'notice') {
     body = { cwd: POPTY, label: 'nightly course scan: notice for Kai', parent: KAI_ROOM, kind: 'check',
       prompt: `Relay this notice from the nightly read-only course scan (cs #237·AL) to Kai in ONE short plain-English paragraph, then stop. Do not fix, re-run or investigate anything beyond reading the log it names, and do not dispatch anything. Notice: ${a.join(' ')}` }
-  } else { console.error('usage: dispatch.cjs worker <night> <course>... | notice "<text>"'); process.exit(2) }
+  } else if (mode === 'judge') {
+    body = { cwd: POPTY, label: 'nightly course scan: BIG / NOT BIG judgement on the three Italian tables (Thu 26 Nov)',
+      prompt: fs.readFileSync(path.join(__dirname, 'judge-brief.md'), 'utf8'), parent: JUDGE_ROOM, kind: 'judgement', model: 'opus',
+      requiresWatson: 'creates the scan CONTINUE flag in ~/.cs-long on watson-1' }
+    if (a.includes('--dry-run')) { console.log(JSON.stringify({ ...body, prompt: body.prompt.slice(0, 400) + ` … [${body.prompt.length} chars]` }, null, 2)); console.log(`x-cs-conv: [redacted, ${tok.length} chars from file]`); return }
+    for (let i = 1; i <= 20; i++) {   // ~10 minutes, then fail loudly through OnFailure (judge-notice)
+      const r = await post(body); console.log(`dispatch judge try ${i}: ${r.code} ${r.text}`)
+      if (r.code >= 200 && r.code < 300) return
+      await sleep(30000)
+    }
+    process.exit(1)
+  } else if (mode === 'judge-notice') {
+    body = { cwd: POPTY, label: 'nightly course scan judge: failure notice', parent: JUDGE_ROOM, kind: 'check',
+      prompt: `Relay this notice from the nightly course scan's Thursday judge timer (cs #387·AL) in ONE short plain-English paragraph into this room, then stop. Kai is away until Mon 30 Nov: do NOT message him (no toPerson, nothing to his inbox), do not fix, re-run or dispatch anything. The scan stays PAUSED (no ~/.cs-long/nightly-course-scan/CONTINUE) until someone judges the Italian tables. Notice: ${a.join(' ')}` }
+  } else { console.error('usage: dispatch.cjs worker <night> <course>... | notice "<text>" | judge [--dry-run] | judge-notice "<text>"'); process.exit(2) }
   const r = await post(body)
   console.log(`dispatch ${mode}: ${r.code} ${r.text}`)
   if (r.code < 200 || r.code >= 300) { fallbackWake(`[nightly course scan] dispatch of ${mode} REFUSED (${r.code}): ${r.text.slice(0, 200)} — ${mode === 'notice' ? a.join(' ') : 'courses ' + a.slice(1).join(' ')}`); process.exit(1) }

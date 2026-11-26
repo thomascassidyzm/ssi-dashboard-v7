@@ -1818,3 +1818,10 @@ Tom, 2026-10-24: re-record the Chinese main flow with the latest Cartesia cast, 
 ## 2026-11-22 — the batch route earns it on measurement; runner gets --batch-route, off by default (cs #516·AK)
 
 **Measured from existing logs (d/d2979cbb), nothing rendered:** a known-side a2c ask costs ~4.9 s end to end (2.87 s before the spend intent, 1.42 s reserve + Cartesia + store, 0.49 s link). The global spend lock is not the binding cost: the same per-call `tts_spend_reserve` lock has carried 121–194 Cartesia reservations a minute (17 Nov, 3 Nov). The binding cost is that the runner works one ask at a time. #502·AK's batch route (one hold, 15 in flight inside Popty) is the sanctioned way to remove that, expected ~3–6x for the Indic round, with the DB governor's amber (1 statement in flight) the likely ceiling. **Not landed on 22 Nov:** a push to main auto-deploys and restarts phase8 and the API within 2 min (tools/deploy/auto-deploy-prod.cjs), and run-day.cjs stops after 5 quick 503s, so landing would have stopped Tom's grant-#184 spa_for_zho run mid-day; and the migration has no runner on main (tools/migrations-20261122-tts-spend-job-holds.sh lands first, HARD RULE 2026-10-14). `run-day.cjs --batch-route` needs `--cap` and `--job "#NNN"`; the serial path stays the default.
+
+## 2026-11-25 — Popty reads the per-account weekly reserve (command-surface #340·AL)
+**Move:** `services/shared/claude-config.cjs` reads `limits.weekly_full_pct` from the surface's
+ops/account-routing.json (beside the usage file; `SSI_CLAUDE_ROUTING_FILE` overrides). An account counts as FULL at
+min(its pct, WEEKLY_FULL_PCT 98) in the spawn pick, the hammer, alternativeAccount, overspill and the bulk pace.
+claude@ is 85 so Aran, who uses it directly on the web, keeps headroom. One number serves the surface allocator and
+Popty; unreadable file = no reserve. A person's one-off call is still never refused (the pick falls back as before).

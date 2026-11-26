@@ -1,0 +1,77 @@
+{
+ "request": {
+  "ops": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0244L01B04",
+    "set": {
+     "known_text": "because I've already learnt a lot"
+    },
+    "expect": {
+     "seed_number": 244,
+     "lego_index": 1,
+     "known_text": "have already learnt a lot from you",
+     "target_text": "もうたくさん学んだから"
+    }
+   }
+  ],
+  "apply": true,
+  "changeset": {
+   "id": "jpn_for_eng-cs346-rewords",
+   "batch": 1
+  }
+ },
+ "status": 200,
+ "response": {
+  "ok": true,
+  "dryRun": false,
+  "applied": true,
+  "event_id": "66b1111b-1b38-4ca9-9cb9-7b93d7b06bc1",
+  "results": [
+   {
+    "index": 0,
+    "op": "phrase.update",
+    "key": {
+     "course_code": "jpn_for_eng",
+     "id": "jpn_for_eng:S0244L01B04"
+    },
+    "before": {
+     "id": "jpn_for_eng:S0244L01B04",
+     "seed_number": 244,
+     "lego_index": 1,
+     "lego_id": null,
+     "known_text": "have already learnt a lot from you",
+     "target_text": "もうたくさん学んだから",
+     "known_audio_id": "c47ca28b-9367-4a2b-bf1f-c8bd4fb5caf2",
+     "target1_audio_id": "561e1bc3-6e51-432f-b382-a6fe69729abd",
+     "target2_audio_id": "a3231b66-d2ef-4c87-9742-8d1efbc5052f",
+     "presentation_audio_id": null
+    },
+    "after": {
+     "id": "jpn_for_eng:S0244L01B04",
+     "seed_number": 244,
+     "lego_index": 1,
+     "lego_id": null,
+     "known_text": "because I've already learnt a lot",
+     "target_text": "もうたくさん学んだから",
+     "known_audio_id": null,
+     "target1_audio_id": "561e1bc3-6e51-432f-b382-a6fe69729abd",
+     "target2_audio_id": "a3231b66-d2ef-4c87-9742-8d1efbc5052f",
+     "presentation_audio_id": null
+    },
+    "changed": true
+   }
+  ],
+  "undo_ops": [
+   {
+    "op": "phrase.update",
+    "phrase_id": "jpn_for_eng:S0244L01B04",
+    "set": {
+     "known_text": "have already learnt a lot from you",
+     "known_audio_id": "c47ca28b-9367-4a2b-bf1f-c8bd4fb5caf2"
+    }
+   }
+  ],
+  "undo_file": "2026-11-25T13-01-38-010Z-66b1111b-1b38-4ca9-9cb9-7b93d7b06bc1.json"
+ }
+}

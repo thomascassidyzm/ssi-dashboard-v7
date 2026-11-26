@@ -1,13 +1,171 @@
 {
  "_readme": "Known positives for the nightly course scan (cs #237·AL, 24 Nov 2026). analyse.cjs --calibrate (via scan.cjs --calibrate) fails unless every one fires on the nightly QA copy. Each was READ BY HAND on the 24 Nov 03:30Z copy (ssi_copy_20261124t033000z). A positive that a later fix removes from the course will start failing: that is the fix working, so replace it with a live one and note the swap here. Recall measured at calibration is in recall_note.",
  "positives": [
-  {"family": "untaught_target", "course": "cym_sv2_for_eng", "id": "S0201L01B01", "match": "nag@S279", "why": "brief's named positive: Welsh 'nag' used before seed 279 teaches it (5 such rows fire); running order counts the seed's own LEGOs up to the phrase's own (Kai, Welsh S117, 24 Nov)"},
-  {"family": "untaught_known", "course": "spa_for_eng", "id": "S0577L01U03", "match": "frustrating@never", "why": "English 'frustrating' in a prompt, no LEGO ever glosses it (hand-read)"},
-  {"family": "gloss_absent", "course": "jpn_for_eng", "id": "S0452L01U04", "match": "say", "why": "#225·AL census class a-EN (d/0fc0fa6f): English does not say what the Japanese says. recall_note: 79 of the census's 307 a-EN rows fire here; the と話して/から rows the English misses are caught as garble_tail"},
-  {"family": "gloss_absent", "course": "spa_for_eng", "id": "S0117L03B08", "match": "talked", "why": "LEGO glossed 'we talked', row says 'we spoke': the gloss the learner was given is not the prompt they hear (hand-read)"},
-  {"family": "garble_tail", "course": "jpn_for_eng", "match": "と話してた", "why": "#225·AL census (d/0fc0fa6f): generator bolted 〜と話してた onto ~278 rows across ~261 LEGOs; also fires on ことがある, the census's other a-DEL family"},
-  {"family": "lego_absent_absent", "course": "por_br_for_eng", "id": "S0074L01B01", "why": "LEGO 'obrigado por', row target is just 'por' (hand-read): P17, the row is a fragment of its LEGO"},
-  {"family": "lego_absent_absent", "course": "por_br_for_eng", "id": "S0117L01U03", "why": "LEGO 'eu estou definitivamente', row drops 'eu' (P17 whole LEGO; was 'near' before the short-word fix — calibrated)"},
-  {"family": "empty_audio", "course": "por_br_for_eng", "id": "S0251L02B01", "why": "known slot null on a played row; por_br's 18 Nov rows are the known silent block (memory: item 4, 10,170 slots)"}
+  {
+   "family": "untaught_target",
+   "course": "cym_sv2_for_eng",
+   "id": "S0201L01B01",
+   "match": "nag@S279",
+   "why": "brief's named positive: Welsh 'nag' used before seed 279 teaches it (5 such rows fire); running order counts the seed's own LEGOs up to the phrase's own (Kai, Welsh S117, 24 Nov)"
+  },
+  {
+   "family": "untaught_known",
+   "course": "spa_for_eng",
+   "id": "S0577L01U03",
+   "match": "frustrating@never",
+   "why": "English 'frustrating' in a prompt, no LEGO ever glosses it (hand-read)"
+  },
+  {
+   "family": "gloss_absent",
+   "course": "jpn_for_eng",
+   "id": "S0452L01U04",
+   "match": "say",
+   "why": "#225·AL census class a-EN (d/0fc0fa6f): English does not say what the Japanese says. recall_note: 79 of the census's 307 a-EN rows fire here; the と話して/から rows the English misses are caught as garble_tail"
+  },
+  {
+   "family": "gloss_absent",
+   "course": "spa_for_eng",
+   "id": "S0117L03B08",
+   "match": "talked",
+   "why": "LEGO glossed 'we talked', row says 'we spoke': the gloss the learner was given is not the prompt they hear (hand-read)"
+  },
+  {
+   "family": "garble_tail",
+   "course": "jpn_for_eng",
+   "match": "と話してた",
+   "why": "#225·AL census (d/0fc0fa6f): generator bolted 〜と話してた onto ~278 rows across ~261 LEGOs; also fires on ことがある, the census's other a-DEL family"
+  },
+  {
+   "family": "lego_absent_absent",
+   "course": "por_br_for_eng",
+   "id": "S0074L01B01",
+   "why": "LEGO 'obrigado por', row target is just 'por' (hand-read): P17, the row is a fragment of its LEGO"
+  },
+  {
+   "family": "lego_absent_absent",
+   "course": "por_br_for_eng",
+   "id": "S0117L01U03",
+   "why": "LEGO 'eu estou definitivamente', row drops 'eu' (P17 whole LEGO; was 'near' before the short-word fix — calibrated)"
+  },
+  {
+   "family": "empty_audio",
+   "course": "por_br_for_eng",
+   "id": "S0251L02B01",
+   "why": "known slot null on a played row; por_br's 18 Nov rows are the known silent block (memory: item 4, 10,170 slots)"
+  },
+  {
+   "family": "wrong_side",
+   "course": "bre_for_fra",
+   "id": "S0094L02B01",
+   "match": "funktionno",
+   "why": "cs #342·AL: German 'funktionieren' spelled into the Breton ('evit ma funktionno'); also seed 94's own sentence (hand-read, 25 Nov copy)"
+  },
+  {
+   "family": "wrong_side",
+   "course": "bre_for_fra",
+   "id": "S0048L01B01",
+   "match": "souci",
+   "why": "cs #342·AL: French 'souci' where Breton spells 'soursi', 14 rows (hand-read)"
+  },
+  {
+   "family": "bre_grammar",
+   "course": "bre_for_fra",
+   "id": "S0094L01B01",
+   "match": "ar hent",
+   "why": "cs #342·AL: Breton article is 'an' before h ('an hent'); 'da ma mamm' (-> d'am mamm) is the commoner class, 90 rows"
+  },
+  {
+   "family": "gloss_absent",
+   "course": "bre_for_fra",
+   "id": "S0263L01B03",
+   "match": "dont",
+   "why": "cs #342·AL, French known: LEGO 'dont tu parles' is 'a soñjit' (= that you think); the prompt 'de qui tu parles' gets 'piv a soñjit'"
+  },
+  {
+   "family": "untaught_known",
+   "course": "bre_for_fra",
+   "id": "S0234L01U04",
+   "match": "agréable@never",
+   "why": "cs #342·AL, French known: 'agréable' in a prompt, no LEGO ever glosses it (hand-read; K7 weak tier)"
+  },
+  {
+   "family": "untaught_known",
+   "course": "bre_for_eng",
+   "id": "S0004L01U01",
+   "match": "it@never",
+   "why": "cs #342·AL: 'say it' in the English, nothing in the Breton says 'it' either (known/target mismatch as well)"
+  },
+  {
+   "family": "zut_use",
+   "course": "bre_for_fra",
+   "match": "ils veulent",
+   "why": "cs #342·AL: 'ils veulent' -> 'e fell dezho' (S0200L02) and 'c'hoant o deus' (S0209L01), also Deborah's 8 Sept list"
+  },
+  {
+   "family": "lego_absent_absent",
+   "course": "bre_for_fra",
+   "id": "S0298L01B01",
+   "why": "cs #342·AL: LEGO 'un dra ebet ken', all 7 basket rows drop 'ken' (also Deborah's 8 Sept list)"
+  },
+  {
+   "family": "open_end_unmirrored",
+   "course": "bre_for_fra",
+   "id": "S0286L01B01",
+   "match": "gant",
+   "why": "cs #342·AL, P7: BUILD target ends open ('o deus plijadur gant') but the prompt 'qui aiment' does not mirror the open end (hand-read; 2-3 of 14 hits real)"
+  },
+  {
+   "family": "form_drift",
+   "course": "bre_for_fra",
+   "id": "S0004L03U02",
+   "match": "S0001L01",
+   "why": "cs #342·AL, P28: 'je veux parler' taught as 'c'hoant am eus da gomz', this row says 'c'hoant am eus komz' (10 of 12 read real)"
+  },
+  {
+   "family": "use_frame_repeat",
+   "course": "bre_for_fra",
+   "id": "S0014L01U02",
+   "why": "cs #342·AL, P9: two USE rows differing only aujourd'hui/demain (hiziv/warc'hoazh)"
+  },
+  {
+   "family": "bare_function_lego",
+   "course": "bre_for_fra",
+   "id": "S0044L01",
+   "why": "cs #342·AL, L6: bare 'ou | pe' A-LEGO (and a ZUT pair with 'où | pelec'h')"
+  },
+  {
+   "family": "greedy_intro",
+   "course": "bre_for_fra",
+   "match": "gudenn",
+   "why": "cs #342·AL, L13: 'gudenn' first met inside M-LEGO S0134L01 with no component, taught alone only at S0210L03"
+  },
+  {
+   "family": "component_not_in_lego",
+   "course": "bre_for_fra",
+   "id": "S0283L02C01",
+   "why": "cs #342·AL, L23: component tile carries a leaked working note 'da | amis → vignoned'"
+  }
+ ],
+ "uncalibrated": [
+  {
+   "family": "garble_script",
+   "course": "bre_for_fra",
+   "why": "cs #342·AL: Latin/Latin extension (non-Latin letter on either side). NO real positive exists: the Aug S0089L03 case was an AUDIO link (a zho_for_jpn clip of 短 on the LEGO's known slot), never text, and is unlinked on the 25 Nov copy and live. Only a planted row fires it; per Kai's rule it stays UNCALIBRATED until a real one is found."
+  },
+  {
+   "family": "basket_order",
+   "course": "bre_for_fra",
+   "why": "cs #342·AL, P3/P4: 0 hits in both Breton courses, no positive anywhere known"
+  },
+  {
+   "family": "open_end_use",
+   "course": "bre_for_fra",
+   "why": "cs #342·AL, P7 HARD: 0 hits in both Breton courses after calibration of the open-end word lists"
+  },
+  {
+   "family": "thin_debut",
+   "course": "bre_for_fra",
+   "why": "cs #342·AL, P10/P30 at the builder's phraseFloor: 0 hits; the only raw hits (S0001L01/L02) were L18 / floor-exempt"
+  }
  ]
 }

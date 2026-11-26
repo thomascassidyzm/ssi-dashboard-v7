@@ -1,0 +1,89 @@
+{
+  "course_code": "jpn_for_eng",
+  "event_id": "1e50c761-387b-45af-b7d7-eef8350d54f6",
+  "actor": "kai-346-jpn-open-end",
+  "created_at": "2026-11-25T13:04:11.659Z",
+  "how_to_undo": "POST /api/production/jpn_for_eng/edit-batch {\"undo_file\":\"2026-11-25T13-04-11-659Z-1e50c761-387b-45af-b7d7-eef8350d54f6.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0450L03B03",
+      "set": {
+        "known_text": "not riding",
+        "known_audio_id": "55f88ac9-6d66-474e-87ed-16ef1dbd3ea4"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0440L02U04",
+      "set": {
+        "known_text": "while young, it's possible",
+        "known_audio_id": "cca3b99c-dcb1-4d60-ac11-1d9dac29b6b2"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0426L01B02",
+      "set": {
+        "known_text": "because they're happy",
+        "known_audio_id": "2a430ca8-08d2-49ab-9a71-82a92e5a4fda"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0441L01B01",
+      "set": {
+        "known_text": "a way of doing things",
+        "known_audio_id": "79fc3e38-662b-4c7d-9cd0-bf9b7ffa09b7"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0440L02B01",
+      "set": {
+        "known_text": "while young",
+        "known_audio_id": "fca78a33-c5d3-4526-bc73-6606e02821a7"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0440L01B03",
+      "set": {
+        "known_text": "being young",
+        "known_audio_id": "f4f527fa-6e0d-499e-a9e5-17d9b47a3cca"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0440L01B01",
+      "set": {
+        "known_text": "young people",
+        "known_audio_id": "82a518da-564d-4d8b-97d2-0dc3435b6e25"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0434L01B01",
+      "set": {
+        "known_text": "a college student",
+        "known_audio_id": "7021219e-df41-4d63-bf44-dd5825963f54"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0408L03B03",
+      "set": {
+        "known_text": "it's a method",
+        "known_audio_id": "79754d9d-aef5-4a5d-90fa-98fd3e4e07fa"
+      }
+    },
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0434L03U05",
+      "set": {
+        "known_text": "he said the number can be reduced",
+        "known_audio_id": "f03956a7-be1e-41b3-a4ec-a25aa490eae5"
+      }
+    }
+  ]
+}

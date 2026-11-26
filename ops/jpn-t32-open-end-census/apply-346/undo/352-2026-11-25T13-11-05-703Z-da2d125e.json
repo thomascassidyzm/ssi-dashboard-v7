@@ -1,0 +1,17 @@
+{
+  "course_code": "jpn_for_eng",
+  "event_id": "da2d125e-0499-4746-8f92-dbb3488da4eb",
+  "actor": "kai-352-jpn-s0399",
+  "created_at": "2026-11-25T13:11:05.703Z",
+  "how_to_undo": "POST /api/production/jpn_for_eng/edit-batch {\"undo_file\":\"2026-11-25T13-11-05-703Z-da2d125e-0499-4746-8f92-dbb3488da4eb.json\",\"apply\":true}",
+  "undo_ops": [
+    {
+      "op": "phrase.update",
+      "phrase_id": "jpn_for_eng:S0399L02B03",
+      "set": {
+        "known_text": "because don't want to lose",
+        "known_audio_id": "63ad9589-363b-473e-841e-3470350ae271"
+      }
+    }
+  ]
+}

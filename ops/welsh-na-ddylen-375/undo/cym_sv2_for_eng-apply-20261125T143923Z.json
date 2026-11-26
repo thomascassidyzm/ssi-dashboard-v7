@@ -1,0 +1,2517 @@
+{
+ "request": {
+  "ops": [
+   {
+    "op": "lego.insert",
+    "row": {
+     "seed_number": 117,
+     "lego_index": 3,
+     "type": "M",
+     "is_new": true,
+     "known_text": "that I shouldn’t",
+     "target_text": "na ddylen i",
+     "components": [
+      {
+       "known": "that … not",
+       "target": "na"
+      },
+      {
+       "known": "I should",
+       "target": "ddylen i"
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "cym_sv2_for_eng:S0114L01B01"
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "cym_sv2_for_eng:S0117L03B01",
+     "seed_number": 117,
+     "lego_index": 3,
+     "position": 1,
+     "known_text": "your mother told me that I shouldn’t say anything",
+     "target_text": "ddwedodd dy fam wrtha i na ddylen i ddweud unrhyw beth",
+     "word_count": 10,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "moved_from": {
+       "id": "cym_sv2_for_eng:S0114L01B01",
+       "by": "cs #375",
+       "at": "2026-11-25"
+      }
+     },
+     "status": "released",
+     "release_batch": null,
+     "target_syllable_count": 14,
+     "phrase_role": "build",
+     "connected_lego_ids": [
+      "S0009L01",
+      "S0009L02",
+      "S0010L01",
+      "S0027L01"
+     ],
+     "lego_position": null,
+     "known_audio_id": "73f050d8-bd03-414e-9669-e61d6531baf4",
+     "target1_audio_id": "ad5b2165-3a32-4674-8dfe-c476b8a002fa",
+     "target2_audio_id": "02a06e31-8144-4228-8f93-646b82d1d588",
+     "qa_checked": null,
+     "target1_duration_ms": 7128,
+     "target2_duration_ms": 4416,
+     "lego_id": "S0117L03",
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ddwedodd",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " dy",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " fam",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wrtha",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " na",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ddylen",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ddweud",
+       "isGhost": true
+      },
+      {
+       "known": "anything",
+       "legoId": "S0027L01",
+       "target": " unrhyw beth",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null,
+     "hand_edit_held": null,
+     "hand_lock_overrides": null
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "cym_sv2_for_eng:S0114L01B02"
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "cym_sv2_for_eng:S0117L03B02",
+     "seed_number": 117,
+     "lego_index": 3,
+     "position": 2,
+     "known_text": "your mother told me that I shouldn’t ask",
+     "target_text": "ddwedodd dy fam wrtha i na ddylen i ofyn",
+     "word_count": 9,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "moved_from": {
+       "id": "cym_sv2_for_eng:S0114L01B02",
+       "by": "cs #375",
+       "at": "2026-11-25"
+      }
+     },
+     "status": "released",
+     "release_batch": null,
+     "target_syllable_count": 12,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "56badea2-580e-4dd6-8ac6-dde0a288113b",
+     "target1_audio_id": "e73ace0c-ed98-4bb7-8a83-66b89dc42172",
+     "target2_audio_id": "621e0894-dba3-4764-95d6-0bba694971e2",
+     "qa_checked": null,
+     "target1_duration_ms": 5832,
+     "target2_duration_ms": 3504,
+     "lego_id": "S0117L03",
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ddwedodd",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " dy",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " fam",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wrtha",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " na",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ddylen",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ofyn",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null,
+     "hand_edit_held": null,
+     "hand_lock_overrides": null
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "cym_sv2_for_eng:S0115L01B03"
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "cym_sv2_for_eng:S0117L03B03",
+     "seed_number": 117,
+     "lego_index": 3,
+     "position": 3,
+     "known_text": "your mother told me that I shouldn’t help you",
+     "target_text": "ddwedodd dy fam wrtha i na ddylen i dy helpu di",
+     "word_count": 11,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "moved_from": {
+       "id": "cym_sv2_for_eng:S0115L01B03",
+       "by": "cs #375",
+       "at": "2026-11-25"
+      }
+     },
+     "status": "released",
+     "release_batch": null,
+     "target_syllable_count": 14,
+     "phrase_role": "build",
+     "connected_lego_ids": [
+      "S0053L01"
+     ],
+     "lego_position": null,
+     "known_audio_id": "35a607a3-a364-43d9-b402-cd5600b3f3e2",
+     "target1_audio_id": "82861eb5-7b53-4ea6-9b3a-59551d4ab1d6",
+     "target2_audio_id": "7ed05560-697c-4d45-8f58-dd840599e05d",
+     "qa_checked": null,
+     "target1_duration_ms": 6696,
+     "target2_duration_ms": 4200,
+     "lego_id": "S0117L03",
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ddwedodd",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " dy",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " fam",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wrtha",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " na",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ddylen",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "to help you",
+       "legoId": "S0053L01",
+       "target": " dy helpu di",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null,
+     "hand_edit_held": null,
+     "hand_lock_overrides": null
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "cym_sv2_for_eng:S0115L01B04"
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "cym_sv2_for_eng:S0117L03B04",
+     "seed_number": 117,
+     "lego_index": 3,
+     "position": 4,
+     "known_text": "everyone told me that I shouldn’t help your mother",
+     "target_text": "ddwedodd pawb wrtha i na ddylen i helpu dy fam",
+     "word_count": 10,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "moved_from": {
+       "id": "cym_sv2_for_eng:S0115L01B04",
+       "by": "cs #375",
+       "at": "2026-11-25"
+      }
+     },
+     "status": "released",
+     "release_batch": null,
+     "target_syllable_count": 13,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "26c40500-5d66-4110-954e-ba557bafc4d2",
+     "target1_audio_id": "27adb09e-07ae-4395-9a3e-3700a5081e0f",
+     "target2_audio_id": "9ea0b1a0-e435-4e33-8f83-3e4894b396ec",
+     "qa_checked": null,
+     "target1_duration_ms": 6672,
+     "target2_duration_ms": 4800,
+     "lego_id": "S0117L03",
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ddwedodd",
+       "isGhost": true
+      },
+      {
+       "known": "everyone",
+       "legoId": "S0115L01",
+       "target": " pawb",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wrtha",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " na",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ddylen",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " helpu",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " dy",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " fam",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null,
+     "hand_edit_held": null,
+     "hand_lock_overrides": null
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "cym_sv2_for_eng:S0115L01B05"
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "cym_sv2_for_eng:S0117L03B05",
+     "seed_number": 117,
+     "lego_index": 3,
+     "position": 5,
+     "known_text": "everyone told me that I shouldn’t ask my mother",
+     "target_text": "ddwedodd pawb wrtha i na ddylen i ofyn i fy mam",
+     "word_count": 11,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "moved_from": {
+       "id": "cym_sv2_for_eng:S0115L01B05",
+       "by": "cs #375",
+       "at": "2026-11-25"
+      }
+     },
+     "status": "released",
+     "release_batch": null,
+     "target_syllable_count": 14,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "ef29b3ed-aa70-4ad5-8667-e04eb6bfd47b",
+     "target1_audio_id": "8e35539f-7dce-4ea6-aaed-637850c2d6bf",
+     "target2_audio_id": "d2930d42-c019-4cdc-aced-583a7775372b",
+     "qa_checked": null,
+     "target1_duration_ms": 7464,
+     "target2_duration_ms": 4056,
+     "lego_id": "S0117L03",
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ddwedodd",
+       "isGhost": true
+      },
+      {
+       "known": "everyone",
+       "legoId": "S0115L01",
+       "target": " pawb",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wrtha",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " na",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ddylen",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ofyn",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " fy",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " mam",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null,
+     "hand_edit_held": null,
+     "hand_lock_overrides": null
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "cym_sv2_for_eng:S0116L01B01"
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "cym_sv2_for_eng:S0117L03B06",
+     "seed_number": 117,
+     "lego_index": 3,
+     "position": 6,
+     "known_text": "your mother told me that I shouldn’t read this book",
+     "target_text": "ddwedodd dy fam wrtha i na ddylen i ddarllen y llyfr ’ma",
+     "word_count": 12,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "moved_from": {
+       "id": "cym_sv2_for_eng:S0116L01B01",
+       "by": "cs #375",
+       "at": "2026-11-25"
+      }
+     },
+     "status": "released",
+     "release_batch": null,
+     "target_syllable_count": 15,
+     "phrase_role": "build",
+     "connected_lego_ids": [
+      "S0085L01",
+      "S0085L02"
+     ],
+     "lego_position": null,
+     "known_audio_id": "ddec6484-2980-4082-88c9-6db6d48c081b",
+     "target1_audio_id": "6a68d4a8-f824-4b78-b8f4-11f9c5d5157c",
+     "target2_audio_id": "31546b6e-8c4a-4b1c-9f26-06de61acc355",
+     "qa_checked": null,
+     "target1_duration_ms": 7488,
+     "target2_duration_ms": 4632,
+     "lego_id": "S0117L03",
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ddwedodd",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " dy",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " fam",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wrtha",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " na",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ddylen",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ddarllen",
+       "isGhost": true
+      },
+      {
+       "known": "this book",
+       "legoId": "S0085L01",
+       "target": " y llyfr ’ma",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null,
+     "hand_edit_held": null,
+     "hand_lock_overrides": null
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "cym_sv2_for_eng:S0116L01B04"
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "cym_sv2_for_eng:S0117L03B07",
+     "seed_number": 117,
+     "lego_index": 3,
+     "position": 7,
+     "known_text": "nobody needs to tell me that I shouldn’t read that book",
+     "target_text": "does neb angen dweud wrtha i na ddylen i ddarllen y llyfr ’na",
+     "word_count": 13,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "moved_from": {
+       "id": "cym_sv2_for_eng:S0116L01B04",
+       "by": "cs #375",
+       "at": "2026-11-25"
+      }
+     },
+     "status": "released",
+     "release_batch": null,
+     "target_syllable_count": 16,
+     "phrase_role": "build",
+     "connected_lego_ids": [
+      "S0009L01",
+      "S0074L02",
+      "S0085L02"
+     ],
+     "lego_position": "start",
+     "known_audio_id": "5fe33e5a-3a65-46e4-9143-4a2bb72fa564",
+     "target1_audio_id": "d51e91d2-51b0-4952-b76f-1dc311058c88",
+     "target2_audio_id": "96590820-2d16-4709-9f8b-ffd4fbcb8359",
+     "qa_checked": null,
+     "target1_duration_ms": 7824,
+     "target2_duration_ms": 4776,
+     "lego_id": "S0117L03",
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "does",
+       "isGhost": true
+      },
+      {
+       "known": "nobody",
+       "legoId": "S0116L01",
+       "target": " neb",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " angen",
+       "isGhost": true
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0074L02",
+       "target": " dweud wrtha i",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " na",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ddylen",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ddarllen",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " y",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " llyfr",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ’na",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null,
+     "hand_edit_held": null,
+     "hand_lock_overrides": null
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "cym_sv2_for_eng:S0117L01B02"
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "cym_sv2_for_eng:S0117L03B08",
+     "seed_number": 117,
+     "lego_index": 3,
+     "position": 8,
+     "known_text": "your mother told me that I shouldn’t do the same thing",
+     "target_text": "ddwedodd dy fam wrtha i na ddylen i wneud yr un peth",
+     "word_count": 12,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "moved_from": {
+       "id": "cym_sv2_for_eng:S0117L01B02",
+       "by": "cs #375",
+       "at": "2026-11-25"
+      }
+     },
+     "status": "released",
+     "release_batch": null,
+     "target_syllable_count": 14,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "5b58ae31-8822-42c4-b3d2-c44b159548fd",
+     "target1_audio_id": "6397dab6-f397-4450-9eb7-8e671838248a",
+     "target2_audio_id": "4d2d7ef6-7925-4d79-ae9b-99cbf9a18f28",
+     "qa_checked": null,
+     "target1_duration_ms": 6816,
+     "target2_duration_ms": 3720,
+     "lego_id": "S0117L03",
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ddwedodd",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " dy",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " fam",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wrtha",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " na",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ddylen",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wneud",
+       "isGhost": true
+      },
+      {
+       "known": "the same thing",
+       "legoId": "S0117L01",
+       "target": " yr un peth",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null,
+     "hand_edit_held": null,
+     "hand_lock_overrides": null
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "cym_sv2_for_eng:S0114L01U03"
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "cym_sv2_for_eng:S0117L03U01",
+     "seed_number": 117,
+     "lego_index": 3,
+     "position": 9,
+     "known_text": "my mother told me that I shouldn’t go out tonight",
+     "target_text": "ddwedodd fy mam wrtha i na ddylen i fynd mas heno",
+     "word_count": 11,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {
+      "moved_from": {
+       "id": "cym_sv2_for_eng:S0114L01U03",
+       "by": "cs #375",
+       "at": "2026-11-25"
+      }
+     },
+     "status": "released",
+     "release_batch": null,
+     "target_syllable_count": 14,
+     "phrase_role": "use",
+     "connected_lego_ids": [
+      "S0087L02"
+     ],
+     "lego_position": null,
+     "known_audio_id": "2f235d56-d133-47d1-a960-a3425d7dd18e",
+     "target1_audio_id": "f966bb42-ea72-4e16-bc27-24e6deeea7f4",
+     "target2_audio_id": "21d50a45-4f78-4497-af54-9b83d1a1dd1c",
+     "qa_checked": null,
+     "target1_duration_ms": 7152,
+     "target2_duration_ms": 4392,
+     "lego_id": "S0117L03",
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ddwedodd",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " fy",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " mam",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wrtha",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " na",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ddylen",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " fynd",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " mas",
+       "isGhost": true
+      },
+      {
+       "known": "tonight",
+       "legoId": "S0087L02",
+       "target": " heno",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null,
+     "hand_edit_held": null,
+     "hand_lock_overrides": null
+    }
+   }
+  ],
+  "reason": "cs #375 Welsh na ddylen/na ddylwn timing fix (Kai YES 25 Nov 14:24Z, v2 only)",
+  "apply": true
+ },
+ "response": {
+  "ok": true,
+  "dryRun": false,
+  "applied": true,
+  "event_id": "54bca0bf-9f2b-42fa-b496-c980af2ac105",
+  "results": [
+   {
+    "index": 0,
+    "op": "lego.insert",
+    "key": {
+     "seed_number": 117,
+     "lego_index": 3
+    },
+    "before": null,
+    "after": {
+     "id": "a35800e3-8996-486e-a29e-4d01224046b5",
+     "seed_number": 117,
+     "lego_index": 3,
+     "lego_id": "S0117L03",
+     "known_text": "that I shouldn’t",
+     "target_text": "na ddylen i",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "presentation_audio_id": null
+    },
+    "changed": true
+   },
+   {
+    "index": 1,
+    "op": "phrase.delete",
+    "key": {
+     "course_code": "cym_sv2_for_eng",
+     "id": "cym_sv2_for_eng:S0114L01B01"
+    },
+    "before": {
+     "id": "cym_sv2_for_eng:S0114L01B01",
+     "seed_number": 114,
+     "lego_index": 1,
+     "lego_id": "S0114L01",
+     "known_text": "your mother told me that I shouldn’t say anything",
+     "target_text": "ddwedodd dy fam wrtha i na ddylen i ddweud unrhyw beth",
+     "known_audio_id": "73f050d8-bd03-414e-9669-e61d6531baf4",
+     "target1_audio_id": "ad5b2165-3a32-4674-8dfe-c476b8a002fa",
+     "target2_audio_id": "02a06e31-8144-4228-8f93-646b82d1d588",
+     "presentation_audio_id": null
+    },
+    "after": null,
+    "changed": true
+   },
+   {
+    "index": 2,
+    "op": "phrase.insert",
+    "key": {
+     "id": "cym_sv2_for_eng:S0117L03B01"
+    },
+    "before": null,
+    "after": {
+     "id": "cym_sv2_for_eng:S0117L03B01",
+     "seed_number": 117,
+     "lego_index": 3,
+     "lego_id": "S0117L03",
+     "known_text": "your mother told me that I shouldn’t say anything",
+     "target_text": "ddwedodd dy fam wrtha i na ddylen i ddweud unrhyw beth",
+     "known_audio_id": "73f050d8-bd03-414e-9669-e61d6531baf4",
+     "target1_audio_id": "ad5b2165-3a32-4674-8dfe-c476b8a002fa",
+     "target2_audio_id": "02a06e31-8144-4228-8f93-646b82d1d588",
+     "presentation_audio_id": null
+    },
+    "changed": true
+   },
+   {
+    "index": 3,
+    "op": "phrase.delete",
+    "key": {
+     "course_code": "cym_sv2_for_eng",
+     "id": "cym_sv2_for_eng:S0114L01B02"
+    },
+    "before": {
+     "id": "cym_sv2_for_eng:S0114L01B02",
+     "seed_number": 114,
+     "lego_index": 1,
+     "lego_id": "S0114L01",
+     "known_text": "your mother told me that I shouldn’t ask",
+     "target_text": "ddwedodd dy fam wrtha i na ddylen i ofyn",
+     "known_audio_id": "56badea2-580e-4dd6-8ac6-dde0a288113b",
+     "target1_audio_id": "e73ace0c-ed98-4bb7-8a83-66b89dc42172",
+     "target2_audio_id": "621e0894-dba3-4764-95d6-0bba694971e2",
+     "presentation_audio_id": null
+    },
+    "after": null,
+    "changed": true
+   },
+   {
+    "index": 4,
+    "op": "phrase.insert",
+    "key": {
+     "id": "cym_sv2_for_eng:S0117L03B02"
+    },
+    "before": null,
+    "after": {
+     "id": "cym_sv2_for_eng:S0117L03B02",
+     "seed_number": 117,
+     "lego_index": 3,
+     "lego_id": "S0117L03",
+     "known_text": "your mother told me that I shouldn’t ask",
+     "target_text": "ddwedodd dy fam wrtha i na ddylen i ofyn",
+     "known_audio_id": "56badea2-580e-4dd6-8ac6-dde0a288113b",
+     "target1_audio_id": "e73ace0c-ed98-4bb7-8a83-66b89dc42172",
+     "target2_audio_id": "621e0894-dba3-4764-95d6-0bba694971e2",
+     "presentation_audio_id": null
+    },
+    "changed": true
+   },
+   {
+    "index": 5,
+    "op": "phrase.delete",
+    "key": {
+     "course_code": "cym_sv2_for_eng",
+     "id": "cym_sv2_for_eng:S0115L01B03"
+    },
+    "before": {
+     "id": "cym_sv2_for_eng:S0115L01B03",
+     "seed_number": 115,
+     "lego_index": 1,
+     "lego_id": "S0115L01",
+     "known_text": "your mother told me that I shouldn’t help you",
+     "target_text": "ddwedodd dy fam wrtha i na ddylen i dy helpu di",
+     "known_audio_id": "35a607a3-a364-43d9-b402-cd5600b3f3e2",
+     "target1_audio_id": "82861eb5-7b53-4ea6-9b3a-59551d4ab1d6",
+     "target2_audio_id": "7ed05560-697c-4d45-8f58-dd840599e05d",
+     "presentation_audio_id": null
+    },
+    "after": null,
+    "changed": true
+   },
+   {
+    "index": 6,
+    "op": "phrase.insert",
+    "key": {
+     "id": "cym_sv2_for_eng:S0117L03B03"
+    },
+    "before": null,
+    "after": {
+     "id": "cym_sv2_for_eng:S0117L03B03",
+     "seed_number": 117,
+     "lego_index": 3,
+     "lego_id": "S0117L03",
+     "known_text": "your mother told me that I shouldn’t help you",
+     "target_text": "ddwedodd dy fam wrtha i na ddylen i dy helpu di",
+     "known_audio_id": "35a607a3-a364-43d9-b402-cd5600b3f3e2",
+     "target1_audio_id": "82861eb5-7b53-4ea6-9b3a-59551d4ab1d6",
+     "target2_audio_id": "7ed05560-697c-4d45-8f58-dd840599e05d",
+     "presentation_audio_id": null
+    },
+    "changed": true
+   },
+   {
+    "index": 7,
+    "op": "phrase.delete",
+    "key": {
+     "course_code": "cym_sv2_for_eng",
+     "id": "cym_sv2_for_eng:S0115L01B04"
+    },
+    "before": {
+     "id": "cym_sv2_for_eng:S0115L01B04",
+     "seed_number": 115,
+     "lego_index": 1,
+     "lego_id": "S0115L01",
+     "known_text": "everyone told me that I shouldn’t help your mother",
+     "target_text": "ddwedodd pawb wrtha i na ddylen i helpu dy fam",
+     "known_audio_id": "26c40500-5d66-4110-954e-ba557bafc4d2",
+     "target1_audio_id": "27adb09e-07ae-4395-9a3e-3700a5081e0f",
+     "target2_audio_id": "9ea0b1a0-e435-4e33-8f83-3e4894b396ec",
+     "presentation_audio_id": null
+    },
+    "after": null,
+    "changed": true
+   },
+   {
+    "index": 8,
+    "op": "phrase.insert",
+    "key": {
+     "id": "cym_sv2_for_eng:S0117L03B04"
+    },
+    "before": null,
+    "after": {
+     "id": "cym_sv2_for_eng:S0117L03B04",
+     "seed_number": 117,
+     "lego_index": 3,
+     "lego_id": "S0117L03",
+     "known_text": "everyone told me that I shouldn’t help your mother",
+     "target_text": "ddwedodd pawb wrtha i na ddylen i helpu dy fam",
+     "known_audio_id": "26c40500-5d66-4110-954e-ba557bafc4d2",
+     "target1_audio_id": "27adb09e-07ae-4395-9a3e-3700a5081e0f",
+     "target2_audio_id": "9ea0b1a0-e435-4e33-8f83-3e4894b396ec",
+     "presentation_audio_id": null
+    },
+    "changed": true
+   },
+   {
+    "index": 9,
+    "op": "phrase.delete",
+    "key": {
+     "course_code": "cym_sv2_for_eng",
+     "id": "cym_sv2_for_eng:S0115L01B05"
+    },
+    "before": {
+     "id": "cym_sv2_for_eng:S0115L01B05",
+     "seed_number": 115,
+     "lego_index": 1,
+     "lego_id": "S0115L01",
+     "known_text": "everyone told me that I shouldn’t ask my mother",
+     "target_text": "ddwedodd pawb wrtha i na ddylen i ofyn i fy mam",
+     "known_audio_id": "ef29b3ed-aa70-4ad5-8667-e04eb6bfd47b",
+     "target1_audio_id": "8e35539f-7dce-4ea6-aaed-637850c2d6bf",
+     "target2_audio_id": "d2930d42-c019-4cdc-aced-583a7775372b",
+     "presentation_audio_id": null
+    },
+    "after": null,
+    "changed": true
+   },
+   {
+    "index": 10,
+    "op": "phrase.insert",
+    "key": {
+     "id": "cym_sv2_for_eng:S0117L03B05"
+    },
+    "before": null,
+    "after": {
+     "id": "cym_sv2_for_eng:S0117L03B05",
+     "seed_number": 117,
+     "lego_index": 3,
+     "lego_id": "S0117L03",
+     "known_text": "everyone told me that I shouldn’t ask my mother",
+     "target_text": "ddwedodd pawb wrtha i na ddylen i ofyn i fy mam",
+     "known_audio_id": "ef29b3ed-aa70-4ad5-8667-e04eb6bfd47b",
+     "target1_audio_id": "8e35539f-7dce-4ea6-aaed-637850c2d6bf",
+     "target2_audio_id": "d2930d42-c019-4cdc-aced-583a7775372b",
+     "presentation_audio_id": null
+    },
+    "changed": true
+   },
+   {
+    "index": 11,
+    "op": "phrase.delete",
+    "key": {
+     "course_code": "cym_sv2_for_eng",
+     "id": "cym_sv2_for_eng:S0116L01B01"
+    },
+    "before": {
+     "id": "cym_sv2_for_eng:S0116L01B01",
+     "seed_number": 116,
+     "lego_index": 1,
+     "lego_id": "S0116L01",
+     "known_text": "your mother told me that I shouldn’t read this book",
+     "target_text": "ddwedodd dy fam wrtha i na ddylen i ddarllen y llyfr ’ma",
+     "known_audio_id": "ddec6484-2980-4082-88c9-6db6d48c081b",
+     "target1_audio_id": "6a68d4a8-f824-4b78-b8f4-11f9c5d5157c",
+     "target2_audio_id": "31546b6e-8c4a-4b1c-9f26-06de61acc355",
+     "presentation_audio_id": null
+    },
+    "after": null,
+    "changed": true
+   },
+   {
+    "index": 12,
+    "op": "phrase.insert",
+    "key": {
+     "id": "cym_sv2_for_eng:S0117L03B06"
+    },
+    "before": null,
+    "after": {
+     "id": "cym_sv2_for_eng:S0117L03B06",
+     "seed_number": 117,
+     "lego_index": 3,
+     "lego_id": "S0117L03",
+     "known_text": "your mother told me that I shouldn’t read this book",
+     "target_text": "ddwedodd dy fam wrtha i na ddylen i ddarllen y llyfr ’ma",
+     "known_audio_id": "ddec6484-2980-4082-88c9-6db6d48c081b",
+     "target1_audio_id": "6a68d4a8-f824-4b78-b8f4-11f9c5d5157c",
+     "target2_audio_id": "31546b6e-8c4a-4b1c-9f26-06de61acc355",
+     "presentation_audio_id": null
+    },
+    "changed": true
+   },
+   {
+    "index": 13,
+    "op": "phrase.delete",
+    "key": {
+     "course_code": "cym_sv2_for_eng",
+     "id": "cym_sv2_for_eng:S0116L01B04"
+    },
+    "before": {
+     "id": "cym_sv2_for_eng:S0116L01B04",
+     "seed_number": 116,
+     "lego_index": 1,
+     "lego_id": "S0116L01",
+     "known_text": "nobody needs to tell me that I shouldn’t read that book",
+     "target_text": "does neb angen dweud wrtha i na ddylen i ddarllen y llyfr ’na",
+     "known_audio_id": "5fe33e5a-3a65-46e4-9143-4a2bb72fa564",
+     "target1_audio_id": "d51e91d2-51b0-4952-b76f-1dc311058c88",
+     "target2_audio_id": "96590820-2d16-4709-9f8b-ffd4fbcb8359",
+     "presentation_audio_id": null
+    },
+    "after": null,
+    "changed": true
+   },
+   {
+    "index": 14,
+    "op": "phrase.insert",
+    "key": {
+     "id": "cym_sv2_for_eng:S0117L03B07"
+    },
+    "before": null,
+    "after": {
+     "id": "cym_sv2_for_eng:S0117L03B07",
+     "seed_number": 117,
+     "lego_index": 3,
+     "lego_id": "S0117L03",
+     "known_text": "nobody needs to tell me that I shouldn’t read that book",
+     "target_text": "does neb angen dweud wrtha i na ddylen i ddarllen y llyfr ’na",
+     "known_audio_id": "5fe33e5a-3a65-46e4-9143-4a2bb72fa564",
+     "target1_audio_id": "d51e91d2-51b0-4952-b76f-1dc311058c88",
+     "target2_audio_id": "96590820-2d16-4709-9f8b-ffd4fbcb8359",
+     "presentation_audio_id": null
+    },
+    "changed": true
+   },
+   {
+    "index": 15,
+    "op": "phrase.delete",
+    "key": {
+     "course_code": "cym_sv2_for_eng",
+     "id": "cym_sv2_for_eng:S0117L01B02"
+    },
+    "before": {
+     "id": "cym_sv2_for_eng:S0117L01B02",
+     "seed_number": 117,
+     "lego_index": 1,
+     "lego_id": "S0117L01",
+     "known_text": "your mother told me that I shouldn’t do the same thing",
+     "target_text": "ddwedodd dy fam wrtha i na ddylen i wneud yr un peth",
+     "known_audio_id": "5b58ae31-8822-42c4-b3d2-c44b159548fd",
+     "target1_audio_id": "6397dab6-f397-4450-9eb7-8e671838248a",
+     "target2_audio_id": "4d2d7ef6-7925-4d79-ae9b-99cbf9a18f28",
+     "presentation_audio_id": null
+    },
+    "after": null,
+    "changed": true
+   },
+   {
+    "index": 16,
+    "op": "phrase.insert",
+    "key": {
+     "id": "cym_sv2_for_eng:S0117L03B08"
+    },
+    "before": null,
+    "after": {
+     "id": "cym_sv2_for_eng:S0117L03B08",
+     "seed_number": 117,
+     "lego_index": 3,
+     "lego_id": "S0117L03",
+     "known_text": "your mother told me that I shouldn’t do the same thing",
+     "target_text": "ddwedodd dy fam wrtha i na ddylen i wneud yr un peth",
+     "known_audio_id": "5b58ae31-8822-42c4-b3d2-c44b159548fd",
+     "target1_audio_id": "6397dab6-f397-4450-9eb7-8e671838248a",
+     "target2_audio_id": "4d2d7ef6-7925-4d79-ae9b-99cbf9a18f28",
+     "presentation_audio_id": null
+    },
+    "changed": true
+   },
+   {
+    "index": 17,
+    "op": "phrase.delete",
+    "key": {
+     "course_code": "cym_sv2_for_eng",
+     "id": "cym_sv2_for_eng:S0114L01U03"
+    },
+    "before": {
+     "id": "cym_sv2_for_eng:S0114L01U03",
+     "seed_number": 114,
+     "lego_index": 1,
+     "lego_id": "S0114L01",
+     "known_text": "my mother told me that I shouldn’t go out tonight",
+     "target_text": "ddwedodd fy mam wrtha i na ddylen i fynd mas heno",
+     "known_audio_id": "2f235d56-d133-47d1-a960-a3425d7dd18e",
+     "target1_audio_id": "f966bb42-ea72-4e16-bc27-24e6deeea7f4",
+     "target2_audio_id": "21d50a45-4f78-4497-af54-9b83d1a1dd1c",
+     "presentation_audio_id": null
+    },
+    "after": null,
+    "changed": true
+   },
+   {
+    "index": 18,
+    "op": "phrase.insert",
+    "key": {
+     "id": "cym_sv2_for_eng:S0117L03U01"
+    },
+    "before": null,
+    "after": {
+     "id": "cym_sv2_for_eng:S0117L03U01",
+     "seed_number": 117,
+     "lego_index": 3,
+     "lego_id": "S0117L03",
+     "known_text": "my mother told me that I shouldn’t go out tonight",
+     "target_text": "ddwedodd fy mam wrtha i na ddylen i fynd mas heno",
+     "known_audio_id": "2f235d56-d133-47d1-a960-a3425d7dd18e",
+     "target1_audio_id": "f966bb42-ea72-4e16-bc27-24e6deeea7f4",
+     "target2_audio_id": "21d50a45-4f78-4497-af54-9b83d1a1dd1c",
+     "presentation_audio_id": null
+    },
+    "changed": true
+   },
+   {
+    "index": null,
+    "op": "tiles.refresh",
+    "key": {
+     "lego_ids": [
+      "S0117L03"
+     ]
+    },
+    "considered": 0,
+    "rewritten": [],
+    "needs_a_person": [],
+    "changed": false
+   }
+  ],
+  "undo_ops": [
+   {
+    "op": "phrase.delete",
+    "phrase_id": "cym_sv2_for_eng:S0117L03U01"
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "cym_sv2_for_eng:S0114L01U03",
+     "seed_number": 114,
+     "lego_index": 1,
+     "position": 10,
+     "known_text": "my mother told me that I shouldn’t go out tonight",
+     "target_text": "ddwedodd fy mam wrtha i na ddylen i fynd mas heno",
+     "word_count": 11,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {},
+     "status": "released",
+     "release_batch": null,
+     "created_at": "2026-10-07T15:18:44.619Z",
+     "target_syllable_count": 14,
+     "phrase_role": "use",
+     "connected_lego_ids": [
+      "S0087L02"
+     ],
+     "lego_position": null,
+     "known_audio_id": "2f235d56-d133-47d1-a960-a3425d7dd18e",
+     "target1_audio_id": "f966bb42-ea72-4e16-bc27-24e6deeea7f4",
+     "target2_audio_id": "21d50a45-4f78-4497-af54-9b83d1a1dd1c",
+     "qa_checked": null,
+     "target1_duration_ms": 7152,
+     "target2_duration_ms": 4392,
+     "lego_id": "S0114L01",
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ddwedodd",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " fy",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " mam",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wrtha",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " na",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ddylen",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " fynd",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " mas",
+       "isGhost": true
+      },
+      {
+       "known": "tonight",
+       "legoId": "S0087L02",
+       "target": " heno",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null,
+     "hand_edited_by": null,
+     "hand_edited_at": null,
+     "hand_order": null,
+     "hand_edit_held": null,
+     "hand_lock_overrides": null
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "cym_sv2_for_eng:S0117L03B08"
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "cym_sv2_for_eng:S0117L01B02",
+     "seed_number": 117,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "your mother told me that I shouldn’t do the same thing",
+     "target_text": "ddwedodd dy fam wrtha i na ddylen i wneud yr un peth",
+     "word_count": 12,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {},
+     "status": "released",
+     "release_batch": null,
+     "created_at": "2026-10-07T15:18:44.619Z",
+     "target_syllable_count": 14,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "end",
+     "known_audio_id": "5b58ae31-8822-42c4-b3d2-c44b159548fd",
+     "target1_audio_id": "6397dab6-f397-4450-9eb7-8e671838248a",
+     "target2_audio_id": "4d2d7ef6-7925-4d79-ae9b-99cbf9a18f28",
+     "qa_checked": null,
+     "target1_duration_ms": 6816,
+     "target2_duration_ms": 3720,
+     "lego_id": "S0117L01",
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ddwedodd",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " dy",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " fam",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wrtha",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " na",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ddylen",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wneud",
+       "isGhost": true
+      },
+      {
+       "known": "the same thing",
+       "legoId": "S0117L01",
+       "target": " yr un peth",
+       "isGhost": false,
+       "isSalient": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null,
+     "hand_edited_by": null,
+     "hand_edited_at": null,
+     "hand_order": null,
+     "hand_edit_held": null,
+     "hand_lock_overrides": null
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "cym_sv2_for_eng:S0117L03B07"
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "cym_sv2_for_eng:S0116L01B04",
+     "seed_number": 116,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "nobody needs to tell me that I shouldn’t read that book",
+     "target_text": "does neb angen dweud wrtha i na ddylen i ddarllen y llyfr ’na",
+     "word_count": 13,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {},
+     "status": "released",
+     "release_batch": null,
+     "created_at": "2026-10-07T15:18:44.619Z",
+     "target_syllable_count": 16,
+     "phrase_role": "build",
+     "connected_lego_ids": [
+      "S0009L01",
+      "S0074L02",
+      "S0085L02"
+     ],
+     "lego_position": "start",
+     "known_audio_id": "5fe33e5a-3a65-46e4-9143-4a2bb72fa564",
+     "target1_audio_id": "d51e91d2-51b0-4952-b76f-1dc311058c88",
+     "target2_audio_id": "96590820-2d16-4709-9f8b-ffd4fbcb8359",
+     "qa_checked": null,
+     "target1_duration_ms": 7824,
+     "target2_duration_ms": 4776,
+     "lego_id": "S0116L01",
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "does",
+       "isGhost": true
+      },
+      {
+       "known": "nobody",
+       "legoId": "S0116L01",
+       "target": " neb",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " angen",
+       "isGhost": true
+      },
+      {
+       "known": "tell me",
+       "legoId": "S0074L02",
+       "target": " dweud wrtha i",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " na",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ddylen",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ddarllen",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " y",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " llyfr",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ’na",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null,
+     "hand_edited_by": null,
+     "hand_edited_at": null,
+     "hand_order": null,
+     "hand_edit_held": null,
+     "hand_lock_overrides": null
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "cym_sv2_for_eng:S0117L03B06"
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "cym_sv2_for_eng:S0116L01B01",
+     "seed_number": 116,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "your mother told me that I shouldn’t read this book",
+     "target_text": "ddwedodd dy fam wrtha i na ddylen i ddarllen y llyfr ’ma",
+     "word_count": 12,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {},
+     "status": "released",
+     "release_batch": null,
+     "created_at": "2026-10-07T15:18:44.619Z",
+     "target_syllable_count": 15,
+     "phrase_role": "build",
+     "connected_lego_ids": [
+      "S0085L01",
+      "S0085L02"
+     ],
+     "lego_position": null,
+     "known_audio_id": "ddec6484-2980-4082-88c9-6db6d48c081b",
+     "target1_audio_id": "6a68d4a8-f824-4b78-b8f4-11f9c5d5157c",
+     "target2_audio_id": "31546b6e-8c4a-4b1c-9f26-06de61acc355",
+     "qa_checked": null,
+     "target1_duration_ms": 7488,
+     "target2_duration_ms": 4632,
+     "lego_id": "S0116L01",
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ddwedodd",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " dy",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " fam",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wrtha",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " na",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ddylen",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ddarllen",
+       "isGhost": true
+      },
+      {
+       "known": "this book",
+       "legoId": "S0085L01",
+       "target": " y llyfr ’ma",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null,
+     "hand_edited_by": null,
+     "hand_edited_at": null,
+     "hand_order": null,
+     "hand_edit_held": null,
+     "hand_lock_overrides": null
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "cym_sv2_for_eng:S0117L03B05"
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "cym_sv2_for_eng:S0115L01B05",
+     "seed_number": 115,
+     "lego_index": 1,
+     "position": 5,
+     "known_text": "everyone told me that I shouldn’t ask my mother",
+     "target_text": "ddwedodd pawb wrtha i na ddylen i ofyn i fy mam",
+     "word_count": 11,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {},
+     "status": "released",
+     "release_batch": null,
+     "created_at": "2026-10-07T15:18:44.619Z",
+     "target_syllable_count": 14,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "ef29b3ed-aa70-4ad5-8667-e04eb6bfd47b",
+     "target1_audio_id": "8e35539f-7dce-4ea6-aaed-637850c2d6bf",
+     "target2_audio_id": "d2930d42-c019-4cdc-aced-583a7775372b",
+     "qa_checked": null,
+     "target1_duration_ms": 7464,
+     "target2_duration_ms": 4056,
+     "lego_id": "S0115L01",
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ddwedodd",
+       "isGhost": true
+      },
+      {
+       "known": "everyone",
+       "legoId": "S0115L01",
+       "target": " pawb",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wrtha",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " na",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ddylen",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ofyn",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " fy",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " mam",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null,
+     "hand_edited_by": null,
+     "hand_edited_at": null,
+     "hand_order": null,
+     "hand_edit_held": null,
+     "hand_lock_overrides": null
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "cym_sv2_for_eng:S0117L03B04"
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "cym_sv2_for_eng:S0115L01B04",
+     "seed_number": 115,
+     "lego_index": 1,
+     "position": 4,
+     "known_text": "everyone told me that I shouldn’t help your mother",
+     "target_text": "ddwedodd pawb wrtha i na ddylen i helpu dy fam",
+     "word_count": 10,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {},
+     "status": "released",
+     "release_batch": null,
+     "created_at": "2026-10-07T15:18:44.619Z",
+     "target_syllable_count": 13,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": "start",
+     "known_audio_id": "26c40500-5d66-4110-954e-ba557bafc4d2",
+     "target1_audio_id": "27adb09e-07ae-4395-9a3e-3700a5081e0f",
+     "target2_audio_id": "9ea0b1a0-e435-4e33-8f83-3e4894b396ec",
+     "qa_checked": null,
+     "target1_duration_ms": 6672,
+     "target2_duration_ms": 4800,
+     "lego_id": "S0115L01",
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ddwedodd",
+       "isGhost": true
+      },
+      {
+       "known": "everyone",
+       "legoId": "S0115L01",
+       "target": " pawb",
+       "isGhost": false,
+       "isSalient": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wrtha",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " na",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ddylen",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " helpu",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " dy",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " fam",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null,
+     "hand_edited_by": null,
+     "hand_edited_at": null,
+     "hand_order": null,
+     "hand_edit_held": null,
+     "hand_lock_overrides": null
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "cym_sv2_for_eng:S0117L03B03"
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "cym_sv2_for_eng:S0115L01B03",
+     "seed_number": 115,
+     "lego_index": 1,
+     "position": 3,
+     "known_text": "your mother told me that I shouldn’t help you",
+     "target_text": "ddwedodd dy fam wrtha i na ddylen i dy helpu di",
+     "word_count": 11,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {},
+     "status": "released",
+     "release_batch": null,
+     "created_at": "2026-10-07T15:18:44.619Z",
+     "target_syllable_count": 14,
+     "phrase_role": "build",
+     "connected_lego_ids": [
+      "S0053L01"
+     ],
+     "lego_position": null,
+     "known_audio_id": "35a607a3-a364-43d9-b402-cd5600b3f3e2",
+     "target1_audio_id": "82861eb5-7b53-4ea6-9b3a-59551d4ab1d6",
+     "target2_audio_id": "7ed05560-697c-4d45-8f58-dd840599e05d",
+     "qa_checked": null,
+     "target1_duration_ms": 6696,
+     "target2_duration_ms": 4200,
+     "lego_id": "S0115L01",
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ddwedodd",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " dy",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " fam",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wrtha",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " na",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ddylen",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "to help you",
+       "legoId": "S0053L01",
+       "target": " dy helpu di",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null,
+     "hand_edited_by": null,
+     "hand_edited_at": null,
+     "hand_order": null,
+     "hand_edit_held": null,
+     "hand_lock_overrides": null
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "cym_sv2_for_eng:S0117L03B02"
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "cym_sv2_for_eng:S0114L01B02",
+     "seed_number": 114,
+     "lego_index": 1,
+     "position": 2,
+     "known_text": "your mother told me that I shouldn’t ask",
+     "target_text": "ddwedodd dy fam wrtha i na ddylen i ofyn",
+     "word_count": 9,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {},
+     "status": "released",
+     "release_batch": null,
+     "created_at": "2026-10-07T15:18:44.619Z",
+     "target_syllable_count": 12,
+     "phrase_role": "build",
+     "connected_lego_ids": [],
+     "lego_position": null,
+     "known_audio_id": "56badea2-580e-4dd6-8ac6-dde0a288113b",
+     "target1_audio_id": "e73ace0c-ed98-4bb7-8a83-66b89dc42172",
+     "target2_audio_id": "621e0894-dba3-4764-95d6-0bba694971e2",
+     "qa_checked": null,
+     "target1_duration_ms": 5832,
+     "target2_duration_ms": 3504,
+     "lego_id": "S0114L01",
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ddwedodd",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " dy",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " fam",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wrtha",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " na",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ddylen",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ofyn",
+       "isGhost": true
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null,
+     "hand_edited_by": null,
+     "hand_edited_at": null,
+     "hand_order": null,
+     "hand_edit_held": null,
+     "hand_lock_overrides": null
+    }
+   },
+   {
+    "op": "phrase.delete",
+    "phrase_id": "cym_sv2_for_eng:S0117L03B01"
+   },
+   {
+    "op": "phrase.insert",
+    "row": {
+     "id": "cym_sv2_for_eng:S0114L01B01",
+     "seed_number": 114,
+     "lego_index": 1,
+     "position": 1,
+     "known_text": "your mother told me that I shouldn’t say anything",
+     "target_text": "ddwedodd dy fam wrtha i na ddylen i ddweud unrhyw beth",
+     "word_count": 10,
+     "lego_count": 1,
+     "difficulty": null,
+     "register": null,
+     "metadata": {},
+     "status": "released",
+     "release_batch": null,
+     "created_at": "2026-10-07T15:18:44.619Z",
+     "target_syllable_count": 14,
+     "phrase_role": "build",
+     "connected_lego_ids": [
+      "S0009L01",
+      "S0009L02",
+      "S0010L01",
+      "S0027L01"
+     ],
+     "lego_position": null,
+     "known_audio_id": "73f050d8-bd03-414e-9669-e61d6531baf4",
+     "target1_audio_id": "ad5b2165-3a32-4674-8dfe-c476b8a002fa",
+     "target2_audio_id": "02a06e31-8144-4228-8f93-646b82d1d588",
+     "qa_checked": null,
+     "target1_duration_ms": 7128,
+     "target2_duration_ms": 4416,
+     "lego_id": "S0114L01",
+     "target_text_roman": null,
+     "target_phrase_id": null,
+     "presentation_audio_id": null,
+     "introduce": true,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "ddwedodd",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " dy",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " fam",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " wrtha",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " na",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ddylen",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " i",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ddweud",
+       "isGhost": true
+      },
+      {
+       "known": "anything",
+       "legoId": "S0027L01",
+       "target": " unrhyw beth",
+       "isGhost": false
+      }
+     ],
+     "decomposition_course_version": null,
+     "display_tiling": null,
+     "display_tiling_version": null,
+     "known_gloss_segments": null,
+     "frame_mask": null,
+     "hand_edited_by": null,
+     "hand_edited_at": null,
+     "hand_order": null,
+     "hand_edit_held": null,
+     "hand_lock_overrides": null
+    }
+   },
+   {
+    "op": "lego.delete",
+    "id": "a35800e3-8996-486e-a29e-4d01224046b5"
+   }
+  ],
+  "undo_file": "2026-11-25T14-39-23-222Z-54bca0bf-9f2b-42fa-b496-c980af2ac105.json"
+ },
+ "held": []
+}

@@ -1,0 +1,347 @@
+{"format":"ssi-changeset/1","id":"item6-kor_for_tam-r868","course":"kor_for_tam","job":"#868","why":"paid cleanup item 6: plain 나/내 in a polite 저/제 course (+ #703 judgement rows), with clips rendered by day","computed_from":"nightly copy ssi_copy_20261124t033000z built 2026-11-24T03:40:38Z","created_at":"2026-11-25T22:45:01.419Z","ops":346,"kai_go":"Kai approved paid-cleanup item 6 on 18 Nov; limbo finish commissioned 23 Nov (cs #868)"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0126L03C01","set":{"target_text":"제","target_text_roman":null},"expect":{"known_text":"என்","target_text":"내"}}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0126L03B01","set":{"target_text":"제 뇌의","target_text_roman":null},"expect":{"known_text":"என் மூளையின்","target_text":"내 뇌의"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"ee00942f-7418-4140-b113-6eb033f23d31","phrase_id":"kor_for_tam:S0126L03B01"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"b9b0a4d4-dc89-457a-9978-85b91724cb6e","phrase_id":"kor_for_tam:S0126L03B01"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0126L03B02","set":{"target_text":"제 뇌의 모양을","target_text_roman":null},"expect":{"known_text":"என் மூளையின் வடிவத்தை","target_text":"내 뇌의 모양을"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"90ad37e9-769a-431a-9742-11d599a9c0a2","phrase_id":"kor_for_tam:S0126L03B02"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"cb3c3d40-4dac-4031-83fb-5cb476f72b61","phrase_id":"kor_for_tam:S0126L03B02"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0126L03B03","set":{"target_text":"지금 제 뇌의","target_text_roman":null},"expect":{"known_text":"இப்போது என் மூளையின்","target_text":"지금 내 뇌의"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"34221748-572c-452a-bce5-c77af3d5bc23","phrase_id":"kor_for_tam:S0126L03B03"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"e4bd6a7b-155f-44f6-a621-243e4a58b878","phrase_id":"kor_for_tam:S0126L03B03"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0126L03U01","set":{"target_text":"제 뇌의 모양을 바꾸고 있어요","target_text_roman":null},"expect":{"known_text":"என் மூளையின் வடிவத்தை மாற்றுகிறேன்","target_text":"내 뇌의 모양을 바꾸고 있어요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"2891bdb6-5f89-4a99-bca1-c25c2d4be51b","phrase_id":"kor_for_tam:S0126L03U01"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"8f8258c3-40a6-4675-8c56-defb5bae1385","phrase_id":"kor_for_tam:S0126L03U01"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0126L03U02","set":{"target_text":"제 뇌의 모양을 기억하려고 해요","target_text_roman":null},"expect":{"known_text":"என் மூளையின் வடிவத்தை நினைவில் கொள்ள முயற்சிக்கிறேன்","target_text":"내 뇌의 모양을 기억하려고 해요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"c06b14b8-c492-49ce-9d9e-bc48c029315b","phrase_id":"kor_for_tam:S0126L03U02"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"04e409cd-8dbd-4b1a-a7c8-e8210e933ac6","phrase_id":"kor_for_tam:S0126L03U02"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0126L03U03","set":{"target_text":"지금 제 뇌의 모양을 바꾸고 있어요","target_text_roman":null},"expect":{"known_text":"இப்போது என் மூளையின் வடிவத்தை மாற்றுகிறேன்","target_text":"지금 내 뇌의 모양을 바꾸고 있어요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"d42f5d99-0a95-4e79-8da8-23b9bbfab4fc","phrase_id":"kor_for_tam:S0126L03U03"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"6b6d8efb-bf1e-4e08-9228-8b4ca4f40136","phrase_id":"kor_for_tam:S0126L03U03"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0126L03U04","set":{"target_text":"오늘 제 뇌의 모양을 바꾸고 있어요","target_text_roman":null},"expect":{"known_text":"இன்று என் மூளையின் வடிவத்தை மாற்றுகிறேன்","target_text":"오늘 내 뇌의 모양을 바꾸고 있어요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"5bf5cdcc-d59c-4bcb-8914-d732a1331edf","phrase_id":"kor_for_tam:S0126L03U04"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"23fdcd7c-f224-401f-91b1-bd25ae245b66","phrase_id":"kor_for_tam:S0126L03U04"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0126L03U05","set":{"target_text":"제 뇌의 모양을 바꾸고 있어요, 왜냐하면 그것이 좋은 생각이라고 믿어요","target_text_roman":null},"expect":{"known_text":"என் மூளையின் வடிவத்தை மாற்றுகிறேன், ஏனென்றால் அது ஒரு நல்ல யோசனை என்று நம்புகிறேன்","target_text":"내 뇌의 모양을 바꾸고 있어요, 왜냐하면 그것이 좋은 생각이라고 믿어요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"1e406649-d7f5-493c-87b6-aed12629440d","phrase_id":"kor_for_tam:S0126L03U05"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"f0bc3958-275f-4ee5-85d8-1fe512189947","phrase_id":"kor_for_tam:S0126L03U05"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0126L04U01","set":{"target_text":"이 일이 제 뇌의 모양을 바꾸고 있어요","target_text_roman":null},"expect":{"known_text":"இந்த வேலை என் மூளையின் வடிவத்தை மாற்றுகிறது","target_text":"이 일이 내 뇌의 모양을 바꾸고 있어요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"f943a69f-380e-463d-ae2a-71b919d44b30","phrase_id":"kor_for_tam:S0126L04U01"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"668ccd30-cf49-4c31-b10c-1d8f017cef15","phrase_id":"kor_for_tam:S0126L04U01"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0130L02C01","set":{"target_text":"제","target_text_roman":null},"expect":{"known_text":"என்","target_text":"내"}}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0130L02B01","set":{"target_text":"제 친구이니까요","target_text_roman":null},"expect":{"known_text":"என் நண்பர் என்பதால்","target_text":"내 친구이니까요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"2e97fb60-af4d-4014-8d1d-648f71fa8e5e","phrase_id":"kor_for_tam:S0130L02B01"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"ec8fbf20-7e06-41c3-8ce3-ede1e0fa2085","phrase_id":"kor_for_tam:S0130L02B01"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0130L02B02","set":{"target_text":"그는 제 친구이니까요","target_text_roman":null},"expect":{"known_text":"அவர் என் நண்பர் என்பதால்","target_text":"그는 내 친구이니까요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"1db3d229-9348-4af3-8c10-891aef73c30e","phrase_id":"kor_for_tam:S0130L02B02"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"8501d910-2e56-4743-b736-5c3bacaccfbc","phrase_id":"kor_for_tam:S0130L02B02"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0130L02B03","set":{"target_text":"지금 제 친구이니까요","target_text_roman":null},"expect":{"known_text":"இப்போது என் நண்பர் என்பதால்","target_text":"지금 내 친구이니까요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"0c16df31-b547-4807-8eda-338d6ac71f20","phrase_id":"kor_for_tam:S0130L02B03"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"12bf6e90-b49f-44d2-a61b-15ed9ed6206c","phrase_id":"kor_for_tam:S0130L02B03"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0130L02U01","set":{"target_text":"그것은 놀라웠어요, 왜냐하면 그는 제 친구이니까요","target_text_roman":null},"expect":{"known_text":"அது ஒரு ஆச்சரியமாக இருந்தது, ஏனென்றால் அவர் என் நண்பர்","target_text":"그것은 놀라웠어요, 왜냐하면 그는 내 친구이니까요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"d10a1b55-44ef-4ac8-9f60-5bf3ada469f6","phrase_id":"kor_for_tam:S0130L02U01"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"6cb5d9bf-ebd9-4b42-b664-f69ee6edc6b2","phrase_id":"kor_for_tam:S0130L02U01"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0130L02U02","set":{"target_text":"왜냐하면 그는 제 친구이니까요","target_text_roman":null},"expect":{"known_text":"ஏனென்றால் அவர் என் நண்பர்","target_text":"왜냐하면 그는 내 친구이니까요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"1ee37da0-a0b1-4dd1-9ee3-647c04ebd81d","phrase_id":"kor_for_tam:S0130L02U02"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"ef71cfb3-510e-4b7e-8986-e049d3290ea1","phrase_id":"kor_for_tam:S0130L02U02"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0130L02U03","set":{"target_text":"그것은 흥미롭네요, 왜냐하면 그는 제 친구이니까요","target_text_roman":null},"expect":{"known_text":"அந்த விஷயம் சுவாரஸ்யமாக இருக்கிறது, ஏனென்றால் அவர் என் நண்பர்","target_text":"그것은 흥미롭네요, 왜냐하면 그는 내 친구이니까요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"ddf835dd-3cfc-4a75-9e33-b2f5957a91c6","phrase_id":"kor_for_tam:S0130L02U03"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"710f7fd6-8125-4a2f-8c48-110822fb8b99","phrase_id":"kor_for_tam:S0130L02U03"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0130L02U04","set":{"target_text":"오늘 정말 기뻐요, 왜냐하면 그는 제 친구이니까요","target_text_roman":null},"expect":{"known_text":"இன்று மிகவும் மகிழ்ச்சியாக இருக்கிறேன், ஏனென்றால் அவர் என் நண்பர்","target_text":"오늘 정말 기뻐요, 왜냐하면 그는 내 친구이니까요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"4ca5939e-43a6-4fad-be3d-b5653e604f0b","phrase_id":"kor_for_tam:S0130L02U04"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"57905f52-b81e-4efa-a71a-2681907c6fc0","phrase_id":"kor_for_tam:S0130L02U04"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0130L02U05","set":{"target_text":"그게 좋은 생각이라고 믿어요, 왜냐하면 그는 제 친구이니까요","target_text_roman":null},"expect":{"known_text":"அது ஒரு நல்ல யோசனை என்று நம்புகிறேன், ஏனென்றால் அவர் என் நண்பர்","target_text":"그게 좋은 생각이라고 믿어요, 왜냐하면 그는 내 친구이니까요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"c811b5b2-d340-4e10-ac9b-68873afcb343","phrase_id":"kor_for_tam:S0130L02U05"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"ae670ada-bc6f-4f29-bbe6-8f6606736d6a","phrase_id":"kor_for_tam:S0130L02U05"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0132L01U04","set":{"target_text":"그것은 덜 흥미로워요, 왜냐하면 그는 제 친구이니까요","target_text_roman":null},"expect":{"known_text":"அது குறைவாக சுவாரஸ்யமாக இருக்கும், ஏனென்றால் அவர் என் நண்பர்","target_text":"그것은 덜 흥미로워요, 왜냐하면 그는 내 친구이니까요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"37e7e568-2fc6-45ce-bedb-8e9ecbb286ab","phrase_id":"kor_for_tam:S0132L01U04"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"7ea37a49-ccfa-45fe-b582-ffbd3ee929d5","phrase_id":"kor_for_tam:S0132L01U04"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0136L03U01","set":{"target_text":"물론 그녀에게 물어볼 수 있어요, 왜냐하면 그녀는 제 친구이니까요","target_text_roman":null},"expect":{"known_text":"நிச்சயமாக நீங்கள் அவளிடம் கேட்கலாம், ஏனென்றால் அவள் என் நண்பர்","target_text":"물론 그녀에게 물어볼 수 있어요, 왜냐하면 그녀는 내 친구이니까요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"1e6c45c0-5c1b-4b49-a6c5-553f67686602","phrase_id":"kor_for_tam:S0136L03U01"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"fe74d10d-90ee-431e-9bc7-7ed7ef7121a7","phrase_id":"kor_for_tam:S0136L03U01"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0139L02U03","set":{"target_text":"정말 미안해요, 왜냐하면 그는 제 친구이니까요","target_text_roman":null},"expect":{"known_text":"மிகவும் வருந்துகிறேன், ஏனென்றால் அவர் என் நண்பர்","target_text":"정말 미안해요, 왜냐하면 그는 내 친구이니까요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"d200eb3e-46ed-45c4-84c0-9d551a59c151","phrase_id":"kor_for_tam:S0139L02U03"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"3c7fb4a2-7e8d-4725-a161-e846333e3ac0","phrase_id":"kor_for_tam:S0139L02U03"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0147L01B01","set":{"target_text":"제가","target_text_roman":null},"expect":{"known_text":"நான்தான்","target_text":"내가"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"bbde71a0-b493-470d-a951-c40a857f6452","phrase_id":"kor_for_tam:S0147L01B01"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"5e65bfc4-0a17-45c3-a3b0-783b7193bad2","phrase_id":"kor_for_tam:S0147L01B01"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0147L01B02","set":{"target_text":"제가 생각해요","target_text_roman":null},"expect":{"known_text":"நான்தான் நினைக்கிறேன்","target_text":"내가 생각해요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"b8beb1f0-5799-49b3-9968-24a1f79f3fd3","phrase_id":"kor_for_tam:S0147L01B02"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"c68e2c57-abf7-4ab7-8af5-a55c72be658f","phrase_id":"kor_for_tam:S0147L01B02"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0147L01B03","set":{"target_text":"제가 믿어요","target_text_roman":null},"expect":{"known_text":"நான்தான் நம்புகிறேன்","target_text":"내가 믿어요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"c5f81981-6c56-4449-a14c-565f49842c95","phrase_id":"kor_for_tam:S0147L01B03"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"014c3c22-2d54-4804-9337-87169d33b48b","phrase_id":"kor_for_tam:S0147L01B03"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0147L01U01","set":{"target_text":"제가 정말 기뻐요","target_text_roman":null},"expect":{"known_text":"நான்தான் மிகவும் மகிழ்ச்சியாக இருக்கிறேன்","target_text":"내가 정말 기뻐요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"d07c458c-e3da-4b6a-9ef0-c3efbb33e73f","phrase_id":"kor_for_tam:S0147L01U01"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"7153862f-87f6-4f8f-a5de-c75021e0703a","phrase_id":"kor_for_tam:S0147L01U01"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0147L01U02","set":{"target_text":"제가 그게 좋은 생각이라고 믿어요","target_text_roman":null},"expect":{"known_text":"நான்தான் அது ஒரு நல்ல யோசனை என்று நம்புகிறேன்","target_text":"내가 그게 좋은 생각이라고 믿어요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"580e7b0f-0e1c-48d3-959a-8de08126fca9","phrase_id":"kor_for_tam:S0147L01U02"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"a44f77ee-eaba-4ccd-862c-f272a9d235a2","phrase_id":"kor_for_tam:S0147L01U02"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0147L01U03","set":{"target_text":"제가 한국어를 배우려고 해요","target_text_roman":null},"expect":{"known_text":"நான்தான் கொரிய மொழியை கற்றுக்கொள்ள முயற்சிக்கிறேன்","target_text":"내가 한국어를 배우려고 해요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"0fde6e94-b854-48d1-b384-8ce23d72ecef","phrase_id":"kor_for_tam:S0147L01U03"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"7a966802-60d3-479c-b2cc-dfe2142fe6ea","phrase_id":"kor_for_tam:S0147L01U03"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0147L01U04","set":{"target_text":"오늘 제가 정말 기뻐요","target_text_roman":null},"expect":{"known_text":"இன்று நான்தான் மிகவும் மகிழ்ச்சியாக இருக்கிறேன்","target_text":"오늘 내가 정말 기뻐요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"7a71bec3-91f1-4e5d-b68f-fe7a79807bf8","phrase_id":"kor_for_tam:S0147L01U04"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"a023d940-f77b-46aa-af48-81d340a1f448","phrase_id":"kor_for_tam:S0147L01U04"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0147L01U05","set":{"target_text":"제가 그게 좋다고 생각해요","target_text_roman":null},"expect":{"known_text":"நான்தான் அது நன்றாக இருக்கிறது என்று நினைக்கிறேன்","target_text":"내가 그게 좋다고 생각해요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"293d3dde-ee6a-4cef-87c3-1ef1cedf1e87","phrase_id":"kor_for_tam:S0147L01U05"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"f7cf1bf0-4503-47f7-b132-2ca71ebaccb3","phrase_id":"kor_for_tam:S0147L01U05"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0147L02U02","set":{"target_text":"제가 긴장하는 걸 좋아하지 않아요","target_text_roman":null},"expect":{"known_text":"நான் பதற்றமாக உணர்வதை பிடிக்காது","target_text":"내가 긴장하는 걸 좋아하지 않아요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"4ada9831-52a1-4b3d-96a2-50b2e8dc1b3f","phrase_id":"kor_for_tam:S0147L02U02"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"037e22d5-aabb-46a3-9687-fd640090b98b","phrase_id":"kor_for_tam:S0147L02U02"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0147L02U05","set":{"target_text":"제가 긴장하는 걸 물어봐도 될까요?","target_text_roman":null},"expect":{"known_text":"நான் பதற்றமாக உணர்வதைக் கேட்கலாமா?","target_text":"내가 긴장하는 걸 물어봐도 될까요?"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"16847ef5-d447-49aa-b0dc-efcc66e3b8cd","phrase_id":"kor_for_tam:S0147L02U05"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"c5d81963-4d73-4043-a516-439ee16f8476","phrase_id":"kor_for_tam:S0147L02U05"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0147L03U05","set":{"target_text":"제가 봤을 때 좋은 생각이라고 생각했어요","target_text_roman":null},"expect":{"known_text":"நான் பார்த்தபோது ஒரு நல்ல யோசனை என்று நினைத்தேன்","target_text":"내가 봤을 때 좋은 생각이라고 생각했어요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"4f1e4071-389a-457e-8b55-0b67f8625fe8","phrase_id":"kor_for_tam:S0147L03U05"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"127c35fc-9400-4682-88cf-16728e5f2dd0","phrase_id":"kor_for_tam:S0147L03U05"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0147L04U01","set":{"target_text":"그녀는 제가 긴장하는 걸 봤을 때 매우 친절했어요","target_text_roman":null},"expect":{"known_text":"நான் பதற்றமாக உணர்வதைப் பார்த்தபோது அவள் மிகவும் இரக்கமாக இருந்தாள்","target_text":"그녀는 내가 긴장하는 걸 봤을 때 매우 친절했어요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"073937d9-77da-4207-a743-8e18dd1820f2","phrase_id":"kor_for_tam:S0147L04U01"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"04a2b229-2fcf-4fc4-8043-0f1dbfcc788b","phrase_id":"kor_for_tam:S0147L04U01"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0147L04U03","set":{"target_text":"그녀는 친절했어요, 왜냐하면 그는 제 친구이니까요","target_text_roman":null},"expect":{"known_text":"அவள் இரக்கமாக இருந்தாள், ஏனென்றால் அவர் என் நண்பர்","target_text":"그녀는 친절했어요, 왜냐하면 그는 내 친구이니까요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"796ffe33-e1ed-459d-b0c8-ace2b523f156","phrase_id":"kor_for_tam:S0147L04U03"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"7eae193c-72a4-4ec4-bc22-0355f265321c","phrase_id":"kor_for_tam:S0147L04U03"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0147L04U05","set":{"target_text":"제가 긴장하는 걸 봤을 때 친절했어요","target_text_roman":null},"expect":{"known_text":"நான் பதற்றமாக உணர்வதைப் பார்த்தபோது இரக்கமாக இருந்தாள்","target_text":"내가 긴장하는 걸 봤을 때 친절했어요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"a7409fca-3bf8-4081-8622-16e3abd7d593","phrase_id":"kor_for_tam:S0147L04U05"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"70842ea5-80ed-4fea-87e0-ddda931fcc20","phrase_id":"kor_for_tam:S0147L04U05"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0148L04B02","set":{"target_text":"제가 대답하지 못했을","target_text_roman":null},"expect":{"known_text":"நான் பதில் சொல்ல முடியாத","target_text":"내가 대답하지 못했을"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"8aaed50f-29ac-4035-a0b4-b71924027bf6","phrase_id":"kor_for_tam:S0148L04B02"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"4336af1c-9a20-4abe-969f-48bf8e20db9d","phrase_id":"kor_for_tam:S0148L04B02"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0148L04U01","set":{"target_text":"제가 대답하지 못했을 때 그는 그다지 인내심이 없었어요","target_text_roman":null},"expect":{"known_text":"என்னால் பதில் சொல்ல முடியாதபோது அவர் மிகவும் பொறுமையாக இல்லை","target_text":"내가 대답하지 못했을 때 그는 그다지 인내심이 없었어요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"cae6c21f-7ac2-448b-a711-4bfabbf1cbf5","phrase_id":"kor_for_tam:S0148L04U01"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"a24bbe5d-f5db-47a9-8a7f-a19327d82b6c","phrase_id":"kor_for_tam:S0148L04U01"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0148L04U03","set":{"target_text":"제가 대답하지 못했을 때 미안해요","target_text_roman":null},"expect":{"known_text":"நான் பதில் சொல்ல முடியாதபோது வருந்துகிறேன்","target_text":"내가 대답하지 못했을 때 미안해요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"4d96332a-76e4-4d8f-b54a-a05eb183326c","phrase_id":"kor_for_tam:S0148L04U03"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"e53d6f91-72a4-494b-a114-9dcdae0b9faa","phrase_id":"kor_for_tam:S0148L04U03"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0148L04U05","set":{"target_text":"오늘 제가 대답하지 못했을 때 놀라웠어요","target_text_roman":null},"expect":{"known_text":"இன்று நான் பதில் சொல்ல முடியாதபோது ஆச்சரியமாக இருந்தது","target_text":"오늘 내가 대답하지 못했을 때 놀라웠어요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"a95d0290-930c-4cdd-bbc4-2104b8a2b14c","phrase_id":"kor_for_tam:S0148L04U05"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"c84683c6-d7c7-456f-9207-1ce987516f4f","phrase_id":"kor_for_tam:S0148L04U05"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0166L01C01","set":{"target_text":"제","target_text_roman":null},"expect":{"known_text":"என்","target_text":"내"}}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0166L01B01","set":{"target_text":"제 이름은","target_text_roman":null},"expect":{"known_text":"என் பெயர்","target_text":"내 이름은"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"a67d4915-db8f-469f-81f0-d4fa1efa8866","phrase_id":"kor_for_tam:S0166L01B01"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"6bf533b6-24c1-4b19-8712-88f1483229b6","phrase_id":"kor_for_tam:S0166L01B01"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0166L01B02","set":{"target_text":"제 이름은 좋은","target_text_roman":null},"expect":{"known_text":"என் பெயர் நல்ல","target_text":"내 이름은 좋은"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"7a022fd4-9b8b-4ad5-a21a-6c0072789e83","phrase_id":"kor_for_tam:S0166L01B02"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"11aa5da7-d45d-43f9-98e5-24fafa061fa8","phrase_id":"kor_for_tam:S0166L01B02"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0166L01B03","set":{"target_text":"오늘 제 이름은","target_text_roman":null},"expect":{"known_text":"இன்று என் பெயர்","target_text":"오늘 내 이름은"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"3b8f15be-6437-4141-97b1-a182e10fa4d0","phrase_id":"kor_for_tam:S0166L01B03"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"788a9ed9-d306-48f9-8f8b-a8de5ff139bb","phrase_id":"kor_for_tam:S0166L01B03"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0166L01B04","set":{"target_text":"어제 제 이름은","target_text_roman":null},"expect":{"known_text":"நேற்று என் பெயர்","target_text":"어제 내 이름은"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"44f45e6a-a2f9-4c4f-b937-02c09225a4f2","phrase_id":"kor_for_tam:S0166L01B04"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"56f169e8-2580-40e7-b122-6e56f0afcbeb","phrase_id":"kor_for_tam:S0166L01B04"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0166L01U01","set":{"target_text":"제 이름은 좋아요","target_text_roman":null},"expect":{"known_text":"என் பெயர் பிடிக்கும்","target_text":"내 이름은 좋아요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"8eb976da-88bc-4c38-a580-ad27e6f8314e","phrase_id":"kor_for_tam:S0166L01U01"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"f3568ebe-73ee-4625-b1e1-d79a1994884c","phrase_id":"kor_for_tam:S0166L01U01"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0166L01U02","set":{"target_text":"제 이름은 어려워요","target_text_roman":null},"expect":{"known_text":"என் பெயர் கடினம்","target_text":"내 이름은 어려워요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"f32a4c62-8e0a-43b8-b903-3a4bbea70a83","phrase_id":"kor_for_tam:S0166L01U02"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"dd2fc1cc-3555-49a5-ae8a-55d0db14938f","phrase_id":"kor_for_tam:S0166L01U02"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0166L01U03","set":{"target_text":"제 이름은 흥미롭네요","target_text_roman":null},"expect":{"known_text":"என் பெயர் சுவாரஸ்யமாக இருக்கிறது","target_text":"내 이름은 흥미롭네요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"b4cda5a0-bbf7-4de3-ae13-bc86a891efab","phrase_id":"kor_for_tam:S0166L01U03"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"c8fcb449-1f04-4f4f-afa7-ba14b71275a1","phrase_id":"kor_for_tam:S0166L01U03"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0166L01U04","set":{"target_text":"제 이름은 괜찮아요","target_text_roman":null},"expect":{"known_text":"என் பெயர் பரவாயில்லை","target_text":"내 이름은 괜찮아요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"37762639-e771-4453-a5e7-dd8df0a969e2","phrase_id":"kor_for_tam:S0166L01U04"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"98adb065-5f2a-4af6-b01c-1ee10bd990a4","phrase_id":"kor_for_tam:S0166L01U04"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0166L01U05","set":{"target_text":"오늘 제 이름은 좋아요","target_text_roman":null},"expect":{"known_text":"இன்று என் பெயர் பிடிக்கும்","target_text":"오늘 내 이름은 좋아요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"f0a03b2f-ce3e-4a4c-a4b6-6b419bb25b0a","phrase_id":"kor_for_tam:S0166L01U05"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"2c4a29e8-2148-49b2-821d-2c6410138371","phrase_id":"kor_for_tam:S0166L01U05"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0166L03U01","set":{"target_text":"제 이름은 그다지 특이하지 않아요","target_text_roman":null},"expect":{"known_text":"என் பெயர் மிகவும் வழக்கத்துக்கு மாறானது அல்ல","target_text":"내 이름은 그다지 특이하지 않아요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"9ecd91ea-a711-4a90-ac3e-c59a682e075f","phrase_id":"kor_for_tam:S0166L03U01"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"c844d32c-494e-4e6d-a61d-2f833d0e38f9","phrase_id":"kor_for_tam:S0166L03U01"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0166L03U04","set":{"target_text":"제 이름은 특이하지 않아요","target_text_roman":null},"expect":{"known_text":"என் பெயர் மாறானது அல்ல","target_text":"내 이름은 특이하지 않아요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"37afb9f5-f47d-4684-9180-a85ae445b61f","phrase_id":"kor_for_tam:S0166L03U04"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"81c1d92f-3fd5-4ea9-ab76-8688ca8575ff","phrase_id":"kor_for_tam:S0166L03U04"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0187L02U05","set":{"target_text":"지금까지는 제 이름은 좋아요","target_text_roman":null},"expect":{"known_text":"இதுவரை என் பெயர் பிடிக்கும்","target_text":"지금까지는 내 이름은 좋아요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"1c11ef60-fcb9-4471-80e7-845be47a2f10","phrase_id":"kor_for_tam:S0187L02U05"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"5982e26d-a724-4e07-bed5-29e7ef660840","phrase_id":"kor_for_tam:S0187L02U05"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0226L02B01","set":{"target_text":"저를 도우려고 해요","target_text_roman":null},"expect":{"known_text":"என்னை உதவ முயற்சிக்கிறார்","target_text":"나를 도우려고 해요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"87278b42-9d94-455f-b4e3-77e07f5e0405","phrase_id":"kor_for_tam:S0226L02B01"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"7e8f95d8-3bba-4b99-8e47-8fe562798be9","phrase_id":"kor_for_tam:S0226L02B01"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0226L02B02","set":{"target_text":"지금 저를","target_text_roman":null},"expect":{"known_text":"இப்போது என்னை","target_text":"지금 나를"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"71c0fd40-451a-4ff8-a31f-4bf506f552e4","phrase_id":"kor_for_tam:S0226L02B02"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"1582da39-1198-4cc1-bb6c-2d69dc93c550","phrase_id":"kor_for_tam:S0226L02B02"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0226L02B03","set":{"target_text":"저를 봤어요","target_text_roman":null},"expect":{"known_text":"என்னைப் பார்த்தார்","target_text":"나를 봤어요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"37cabae9-dcd1-4ed0-8aef-2e62abc0742b","phrase_id":"kor_for_tam:S0226L02B03"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"5183774d-f7ec-4ab9-8302-7481fb67522f","phrase_id":"kor_for_tam:S0226L02B03"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0226L02U01","set":{"target_text":"그는 저를 도우려고 해요","target_text_roman":null},"expect":{"known_text":"அவர் எனக்கு உதவ முயற்சிக்கிறார்","target_text":"그는 나를 도우려고 해요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"5c3084dd-201b-4bea-851f-a136cfd7a37f","phrase_id":"kor_for_tam:S0226L02U01"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"82133781-6fea-481f-9388-82febba19554","phrase_id":"kor_for_tam:S0226L02U01"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0226L02U02","set":{"target_text":"그는 지금 저를 도우려고 해요","target_text_roman":null},"expect":{"known_text":"அவர் இப்போது எனக்கு உதவ முயற்சிக்கிறார்","target_text":"그는 지금 나를 도우려고 해요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"6714863b-a4b2-48fc-a912-5bd8c50ace05","phrase_id":"kor_for_tam:S0226L02U02"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"e58592d8-f7d8-4f82-a18e-8eae25fca72f","phrase_id":"kor_for_tam:S0226L02U02"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0226L02U03","set":{"target_text":"그는 어제 저를 봤어요","target_text_roman":null},"expect":{"known_text":"அவர் நேற்று என்னைப் பார்த்தார்","target_text":"그는 어제 나를 봤어요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"b9d203ea-5c40-44ed-83fa-18d1cbb28e6d","phrase_id":"kor_for_tam:S0226L02U03"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"1a36457d-1c5b-48ba-b252-00db019536e9","phrase_id":"kor_for_tam:S0226L02U03"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0226L02U04","set":{"target_text":"그는 오늘 저를 도우려고 해요","target_text_roman":null},"expect":{"known_text":"அவர் இன்று எனக்கு உதவ முயற்சிக்கிறார்","target_text":"그는 오늘 나를 도우려고 해요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"e4c1bbcf-1b6e-409f-a244-3a5a4aafd2b4","phrase_id":"kor_for_tam:S0226L02U04"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"2317e430-a5de-4bab-9324-c228a18a6714","phrase_id":"kor_for_tam:S0226L02U04"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0226L02U05","set":{"target_text":"그는 저를 알아요","target_text_roman":null},"expect":{"known_text":"அவர் என்னை அறிவார்","target_text":"그는 나를 알아요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"d79fe8d9-6a31-4367-b82e-e73637105336","phrase_id":"kor_for_tam:S0226L02U05"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"357a6f30-f9bb-4cd1-a696-66e23fe11393","phrase_id":"kor_for_tam:S0226L02U05"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0226L03U01","set":{"target_text":"그 남자는 저를 도우려고 해요","target_text_roman":null},"expect":{"known_text":"அந்த மனிதர் எனக்கு உதவ முயற்சிக்கிறார்","target_text":"그 남자는 나를 도우려고 해요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"55fae588-8604-48b2-b88f-ef13ed04217a","phrase_id":"kor_for_tam:S0226L03U01"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"473f463e-6d3d-4aac-a2fd-a763aad44966","phrase_id":"kor_for_tam:S0226L03U01"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0226L03U02","set":{"target_text":"그 남자는 지금 저를 도우려고 해요","target_text_roman":null},"expect":{"known_text":"அந்த மனிதர் இப்போது எனக்கு உதவ முயற்சிக்கிறார்","target_text":"그 남자는 지금 나를 도우려고 해요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"138d633c-accd-47aa-aced-a4b93e94dd8d","phrase_id":"kor_for_tam:S0226L03U02"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"ffd44bd3-6be8-46b0-93f9-5406b8f94ca7","phrase_id":"kor_for_tam:S0226L03U02"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0226L03U04","set":{"target_text":"그 남자는 어제 저를 봤어요","target_text_roman":null},"expect":{"known_text":"அந்த மனிதர் நேற்று என்னைப் பார்த்தார்","target_text":"그 남자는 어제 나를 봤어요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"c097931d-120f-407a-b976-19ec94e9a3f3","phrase_id":"kor_for_tam:S0226L03U04"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"bf1234a3-fc27-4478-8c74-a6cbae16e040","phrase_id":"kor_for_tam:S0226L03U04"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0226L03U05","set":{"target_text":"그 남자는 오늘 저를 도우려고 해요","target_text_roman":null},"expect":{"known_text":"அந்த மனிதர் இன்று எனக்கு உதவ முயற்சிக்கிறார்","target_text":"그 남자는 오늘 나를 도우려고 해요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"68ea549e-9e69-484f-8c9f-76b17b6268ff","phrase_id":"kor_for_tam:S0226L03U05"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"d893e26e-6b70-4739-b1e5-7beba1296cae","phrase_id":"kor_for_tam:S0226L03U05"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0227L01B01","set":{"target_text":"저에게 말하려고 해요","target_text_roman":null},"expect":{"known_text":"எனக்குச் சொல்ல முயற்சிக்கிறார்","target_text":"나에게 말하려고 해요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"15861a83-1088-42b4-b537-6c358f45e555","phrase_id":"kor_for_tam:S0227L01B01"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"ae64710f-79fb-46aa-b5fa-80f13c6e433a","phrase_id":"kor_for_tam:S0227L01B01"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0227L01B02","set":{"target_text":"지금 저에게","target_text_roman":null},"expect":{"known_text":"இப்போது எனக்கு","target_text":"지금 나에게"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"cacb2c95-0843-4706-a2d1-786510357189","phrase_id":"kor_for_tam:S0227L01B02"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"8762fc3b-3485-46e3-8684-67ed809c8d27","phrase_id":"kor_for_tam:S0227L01B02"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0227L01B03","set":{"target_text":"저에게 물어볼 거예요","target_text_roman":null},"expect":{"known_text":"எனக்குக் கேட்பார்","target_text":"나에게 물어볼 거예요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"6ed758f4-3d2f-4ba0-8c3c-35d9d2354518","phrase_id":"kor_for_tam:S0227L01B03"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"84c51e10-a2fc-4a09-a7e7-9ee707a5c34f","phrase_id":"kor_for_tam:S0227L01B03"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0227L01U01","set":{"target_text":"그는 저에게 말하려고 해요","target_text_roman":null},"expect":{"known_text":"அவர் எனக்குச் சொல்ல முயற்சிக்கிறார்","target_text":"그는 나에게 말하려고 해요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"8e4e1d11-4e17-4373-95d6-f9b94b847038","phrase_id":"kor_for_tam:S0227L01U01"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"302135f3-4a1d-4bde-9606-d6ad93411dd6","phrase_id":"kor_for_tam:S0227L01U01"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0227L01U02","set":{"target_text":"그 남자는 저에게 물어볼 거예요","target_text_roman":null},"expect":{"known_text":"அந்த மனிதர் எனக்குக் கேட்பார்","target_text":"그 남자는 나에게 물어볼 거예요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"c37edbb0-b0ee-459a-bf00-b757551261a5","phrase_id":"kor_for_tam:S0227L01U02"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"4fe025c6-5be8-411c-a1d4-c50d3cb8d9f5","phrase_id":"kor_for_tam:S0227L01U02"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0227L01U03","set":{"target_text":"그는 지금 저에게 말하려고 해요","target_text_roman":null},"expect":{"known_text":"அவர் இப்போது எனக்குச் சொல்ல முயற்சிக்கிறார்","target_text":"그는 지금 나에게 말하려고 해요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"07ce5688-eed3-4ff2-84d0-dcbd44951914","phrase_id":"kor_for_tam:S0227L01U03"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"1a5f3bd3-e88a-481c-8bbc-4b3859a7f0db","phrase_id":"kor_for_tam:S0227L01U03"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0227L01U04","set":{"target_text":"그는 저에게 대답을 줄 거예요","target_text_roman":null},"expect":{"known_text":"அவர் எனக்குப் பதில் கொடுப்பார்","target_text":"그는 나에게 대답을 줄 거예요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"3b890da3-1eb0-4d5a-8d31-9be8dac6d120","phrase_id":"kor_for_tam:S0227L01U04"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"f261d634-5090-43a8-be2d-2660bb508022","phrase_id":"kor_for_tam:S0227L01U04"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0227L01U05","set":{"target_text":"그 남자는 저에게 말하려고 해요","target_text_roman":null},"expect":{"known_text":"அந்த மனிதர் எனக்குச் சொல்ல முயற்சிக்கிறார்","target_text":"그 남자는 나에게 말하려고 해요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"239619d3-5d7b-402d-ac0a-2fe3c623484c","phrase_id":"kor_for_tam:S0227L01U05"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"2e8abf3f-5678-4546-95d5-ac0ce94eda9e","phrase_id":"kor_for_tam:S0227L01U05"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0227L02B02","set":{"target_text":"저에게 말해줄 거예요","target_text_roman":null},"expect":{"known_text":"எனக்குச் சொல்வார்","target_text":"나에게 말해줄 거예요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"7b614630-aa38-4af5-9b41-070a7de5dee9","phrase_id":"kor_for_tam:S0227L02B02"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"8ba77f87-0b1a-49f6-9f2d-977df31a6a63","phrase_id":"kor_for_tam:S0227L02B02"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0227L02U01","set":{"target_text":"그 남자는 저에게 말해줄 거예요","target_text_roman":null},"expect":{"known_text":"அந்த மனிதர் எனக்குச் சொல்வார்","target_text":"그 남자는 나에게 말해줄 거예요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"b7cf9a7e-34a6-4e53-a2cb-cac017f13109","phrase_id":"kor_for_tam:S0227L02U01"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"5883d59a-912f-450e-babe-c9cd00fcad77","phrase_id":"kor_for_tam:S0227L02U01"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0227L02U04","set":{"target_text":"그 남자는 지금 저에게 말해줄 거예요","target_text_roman":null},"expect":{"known_text":"அந்த மனிதர் இப்போது எனக்குச் சொல்வார்","target_text":"그 남자는 지금 나에게 말해줄 거예요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"832a512a-eb30-4a0a-af1a-945f2445d74f","phrase_id":"kor_for_tam:S0227L02U04"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"9243523e-4b5e-4350-b540-86275b193636","phrase_id":"kor_for_tam:S0227L02U04"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0227L02U05","set":{"target_text":"그가 저에게 말해줄 거예요","target_text_roman":null},"expect":{"known_text":"அவரும் எனக்குச் சொல்வார்","target_text":"그가 나에게 말해줄 거예요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"8c91dc23-5255-490f-9a53-73e5983ef544","phrase_id":"kor_for_tam:S0227L02U05"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"3bf41708-71f9-401f-bb49-865923472f6c","phrase_id":"kor_for_tam:S0227L02U05"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0227L03U01","set":{"target_text":"그 남자는 저에게 새로운 것을 말해줄 거예요","target_text_roman":null},"expect":{"known_text":"அந்த மனிதர் எனக்குப் புதிதாக ஏதாவது சொல்வார்","target_text":"그 남자는 나에게 새로운 것을 말해줄 거예요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"92c48d58-d155-4323-89c5-170495426311","phrase_id":"kor_for_tam:S0227L03U01"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"b4c1b4b0-1532-46e2-bde3-11465b4652df","phrase_id":"kor_for_tam:S0227L03U01"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0227L03U05","set":{"target_text":"그가 저에게 새로운 것을 말해줄 거예요","target_text_roman":null},"expect":{"known_text":"அவரும் எனக்குப் புதிதாக ஏதாவது சொல்வார்","target_text":"그가 나에게 새로운 것을 말해줄 거예요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"97962431-7096-4d1b-a9b6-526e86dfaeec","phrase_id":"kor_for_tam:S0227L03U05"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"766e4188-499a-4a65-a040-e68d6b65d092","phrase_id":"kor_for_tam:S0227L03U05"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0229L01U03","set":{"target_text":"그는 저를 도울 거예요","target_text_roman":null},"expect":{"known_text":"அவர் எனக்கு உதவுவார்","target_text":"그는 나를 도울 거예요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"ee88ae28-74d5-4b9e-b2e0-68f88cd36e2a","phrase_id":"kor_for_tam:S0229L01U03"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"d9a392b9-9f16-41b2-8eda-b70283ac0819","phrase_id":"kor_for_tam:S0229L01U03"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0229L01U05","set":{"target_text":"그가 할 수 있다면 저를 도울 거예요","target_text_roman":null},"expect":{"known_text":"அவரால் முடிந்தால் எனக்கு உதவுவார்","target_text":"그가 할 수 있다면 나를 도울 거예요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"a31d7aec-4eff-4010-a20e-b2439c94c0cc","phrase_id":"kor_for_tam:S0229L01U05"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"06e971e1-eee2-4e84-9065-717d3f38d7ae","phrase_id":"kor_for_tam:S0229L01U05"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0229L02U03","set":{"target_text":"그 여자는 저를 도울 거예요","target_text_roman":null},"expect":{"known_text":"அந்தப் பெண் எனக்கு உதவுவாள்","target_text":"그 여자는 나를 도울 거예요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"65f76e6c-21c4-46af-8c56-c52cb57c3ad3","phrase_id":"kor_for_tam:S0229L02U03"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"9f803ec6-97a8-41e8-969a-69550f3c80ce","phrase_id":"kor_for_tam:S0229L02U03"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0229L02U05","set":{"target_text":"그 여자는 할 수 있다면 저를 도울 거예요","target_text_roman":null},"expect":{"known_text":"அந்தப் பெண்ணால் முடிந்தால் எனக்கு உதவுவாள்","target_text":"그 여자는 할 수 있다면 나를 도울 거예요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"4aba328e-abcc-499c-b56e-d4f3fee046e2","phrase_id":"kor_for_tam:S0229L02U05"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"49b06272-be00-4ee0-8ee4-eb7307f0b86e","phrase_id":"kor_for_tam:S0229L02U05"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0237L02B03","set":{"target_text":"저에게 말해주길","target_text_roman":null},"expect":{"known_text":"எனக்குச் சொல்லும்படி","target_text":"나에게 말해주길"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"c91498b7-c108-49a2-ba5e-c7f4552de3db","phrase_id":"kor_for_tam:S0237L02B03"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"78639d58-828a-4686-894b-cbc1f4a8f29e","phrase_id":"kor_for_tam:S0237L02B03"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0237L02U03","set":{"target_text":"그는 저에게 말해주길 원했어요","target_text_roman":null},"expect":{"known_text":"அவர் எனக்குச் சொல்லும்படி விரும்பினார்","target_text":"그는 나에게 말해주길 원했어요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"f3e3f51e-960d-45e6-a590-93305031f81c","phrase_id":"kor_for_tam:S0237L02U03"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"83425d6b-e6af-40b7-b557-106eb99099b4","phrase_id":"kor_for_tam:S0237L02U03"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0293L01B01","set":{"target_text":"저를 만날지","target_text_roman":null},"expect":{"known_text":"என்னை சந்திப்பாரா என்று","target_text":"나를 만날지"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"5029659a-8ccd-48db-ab0a-4dd182d6072b","phrase_id":"kor_for_tam:S0293L01B01"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"a0b764d7-aeda-4cab-b3b7-e122a7bb8a7e","phrase_id":"kor_for_tam:S0293L01B01"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0293L01B03","set":{"target_text":"그가 어디서 저를 만날지","target_text_roman":null},"expect":{"known_text":"அவர் எங்கே என்னை சந்திப்பாரா என்று","target_text":"그가 어디서 나를 만날지"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"34c66249-d1d2-4dc3-9015-ebe052b70975","phrase_id":"kor_for_tam:S0293L01B03"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"05501667-0061-4f86-9181-1242341c2443","phrase_id":"kor_for_tam:S0293L01B03"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0293L01U01","set":{"target_text":"그가 저를 만날지 궁금해요","target_text_roman":null},"expect":{"known_text":"அவர் என்னை சந்திப்பாரா என்று யோசிக்கிறேன்","target_text":"그가 나를 만날지 궁금해요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"84afb6e6-867a-42d1-883a-18e73758cb44","phrase_id":"kor_for_tam:S0293L01U01"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"fef6ea7f-ea41-448d-ac04-4c42b1f56d7c","phrase_id":"kor_for_tam:S0293L01U01"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0293L01U03","set":{"target_text":"그가 어디서 저를 만날지 궁금해요","target_text_roman":null},"expect":{"known_text":"அவர் எங்கே என்னை சந்திப்பாரா என்று யோசிக்கிறேன்","target_text":"그가 어디서 나를 만날지 궁금해요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"f1f69ce3-b96a-4d30-bb50-50be9fe76e27","phrase_id":"kor_for_tam:S0293L01U03"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"c89d0f9f-4d1f-4b2a-8b97-bf2bee2b827e","phrase_id":"kor_for_tam:S0293L01U03"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0293L01U04","set":{"target_text":"그녀가 저를 만날지 궁금해요","target_text_roman":null},"expect":{"known_text":"அவள் என்னை சந்திப்பாளா என்று யோசிக்கிறேன்","target_text":"그녀가 나를 만날지 궁금해요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"31c87c8e-7830-4758-8aa9-2f8afe035264","phrase_id":"kor_for_tam:S0293L01U04"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"b02faae9-3bb4-4ef8-9467-db45c2bd5c49","phrase_id":"kor_for_tam:S0293L01U04"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0293L02U01","set":{"target_text":"그가 어디서 저를 만날지 알아야 해요","target_text_roman":null},"expect":{"known_text":"அவர் எங்கே என்னை சந்திப்பாரா என்று தெரிந்துகொள்ள வேண்டும்","target_text":"그가 어디서 나를 만날지 알아야 해요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"4a74be8e-f9f7-4ad8-85d6-d727eddc805c","phrase_id":"kor_for_tam:S0293L02U01"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"f4119350-b6e1-4da7-8f32-ce7c0be98d7a","phrase_id":"kor_for_tam:S0293L02U01"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0293L02U02","set":{"target_text":"그가 저를 만날지 알아야 해요","target_text_roman":null},"expect":{"known_text":"அவர் என்னை சந்திப்பாரா என்று தெரிந்துகொள்ள வேண்டும்","target_text":"그가 나를 만날지 알아야 해요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"6e870608-9324-40a0-a9aa-bae9c1d5d586","phrase_id":"kor_for_tam:S0293L02U02"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"c897590b-4089-4ecd-8e13-3d375e058357","phrase_id":"kor_for_tam:S0293L02U02"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0293L02U04","set":{"target_text":"오늘 그가 저를 만날지 알아야 해요","target_text_roman":null},"expect":{"known_text":"இன்று அவர் என்னை சந்திப்பாரா என்று தெரிந்துகொள்ள வேண்டும்","target_text":"오늘 그가 나를 만날지 알아야 해요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"fb6ad4ce-c699-4757-96d4-2873e6b1b343","phrase_id":"kor_for_tam:S0293L02U04"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"f15486b9-7f48-4d76-b6aa-38389179a32d","phrase_id":"kor_for_tam:S0293L02U04"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0293L02U05","set":{"target_text":"그녀가 저를 만날지 알아야 해요","target_text_roman":null},"expect":{"known_text":"அவள் என்னை சந்திப்பாளா என்று தெரிந்துகொள்ள வேண்டும்","target_text":"그녀가 나를 만날지 알아야 해요"}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"c7f4eea3-36ca-4f4e-bafa-34fbd3084c6f","phrase_id":"kor_for_tam:S0293L02U05"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"091d28fd-1584-43bf-acd7-a050ab680765","phrase_id":"kor_for_tam:S0293L02U05"}
+{"op":"phrase.delete","phrase_id":"kor_for_tam:S0642L01U04","expect":{"known_text":"நீங்கள் எப்படி உணர்கிறீர்கள்","target_text":"기분이 어때요"}}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0666L01B01","set":{"known_text":"நீங்கள் அனைவரும் என்ன"},"expect":{"known_text":"அனைவரும் எப்படி","target_text":"여러분 어떻게"}}
+{"op":"audio.link","target":"phrase","slot":"known","audio_id":"2e5e6554-1aea-4d31-bf0b-d84594f86b9c","phrase_id":"kor_for_tam:S0666L01B01"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0666L01B02","set":{"known_text":"இப்போது நீங்கள் அனைவரும் என்ன"},"expect":{"known_text":"இப்போது அனைவரும் எப்படி","target_text":"지금 여러분 어떻게"}}
+{"op":"audio.link","target":"phrase","slot":"known","audio_id":"d06e60f5-d2a3-4a5a-bcc1-b413e7ad4bb3","phrase_id":"kor_for_tam:S0666L01B02"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0666L01B03","set":{"known_text":"அடிக்கடி நீங்கள் அனைவரும் என்ன"},"expect":{"known_text":"அடிக்கடி அனைவரும் எப்படி","target_text":"자주 여러분 어떻게"}}
+{"op":"audio.link","target":"phrase","slot":"known","audio_id":"a3868b66-a42e-4e0e-99f6-c3dbfd3b7dee","phrase_id":"kor_for_tam:S0666L01B03"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0666L01B04","set":{"known_text":"இன்று நீங்கள் அனைவரும் என்ன"},"expect":{"known_text":"இன்று அனைவரும் எப்படி","target_text":"오늘 여러분 어떻게"}}
+{"op":"audio.link","target":"phrase","slot":"known","audio_id":"448c5320-0213-4da5-aa92-17d808d23065","phrase_id":"kor_for_tam:S0666L01B04"}
+{"op":"phrase.delete","phrase_id":"kor_for_tam:S0666L01U03","expect":{"known_text":"நீங்கள் அனைவரும் அப்படி நினைக்கிறீர்கள்","target_text":"여러분 그렇게 생각하세요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_tam:S0354L01U01","expect":{"known_text":"அவர் கோபமாகத் தெரிய வேண்டிய அவசியமில்லை","target_text":"보일 필요가 없었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_tam:S0038L01U02","expect":{"known_text":"சுமார் ஆறு மணிக்கு","target_text":"약 6시에"}}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0651L01U03","set":{"known_text":"அதைப் பற்றி நீங்கள் என்ன நினைக்கிறீர்கள் மேடம்","target_text":"그것에 대해 어떻게 생각하세요, 선생님","target_text_roman":null},"expect":{"known_text":"நீங்கள் என்ன நினைக்கிறீர்கள்","target_text":"어떻게 생각하세요"}}
+{"op":"audio.link","target":"phrase","slot":"known","audio_id":"6aa42816-1419-4079-bde6-b3b0de60b7d3","phrase_id":"kor_for_tam:S0651L01U03"}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"360c135b-468c-4dba-ba82-a50a21d5789b","phrase_id":"kor_for_tam:S0651L01U03"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"3f14cb79-bb48-484f-a314-bf0e9e44cd24","phrase_id":"kor_for_tam:S0651L01U03"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0077L03U01","set":{"known_text":"எவ்வளவு விரைவாக என்று தெரியவில்லை","target_text":"얼마나 빠른지 모르겠어요","target_text_roman":null},"expect":{"known_text":"விரைவாகப் தெரியும்","target_text":"빠른지 알아요"}}
+{"op":"audio.link","target":"phrase","slot":"known","audio_id":"7a8f6765-97b6-48c6-ada8-a1215b4dff95","phrase_id":"kor_for_tam:S0077L03U01"}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"a56126f6-3a2f-4d63-bae0-fe3d20e272b0","phrase_id":"kor_for_tam:S0077L03U01"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"3771ad74-407b-47d3-b10c-2479a1afdfdf","phrase_id":"kor_for_tam:S0077L03U01"}
+{"op":"phrase.update","phrase_id":"kor_for_tam:S0227L03U06","set":{"target_text":"그 남자는 저에게 새로운 것을 말해줄 거예요.","target_text_roman":null},"expect":{"known_text":"அந்த மனிதர் எனக்குப் புதிதாக ஏதாவது சொல்லப் போகிறார்.","target_text":"그 남자는 나에게 새로운 것을 말해줄 거예요."}}
+{"op":"audio.link","target":"phrase","slot":"target1","audio_id":"92c48d58-d155-4323-89c5-170495426311","phrase_id":"kor_for_tam:S0227L03U06"}
+{"op":"audio.link","target":"phrase","slot":"target2","audio_id":"b4c1b4b0-1532-46e2-bde3-11465b4652df","phrase_id":"kor_for_tam:S0227L03U06"}
+{"op":"lego.update","lego_id":"S0126L03","set":{"target_text":"제 뇌의","target_text_roman":null},"expect":{"known_text":"என் மூளையின்","target_text":"내 뇌의"}}
+{"op":"audio.link","target":"lego","slot":"target1","audio_id":"ee00942f-7418-4140-b113-6eb033f23d31","lego_id":"S0126L03"}
+{"op":"audio.link","target":"lego","slot":"target2","audio_id":"b9b0a4d4-dc89-457a-9978-85b91724cb6e","lego_id":"S0126L03"}
+{"op":"lego.update","lego_id":"S0130L02","set":{"target_text":"제 친구이니까요","target_text_roman":null},"expect":{"known_text":"என் நண்பர் என்பதால்","target_text":"내 친구이니까요"}}
+{"op":"audio.link","target":"lego","slot":"target1","audio_id":"2e97fb60-af4d-4014-8d1d-648f71fa8e5e","lego_id":"S0130L02"}
+{"op":"audio.link","target":"lego","slot":"target2","audio_id":"ec8fbf20-7e06-41c3-8ce3-ede1e0fa2085","lego_id":"S0130L02"}
+{"op":"lego.update","lego_id":"S0147L01","set":{"target_text":"제가","target_text_roman":null},"expect":{"known_text":"நான்தான்","target_text":"내가"}}
+{"op":"audio.link","target":"lego","slot":"target1","audio_id":"bbde71a0-b493-470d-a951-c40a857f6452","lego_id":"S0147L01"}
+{"op":"audio.link","target":"lego","slot":"target2","audio_id":"5e65bfc4-0a17-45c3-a3b0-783b7193bad2","lego_id":"S0147L01"}
+{"op":"lego.update","lego_id":"S0166L01","set":{"target_text":"제 이름은","target_text_roman":null},"expect":{"known_text":"என் பெயர்","target_text":"내 이름은"}}
+{"op":"audio.link","target":"lego","slot":"target1","audio_id":"a67d4915-db8f-469f-81f0-d4fa1efa8866","lego_id":"S0166L01"}
+{"op":"audio.link","target":"lego","slot":"target2","audio_id":"6bf533b6-24c1-4b19-8712-88f1483229b6","lego_id":"S0166L01"}
+{"op":"lego.update","lego_id":"S0226L02","set":{"target_text":"저를","target_text_roman":null},"expect":{"known_text":"என்னை","target_text":"나를"}}
+{"op":"audio.link","target":"lego","slot":"target1","audio_id":"30d66d9a-27a8-4560-878f-da204506bfb6","lego_id":"S0226L02"}
+{"op":"audio.link","target":"lego","slot":"target2","audio_id":"40917d60-f74d-4c7c-aabe-2215db5cfa6a","lego_id":"S0226L02"}
+{"op":"lego.update","lego_id":"S0227L01","set":{"target_text":"저에게","target_text_roman":null},"expect":{"known_text":"என்னிடம்","target_text":"나에게"}}
+{"op":"audio.link","target":"lego","slot":"target1","audio_id":"4b8412d0-cd4e-489c-8221-9c9f8b2a0ba8","lego_id":"S0227L01"}
+{"op":"audio.link","target":"lego","slot":"target2","audio_id":"51b4e951-41ea-4cca-bacb-1cef9f849fcb","lego_id":"S0227L01"}
+{"op":"lego.update","lego_id":"S0666L01","set":{"known_text":"நீங்கள் அனைவரும் என்ன"},"expect":{"known_text":"அனைவரும் எப்படி","target_text":"여러분 어떻게"}}
+{"op":"audio.link","target":"lego","slot":"known","audio_id":"2e5e6554-1aea-4d31-bf0b-d84594f86b9c","lego_id":"S0666L01"}
+{"op":"seed.update","seed_number":126,"set":{"target_text":"이 일이 제 뇌의 모양을 바꾸고 있어요.","target_text_roman":null},"expect":{"known_text":"இந்த வேலை என் மூளையின் வடிவத்தை மாற்றுகிறது.","target_text":"이 일이 내 뇌의 모양을 바꾸고 있어요."}}
+{"op":"audio.link","target":"seed","slot":"target1","audio_id":"f943a69f-380e-463d-ae2a-71b919d44b30","seed_number":126}
+{"op":"audio.link","target":"seed","slot":"target2","audio_id":"668ccd30-cf49-4c31-b10c-1d8f017cef15","seed_number":126}
+{"op":"seed.update","seed_number":130,"set":{"target_text":"그것은 놀라웠어요, 왜냐하면 그는 제 친구이니까요.","target_text_roman":null},"expect":{"known_text":"அது ஒரு ஆச்சரியமாக இருந்தது, ஏனென்றால் அவர் என் நண்பர்.","target_text":"그것은 놀라웠어요, 왜냐하면 그는 내 친구이니까요."}}
+{"op":"audio.link","target":"seed","slot":"target1","audio_id":"d10a1b55-44ef-4ac8-9f60-5bf3ada469f6","seed_number":130}
+{"op":"audio.link","target":"seed","slot":"target2","audio_id":"6cb5d9bf-ebd9-4b42-b664-f69ee6edc6b2","seed_number":130}
+{"op":"seed.update","seed_number":136,"set":{"target_text":"물론 그녀에게 물어볼 수 있어요, 왜냐하면 그녀는 제 친구이니까요.","target_text_roman":null},"expect":{"known_text":"நிச்சயமாக நீங்கள் அவளிடம் கேட்கலாம், ஏனென்றால் அவள் என் நண்பர்.","target_text":"물론 그녀에게 물어볼 수 있어요, 왜냐하면 그녀는 내 친구이니까요."}}
+{"op":"audio.link","target":"seed","slot":"target1","audio_id":"1e6c45c0-5c1b-4b49-a6c5-553f67686602","seed_number":136}
+{"op":"audio.link","target":"seed","slot":"target2","audio_id":"fe74d10d-90ee-431e-9bc7-7ed7ef7121a7","seed_number":136}
+{"op":"seed.update","seed_number":147,"set":{"target_text":"그녀는 제가 긴장하는 걸 봤을 때 매우 친절했어요.","target_text_roman":null},"expect":{"known_text":"நான் பதற்றமாக உணர்வதைப் பார்த்தபோது அவள் மிகவும் இரக்கமாக இருந்தாள்.","target_text":"그녀는 내가 긴장하는 걸 봤을 때 매우 친절했어요."}}
+{"op":"audio.link","target":"seed","slot":"target1","audio_id":"073937d9-77da-4207-a743-8e18dd1820f2","seed_number":147}
+{"op":"audio.link","target":"seed","slot":"target2","audio_id":"04a2b229-2fcf-4fc4-8043-0f1dbfcc788b","seed_number":147}
+{"op":"seed.update","seed_number":148,"set":{"target_text":"제가 대답하지 못했을 때 그는 그다지 인내심이 없었어요.","target_text_roman":null},"expect":{"known_text":"என்னால் பதில் சொல்ல முடியாதபோது அவர் மிகவும் பொறுமையாக இல்லை.","target_text":"내가 대답하지 못했을 때 그는 그다지 인내심이 없었어요."}}
+{"op":"audio.link","target":"seed","slot":"target1","audio_id":"cae6c21f-7ac2-448b-a711-4bfabbf1cbf5","seed_number":148}
+{"op":"audio.link","target":"seed","slot":"target2","audio_id":"a24bbe5d-f5db-47a9-8a7f-a19327d82b6c","seed_number":148}
+{"op":"seed.update","seed_number":166,"set":{"target_text":"제 이름은 그다지 특이하지 않아요.","target_text_roman":null},"expect":{"known_text":"என் பெயர் மிகவும் வழக்கத்துக்கு மாறானது அல்ல.","target_text":"내 이름은 그다지 특이하지 않아요."}}
+{"op":"audio.link","target":"seed","slot":"target1","audio_id":"9ecd91ea-a711-4a90-ac3e-c59a682e075f","seed_number":166}
+{"op":"audio.link","target":"seed","slot":"target2","audio_id":"c844d32c-494e-4e6d-a61d-2f833d0e38f9","seed_number":166}
+{"op":"seed.update","seed_number":226,"set":{"target_text":"그 남자는 저를 도우려고 해요.","target_text_roman":null},"expect":{"known_text":"அந்த மனிதர் எனக்கு உதவ முயற்சிக்கிறார்.","target_text":"그 남자는 나를 도우려고 해요."}}
+{"op":"audio.link","target":"seed","slot":"target1","audio_id":"55fae588-8604-48b2-b88f-ef13ed04217a","seed_number":226}
+{"op":"audio.link","target":"seed","slot":"target2","audio_id":"473f463e-6d3d-4aac-a2fd-a763aad44966","seed_number":226}
+{"op":"seed.update","seed_number":227,"set":{"target_text":"그 남자는 저에게 새로운 것을 말해줄 거예요.","target_text_roman":null},"expect":{"known_text":"அந்த மனிதர் எனக்குப் புதிதாக ஏதாவது சொல்லப் போகிறார்.","target_text":"그 남자는 나에게 새로운 것을 말해줄 거예요."}}
+{"op":"audio.link","target":"seed","slot":"target1","audio_id":"92c48d58-d155-4323-89c5-170495426311","seed_number":227}
+{"op":"audio.link","target":"seed","slot":"target2","audio_id":"b4c1b4b0-1532-46e2-bde3-11465b4652df","seed_number":227}
+{"op":"seed.update","seed_number":293,"set":{"target_text":"그가 어디서 저를 만날지 알아야 해요.","target_text_roman":null},"expect":{"known_text":"அவர் என்னை எங்கே சந்திக்கப் போகிறார் என்று நான் கண்டுபிடிக்க வேண்டும்.","target_text":"그가 어디서 나를 만날지 알아야 해요."}}
+{"op":"audio.link","target":"seed","slot":"target1","audio_id":"4a74be8e-f9f7-4ad8-85d6-d727eddc805c","seed_number":293}
+{"op":"audio.link","target":"seed","slot":"target2","audio_id":"f4119350-b6e1-4da7-8f32-ce7c0be98d7a","seed_number":293}
