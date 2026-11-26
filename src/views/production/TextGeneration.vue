@@ -747,6 +747,7 @@ const effectiveCourseCode = computed(() => {
 
 // Configuration
 const seedCount = ref(300)
+let seedTargetLoaded = false
 
 const courseSizes = [
   { seeds: 300, label: 'MVP' },
@@ -1273,6 +1274,12 @@ async function fetchProgress() {
   try {
     if (isSupabaseConfigured()) {
       const statsData = await getCourseProgress(courseCode)
+      // Open on the course's own saved target, not a hard-wired 300: otherwise a Full (668)
+      // course shows MVP and the next Translate/Build click quietly shrinks it back (cs #666).
+      if (!seedTargetLoaded && statsData.seedTarget) {
+        seedCount.value = statsData.seedTarget
+        seedTargetLoaded = true
+      }
       const totalSeeds = statsData.seeds || seedCount.value
       progress.value = {
         ...progress.value,
@@ -1410,7 +1417,9 @@ async function startTranslation() {
     const apiBase = getApiUrl()
     const result = await fetchJson(`${apiBase}/api/build/translate/${courseCode}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json' },
+      // The Target switch decides how many seeds the translator is briefed for (cs #666).
+      body: JSON.stringify({ targetSeeds: seedCount.value })
     })
     if (result.ok) {
       translateSpawned.value = true

@@ -269,18 +269,21 @@ async function getAllCourseStatsFallback(courseCodes) {
 export async function getCourseProgress(courseCode) {
   if (!supabase) throw new Error('Supabase not configured')
 
-  const [seedsRes, legosRes, phrasesRes, decomposedRes] = await Promise.all([
+  const [seedsRes, legosRes, phrasesRes, decomposedRes, courseRes] = await Promise.all([
     supabase.from('course_seeds').select('*', { count: 'exact', head: true }).eq('course_code', courseCode),
     supabase.from('course_legos').select('*', { count: 'exact', head: true }).eq('course_code', courseCode),
     supabase.from('course_practice_phrases').select('*', { count: 'exact', head: true }).eq('course_code', courseCode),
-    supabase.from('course_seeds').select('*', { count: 'exact', head: true }).eq('course_code', courseCode).not('decomposed_at', 'is', null)
+    supabase.from('course_seeds').select('*', { count: 'exact', head: true }).eq('course_code', courseCode).not('decomposed_at', 'is', null),
+    // The course's saved target size (courses.seed_count) — the page's Target switch opens on it.
+    supabase.from('courses').select('seed_count').eq('course_code', courseCode).maybeSingle()
   ])
 
   return {
     seeds: seedsRes.count || 0,
     completedSeeds: decomposedRes.count || 0,
     legos: legosRes.count || 0,
-    phrases: phrasesRes.count || 0
+    phrases: phrasesRes.count || 0,
+    seedTarget: courseRes?.data?.seed_count || null
   }
 }
 

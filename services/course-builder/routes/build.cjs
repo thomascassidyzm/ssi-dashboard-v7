@@ -634,6 +634,30 @@ module.exports = function (ctx) {
       const initResp = await fetch(`http://localhost:${ctx.config.PORT || 3471}/api/course/${courseCode}/translate?limit=1`);
       if (!initResp.ok) console.warn(`[Translate] Seed init returned ${initResp.status} — agent will retry`);
 
+      // The page's Target switch (MVP 300 / Full 668) must reach the translator too, not only
+      // Build Team. The translate brief reads courses.seed_count, so a course created as MVP
+      // stayed at 300 for ever: slk_for_eng (cs #666, 2026-11-26) had 668 seed rows, seed_count
+      // 300, and every Translate click re-briefed "translate 300" and found nothing left to do.
+      // Persist an explicit choice BEFORE the brief is built, exactly as team-start does.
+      const requestedTarget = parseInt(req.body?.targetSeeds, 10);
+      let totalSeeds = 668;
+      try {
+        const { data: courseRow } = await ctx.supabase
+          .from('courses').select('seed_count').eq('course_code', courseCode).single();
+        totalSeeds = courseRow?.seed_count || 668;
+        if (Number.isFinite(requestedTarget) && requestedTarget > 0 && requestedTarget !== courseRow?.seed_count) {
+          const { error: updateErr } = await ctx.supabase
+            .from('courses').update({ seed_count: requestedTarget }).eq('course_code', courseCode);
+          if (updateErr) console.warn(`[Translate] Failed to update courses.seed_count for ${courseCode}: ${updateErr.message}`);
+          else {
+            console.log(`[Translate] ${courseCode} seed_count ${courseRow?.seed_count} -> ${requestedTarget} (page Target)`);
+            totalSeeds = requestedTarget;
+          }
+        }
+      } catch (e) {
+        console.warn(`[Translate] seed_count read/update failed for ${courseCode}: ${e.message}`);
+      }
+
       const brief = await fetchBrief(`http://localhost:${ctx.config.PORT || 3471}/api/brief/${courseCode}/translate`);
 
       const tmpFile = `/tmp/translate_${courseCode}_${Date.now()}.md`;
@@ -648,7 +672,7 @@ module.exports = function (ctx) {
           .from('build_jobs')
           .insert({
             course_code: courseCode, pass: 'translate', status: 'running',
-            current_seed: 0, seeds_completed: 0, total_seeds: 668,
+            current_seed: 0, seeds_completed: 0, total_seeds: totalSeeds,
             started_at: new Date().toISOString(), last_heartbeat: new Date().toISOString(),
             requested_by: 'dashboard', terminal: effectiveTerminal,
             agent_count: 1, respawn_count: 0, machine_name: ctx.MACHINE_NAME, build_mode: 'translate'
