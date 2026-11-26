@@ -29,9 +29,13 @@
  * tracks that were COMPLETE on 26 Nov (seeds, LEGOs, Pod 1, the wanted line: 2,147) are carried as done — the
  * LEGO and Pod rules (byWords, scene casting) live in recordist-queue.cjs behind a Supabase client and are not
  * reproduced here. The phrase passes are recomputed from the copy with phrase-queue.cjs planCourse (target1,
- * Dan's own slots), and the older list as cym_s_for_eng seeds whose target1 slot holds his take. If the
- * recomputed pass totals are not the booth's 8,202 / 4,235 the total is NOT posted as the booth's figure:
- * it is labelled "(from the copy; the booth said 2,267 on 26 Nov)".
+ * Dan's own slots). The older cym_s list (0/204 on 26 Nov) is carried at 0: its 204 lines are chosen in
+ * recordist-queue.cjs, and "cym_s_for_eng seeds whose slot holds his take" is NOT that list (it read 271 on
+ * the 26 Nov copy, against the booth's 0). Proved on the 26 Nov copy (job #737): the pass LISTS match the
+ * booth exactly (8,202 / 4,235) and pass 2 recorded matches (7), but pass 1 recorded reads 113 against the
+ * booth's 120 — the booth also counts a line recorded when a take of the same words exists elsewhere
+ * (take-selection byWords), which slot-holding does not see. So the total is ALWAYS labelled
+ * "(from the copy; the booth said 2,267 on 26 Nov)", never passed off as the booth's own figure.
  *
  *   node tools/recording/dan-booth-daily-watch.cjs --from 2026-11-25T00:00:00Z --to 2026-11-26T00:00:00Z   # dry run
  *   node tools/recording/dan-booth-daily-watch.cjs --state <file> --notice <notice-kai.cjs> --until 2026-12-11
@@ -141,13 +145,6 @@ async function sv2PhrasePlan(pg) {
   return { passOf, totals }
 }
 
-async function oldListRecorded(pg) {
-  const { rows } = await pg.query(
-    `SELECT count(*)::int AS n FROM course_seeds s JOIN course_audio a ON a.id = s.target1_audio_id
-      WHERE s.course_code = $1 AND a.voice_id = $2`, [OLD, VOICE])
-  return rows[0].n
-}
-
 function classify(takes, slots, passOf) {
   const c = { total: takes.length, sv2Seeds: 0, oldSeeds: 0, legos: 0, pass1: 0, pass2: 0, phraseNoPass: 0, unlinked: 0 }
   for (const t of takes) {
@@ -210,15 +207,15 @@ async function main() {
       if (!dry && a.state) fs.writeFileSync(a.state, JSON.stringify({ since: to, lastRun: new Date().toISOString(), lastTakes: 0 }, null, 2))
       return 0
     }
-    const [slots, plan, oldRec] = await Promise.all([slotsOf(pg, takes.map((t) => t.id)), sv2PhrasePlan(pg), oldListRecorded(pg)])
+    const [slots, plan] = await Promise.all([slotsOf(pg, takes.map((t) => t.id)), sv2PhrasePlan(pg)])
+    const oldRec = 0 // carried from the 26 Nov booth; see the header
     const c = classify(takes, slots, plan.passOf)
     const recorded = COMPLETE_TRACKS + plan.totals[1].recorded + plan.totals[2].recorded + oldRec
     const matches = plan.totals[1].lines === BASELINE.pass1Total && plan.totals[2].lines === BASELINE.pass2Total
     console.log(`dan-booth-watch: by step ${JSON.stringify(c)}`)
-    console.log(`dan-booth-watch: from the copy: pass 1 ${plan.totals[1].recorded}/${plan.totals[1].lines} (booth ${BASELINE.pass1Total}), pass 2 ${plan.totals[2].recorded}/${plan.totals[2].lines} (booth ${BASELINE.pass2Total}), older list ${oldRec}/204, complete tracks carried ${COMPLETE_TRACKS}; total ${recorded}/${BOOTH_LINES} (${matches ? 'pass lists match the booth' : 'PASS LISTS DO NOT MATCH THE BOOTH'})`)
-    const total = matches
-      ? `Booth now ${n(recorded)} of ${n(BOOTH_LINES)} (counted from the nightly copy).`
-      : `Booth about ${n(recorded)} of ${n(BOOTH_LINES)} (from the copy; the booth said ${n(BASELINE.recorded)} on 26 Nov).`
+    console.log(`dan-booth-watch: from the copy: pass 1 ${plan.totals[1].recorded}/${plan.totals[1].lines} (booth ${BASELINE.pass1Total}), pass 2 ${plan.totals[2].recorded}/${plan.totals[2].lines} (booth ${BASELINE.pass2Total}), older list ${oldRec}/204 (carried), complete tracks carried ${COMPLETE_TRACKS}; total ${recorded}/${BOOTH_LINES} (${matches ? 'pass lists match the booth' : 'PASS LISTS DO NOT MATCH THE BOOTH'})`)
+    if (!matches) console.error('dan-booth-watch: the copy\'s phrase pass lists no longer match the booth\'s 26 Nov lists; the total below is rougher than usual')
+    const total = `Booth about ${n(recorded)} of ${n(BOOTH_LINES)} (from the copy; the booth said ${n(BASELINE.recorded)} on 26 Nov).`
     const line = lineFor(c, from, to, total)
     console.log(`dan-booth-watch: ${dry ? 'WOULD POST' : 'POSTING'}: ${line}`)
     if (dry) return 0
