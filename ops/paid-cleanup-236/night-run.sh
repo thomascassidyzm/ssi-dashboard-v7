@@ -77,8 +77,15 @@ if [ -z "$stop" ]; then
     late || AGENT_ID=kai-236-item14 node $T/audio14.cjs "$f"
   done
 fi
+if [ -z "$stop" ]; then
+  # 4b) item 14 follow-up: rows refused 26 Nov because their romanisation must change too (roman14.cjs)
+  for f in $(bysize ops/paid-cleanup-236/item14r/*/item14.changeset.jsonl); do
+    apply "$f" "i14r:$(basename "$(dirname "$f")")" || break
+    late || ITEM14_EXTRA_DIRS=ops/paid-cleanup-236/item14 AGENT_ID=kai-236-item14 node $T/audio14.cjs "$f"
+  done
+fi
 # readback of everything applied so far (read-only, script-view)
-vb=0; for f in ops/overnight-785/item7-backfill/*/changesets/backfill.changeset.jsonl ops/paid-cleanup-236/item1[468]/*/*.changeset.jsonl; do
+vb=0; for f in ops/overnight-785/item7-backfill/*/changesets/backfill.changeset.jsonl ops/paid-cleanup-236/item1[468]/*/*.changeset.jsonl ops/paid-cleanup-236/item14r/*/*.changeset.jsonl; do
   [ -f "$f.applied.jsonl" ] || continue; node $T/verify.cjs "$f" >/dev/null || vb=$((vb+1)); done
 echo "=== end $(date -u +%FT%TZ)"
 say "[236 night] $(date -u +%F):$report${stop:+ $stop.} Readback: $vb file(s) with a mismatch. Log $LOG"

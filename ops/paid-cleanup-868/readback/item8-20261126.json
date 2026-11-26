@@ -1,0 +1,101 @@
+{
+ "copy": "ssi_copy_20261126t033000z",
+ "files": {
+  "item8/ledger-ara_for_eng.jsonl": {
+   "non_phrase_slot": 43,
+   "serving": 317
+  },
+  "item8/ledger-eng_for_guj.jsonl": {
+   "non_phrase_slot": 97,
+   "serving": 688
+  },
+  "item8/ledger-eng_for_pan.jsonl": {
+   "non_phrase_slot": 197,
+   "serving": 2249,
+   "NOT_SERVING": 4,
+   "not_taken": 3
+  },
+  "item8/ledger-eng_for_urd.jsonl": {
+   "non_phrase_slot": 122,
+   "serving": 1781,
+   "not_taken": 1,
+   "NOT_SERVING": 1
+  },
+  "item8/ledger-fra_ca_for_eng.jsonl": {
+   "serving": 7,
+   "non_phrase_slot": 3
+  },
+  "item8/ledger-por_br_for_eng.jsonl": {
+   "non_phrase_slot": 41,
+   "serving": 265,
+   "NOT_SERVING": 2
+  },
+  "item8/ledger-spa_mx_for_eng.jsonl": {
+   "non_phrase_slot": 38,
+   "serving": 291
+  },
+  "item8/reask-cs152.jsonl": {
+   "serving": 1
+  }
+ },
+ "problems": [
+  {
+   "c": "eng_for_pan",
+   "slot": "phrase:eng_for_pan:S0029L01U03",
+   "audioId": "23a0f0b3-8f26-41c7-a6b2-1368525640f4",
+   "copy": {
+    "ka": "d89f5582-2422-4564-958b-977e9bcd0db1",
+    "t1": "6f08f255-0369-483b-b855-92b5f92c541d",
+    "t2": "07f8b973-6287-43a1-a648-873f8d5dc418"
+   }
+  },
+  {
+   "c": "eng_for_pan",
+   "slot": "phrase:eng_for_pan:S0155L04U04",
+   "audioId": "1ce30d6d-ab4a-480b-ac52-5565f9f69b73",
+   "copy": {
+    "ka": "da21bfe9-7c1c-46a2-96e9-6831f24e455c",
+    "t1": "4ef3e330-9972-45b4-886e-6c5b5fa479ed",
+    "t2": "1f5a729f-9a45-4685-9293-35bfcda7db8c"
+   }
+  },
+  {
+   "c": "eng_for_pan",
+   "slot": "phrase:eng_for_pan:S0190L01U05",
+   "audioId": "48481b9f-07d6-48f3-9e47-bc630718704a",
+   "copy": "row gone"
+  },
+  {
+   "c": "eng_for_pan",
+   "slot": "phrase:eng_for_pan:S0343L01U01",
+   "audioId": "e3e876cf-f503-4e43-be99-b9692466fff5",
+   "copy": {
+    "ka": "040f5ea5-fc41-4acc-ae9b-98908a4567cd",
+    "t1": "97556d58-e088-44d8-acfa-6f9636837e13",
+    "t2": "1805ab2d-90b4-41e9-8520-2ca543526e78"
+   }
+  },
+  {
+   "c": "eng_for_urd",
+   "slot": "phrase:eng_for_urd:S0119L02U02",
+   "audioId": "dc08a499-043e-444a-9f64-272db20bc230",
+   "copy": "row gone"
+  },
+  {
+   "c": "por_br_for_eng",
+   "slot": "phrase:por_br_for_eng:S0122L03U07",
+   "audioId": "e846b5d3-dfcb-4f46-af64-6caea20418ee",
+   "copy": "row gone"
+  },
+  {
+   "c": "por_br_for_eng",
+   "slot": "phrase:por_br_for_eng:S0145L01B04",
+   "audioId": "832f2229-9cb9-48e2-9fbd-bc1e98f4a2ba",
+   "copy": {
+    "ka": "267f4712-fc2e-4318-8718-9de13d87576e",
+    "t1": "bd945cd6-598a-4071-a0aa-5d65037f3282",
+    "t2": "4e68aa4f-aa80-431a-8366-dcc97f145f43"
+   }
+  }
+ ]
+}

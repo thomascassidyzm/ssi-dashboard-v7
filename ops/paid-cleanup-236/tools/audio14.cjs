@@ -48,8 +48,10 @@ const render = (args) => {
 };
 // The fix set across every item-14 file: "<phrase id>|<slot>" for applied (or already-there) ops, per side.
 const fixSet = new Set();
-for (const c of fs.readdirSync(itemDir)) {
-  const f = path.join(itemDir, c, 'item14.changeset.jsonl'); if (!fs.existsSync(f)) continue;
+// ITEM14_EXTRA_DIRS (comma list): further item dirs whose applied fixes also count (item14r follow-up ↔ item14).
+const fixDirs = [itemDir, ...String(process.env.ITEM14_EXTRA_DIRS || '').split(',').filter(Boolean).map((d) => path.resolve(d))];
+for (const [dirOf, c] of fixDirs.flatMap((d) => fs.readdirSync(d).map((c) => [d, c]))) {
+  const f = path.join(dirOf, c, 'item14.changeset.jsonl'); if (!fs.existsSync(f)) continue;
   const led = loadLedger(`${f}.applied.jsonl`);
   cs.read(f).ops.forEach((o, i) => { if (!['applied', 'already'].includes(led.get(i))) return;
     for (const slot of o.side === 'known' ? ['known'] : ['target1', 'target2']) fixSet.add(`${o.phrase_id}|${slot}`); });

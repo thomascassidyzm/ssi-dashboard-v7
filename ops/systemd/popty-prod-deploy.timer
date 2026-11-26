@@ -1,0 +1,10 @@
+[Unit]
+Description=Popty production tick every 10 min; ships at most once an hour, only when deployable code changed (cs #537)
+
+[Timer]
+OnCalendar=*:0/10
+Persistent=true
+Unit=popty-prod-deploy.service
+
+[Install]
+WantedBy=timers.target

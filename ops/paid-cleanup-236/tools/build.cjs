@@ -118,6 +118,8 @@ function item16(C, dir) {
             const row = { id, seed_number: e.seed_number, lego_index: e.lego_index, position: np.pos, known_text: p.known_text, target_text: p.target_text,
               phrase_role: p.phrase_role, introduce: true, connected_lego_ids: [], status: p.status || 'draft',
               metadata: { format: 'build_use', pipeline: 'cs236-item16-move', moved_from: p.id, canon: 'item 16 rule 1' },
+              // word_count / lego_count are NOT NULL (25 Nov night: refused without them); same convention as plan12/item9 build.
+              word_count: p.target_text.length, lego_count: (p.known_text.match(/\s+/g) || []).length + 1,
               lego_position: L.computeLegoPosition(p.target_text, e.target_text) };
             if (p.target_text_roman) row.target_text_roman = p.target_text_roman;
             mOps.push(cs.op('phrase.insert', { row, group })); mGuards.push(g);
