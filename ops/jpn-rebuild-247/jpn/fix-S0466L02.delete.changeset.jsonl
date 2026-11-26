@@ -1,0 +1,7 @@
+{"format": "ssi-changeset/1", "id": "jpn_for_eng-cs338-S0466L02-delete", "course": "jpn_for_eng", "job": "#338·AL", "why": "S0466L02 old basket (6 rows), once its new B03 landed fully voiced — make-before-break", "computed_from": "plan-451-500.json deletes + live pre-check 26 Nov ~02:15Z", "created_at": "2026-11-26T02:00:58.724862Z", "ops": 6, "kai_go": "kai:2026-11-26 room \"best-effort fix it within your job (normalise to the course convention and link or render via the one route)\""}
+{"op": "phrase.delete", "phrase_id": "jpn_for_eng:S0466L02B01", "expect": {"seed_number": 466, "lego_index": 2, "known_text": "over there", "target_text": "向こう"}}
+{"op": "phrase.delete", "phrase_id": "jpn_for_eng:S0466L02B02", "expect": {"seed_number": 466, "lego_index": 2, "known_text": "let me throw it over there", "target_text": "向こうに投げさせて"}}
+{"op": "phrase.delete", "phrase_id": "jpn_for_eng:S0466L02U01", "expect": {"seed_number": 466, "lego_index": 2, "known_text": "it's over there", "target_text": "向こうにある"}}
+{"op": "phrase.delete", "phrase_id": "jpn_for_eng:S0466L02U02", "expect": {"seed_number": 466, "lego_index": 2, "known_text": "is it over there?", "target_text": "向こう？"}}
+{"op": "phrase.delete", "phrase_id": "jpn_for_eng:S0466L02U03", "expect": {"seed_number": 466, "lego_index": 2, "known_text": "he's over there", "target_text": "彼は向こうにいる"}}
+{"op": "phrase.delete", "phrase_id": "jpn_for_eng:S0466L02U04", "expect": {"seed_number": 466, "lego_index": 2, "known_text": "I think it's over there", "target_text": "向こうだと思う"}}
