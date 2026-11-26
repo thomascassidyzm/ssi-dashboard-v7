@@ -1,0 +1,9 @@
+{"format": "ssi-changeset/1", "id": "jpn_for_eng-cs338-S0547L01-delete", "course": "jpn_for_eng", "job": "#338·AL", "why": "S0547L01 old June basket (8 rows, 7 padded), once its new U06 landed fully voiced — make-before-break", "computed_from": "plan-501-550.json deletes + live pre-check 26 Nov ~05:30Z", "created_at": "2026-11-26T05:23:59.983803+00:00", "ops": 8, "kai_go": "kai:2026-11-26 room \"best-effort fix it within your job (normalise to the course convention and link or render via the one route)\""}
+{"op": "phrase.delete", "phrase_id": "jpn_for_eng:S0547L01B01", "expect": {"seed_number": 547, "lego_index": 1, "known_text": "in the mud", "target_text": "泥で"}}
+{"op": "phrase.delete", "phrase_id": "jpn_for_eng:S0547L01B02", "expect": {"seed_number": 547, "lego_index": 1, "known_text": "in the mud", "target_text": "泥でから"}}
+{"op": "phrase.delete", "phrase_id": "jpn_for_eng:S0547L01B03", "expect": {"seed_number": 547, "lego_index": 1, "known_text": "playing in the mud", "target_text": "泥で遊んだことがある"}}
+{"op": "phrase.delete", "phrase_id": "jpn_for_eng:S0547L01U01", "expect": {"seed_number": 547, "lego_index": 1, "known_text": "in the mud", "target_text": "泥でと言ってた"}}
+{"op": "phrase.delete", "phrase_id": "jpn_for_eng:S0547L01U02", "expect": {"seed_number": 547, "lego_index": 1, "known_text": "the dog played in the mud", "target_text": "泥で遊んだと話してた"}}
+{"op": "phrase.delete", "phrase_id": "jpn_for_eng:S0547L01U03", "expect": {"seed_number": 547, "lego_index": 1, "known_text": "mud is important", "target_text": "泥では大事だと思う"}}
+{"op": "phrase.delete", "phrase_id": "jpn_for_eng:S0547L01U04", "expect": {"seed_number": 547, "lego_index": 1, "known_text": "because of the mud", "target_text": "泥でからと言ってた"}}
+{"op": "phrase.delete", "phrase_id": "jpn_for_eng:S0547L01U05", "expect": {"seed_number": 547, "lego_index": 1, "known_text": "he played in the mud", "target_text": "泥で遊んだと思う"}}
