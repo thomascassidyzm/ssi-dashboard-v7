@@ -1,3 +1,11 @@
+## 2026-11-26 — popty.app is built on watson-1 and uploaded prebuilt, hourly, only on deployable change (cs #537, amended)
+
+Tom: "popty will have to build locally too - perhaps on a schedule, to not choke the machines". Supersedes the API-build
+step of the entry below and the weekly [release] (popty-weekly-release.timer disabled). `tools/release/prod-deploy.cjs`
+on `popty-prod-deploy.timer` (10-min tick): ships when deployed-changed.cjs says a shipped file changed since the commit
+popty.app serves, at most once per ~hour, sooner on a [hotfix]/[release] subject; `popty-prod-ship-now.service` = manual
+ship-now. Runs in popty-build.slice (CPUQuota 400%, MemoryMax 8G), Nice 19, idle IO; one flock. Vercel build minutes: 0.
+
 ## 2026-11-26 — popty.app builds only from the API; a push creates no Vercel deployment (cs #537)
 
 Tom: "259????!!!!! that's too many - it's screwing us". The 7 days to 26 Nov had 264 production deployments: 14 real

@@ -4,8 +4,8 @@
 # Vercel's ignored-build step for ssi-dashboard-v7 (dashboard setting, command-surface ops/vercel-production-filter.cjs
 # --release) builds popty.app ONLY from a main commit whose message STARTS with [release] or [hotfix]. This script makes the
 # weekly [release] commit — an EMPTY commit on main — and only when main has moved since the last [release]/[hotfix].
-# cs #537: Vercel no longer builds on push at all; popty-prod-deploy.timer (tools/release/prod-deploy.cjs) builds the
-# newest [release]/[hotfix] commit through the API within 10 minutes.
+# SUPERSEDED (cs #537, 26 Nov): popty.app ships from tools/release/prod-deploy.cjs (hourly on deployable change, built on
+# watson-1, uploaded prebuilt). This timer is disabled; a [release] commit it made would still ship on the next tick.
 # Run by popty-weekly-release.timer (ops/systemd/). By hand: systemctl --user start popty-weekly-release.service
 # A hot fix: START the fix commit subject with [hotfix] (or push an empty `[hotfix] <why>` commit on main).
 # Undo the whole thing: node ops/vercel-production-filter.cjs --apply --restore <record> prj_FUHJ5A3KZjnJqIBIpk1syH6ttHPY

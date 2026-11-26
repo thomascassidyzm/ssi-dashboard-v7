@@ -1,5 +1,5 @@
 [Unit]
-Description=Popty production deploy every 10 minutes; a no-op unless a new [release]/[hotfix] commit is on main (cs #537)
+Description=Popty production tick every 10 min; ships at most once an hour, only when deployable code changed (cs #537)
 
 [Timer]
 OnCalendar=*:0/10
