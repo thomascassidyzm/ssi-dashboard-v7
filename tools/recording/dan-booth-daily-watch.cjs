@@ -32,9 +32,9 @@
  * Dan's own slots). The older cym_s list (0/204 on 26 Nov) is carried at 0: its 204 lines are chosen in
  * recordist-queue.cjs, and "cym_s_for_eng seeds whose slot holds his take" is NOT that list (it read 271 on
  * the 26 Nov copy, against the booth's 0). Proved on the 26 Nov copy (job #737): the pass LISTS match the
- * booth exactly (8,202 / 4,235) and pass 2 recorded matches (7), but pass 1 recorded reads 113 against the
- * booth's 120 — the booth also counts a line recorded when a take of the same words exists elsewhere
- * (take-selection byWords), which slot-holding does not see. So the total is ALWAYS labelled
+ * booth exactly (8,202 / 4,235), pass 2 recorded matches (7), and the total reads 2,267 — the booth's own
+ * figure — though pass 1 recorded reads 113 against #718·AL's 120 (whose per-track figures sum to 2,274, not
+ * the 2,267 it reported; unresolved). LEGO byWords recording is not reproduced. So the total is ALWAYS labelled
  * "(from the copy; the booth said 2,267 on 26 Nov)", never passed off as the booth's own figure.
  *
  *   node tools/recording/dan-booth-daily-watch.cjs --from 2026-11-25T00:00:00Z --to 2026-11-26T00:00:00Z   # dry run
