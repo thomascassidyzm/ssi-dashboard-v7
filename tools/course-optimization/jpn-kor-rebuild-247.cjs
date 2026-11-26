@@ -364,7 +364,12 @@ function insertCs(c, rng) {
   for (const r of p.inserts) {
     if (blocked.has(lid(r.seed_number, r.lego_index))) continue;
     ops.push(cs.op('phrase.insert', { row: r }));
-    for (const role of SLOTS) ops.push(cs.op('audio.link', { target: 'phrase', phrase_id: r.id, slot: role, audio_id: have[`${role}|${r[SLOT_TEXT[role]]}`] }));
+    // APOSTROPHES (cs #338·AL, 26 Nov: S0466L02B03, S0547L01U06): the render route's library hands back a clip whose
+    // label spells "don’t" for a row that says "don't" (jpn_for_eng's known side is all straight quotes), and the link
+    // door refuses the pair — one refused link holds a whole LEGO's swap. The clip was fetched FOR this exact text, so
+    // on a known slot whose text carries an apostrophe the only possible mismatch is the quote mark: link it anyway.
+    for (const role of SLOTS) ops.push(cs.op('audio.link', { target: 'phrase', phrase_id: r.id, slot: role, audio_id: have[`${role}|${r[SLOT_TEXT[role]]}`],
+      ...(role === 'known' && /['’]/.test(r.known_text) ? { allow_text_mismatch: true } : {}) }));
   }
   cs.write(insertCsFile(c, rng), { id: `${COURSE[c]}-cs247-${rng}-insert`, course: COURSE[c], job: JOB, kai_go: KAI_GO,
     why: `rebuilt baskets ${rng}: new rows + their three clips (old rows go in the delete changeset, built from this one's ledger)`,

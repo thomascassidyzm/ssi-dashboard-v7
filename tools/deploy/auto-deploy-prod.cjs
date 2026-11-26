@@ -16,8 +16,9 @@
  * somebody's in-progress work — and posts one line to the Popty project
  * channel so it doesn't sit silently stale. QUIET IS SILENT, A CHANGE IS LOUD
  * (the same doctrine as tools/round-index/nightly.cjs): an up-to-date tick
- * writes one log line and says nothing; a real deploy, a dirty-skip, or a
- * diverged/failed unit posts to the channel.
+ * writes one log line and says nothing, and so does a deploy that restarted
+ * no service (static-only); a deploy that restarted a unit, a dirty-skip, or
+ * a diverged/failed unit posts to the channel.
  *
  * The frontend (Vue/Vite) is NOT served from this checkout — it is a Vercel
  * SPA that deploys itself on push to main (see src/views/admin/voicelab/
@@ -357,12 +358,17 @@ async function main() {
     }
   } else {
     if (lastFailedDigest) clearMark(FAILED_MARK);
-    if (after !== before) {
+    // Notice only when a service actually restarted (design-sweep row 10, cs #621:
+    // 218 notices in 7 days, most restarting nothing). A static-only deploy keeps
+    // its log line above and posts nothing; failure and recovery notices are untouched.
+    if (after !== before && !toRestart.length) {
+      log(`static-only deploy ${after.slice(0, 7)} — no service restarted, no notice posted`);
+    } else if (after !== before) {
       const lines = [
         `Auto-deploy: origin/main advanced (${before.slice(0, 7)} → ${after.slice(0, 7)}, ${commits.length} commit${commits.length === 1 ? '' : 's'}). Served checkout fast-forwarded.`,
         ...commits.slice(0, 10).map((c) => `  ${c}`),
         '',
-        (toRestart.length ? `${toRestart.join(', ')} restarted and active${spared.length ? `; ${spared.join(', ')} spared (no changed file in their require graph)` : ''}.` : `Servers NOT restarted — ${decision.reason}.`),
+        `${toRestart.join(', ')} restarted and active${spared.length ? `; ${spared.join(', ')} spared (no changed file in their require graph)` : ''}.`,
       ];
       await notify(lines.join('\n'));
     } else if (lastFailedDigest) {
