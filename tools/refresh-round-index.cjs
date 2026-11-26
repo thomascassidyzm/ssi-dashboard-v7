@@ -34,6 +34,7 @@
  *   node tools/refresh-round-index.cjs --check    # measure only, never refresh
  *   node tools/refresh-round-index.cjs --force    # refresh even when already in sync
  *   node tools/refresh-round-index.cjs --json     # machine-readable report on stdout
+ *   node tools/refresh-round-index.cjs --course X # only course X (with --force: time one rebuild of it)
  *
  * Exit codes: 0 measured (drifted or not), 1 could not measure / drift survived
  * the refresh.
@@ -135,19 +136,40 @@ function describe(d) {
 // this tool is the BACKSTOP that catches a write path nobody wired. It runs the
 // same statement, resolved the same way, from that one module — so the nightly
 // and the write paths can never disagree about what a refresh is.
-const { REFRESH_SQL, databaseUrl } = require('../services/shared/round-index-refresh.cjs');
+const { databaseUrl, rebuildOn, scopedAvailable } = require('../services/shared/round-index-refresh.cjs');
 
-async function run({ check = false, force = false, json = false } = {}) {
+/**
+ * After ops/sql/20261126-round-index-table.sql (cs #533·AL) the round map's ONE
+ * definition is the view course_round_index_source, so "what the map should
+ * hold" is read from it rather than recomputed here. DRIFT_QUERY's own window
+ * predates the woven-course ordering (#949), which is why cym_sv2_for_eng and
+ * cym_nv2_for_eng were reported as drifted every night since October with the
+ * refresh changing nothing: the check, not the map, was wrong for them.
+ */
+const SOURCE_WANT = `
+    SELECT course_code, round_index, lego_id
+    FROM course_round_index_source
+    WHERE course_code = $1`;
+
+async function run({ check = false, force = false, json = false, course = null } = {}) {
   const { Client } = require('pg');
   const connection = new Client({ connectionString: databaseUrl(), statement_timeout: 5000, application_name: 'qa:round-index' });
   await connection.connect();
   const client = boundedClient(connection, 'qa:round-index', { readOnly: false });
   try {
+    const perCourse = await scopedAvailable(client);
+    const { rows: courses } = course
+      ? { rows: [{ course_code: course }] }
+      : await client.query('SELECT course_code FROM courses ORDER BY course_code');
     async function measure() {
-      const { rows: courses } = await client.query('SELECT course_code FROM courses ORDER BY course_code');
       const rows = [];
-      const scoped = DRIFT_QUERY.replace('WHERE is_new = true', 'WHERE course_code = $1 AND is_new = true')
+      let scoped = DRIFT_QUERY.replace('WHERE is_new = true', 'WHERE course_code = $1 AND is_new = true')
         .replace('FULL JOIN course_round_index h', 'FULL JOIN (SELECT * FROM course_round_index WHERE course_code = $1) h');
+      if (perCourse) {
+        const wantStart = scoped.indexOf('want AS (') + 'want AS ('.length;
+        const wantEnd = scoped.indexOf('),', wantStart);
+        scoped = scoped.slice(0, wantStart) + SOURCE_WANT + '\n  ' + scoped.slice(wantEnd);
+      }
       for (const c of courses) rows.push(...(await client.query(scoped, [c.course_code])).rows);
       return drift(rows);
     }
@@ -160,8 +182,19 @@ async function run({ check = false, force = false, json = false } = {}) {
       return { before, after: before, refreshed: false };
     }
 
-    if (!json) console.log('refreshing course_round_index (CONCURRENTLY)...');
-    await client.query(REFRESH_SQL);
+    if (perCourse) {
+      // Only what drifted, one course per statement (each well inside the 5 s cap);
+      // --force rebuilds every course measured, which on an in-sync course writes nothing.
+      const targets = force ? courses.map(c => c.course_code) : before.courses.map(r => r.course_code);
+      for (const code of targets) {
+        const t0 = Date.now();
+        const out = await rebuildOn(client, code);
+        if (!json) console.log(`rebuilt ${code}: ${out.changed} row(s) changed in ${Date.now() - t0}ms`);
+      }
+    } else {
+      if (!json) console.log('refreshing course_round_index (whole view; per-course rebuild not installed)...');
+      await rebuildOn(client);
+    }
 
     const after = await measure();
     if (!json) { console.log('AFTER:'); console.log(describe(after)); }
@@ -175,7 +208,9 @@ module.exports = { drift, describe, DRIFT_QUERY, databaseUrl, run };
 
 if (require.main === module) {
   const json = process.argv.includes('--json');
-  run({ check: process.argv.includes('--check'), force: process.argv.includes('--force'), json })
+  const ci = process.argv.indexOf('--course');
+  const course = ci > 0 ? process.argv[ci + 1] : null;
+  run({ check: process.argv.includes('--check'), force: process.argv.includes('--force'), json, course })
     .then(r => {
       if (json) console.log(JSON.stringify(r, null, 2));
       if (r.refreshed && r.after.needsRefresh) {

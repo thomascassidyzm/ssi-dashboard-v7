@@ -1,0 +1,8 @@
+# cs #537: popty.app's local production build — capped so it never chokes watson-1 (16 cores).
+[Unit]
+Description=Popty local production builds (cs #537)
+
+[Slice]
+CPUQuota=400%
+CPUWeight=10
+MemoryMax=8G

@@ -1,0 +1,16 @@
+# cs #537: the manual "ship now" for an urgent popty.app fix — no hour floor; still a no-op if nothing deployable changed.
+#   systemctl --user start popty-prod-ship-now     (blocks until shipped; journalctl --user -u popty-prod-ship-now)
+[Unit]
+Description=Popty production: ship now — build main on watson-1 and upload prebuilt, no hour floor (cs #537)
+
+[Service]
+Type=oneshot
+ExecStartPre=/bin/sh -c '[ -d %h/.cs-builds/popty-prod-prebuilt/.git ] || git clone -q --branch main https://github.com/thomascassidyzm/ssi-dashboard-v7.git %h/.cs-builds/popty-prod-prebuilt'
+Slice=popty-build.slice
+Nice=19
+IOSchedulingClass=idle
+CPUWeight=10
+MemoryHigh=6G
+MemoryMax=7G
+TimeoutStartSec=45min
+ExecStart=/usr/bin/flock %h/.local/state/watson-builds/popty-prod.lock /usr/bin/env node %h/.cs-builds/popty-prod-prebuilt/tools/release/prod-deploy.cjs --now
