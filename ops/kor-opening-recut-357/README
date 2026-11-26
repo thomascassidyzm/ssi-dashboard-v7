@@ -1,0 +1,5 @@
+cs #357 Korean opening seed re-cut DRAFT (nothing applied). Published: /d/1d37d815.
+recut.json  the proposed seeds 1-6, their LEGOs in play order, and lines this re-cut adds or re-homes.
+walk.py     python3 walk.py recut.json <draft2.json>  (draft2 = git show origin/cs/845-korean-opening-draft-v2-20-intro:tools/course-metrics/kor-opening-v2-draft.json)
+map.py      builds the intro-item map; needs a roman.json from Popty's GET /api/production/kor_for_eng/seeds.
+census-N.census  output of seed-learner-census-readonly-2026-10-29.cjs on the 25 Nov QA copy (JSON; renamed because *.json is fine here but kept distinct from inputs).

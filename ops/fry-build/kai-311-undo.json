@@ -1,0 +1,333 @@
+{
+ "event_id": "2b6acbe9-2cac-4337-a122-9178d6b3d765",
+ "undo_file_on_popty": "2026-11-25T11-34-45-960Z-2b6acbe9-2cac-4337-a122-9178d6b3d765.json",
+ "how_to_undo": "POST /api/production/fry_for_eng/edit-batch {\"ops\": <undo_ops>, \"apply\": true}",
+ "takes_unlinked": [
+  "SEED56",
+  "S0056L02U04",
+  "LEGO:S0114L02",
+  "S0114L02B01",
+  "S0114L02B02",
+  "S0114L02B03",
+  "S0114L02B04",
+  "S0114L02U01",
+  "S0114L02U02",
+  "S0114L02U03",
+  "S0114L02U04",
+  "S0114L02U05",
+  "S0114L03U06",
+  "S0117L03B04",
+  "S0117L03U01",
+  "S0121L01B01",
+  "S0121L01U04",
+  "S0139L01U04",
+  "S0235L01U03",
+  "SEED114"
+ ],
+ "before_audio": {
+  "SEED56": {
+   "ka": "9c4e54db-dac8-465f-808a-e46657ce5055",
+   "ta": "0d5e1fb8-6e8f-4392-a1b1-6d09a1a7dc46",
+   "pa": null
+  },
+  "S0056L02U04": {
+   "ka": "c349dcb8-a341-4005-a4f0-2dcbf8f2fbeb",
+   "ta": "764a9623-7616-4518-b723-f66d44004bb8",
+   "pa": null
+  },
+  "LEGO:S0114L02": {
+   "ka": "965cb52a-d7ce-4c3e-a395-3b84ebd43392",
+   "ta": "234e29b5-ced1-4ac4-aa1d-583dd64dc043",
+   "pa": "40daeb9c-efbe-48a8-aae6-ac7380758957"
+  },
+  "S0114L02B01": {
+   "ka": "cb981f09-3e97-43e9-9cd0-8f000e4eb52f",
+   "ta": "c3cbbd8d-7a55-4053-b932-8ed48067e0c2",
+   "pa": null
+  },
+  "S0114L02B02": {
+   "ka": "78714fc6-2d4d-4b00-9e6f-ce1c4b401b67",
+   "ta": "fbea4c02-698e-4932-9400-0d28ad2722d2",
+   "pa": null
+  },
+  "S0114L02B03": {
+   "ka": "938e01e2-0ec9-47c5-953b-f29b6a71adfd",
+   "ta": "17cc6943-04da-4148-b6e8-a5d7813ba444",
+   "pa": null
+  },
+  "S0114L02B04": {
+   "ka": "44862511-92bc-4009-a8e7-7da47af05978",
+   "ta": "4954a7ef-926b-4769-bede-311d63960a56",
+   "pa": null
+  },
+  "S0114L02U01": {
+   "ka": "90fa009c-f03a-4fc7-b798-1bdc98025a89",
+   "ta": "bbba3600-d73b-4e5e-a16e-07e953589d49",
+   "pa": null
+  },
+  "S0114L02U02": {
+   "ka": "421cc796-b918-4ef5-be4a-8da50f7ff5c2",
+   "ta": "64457029-0ec0-480e-a0d6-e690facbccd0",
+   "pa": null
+  },
+  "S0114L02U03": {
+   "ka": "032b8cac-2b77-4b3b-8b94-5886a4d2a375",
+   "ta": "c6d3c48f-f186-4dce-a20e-a9b86f282084",
+   "pa": null
+  },
+  "S0114L02U04": {
+   "ka": "f275d2ae-4c67-47cb-bb8f-cf842be3d693",
+   "ta": "dec5bad1-d9f3-4112-addc-966f88e1a5a8",
+   "pa": null
+  },
+  "S0114L02U05": {
+   "ka": "8e850195-1753-4ec6-a754-9c5ae8f9b629",
+   "ta": "5e6d13db-8b73-40c4-98e2-150b23ea9d79",
+   "pa": null
+  },
+  "S0114L03U06": {
+   "ka": "a337daae-a9d6-435b-b383-1cb820f1802f",
+   "ta": "4e7beaaa-59f1-4fad-9714-1d4c9e1de94a",
+   "pa": null
+  },
+  "S0117L03B04": {
+   "ka": "9c6cfbad-3789-4a1a-a69c-3b2850340a05",
+   "ta": "c7a486b5-2cc1-4ddb-a3ab-89f0a8d0ebed",
+   "pa": null
+  },
+  "S0117L03U01": {
+   "ka": "2466a965-eaa6-4f4a-88a3-7d0591301627",
+   "ta": "0837b410-55a5-44f4-86b7-2dbe4e65aa69",
+   "pa": null
+  },
+  "S0121L01B01": {
+   "ka": "65e42f9e-0913-471e-921e-2eaf4a2a4316",
+   "ta": "74727251-6158-4f3f-90fa-728adc3f92af",
+   "pa": null
+  },
+  "S0121L01U04": {
+   "ka": "88b3848e-b067-482e-a8ec-dfaf8a30dd93",
+   "ta": "fc02e125-3741-481c-a3f0-ae80873bf6ec",
+   "pa": null
+  },
+  "S0139L01U04": {
+   "ka": "69719ce6-2e6d-49f4-8c05-b894440b4929",
+   "ta": "9bd363b1-58b5-4fb0-aaa0-c7e5dd63f329",
+   "pa": null
+  },
+  "S0235L01U03": {
+   "ka": "6016e526-a697-4db9-a9ff-0bd9bc361b23",
+   "ta": "da0dc9fc-4db7-44da-b05f-b6ddc6ad0d84",
+   "pa": null
+  },
+  "SEED114": {
+   "ka": "a337daae-a9d6-435b-b383-1cb820f1802f",
+   "ta": "4e7beaaa-59f1-4fad-9714-1d4c9e1de94a",
+   "pa": null
+  },
+  "S0114L02C04": {
+   "ka": "cdc7aca0-5c9d-4e3e-9776-e79c79742085",
+   "ta": null,
+   "pa": null
+  }
+ },
+ "undo_ops": [
+  {
+   "op": "lego.update",
+   "id": "261878ac-4c5b-48a6-bf30-4121962c8512",
+   "set": {
+    "presentation_audio_id": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0114L02C04",
+   "set": {
+    "target_text": "minder"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 114,
+   "set": {
+    "target_text": "Ik ha it gefoel dat ik it hjoed minder doch as juster.",
+    "target1_audio_id": "4e7beaaa-59f1-4fad-9714-1d4c9e1de94a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0235L01U03",
+   "set": {
+    "target_text": "ien dy't sei dat ik it minder doch is myn freon net",
+    "target1_audio_id": "da0dc9fc-4db7-44da-b05f-b6ddc6ad0d84"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0139L01U04",
+   "set": {
+    "target_text": "it spyt my dat ik it minder doch as juster",
+    "target1_audio_id": "9bd363b1-58b5-4fb0-aaa0-c7e5dd63f329"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0121L01U04",
+   "set": {
+    "target_text": "it is ûngewoan dat ik it minder doch as juster",
+    "target1_audio_id": "fc02e125-3741-481c-a3f0-ae80873bf6ec"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0121L01B01",
+   "set": {
+    "target_text": "it is ûngewoan dat ik it minder doch",
+    "target1_audio_id": "74727251-6158-4f3f-90fa-728adc3f92af"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0117L03U01",
+   "set": {
+    "target_text": "ik tink dat ik it minder doch as de lêste kear",
+    "target1_audio_id": "0837b410-55a5-44f4-86b7-2dbe4e65aa69"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0117L03B04",
+   "set": {
+    "target_text": "dat ik it minder doch as de lêste kear",
+    "target1_audio_id": "c7a486b5-2cc1-4ddb-a3ab-89f0a8d0ebed"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0114L03U06",
+   "set": {
+    "target_text": "ik ha it gefoel dat ik it hjoed minder doch as juster",
+    "target1_audio_id": "4e7beaaa-59f1-4fad-9714-1d4c9e1de94a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0114L02U05",
+   "set": {
+    "target_text": "it makket my neat út dat ik it minder doch",
+    "target1_audio_id": "5e6d13db-8b73-40c4-98e2-150b23ea9d79"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0114L02U04",
+   "set": {
+    "target_text": "ik wit dat ik it minder doch om't ik in bytsje wurch bin",
+    "target1_audio_id": "dec5bad1-d9f3-4112-addc-966f88e1a5a8"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0114L02U03",
+   "set": {
+    "target_text": "it is net wichtich dat ik it minder doch",
+    "target1_audio_id": "c6d3c48f-f186-4dce-a20e-a9b86f282084"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0114L02U02",
+   "set": {
+    "target_text": "sy woe my net fertelle dat ik it minder doch",
+    "target1_audio_id": "64457029-0ec0-480e-a0d6-e690facbccd0"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0114L02U01",
+   "set": {
+    "target_text": "ik tink net dat ik it minder doch",
+    "target1_audio_id": "bbba3600-d73b-4e5e-a16e-07e953589d49"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0114L02B04",
+   "set": {
+    "target_text": "bistû der wis fan dat ik it minder doch?",
+    "target1_audio_id": "4954a7ef-926b-4769-bede-311d63960a56"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0114L02B03",
+   "set": {
+    "target_text": "ik wit dat ik it minder doch",
+    "target1_audio_id": "17cc6943-04da-4148-b6e8-a5d7813ba444"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0114L02B02",
+   "set": {
+    "target_text": "dat ik it minder doch as justerjûn",
+    "target1_audio_id": "fbea4c02-698e-4932-9400-0d28ad2722d2"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0114L02B01",
+   "set": {
+    "target_text": "ik tink dat ik it minder doch",
+    "target1_audio_id": "c3cbbd8d-7a55-4053-b932-8ed48067e0c2"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "261878ac-4c5b-48a6-bf30-4121962c8512",
+   "set": {
+    "target_text": "dat ik it minder doch",
+    "components": [
+     {
+      "known": "that",
+      "target": "dat"
+     },
+     {
+      "known": "I",
+      "target": "ik"
+     },
+     {
+      "known": "it",
+      "target": "it"
+     },
+     {
+      "known": "worse",
+      "target": "minder"
+     },
+     {
+      "known": "do",
+      "target": "doch"
+     }
+    ],
+    "target1_audio_id": "234e29b5-ced1-4ac4-aa1d-583dd64dc043",
+    "presentation_audio_id": "40daeb9c-efbe-48a8-aae6-ac7380758957"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0056L02U04",
+   "set": {
+    "target_text": "ik sil it ferhaal lêze sadat ik ûnthâlde kin wat it antwurd is",
+    "target1_audio_id": "764a9623-7616-4518-b723-f66d44004bb8"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 56,
+   "set": {
+    "target_text": "Sadat ik ûnthâlde kin hoe't ik in pear wurden sizze moat.",
+    "target1_audio_id": "0d5e1fb8-6e8f-4392-a1b1-6d09a1a7dc46"
+   }
+  }
+ ]
+}

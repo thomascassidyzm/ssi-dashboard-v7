@@ -1,0 +1,15 @@
+{
+ "read": "25 Nov 2026, live Popty GET routes only: /api/estate-map, /api/production/<course>/audio-stats, /api/production/<course>/shared-audio-status, phase 8 GET /needs/<course>; clip rows from the nightly QA-copy snapshot (bre_for_eng, 8 linked known clips). Code read: services/production-api.cjs (audio-stats), services/phases/phase8-audio-v13.cjs. Nothing written.",
+ "bre_for_fra_97_clips": "96 shared encouragement and instruction clips (48 ordered + 48 pooled slots, all populated) and 1 welcome clip. The welcome text is French ('Bienvenue dans ce jeu inhabituel…'). Known side, one ElevenLabs voice. No Breton.",
+ "bre_for_eng_315_clips": "97 of the same kind in English (welcome text read: 'Welcome to this unusual game…') plus 218 English cue clips in three machine voices (gfzdpspr5fdp 189, xai_gfzdpspr5fdp 28, Cartesia 1). The 8 that are linked to seed slots were read: every one is role 'known' with English text matching its seed. No Breton target slot is linked in either course.",
+ "gap": "No read route lists a course's clips with their text, so 210 of the 218 English-voice clips were not opened one by one. The route that would close it: GET /api/production/:courseCode/clips returning id, role, voice_id, text for every course_audio row the course owns.",
+ "existing_15076": {
+  "formula": "audio-stats 'existing' = total slots - TTS jobs = 21,358 - 6,282. It is a subtraction, never a count of clips.",
+  "total_21358": "phase 8 totalSlots 21,261 (known 6,856 + target1 6,856 + target2 6,856 + intros 596 + its own 'existing' 97) + shared 96 + welcome 1",
+  "jobs_6282": "5,686 French cue texts to render + 596 French intros to author. Zero Breton: target-language slots of a human-voice language are never TTS jobs.",
+  "what_the_15076_are": {"empty Breton target slots (2 x 6,856)": 13712, "French cue slots that repeat a text already counted as a job (6,856 - 5,686)": 1170, "the 97 real clips, counted twice (phase 8 'existing' 97, then shared 96 + welcome 1 again)": 194},
+  "check": "13,712 + 1,170 + 194 = 15,076",
+  "not_traced": "The course has 5,872 distinct French cue texts by exact match; phase 8 counts 5,686 after its own text normaliser. The 186 difference was not traced."
+ },
+ "ready_for_6282_renders": "The flag is true because jobs exist, but POST /generate answers 'skipped: human-voice-only-course' for a course on the human-voice gate (phase8-audio-v13.cjs) and the render door refuses with 409 HUMAN_VOICE_COURSE. Read in code, not pressed (pressing is a write)."
+}

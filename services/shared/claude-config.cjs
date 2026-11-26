@@ -88,6 +88,28 @@ const PACE_SLACK_PCT = Number(process.env.SSI_CLAUDE_PACE_SLACK_PCT || 10)
 const WEEKLY_FULL_PCT = 98
 const USAGE_FILE = process.env.SSI_CLAUDE_USAGE_FILE ||
   path.join(os.homedir(), 'command-surface', 'ops', 'account-usage.json')
+// THE PER-ACCOUNT WEEKLY RESERVE (command-surface #340·AL, 2026-11-25): the surface's ops/account-routing.json →
+// limits.weekly_full_pct, { "<email>": pct }, ONE place for both the surface allocator and this picker. An account
+// counts as FULL at min(its pct, WEEKLY_FULL_PCT). claude@ is 85 so Aran, who uses it directly on the web, keeps
+// headroom. Read beside the usage file (same dir, so whatever path the door sets for one serves both); 30 s cache;
+// unreadable = no reserve.
+const ROUTING_FILE = process.env.SSI_CLAUDE_ROUTING_FILE || path.join(path.dirname(USAGE_FILE), 'account-routing.json')
+let reserveCache = { at: 0, map: {} }
+function readReserves() {
+  if (Date.now() - reserveCache.at < 30e3) return reserveCache.map
+  const map = {}
+  try {
+    const w = (JSON.parse(fs.readFileSync(ROUTING_FILE, 'utf8')).limits || {}).weekly_full_pct || {}
+    for (const [k, v] of Object.entries(w)) if (k.includes('@') && Number.isFinite(v) && v > 0) map[k.toLowerCase()] = v
+  } catch {}
+  reserveCache = { at: Date.now(), map }
+  return map
+}
+// The weekly % at which this account counts as full, given a reserves map (pure).
+function fullPctOf(email, full = {}) {
+  const v = full[String(email || '').toLowerCase()]
+  return Number.isFinite(v) && v < WEEKLY_FULL_PCT ? v : WEEKLY_FULL_PCT
+}
 const ROUTING_URL = process.env.SSI_CLAUDE_ROUTING_URL || 'http://localhost:4317/api/routing'
 
 let steerCache = { at: 0, steers: {} }
@@ -141,20 +163,20 @@ function underPace(g, now = Date.now()) {
 }
 // When an over-pace account is next back under pace (its share catches up at 100/168 points an hour), or its
 // reset, whichever is sooner. Null when it cannot be said.
-function paceResumeAt(g, now = Date.now()) {
+function paceResumeAt(g, now = Date.now(), fullPct = WEEKLY_FULL_PCT) {
   const pct = weeklyPct(g), reset = Date.parse(g && g.weekly_all_resets_at)
   if (pct === null || !Number.isFinite(reset)) return null
   // A FULL account is not back at its catch-up instant — it is still full then — only at its reset. Without
   // this, claude@ 100% (catch-up 6 Nov 22:12Z) + kai 95% would answer resume_at = 22:12 and then, at 22:12,
   // resume_at = now on every call: a bulk caller spinning on 60-second retries until 7 Nov 08:48Z.
-  if (pct >= WEEKLY_FULL_PCT) return Math.max(now, reset)
+  if (pct >= fullPct) return Math.max(now, reset)
   const weekStart = reset - WEEK_H * 3600e3
   const at = weekStart + ((pct - PACE_SLACK_PCT) / 100) * WEEK_H * 3600e3
   return Math.max(now, Math.min(at, reset))
 }
 
 // Pure: choose one candidate given the gauge and the steers. Exported for the test.
-function pickAccount(cands, { usage = {}, steer = {}, now = Date.now() } = {}) {
+function pickAccount(cands, { usage = {}, steer = {}, now = Date.now(), full = {} } = {}) {
   if (!cands.length) return null
   const g = (c) => usage[c.email] || usage[Object.keys(usage).find((k) => k.toLowerCase() === c.email)] || null
   const pct = (c) => weeklyPct(g(c))
@@ -162,10 +184,10 @@ function pickAccount(cands, { usage = {}, steer = {}, now = Date.now() } = {}) {
   if (!known.length) return cands.find((c) => c.email === DEFAULT_EMAIL) || cands[0]
   // HAMMER = FILL IT UNTIL IT RUNS OUT (Tom 2026-10-27 #337, restated 2026-11-04 for the weekly gauge): the
   // least-filled hammer first, so two hammers fill equally.
-  const hammers = known.filter((c) => steer[c.email] === 'hammer' && pct(c) < WEEKLY_FULL_PCT)
+  const hammers = known.filter((c) => steer[c.email] === 'hammer' && pct(c) < fullPctOf(c.email, full))
   if (hammers.length) return [...hammers].sort((a, b) => pct(a) - pct(b) || (b.email === DEFAULT_EMAIL) - (a.email === DEFAULT_EMAIL))[0]
   const narrow = (set, pred) => { const k = set.filter(pred); return k.length ? k : set }
-  let pool = narrow(known, (c) => pct(c) < WEEKLY_FULL_PCT)
+  let pool = narrow(known, (c) => pct(c) < fullPctOf(c.email, full))
   pool = narrow(pool, (c) => steer[c.email] !== 'avoid')
   pool = narrow(pool, (c) => underPace(g(c), now))
   const head = (c) => 100 - pct(c)
@@ -180,12 +202,12 @@ function pickAccount(cands, { usage = {}, steer = {}, now = Date.now() } = {}) {
  * pro-rata share of the week (plus PACE_SLACK_PCT) or full, so a bulk door should hold the call, not spawn it.
  * An unreadable gauge never holds (Popty is not stopped by the surface being down).
  */
-function pacedNow(cands, { usage = {}, now = Date.now() } = {}) {
+function pacedNow(cands, { usage = {}, now = Date.now(), full = {} } = {}) {
   if (!cands.length) return null
   const g = (c) => usage[c.email] || null
   if (cands.some((c) => weeklyPct(g(c)) === null)) return null
-  if (cands.some((c) => underPace(g(c), now) && weeklyPct(g(c)) < WEEKLY_FULL_PCT)) return null
-  const resumes = cands.map((c) => paceResumeAt(g(c), now)).filter(Number.isFinite)
+  if (cands.some((c) => underPace(g(c), now) && weeklyPct(g(c)) < fullPctOf(c.email, full))) return null
+  const resumes = cands.map((c) => paceResumeAt(g(c), now, fullPctOf(c.email, full))).filter(Number.isFinite)
   const resumeAt = resumes.length ? Math.min(...resumes) : now + 3600e3
   const why = cands.map((c) => {
     const share = weeklyShare(g(c), now)
@@ -216,9 +238,9 @@ function pickSpawnAccount({ exclude = [], overspill = false } = {}) {
   const ex = new Set(exclude.filter(Boolean).map((e) => String(e).toLowerCase()))
   const all = liveCandidates()
   const kept = all.filter((c) => !ex.has(c.email))
-  const opts = { usage: readUsage(), steer: steers() }
+  const opts = { usage: readUsage(), steer: steers(), full: readReserves() }
   if (overspill) {
-    const usable = kept.filter((c) => { const p = weeklyPct(opts.usage[c.email]); return p === null || p < WEEKLY_FULL_PCT })
+    const usable = kept.filter((c) => { const p = weeklyPct(opts.usage[c.email]); return p === null || p < fullPctOf(c.email, opts.full) })
     const spill = usable.length ? [] : candidates(OVERSPILL_DIR).filter((c) => readToken(c.file) && !ex.has(c.email))
     if (spill.length) {
       const c = pickAccount(spill, opts)
@@ -231,7 +253,7 @@ function pickSpawnAccount({ exclude = [], overspill = false } = {}) {
 
 /** Should a BULK door hold its next call? Null = go; else { resumeAt, why }. See pacedNow. */
 function bulkPace() {
-  return pacedNow(liveCandidates(), { usage: readUsage() })
+  return pacedNow(liveCandidates(), { usage: readUsage(), full: readReserves() })
 }
 
 /**
@@ -242,13 +264,13 @@ function bulkPace() {
  */
 function alternativeAccount({ exclude = [] } = {}) {
   const ex = new Set(exclude.filter(Boolean).map((e) => String(e).toLowerCase()))
-  const usage = readUsage()
+  const usage = readUsage(), full = readReserves()
   const ok = liveCandidates().filter((c) => !ex.has(c.email)).filter((c) => {
     const pct = weeklyPct(usage[c.email])
-    return pct === null || pct < WEEKLY_FULL_PCT
+    return pct === null || pct < fullPctOf(c.email, full)
   })
   if (!ok.length) return null
-  const c = pickAccount(ok, { usage, steer: steers() })
+  const c = pickAccount(ok, { usage, steer: steers(), full })
   return c ? c.email : null
 }
 
@@ -305,4 +327,4 @@ function claudeConfigExport(opts) {
   return claudeSpawnSetup(opts).exportCmd
 }
 
-module.exports = { CLAUDE_CONFIG_DIR, claudeEnv, claudeSpawnEnv, claudeConfigExport, claudeSpawnSetup, pickSpawnAccount, alternativeAccount, pickAccount, pacedNow, bulkPace, weeklyPct, weeklyShare, candidates, PACE_SLACK_PCT, WEEKLY_FULL_PCT, BG_WAIT_CEILING_MS }
+module.exports = { readUsage, liveCandidates, CLAUDE_CONFIG_DIR, claudeEnv, claudeSpawnEnv, claudeConfigExport, claudeSpawnSetup, pickSpawnAccount, alternativeAccount, pickAccount, pacedNow, bulkPace, weeklyPct, readReserves, fullPctOf, weeklyShare, candidates, PACE_SLACK_PCT, WEEKLY_FULL_PCT, BG_WAIT_CEILING_MS }

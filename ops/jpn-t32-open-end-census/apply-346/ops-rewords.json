@@ -1,0 +1,145 @@
+[
+ {
+  "op": "phrase.update",
+  "phrase_id": "jpn_for_eng:S0434L03U05",
+  "set": {
+   "known_text": "he was saying he thinks the number can be reduced"
+  },
+  "expect": {
+   "seed_number": 434,
+   "lego_index": 3,
+   "known_text": "he said the number can be reduced",
+   "target_text": "数を減らせると思うと話してた"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "jpn_for_eng:S0244L01B04",
+  "set": {
+   "known_text": "because I've already learnt a lot"
+  },
+  "expect": {
+   "seed_number": 244,
+   "lego_index": 1,
+   "known_text": "have already learnt a lot from you",
+   "target_text": "もうたくさん学んだから"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "jpn_for_eng:S0408L03B03",
+  "set": {
+   "known_text": "because there's a way"
+  },
+  "expect": {
+   "seed_number": 408,
+   "lego_index": 3,
+   "known_text": "it's a method",
+   "target_text": "方法があるから"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "jpn_for_eng:S0434L01B01",
+  "set": {
+   "known_text": "because there's a student"
+  },
+  "expect": {
+   "seed_number": 434,
+   "lego_index": 1,
+   "known_text": "a college student",
+   "target_text": "学生がいるから"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "jpn_for_eng:S0440L01B01",
+  "set": {
+   "known_text": "because there are young people"
+  },
+  "expect": {
+   "seed_number": 440,
+   "lego_index": 1,
+   "known_text": "young people",
+   "target_text": "若い人がいるから"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "jpn_for_eng:S0440L01B03",
+  "set": {
+   "known_text": "because being young is important"
+  },
+  "expect": {
+   "seed_number": 440,
+   "lego_index": 1,
+   "known_text": "being young",
+   "target_text": "若いのは大事だから"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "jpn_for_eng:S0440L02B01",
+  "set": {
+   "known_text": "because I'll do it while I'm young"
+  },
+  "expect": {
+   "seed_number": 440,
+   "lego_index": 2,
+   "known_text": "while young",
+   "target_text": "若いうちにするから"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "jpn_for_eng:S0441L01B01",
+  "set": {
+   "known_text": "because there's a way of doing things"
+  },
+  "expect": {
+   "seed_number": 441,
+   "lego_index": 1,
+   "known_text": "a way of doing things",
+   "target_text": "やり方があるから"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "jpn_for_eng:S0426L01B02",
+  "set": {
+   "known_text": "there are happy things"
+  },
+  "expect": {
+   "seed_number": 426,
+   "lego_index": 1,
+   "known_text": "because they're happy",
+   "target_text": "幸せなことがある"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "jpn_for_eng:S0440L02U04",
+  "set": {
+   "known_text": "there are things you can do while you're young"
+  },
+  "expect": {
+   "seed_number": 440,
+   "lego_index": 2,
+   "known_text": "while young, it's possible",
+   "target_text": "若いうちにできることがある"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "jpn_for_eng:S0450L03B03",
+  "set": {
+   "known_text": "there are times she doesn't ride"
+  },
+  "expect": {
+   "seed_number": 450,
+   "lego_index": 3,
+   "known_text": "not riding",
+   "target_text": "乗らないことがある"
+  }
+ }
+]

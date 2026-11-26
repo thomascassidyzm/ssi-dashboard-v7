@@ -11,21 +11,41 @@
  *                   including the phrase's own LEGO (Kai 24 Nov, Welsh S117: "a seed's own LEGOs are where its words get
  *                   taught, at that seed"). Words inside a chunk count (K29). The seed SENTENCE teaches nothing by itself.
  *                   Welsh only: a soft-mutated form counts as the same word (K29). Spaceless targets: NOT RUN.
+ *                   Breton (cs #342·AL): soft, spirant, hard and mixed mutation all count as the same word
+ *                   (bretonRadicals) — Kai's brief for the Breton scan; K29 names Welsh alone, so the hit carries
+ *                   mutation_only=true when it would have been a hit WITHOUT this tolerance, for Kai to rule on.
+ *                   Breton c'h / C'H is one letter: never split at its apostrophe (c'hoant was read as "hoant").
  *                   detect.cjs's own untaught_target counts every LEGO of the phrase's seed (including later ones) and
  *                   the seed sentence; this one is the stricter running-order reading the brief asks for.
- *  untaught_known   P1 on the KNOWN side, English known only. K6: the known side is controlled by LEXEME, not form, so
+ *  untaught_known   P1 on the KNOWN side, English and (cs #342·AL) French known. K6: the known side is controlled by LEXEME, not form, so
  *                   an inflection, case or contraction of a taught word is NOT a hit (lexKeys below); only a genuinely
  *                   new word is. K7: a known-side hit is never serious by definition — the hand-check asks "can the
- *                   learner still produce the answer?".
+ *                   learner still produce the answer?". French known (#342·AL, bre_for_fra): frLexKeys below — elided
+ *                   clitics split (j'ai = j + ai), accents folded, a small irregular table (être/avoir/aller/faire/
+ *                   pouvoir/vouloir/savoir/devoir/dire/venir/voir/prendre) and inflection endings stripped to a stem.
+ *                   Every other known language: NOT RUN, and the sheet says so.
  *  gloss_absent     known/target mismatch: the row's target DOES contain its own LEGO (P17 holds) but its English does
  *                   not carry that LEGO's English (lexeme-tolerant, ignoring to/a/an/the). Calibrated on C0108
  *                   (hope -> expect) and the jpn と話して rows where the English says "mentioned".
+ *                   cs #342·AL: also run over a FRENCH known (bre_for_fra) with frLexKeys and FR_GLOSS_IGNORE.
  *  digits_mismatch  both sides carry digits and the digits differ.
  *  garble_tail      the same row ENDING (last two words; last 5 chars for spaceless targets) recurs across many
  *                   LEGOs that do not contain it, while the English of those rows has no common word — the shape a
  *                   generator leaves when it bolts one tail onto unrelated rows (jpn ~と話してた, d/0fc0fa6f).
  *  garble_doubled   the same word twice in a row (target or known). garble_script: Latin letters inside a non-Latin
- *                   target, or non-Latin letters in an English known. garble_punct: ",," ".." " ," leading
+ *                   target, or non-Latin letters in an English known. cs #342·AL: for a Latin/Latin pair (bre_for_fra)
+ *                   a non-Latin letter on EITHER side fires too — the old rule could never see a Japanese word inside
+ *                   a Breton target or a French known.
+ *  wrong_side       cs #342·AL, Breton/French only (WRONG_SIDE below): a Breton target that reads as French (>= 2
+ *                   French-only function words), or a French/English known that reads as Breton (c'h / zh / ñ, or
+ *                   >= 2 Breton-only words). A CANDIDATE list: loanwords and names are read out by hand.
+ *                   side 'target_spelling': a Breton target word spelled with letters peurunvan Breton does not use
+ *                   (q x ç é è à â ô î ï ë œ, c not in ch/c'h, or -tion-): French or German leaking into the Breton.
+ *                   Known positive: bre_for_fra seed 94 "evit ma funktionno" (German funktionieren), 25 Nov copy.
+ *  bre_grammar      cs #342·AL, Breton targets only, three spelling-level rules with no judgement in them (breGrammar):
+ *                   article — "an" before a vowel or h/n/d/t, "al" before l, "ar" otherwise (positive: S0094 "ar hent");
+ *                   hag — "hag" only before a vowel ("hag ma zad" -> "ha ma zad"); da_ma — "da ma"/"da da" contract to
+ *                   "d'am"/"d'az". Read by hand: a capital, a quoted word or a name can sit behind any of them. garble_punct: ",," ".." " ," leading
  *                   punctuation, empty text.
  *  lego_absent      P17/K8: a played row whose target does not contain its own LEGO, by the builder's own
  *                   containment (separable verbs included). Classed: "near" = every missing LEGO word has a close
@@ -33,6 +53,25 @@
  *                   a LEGO word is simply not there (the strong class). Welsh soft mutation is not a miss.
  *  silent_lego      a NEW LEGO with no audio on any slot (the dump only carries a lego_debut row when a slot is set).
  *                   Null slots on played rows are detect.cjs's empty_audio.
+ *
+ * METHODOLOGY FAMILIES (cs #342·AL, Kai's 25 Nov 12:36Z amendment: "methodology as well as grammar"). Each names its
+ * canon rule (course-methodology-canon.md). Generic unless marked; the open-end word lists exist for Breton targets and
+ * French/English knowns only, and the family is NOT RUN elsewhere.
+ *  open_end_unmirrored  P7: an open-ended BUILD (target ends on a conjunction/preposition/particle) is LEGIT; the defect is
+ *                   a prompt that does not mirror the open end (one side open, the other closed). Never auto-drop.
+ *  open_end_use     P7 HARD: a USE phrase whose target AND prompt end open — a fragment replayed cold.
+ *  basket_order     P3/P4: a USE row positioned before a BUILD row in the same basket (BUILD plugs in first).
+ *  use_frame_repeat P9 HARD: two USE rows in one basket with the same length that differ in exactly one word on both
+ *                   sides — the frame held constant, a single slot swapped.
+ *  thin_debut       P10/P30 (SOFT, reported): a NEW LEGO below the builder's own phraseFloor (phrase-structure.cjs).
+ *                   An EMPTY debut is detect.cjs's debut_no_practice — and S0001L01 there is L18, not a defect.
+ *  bare_function_lego L6 (SOFT): a NEW single-word LEGO whose known is a bare pronoun/article/preposition/conjunction.
+ *  greedy_intro     L13: a word first met inside a NEW multi-word LEGO with no component of its own, and taught as its
+ *                   own single-word LEGO only later.
+ *  component_not_in_lego  L23/L11: a component tile whose target is not a substring of its LEGO's target (Breton
+ *                   mutation and inflected prepositions tolerated: gant + it = ganit).
+ *  form_drift       P28 HARD: after a multi-word LEGO debuts with known K, a played row whose prompt contains K but whose
+ *                   target does not contain that LEGO's target (mutation tolerated on Breton).
  * Calibrations (each detector's known positive) live in calibration.json beside this file.
  */
 const path = require('path')
@@ -40,6 +79,7 @@ const R = path.resolve(__dirname, '../..')
 const { normalizeForContainment } = require(R + '/services/course-builder/lib/text-normalization.cjs')
 const { phraseContainsLego } = require(R + '/services/course-builder/lib/separable-verbs.cjs')
 const { isChinese } = require(R + '/services/course-builder/lib/language-config.cjs')
+const { phraseFloor } = require(R + '/services/course-builder/lib/phrase-structure.cjs')
 
 const SPACELESS_EXTRA = new Set(['tha', 'lao', 'mya', 'khm'])
 const toks = (t) => (String(t || '').toLowerCase().normalize('NFC').replace(/[ً-ْ]/g, '').replace(/[’‘]/g, "'")
@@ -60,6 +100,27 @@ function welshRadicals(w) {
   if (/^[aeiouwyâêîôûŵŷ]/.test(w)) add('g' + w)
   return out
 }
+
+// ── Breton mutation (cs #342·AL): from a possibly-mutated form back to every radical it could come from ──
+function bretonRadicals(w) {
+  const out = new Set([w]), add = (x) => out.add(x)
+  if (w.startsWith("c'h")) { add('g' + w.slice(3)); add('k' + w.slice(3)) }              // soft g->c'h, spirant k->c'h
+  else if (w.startsWith('gw')) add('kw' + w.slice(2))                                   // hard? (kw<-gw) rare; kept symmetric
+  else if (w.startsWith('g')) add('k' + w.slice(1))                                     // soft k->g
+  if (w.startsWith('w')) add('gw' + w.slice(1))                                         // soft/mixed gw->w
+  if (w.startsWith('d')) add('t' + w.slice(1))                                          // soft t->d
+  if (w.startsWith('z')) { add('d' + w.slice(1)); add('t' + w.slice(1)) }              // soft d->z, spirant t->z
+  if (w.startsWith('b')) add('p' + w.slice(1))                                          // soft p->b
+  if (w.startsWith('v')) { add('b' + w.slice(1)); add('m' + w.slice(1)) }              // soft/mixed b->v, m->v
+  if (w.startsWith('f')) add('p' + w.slice(1))                                          // spirant p->f
+  if (w.startsWith('p')) add('b' + w.slice(1))                                          // hard b->p
+  if (w.startsWith('t')) add('d' + w.slice(1))                                          // hard/mixed d->t
+  if (w.startsWith('k') && !w.startsWith('kw')) add('g' + w.slice(1))                   // hard g->k
+  if (w.startsWith('kw')) add('gw' + w.slice(2))                                        // hard gw->kw
+  return out
+}
+// Breton tokens: split elisions (m'am = m + am, n'eo = n + eo) but never the c'h letter.
+const bretonSplit = (ws) => ws.flatMap((w) => w.replace(/c'h/g, 'c\u02bch').split("'").map((x) => x.replace(/c\u02bch/g, "c'h"))).filter((w) => w.length > 1)
 
 // ── English lexeme keys (K6: known side controlled by lexeme, not form) ──
 const IRREG = Object.fromEntries(Object.entries({
@@ -95,6 +156,51 @@ function lexKeys(w) {
   for (const x of [...k]) { if (/([b-df-hj-np-tv-z])\1$/.test(x)) k.add(x.slice(0, -1)) } // stopped -> stopp -> stop
   return k
 }
+// ── French lexeme keys (cs #342·AL: untaught_known for a French known side, K6 lexeme tolerance) ──
+const FR_IRREG = Object.fromEntries(Object.entries({
+  etre: 'suis es est sommes etes sont etais etait etions etiez etaient ete serai sera serons seront serais serait soit sois soient',
+  avoir: 'ai as a avons avez ont avais avait avions aviez avaient eu aurai aura aurons auront aurais aurait aie ait',
+  aller: 'vais vas va allons allez vont allait irai ira iront irais irait aille', faire: 'fais fait faisons faites font faisait fera ferai ferais ferait fasse',
+  pouvoir: 'peux peut pouvons pouvez peuvent pouvait pu pourrai pourra pourrais pourrait puisse', vouloir: 'veux veut voulons voulez veulent voulait voulu voudrais voudrait voudrai veuille',
+  savoir: 'sais sait savons savez savent savait su saurai saurais saurait sache', devoir: 'dois doit devons devez doivent devait du dus devrais devrait devrai',
+  dire: 'dis dit disons dites disent disait dirai dirait', venir: 'viens vient venons venez viennent venait venu viendrai viendrait vienne',
+  voir: 'vois voit voyons voyez voient voyait vu verrai verrait', prendre: 'prends prend prenons prenez prennent prenait pris prendrai prendrait',
+  je: 'j me m moi', tu: 'te t toi', il: 'lui le', elle: 'la', ce: 'c cet cette ces ca cela', ne: 'n', que: 'qu', se: 's', de: 'd du des',
+  mon: 'ma mes', ton: 'ta tes', son: 'sa ses', notre: 'nos', votre: 'vos', le: 'l la les',
+}).flatMap(([base, forms]) => forms.split(' ').map((f) => [f, base])))
+const FR_ENDINGS = ['issaient', 'eraient', 'assent', 'issons', 'issez', 'aient', 'erais', 'erait', 'erons', 'eront', 'ement', 'ions', 'iez', 'ons', 'ent', 'ais', 'ait', 'ant', 'ees', 'ez', 'er', 'ir', 're', 'ee', 'es', 'is', 'it', 'e', 's', 'x']
+const fold = (w) => w.normalize('NFD').replace(/\p{M}/gu, '')
+const FR_GLOSS_IGNORE = new Set('je j tu il elle on nous vous ils elles me m te t se s le la les l un une des de d du a au aux en y que qu qui ce c ca cela et ou ne n pas plus moi toi lui eux mon ma mes ton ta tes son sa ses notre nos votre vos leur leurs est etre avoir faire'.split(' '))
+function frLexKeys(w) {
+  const f = fold(w), k = new Set([f])
+  if (FR_IRREG[f]) k.add(FR_IRREG[f])
+  for (const e of FR_ENDINGS) if (f.endsWith(e) && f.length - e.length >= 3) k.add(f.slice(0, -e.length))
+  for (const x of [...k]) { if (/([b-df-hj-np-tv-z])\1$/.test(x)) k.add(x.slice(0, -1)) }
+  return k
+}
+const frLex = (text) => toks(text).flatMap((w) => w.split("'")).filter((w) => w && !isNum(w))
+
+// ── wrong_side (cs #342·AL): Breton/French only. Word lists hold words that are NOT also ordinary in the other language
+// (en, a, da, e, ma, ne, un, an are in both, so they are left out). Calibrated by hand on bre_for_fra (25 Nov copy).
+const WRONG_SIDE = {
+  fra: new Set("le la les des du est je tu nous vous elle ils elles avec pour dans pas que qui mais très c'est j'ai suis sont être avoir une mon mes ton son leur aussi bien".split(' ')),
+  bre: new Set("eo ket ar ur emaon emañ eus gant evit hag ha'n zo bezañ c'hoant brezhoneg ober gallout mont dont kalz hiziv bremañ warc'hoazh dec'h ganit din dit dezhañ".split(' ')),
+}
+const BRE_LETTERS = /c'h|zh|ñ/iu
+const BRE_FOREIGN = /[qxçéèàâôîïëœ]|c(?!'?h)|tion/u
+function breGrammar(t) {
+  const w = toks(t), out = []
+  for (let i = 0; i + 1 < w.length; i++) {
+    const a = w[i], b = w[i + 1], vowelish = /^[aeiouyêùh]/.test(b) && !/^y[aeiou]/.test(b)
+    if (a === 'ar' && (vowelish || /^[ndt]/.test(b))) out.push('article:' + a + ' ' + b)
+    if (a === 'an' && /^[bcfgjklmprsvwz]/.test(b) && i > 0 && !/^(en|o)$/.test(w[i - 1])) out.push('article:' + a + ' ' + b)
+    if (a === 'ar' && /^l/.test(b)) out.push('article:' + a + ' ' + b)
+    if (a === 'hag' && !/^[aeiouyh]/.test(b)) out.push('hag:' + a + ' ' + b)
+    if (a === 'da' && (b === 'ma' || b === 'da')) out.push('da_ma:' + a + ' ' + b)
+  }
+  return out
+}
+const bretonForeignWords = (t) => toks(t).filter((w) => BRE_FOREIGN.test(w))
 const enLex = (text) => toks(text).flatMap(expandEn).filter((w) => !isNum(w))
 
 // "Close variant" = an inflection of the same word: both >= 4 letters and they share all but the last two letters of the
@@ -139,13 +245,18 @@ function run(D) {
   const rk = (s, i) => s * 1000 + i
   if (!spaceless) {
     const first = new Map()
-    const keys = (w) => (welsh ? welshRadicals(w) : [w])
-    const tt = (t) => splitClitics(toks(t), tlang === 'eng')
+    const breton = tlang === 'bre'
+    const keys = (w) => (welsh ? welshRadicals(w) : breton ? bretonRadicals(w) : [w])
+    const tt = (t) => breton ? bretonSplit(toks(t)) : splitClitics(toks(t), tlang === 'eng')
     for (const s of seeds) for (const l of s.legos) for (const w of tt(l.target)) for (const k of keys(w)) { if (!first.has(k)) first.set(k, rk(s.n, l.idx)) }
+    const firstStrict = new Map() // exact forms only: tells a mutation-tolerated word from a really taught one
+    for (const s of seeds) for (const l of s.legos) for (const w of tt(l.target)) { if (!firstStrict.has(w)) firstStrict.set(w, rk(s.n, l.idx)) }
     for (const { p, l, s } of rows) {
       const here = rk(s.n, l.idx)
       const bad = tt(p.target).filter((w) => !isNum(w) && ![...keys(w)].some((k) => first.get(k) <= here))
-      if (bad.length) {
+      if (bad.length || breton) {
+        const strict = breton ? tt(p.target).filter((w) => !isNum(w) && !(firstStrict.get(w) <= here)) : []
+        if (!bad.length) { if (strict.length) add('untaught_target_mutation_only', { id: short(p.id), seed: s.n, lego: l.id, words: strict, known: p.known, target: p.target }); continue }
         const when = (w) => { const t = Math.min(...[...keys(w)].map((k) => first.get(k) ?? Infinity)); return t === Infinity ? 'never' : 'S' + Math.floor(t / 1000) + 'L' + (t % 1000) }
         add('untaught_target', { id: short(p.id), seed: s.n, lego: l.id, lego_target: l.target, words: bad.map((w) => w + '@' + when(w)), known: p.known, target: p.target })
       }
@@ -165,7 +276,20 @@ function run(D) {
         add('untaught_known', { id: short(p.id), seed: s.n, lego: l.id, words: later, target_also_untaught: strong, known: p.known, target: p.target })
       }
     }
-  } else notes.push(`untaught_known NOT RUN: known language ${known} (lexeme tolerance is English-only)`)
+  } else if (known === 'fra') {
+    const first = new Map()
+    for (const s of seeds) for (const l of s.legos) for (const w of frLex(l.known)) for (const k of frLexKeys(w)) { if (!first.has(k)) first.set(k, rk(s.n, l.idx)) }
+    for (const { p, l, s } of rows) {
+      const here = rk(s.n, l.idx)
+      const bad = frLex(p.known).filter((w) => ![...frLexKeys(w)].some((k) => first.get(k) <= here))
+      if (bad.length) {
+        const later = bad.map((w) => { const t = Math.min(...[...frLexKeys(w)].map((k) => first.get(k) ?? Infinity)); return w + '@' + (t === Infinity ? 'never' : 'S' + Math.floor(t / 1000)) })
+        const strong = (H.untaught_target || []).some((h) => h.id === short(p.id))
+        add('untaught_known', { id: short(p.id), seed: s.n, lego: l.id, words: later, target_also_untaught: strong, known: p.known, target: p.target })
+      }
+    }
+    notes.push('untaught_known on FRENCH known: frLexKeys stem tolerance (cs #342·AL) — read every sampled row; stems are rough')
+  } else notes.push(`untaught_known NOT RUN: known language ${known} (lexeme tolerance is English and French only)`)
 
   // ── lego_absent (P17/K8) and gloss_absent (known/target mismatch) ──
   const tw = (t) => spaceless ? null : normalizeForContainment(t).split(/\s+/).filter(Boolean)
@@ -184,6 +308,13 @@ function run(D) {
     if (englishKnown && l.known) {
       const pk = new Set(enLex(p.known).flatMap((w) => [...lexKeys(w)]))
       const miss = enLex(l.known).filter((w) => !GLOSS_IGNORE.has(w) && ![...lexKeys(w)].some((k) => pk.has(k)))
+      if (miss.length) add('gloss_absent', { id: short(p.id), seed: s.n, lego: l.id, lego_known: l.known, lego_target: l.target, missing: miss, known: p.known, target: p.target })
+    }
+    if (known === 'fra' && l.known) { // cs #342·AL: the same check over a French known side, frLexKeys tolerance
+      const pk = new Set(frLex(p.known).flatMap((w) => [...frLexKeys(w)]))
+      // a slashed gloss ("finir / terminer") is satisfied by ANY alternative; a bracketed tag is K11's business, not this one's
+      const alts = String(l.known).replace(/\([^)]*\)/g, ' ').split('/').map((a) => frLex(a).filter((w) => !FR_GLOSS_IGNORE.has(fold(w)) && ![...frLexKeys(w)].some((k) => pk.has(k))))
+      const miss = alts.reduce((a, b) => (b.length < a.length ? b : a))
       if (miss.length) add('gloss_absent', { id: short(p.id), seed: s.n, lego: l.id, lego_known: l.known, lego_target: l.target, missing: miss, known: p.known, target: p.target })
     }
     const dk = (String(p.known || '').match(/\d+/g) || []).sort().join(','), dt = (String(p.target || '').match(/\d+/g) || []).sort().join(',')
@@ -209,6 +340,7 @@ function run(D) {
 
   // ── garble_doubled / garble_script / garble_punct ──
   const latinInTarget = !['eng', 'spa', 'fra', 'deu', 'ita', 'por', 'cym', 'gle', 'gla', 'nld', 'afr', 'cat', 'eus', 'glg', 'dan', 'swe', 'nor', 'isl', 'fin', 'est', 'lav', 'lit', 'pol', 'ces', 'hrv', 'hun', 'ron', 'tur', 'swa', 'fry', 'srp', 'slk', 'slv', 'mlt', 'ind', 'vie', 'cor', 'bre', 'pdc', 'roh', 'fur', 'lmo', 'nap', 'scn', 'vec', 'sme', 'yor', 'sbx', 'rgn'].includes(tlang)
+  const LATIN_KNOWN = new Set(['eng', 'fra', 'spa', 'deu', 'ita', 'por', 'nld', 'cym'])
   const taughtPairs = new Set()
   for (const s of seeds) for (const l of s.legos) for (const t of [l.target, l.known]) { const w = toks(t); for (let i = 1; i < w.length; i++) taughtPairs.add(w[i - 1] + ' ' + w[i]) }
   for (const s of seeds) for (const l of s.legos) for (const p of l.phrases) {
@@ -221,13 +353,84 @@ function run(D) {
       if (!raw.trim() || /,,|\.\.(?!\.)|\s[,.;:!?](?!\.)|^[\s,.;:!?、。，]/.test(raw.replace(/…/g, ''))) add('garble_punct', { id, side, known: p.known, target: p.target })
     }
     if (latinInTarget && /[a-zA-Z]{2,}/.test(String(p.target || ''))) add('garble_script', { id, side: 'target', known: p.known, target: p.target })
-    if (englishKnown && /[^\p{Script=Latin}\p{N}\p{P}\p{Z}\p{S}]/u.test(String(p.known || '').replace(/\s/g, ''))) add('garble_script', { id, side: 'known', known: p.known, target: p.target })
+    const nonLatin = (t) => /[^\p{Script=Latin}\p{Script=Common}\p{Script=Inherited}\p{N}\p{P}\p{Z}\p{S}]/u.test(String(t || '').replace(/\s/g, ''))
+    if ((englishKnown || (!latinInTarget && LATIN_KNOWN.has(known))) && nonLatin(p.known)) add('garble_script', { id, side: 'known', known: p.known, target: p.target })
+    if (!latinInTarget && LATIN_KNOWN.has(known) && nonLatin(p.target)) add('garble_script', { id, side: 'target', known: p.known, target: p.target })
+    if (tlang === 'bre') {
+      const gr = breGrammar(p.target)
+      if (gr.length) add('bre_grammar', { id, rules: gr, known: p.known, target: p.target })
+      const fw = bretonForeignWords(p.target)
+      if (fw.length) add('wrong_side', { id, side: 'target_spelling', words: fw, known: p.known, target: p.target })
+      const fr = toks(p.target).filter((w) => WRONG_SIDE.fra.has(w))
+      if (fr.length >= 2) add('wrong_side', { id, side: 'target', words: fr, known: p.known, target: p.target })
+      const kw = toks(p.known), br = kw.filter((w) => WRONG_SIDE.bre.has(w))
+      if (BRE_LETTERS.test(String(p.known || '')) || br.length >= 2) add('wrong_side', { id, side: 'known', words: br, known: p.known, target: p.target })
+    }
   }
 
+
+  // ── METHODOLOGY (cs #342·AL) ──
+  const OPEN_T = { bre: new Set("da ha hag met abalamour evit gant ma pa war ouzh eget".split(' ')) }
+  // Calibrated 25 Nov on bre_for_fra: 'eus' (am eus, the perfect auxiliary) and French 'de'/'à' (an infinitive marker Breton
+  // does not have: j'essaie de | klask a ran) made every one of the first 12 hits false, so they are not open-end words.
+  const _unused = { }
+  const OPEN_K = { fra: new Set("que qu pour avec et mais parce si quand le la les une des du sur dans".split(' ')),
+    eng: new Set("to and but because if when the a an of with for in on that".split(' ')) }
+  const lastTok = (t) => { const w = toks(t); return w.length ? w[w.length - 1] : '' }
+  const brK = (w) => (tlang === 'bre' ? bretonRadicals(w) : new Set([w]))
+  const wordsIn = (needle, hay) => { const H = toks(hay); return toks(needle).every((w) => H.some((x) => x === w || [...brK(x)].some((k) => brK(w).has(k)))) }
+  if (OPEN_T[tlang] && OPEN_K[known]) {
+    for (const { p } of rows) {
+      const tOpen = OPEN_T[tlang].has(lastTok(p.target)) && toks(p.target).length > 1, kOpen = OPEN_K[known].has(lastTok(p.known)) || /\b(qu|l|d)['’]$/.test(String(p.known).trim())
+      if (tOpen !== kOpen) add('open_end_unmirrored', { id: short(p.id), type: p.type, open: tOpen ? 'target' : 'known', known: p.known, target: p.target })
+      else if (tOpen && p.type === 'use') add('open_end_use', { id: short(p.id), known: p.known, target: p.target })
+    }
+  } else notes.push(`open_end_* NOT RUN: no open-end word list for ${tlang} targets / ${known} knowns`)
+  const nk = (t) => toks(t).join(' ')
+  const firstWord = new Map(), legoWord = new Map()
+  for (const s of seeds) for (const l of s.legos) {
+    const ph = l.phrases, bi = ph.filter((p) => p.type === 'build'), us = ph.filter((p) => p.type === 'use')
+    if (l.is_new) {
+      const lastBuild = Math.max(-1, ...bi.map((p) => p.pos)), firstUse = Math.min(Infinity, ...us.map((p) => p.pos))
+      if (firstUse < lastBuild) add('basket_order', { id: l.id, known: l.known, target: l.target, first_use: firstUse, last_build: lastBuild })
+      const fl = phraseFloor(s.n, l.idx) // the builder's own ramp (P30): S1L1 none, S1-S3 one of each, S4+ 3 BUILD + 5 USE
+      if (bi.length < fl.minBuild || us.length < fl.minUse) add('thin_debut', { id: l.id, builds: bi.length, uses: us.length, floor: fl, known: l.known, target: l.target })
+      for (let i = 0; i < us.length; i++) for (let j = i + 1; j < us.length; j++) {
+        const a = us[i], b = us[j], ta = toks(a.target), tb = toks(b.target), ka = toks(a.known), kb = toks(b.known)
+        const diff = (x, y) => x.length === y.length ? x.filter((w, k) => w !== y[k]).length : 99
+        if (diff(ta, tb) === 1 && diff(ka, kb) <= 2) { add('use_frame_repeat', { id: short(a.id), twin: short(b.id), lego: l.id, known: a.known + ' || ' + b.known, target: a.target + ' || ' + b.target }); break }
+      }
+      const tw0 = toks(l.target)
+      if (tw0.length === 1 && OPEN_K[known] && toks(l.known).length === 1 && (OPEN_K[known].has(toks(l.known)[0]) || /^(je|tu|il|elle|nous|vous|ils|elles|moi|toi|lui|eux|i|you|he|she|we|they|it|me|him|her|us|them|ou|or|où)$/.test(toks(l.known)[0])))
+        add('bare_function_lego', { id: l.id, known: l.known, target: l.target })
+      const comps = ph.filter((p) => p.type === 'component')
+      for (const c of comps) {
+        const lt = normalizeForContainment(l.target).replace(/\s/g, ''), ct = normalizeForContainment(c.target).replace(/\s/g, '')
+        const ok = ct && (lt.includes(ct) || [...brK(toks(c.target)[0] || '')].some((k) => lt.includes(normalizeForContainment(c.target.replace(toks(c.target)[0], k)).replace(/\s/g, ''))))
+        if (!ok) add('component_not_in_lego', { id: short(c.id), lego: l.id, lego_target: l.target, known: c.known, target: c.target })
+      }
+      const compWords = new Set(comps.flatMap((c) => toks(c.target)))
+      if (tw0.length > 1) for (const w of tw0) if (!firstWord.has(w)) firstWord.set(w, { lego: l.id, seed: s.n, comp: compWords.has(w) })
+      if (tw0.length === 1 && !legoWord.has(tw0[0])) legoWord.set(tw0[0], { lego: l.id, seed: s.n })
+    }
+  }
+  for (const [w, f] of firstWord) { const a = legoWord.get(w); if (a && !f.comp && a.seed > f.seed && w.length > 2) add('greedy_intro', { word: w, m_lego: f.lego, a_lego: a.lego }) }
+  {
+    const multi = []
+    for (const s of seeds) for (const l of s.legos) if (l.is_new && toks(l.known).length >= 2 && !/[\/()]/.test(l.known)) multi.push({ l, at: rk(s.n, l.idx), K: ' ' + nk(l.known) + ' ' })
+    for (const { p, l, s } of rows) {
+      const here = rk(s.n, l.idx), pk = ' ' + nk(p.known) + ' '
+      const own = ' ' + nk(l.known) + ' '
+      // the row's own LEGO says something bigger that contains K ("to try" inside "to try hard"): its own form wins
+      // a longer taught prompt that the row carries correctly covers every shorter one inside it ("to try" in "to try hard")
+      const covered = multi.filter((m) => m.at <= here && pk.includes(m.K) && wordsIn(m.l.target, p.target)).map((m) => m.K)
+      for (const m of multi) if (m.at < here && pk.includes(m.K) && !(own.includes(m.K) && own !== m.K) && !covered.some((K) => K !== m.K && K.includes(m.K)) && !wordsIn(m.l.target, p.target)) { add('form_drift', { id: short(p.id), taught: m.l.id, taught_known: m.l.known, taught_target: m.l.target, known: p.known, target: p.target }); break }
+    }
+  }
   // ── silent_lego ──
   for (const s of seeds) for (const l of s.legos) if (l.is_new && !l.phrases.some((p) => p.type === 'lego_debut')) add('silent_lego', { id: l.id, known: l.known, target: l.target })
 
   return { notes, hits: H }
 }
 
-module.exports = { run, welshRadicals, lexKeys, enLex, toks }
+module.exports = { run, bretonForeignWords, breGrammar, welshRadicals, bretonRadicals, lexKeys, enLex, toks, frLexKeys }

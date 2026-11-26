@@ -78,6 +78,7 @@
           <AudioNeed v-if="lego.m" kind="lego" :id="open.l" :line="lego" />
           <EditForm v-if="editing[`lego:${open.l}`]" :k="`lego:${open.l}`" kind="lego" :id="open.l" />
           <PropBox :p="propFor('lego', open.l)" />
+          <PropBox v-for="p in propSeeds" :key="p.id" :p="p" />
         </div>
         <button v-if="canEdit" class="ic" aria-label="Edit intro item" @click="startEdit('lego', open.l, lego)">✎</button>
       </div>
@@ -243,6 +244,9 @@ function propFor(kind, id) {
   return out
 }
 const propIntro = computed(() => open.value && proposals.value.filter((p) => live(p) && p.action === 'intro' && lineOf(p) === open.value.l).pop())
+// A seed-sentence change (cs #337·AL) is shown under the round it was filed with; its linked changes show on their lines.
+const propSeeds = computed(() => (open.value ? proposals.value.filter((p) => live(p) && p.kind === 'seed' && p.lego === open.value.l) : []))
+const groupOf = (p) => (p.kind === 'seed' ? p : proposals.value.find((x) => x.id === (p.group || p.appliedVia)) || null)
 const propOrder = computed(() => open.value && proposals.value.filter((p) => live(p) && p.action === 'order' && lineOf(p) === open.value.l).pop())
 // An applied add/copy shows its Undo on the line it made; a pending one is listed under the practice phrases.
 const newLineProp = (id) => proposals.value.find((p) => live(p) && p.status === 'applied' && p.newId === id) || null
@@ -288,7 +292,7 @@ const EditForm = (props) => {
 }
 EditForm.props = ['k', 'kind', 'id']
 function statusLabel(p) {
-  const what = { order: 'New order', add: 'New phrase', copy: 'Copy', remove: 'Remove this line', intro: 'New intro wording' }[p.action]
+  const what = p.kind === 'seed' ? `New sentence for seed ${p.line}` : { order: 'New order', add: 'New phrase', copy: 'Copy', remove: 'Remove this line', intro: 'New intro wording' }[p.action]
   if (p.status === 'pending') return `${what || 'Proposed'} — not applied yet`
   if (p.status === 'applied') return 'Applied'
   if (p.status === 'stale') return 'Stale — the live line changed'
@@ -298,7 +302,10 @@ const PropBox = (props) => {
   const p = props.p
   if (!p) return null
   const diffs = []
-  if (p.action === 'edit' && p.after) {
+  if (p.kind === 'seed') {
+    diffs.push(h('div', { class: 'diff' }, [h('s', null, p.before.target), ' → ', h('ins', null, p.after.target)]))
+    diffs.push(h('div', { class: 'diff en' }, [h('s', null, p.before.known), ' → ', h('ins', null, p.after.known)]))
+  } else if (p.action === 'edit' && p.after) {
     for (const [k, cls] of [['target', ''], ['roman', 'ro'], ['known', 'en'], ['intro', 'intro']]) {
       if (p.after[k] === undefined || (p.after[k] ?? '') === (p.before[k] ?? '')) continue
       diffs.push(h('div', { class: `diff ${cls}` }, [h('s', null, p.before[k] || '—'), ' → ', h('ins', null, p.after[k] || '(cleared)')]))
@@ -318,10 +325,15 @@ const PropBox = (props) => {
     ? (p.needsAudio ? (audioMode.value === 'tts' ? (p.audioQueued ? 'New audio queued for the next audio pass.' : 'Needs new audio.') : 'On the booth\'s Re-record card.') : (p.action === 'edit' ? 'Same spoken words: the recording was kept.' : ''))
     : (p.action === 'edit' ? (sameWords(p) ? 'Capitals/punctuation only: the recording is kept.' : 'Spoken words change: this line will need new audio.') : '')
   const k = `prop:${p.id}`
+  const g = (p.group || p.appliedVia || p.kind === 'seed') ? groupOf(p) : null
+  const together = g ? (g.status === 'pending' || g.status === 'applied'
+    ? `Lands together with seed ${g.line}'s new sentence — ${g.with.length + 1} changes in one go. Apply on any of them applies all of them; Undo undoes all of them.`
+    : `Part of seed ${g.line}'s sentence change, which is ${g.status}: this cannot be applied on its own.`) : (p.group ? 'Part of a seed sentence change that has been discarded: this cannot be applied on its own.' : null)
   return h('div', { class: ['prop', p.status] }, [
     h('div', { class: 'ph' }, [h('b', null, statusLabel(p)), h('small', null, p.status === 'applied' ? `by ${p.appliedBy} · ${fmtWhen(p.appliedAt)}` : `by ${p.proposedBy}`)]),
     ...diffs,
     p.note ? h('div', { class: 'hint note' }, p.note) : null,
+    together ? h('div', { class: 'hint warn' }, together) : null,
     hint ? h('div', { class: 'hint' }, hint) : null,
     ...(p.status === 'pending' ? proposalWarnings(p).map((w) => h('div', { class: 'hint warn' }, w)) : []),
     p.status === 'applied' && p.locked === false ? h('div', { class: 'hint warn' }, 'Applied before the hand-edit lock was set up: not protected from regeneration.') : null,
@@ -491,6 +503,13 @@ async function act(p, what) {
   busy[k] = true
   try {
     let r = what === 'discard' ? await call('DELETE', `/proposals/${p.id}`) : await call('POST', `/proposals/${p.id}/${what}`)
+    // ADDING OR REMOVING AN INTRO ITEM on a live course needs Tom's go (the edit door's structural gate): ask for his
+    // words and send them with the same Apply/Undo. Nothing is stored; the door records them on the edit event.
+    if (!r.ok && r.body.code === 'TOM_GO_REQUIRED') {
+      const go = prompt('This adds or removes an intro item on the live course, so it needs Tom\'s go. Paste Tom\'s words agreeing to it:')
+      if (!go || !go.trim()) return say('Not applied — this change needs Tom\'s go first. Nothing changed.', true)
+      r = await call('POST', `/proposals/${p.id}/${what}`, { tom_go: go.trim() })
+    }
     // A NEW INTRO WORDING's Apply is a dry run first: the audio route says whether the library has it or what it costs.
     if (r.ok && what === 'apply' && r.body.needsConfirm) {
       const d = r.body.render || {}

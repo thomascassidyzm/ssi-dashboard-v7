@@ -1,0 +1,279 @@
+{
+ "family": "kai-311",
+ "rows": [
+  {
+   "key": "SEED56",
+   "old": [
+    "So I can memorise how to say a few words.",
+    "Sadat ik ûnthâlde kin hoe't ik in pear wurden sizze moat."
+   ],
+   "new": [
+    "So I can memorise how to say a few words.",
+    "Sadat ik it ûnthâlde kin hoe't ik in pear wurden sizze moat."
+   ],
+   "why": "seed 56 contains its LEGO S0056L02 \"sadat ik it ûnthâlde kin\" (Kai Y 25 Nov)"
+  },
+  {
+   "key": "S0056L02U04",
+   "old": [
+    "I'm going to read the story so I can memorise what the answer is",
+    "ik sil it ferhaal lêze sadat ik ûnthâlde kin wat it antwurd is"
+   ],
+   "new": [
+    "I'm going to read the story so I can memorise what the answer is",
+    "ik sil it ferhaal lêze sadat ik it ûnthâlde kin wat it antwurd is"
+   ],
+   "why": "phrase contains its LEGO S0056L02 (Kai Y 25 Nov)"
+  },
+  {
+   "key": "LEGO:S0114L02",
+   "old": [
+    "that I'm doing worse",
+    "dat ik it minder doch"
+   ],
+   "new": [
+    "that I'm doing worse",
+    "dat ik it minder goed doch"
+   ],
+   "why": "S0135L02U02 precedent: doing worse = minder goed dwaan (Kai Y 25 Nov)",
+   "components": [
+    {
+     "known": "that",
+     "target": "dat"
+    },
+    {
+     "known": "I",
+     "target": "ik"
+    },
+    {
+     "known": "it",
+     "target": "it"
+    },
+    {
+     "known": "worse",
+     "target": "minder goed"
+    },
+    {
+     "known": "do",
+     "target": "doch"
+    }
+   ]
+  },
+  {
+   "key": "S0114L02B01",
+   "old": [
+    "I think that I'm doing worse",
+    "ik tink dat ik it minder doch"
+   ],
+   "new": [
+    "I think that I'm doing worse",
+    "ik tink dat ik it minder goed doch"
+   ],
+   "why": "S0135L02U02 precedent: doing worse = minder goed dwaan (Kai Y 25 Nov)"
+  },
+  {
+   "key": "S0114L02B02",
+   "old": [
+    "that I'm doing worse than last night",
+    "dat ik it minder doch as justerjûn"
+   ],
+   "new": [
+    "that I'm doing worse than last night",
+    "dat ik it minder goed doch as justerjûn"
+   ],
+   "why": "S0135L02U02 precedent: doing worse = minder goed dwaan (Kai Y 25 Nov)"
+  },
+  {
+   "key": "S0114L02B03",
+   "old": [
+    "I know that I'm doing worse",
+    "ik wit dat ik it minder doch"
+   ],
+   "new": [
+    "I know that I'm doing worse",
+    "ik wit dat ik it minder goed doch"
+   ],
+   "why": "S0135L02U02 precedent: doing worse = minder goed dwaan (Kai Y 25 Nov)"
+  },
+  {
+   "key": "S0114L02B04",
+   "old": [
+    "are you sure that I'm doing worse?",
+    "bistû der wis fan dat ik it minder doch?"
+   ],
+   "new": [
+    "are you sure that I'm doing worse?",
+    "bistû der wis fan dat ik it minder goed doch?"
+   ],
+   "why": "S0135L02U02 precedent: doing worse = minder goed dwaan (Kai Y 25 Nov)"
+  },
+  {
+   "key": "S0114L02U01",
+   "old": [
+    "I don't think that I'm doing worse",
+    "ik tink net dat ik it minder doch"
+   ],
+   "new": [
+    "I don't think that I'm doing worse",
+    "ik tink net dat ik it minder goed doch"
+   ],
+   "why": "S0135L02U02 precedent: doing worse = minder goed dwaan (Kai Y 25 Nov)"
+  },
+  {
+   "key": "S0114L02U02",
+   "old": [
+    "she didn't want to tell me that I'm doing worse",
+    "sy woe my net fertelle dat ik it minder doch"
+   ],
+   "new": [
+    "she didn't want to tell me that I'm doing worse",
+    "sy woe my net fertelle dat ik it minder goed doch"
+   ],
+   "why": "S0135L02U02 precedent: doing worse = minder goed dwaan (Kai Y 25 Nov)"
+  },
+  {
+   "key": "S0114L02U03",
+   "old": [
+    "it's not important that I'm doing worse",
+    "it is net wichtich dat ik it minder doch"
+   ],
+   "new": [
+    "it's not important that I'm doing worse",
+    "it is net wichtich dat ik it minder goed doch"
+   ],
+   "why": "S0135L02U02 precedent: doing worse = minder goed dwaan (Kai Y 25 Nov)"
+  },
+  {
+   "key": "S0114L02U04",
+   "old": [
+    "I know that I'm doing worse because I'm a little tired",
+    "ik wit dat ik it minder doch om't ik in bytsje wurch bin"
+   ],
+   "new": [
+    "I know that I'm doing worse because I'm a little tired",
+    "ik wit dat ik it minder goed doch om't ik in bytsje wurch bin"
+   ],
+   "why": "S0135L02U02 precedent: doing worse = minder goed dwaan (Kai Y 25 Nov)"
+  },
+  {
+   "key": "S0114L02U05",
+   "old": [
+    "I don't care that I'm doing worse",
+    "it makket my neat út dat ik it minder doch"
+   ],
+   "new": [
+    "I don't care that I'm doing worse",
+    "it makket my neat út dat ik it minder goed doch"
+   ],
+   "why": "S0135L02U02 precedent: doing worse = minder goed dwaan (Kai Y 25 Nov)"
+  },
+  {
+   "key": "S0114L03U06",
+   "old": [
+    "I feel as if I'm doing worse today than yesterday",
+    "ik ha it gefoel dat ik it hjoed minder doch as juster"
+   ],
+   "new": [
+    "I feel as if I'm doing worse today than yesterday",
+    "ik ha it gefoel dat ik it hjoed minder goed doch as juster"
+   ],
+   "why": "S0135L02U02 precedent: doing worse = minder goed dwaan (Kai Y 25 Nov)"
+  },
+  {
+   "key": "S0117L03B04",
+   "old": [
+    "that I'm doing worse than last time",
+    "dat ik it minder doch as de lêste kear"
+   ],
+   "new": [
+    "that I'm doing worse than last time",
+    "dat ik it minder goed doch as de lêste kear"
+   ],
+   "why": "S0135L02U02 precedent: doing worse = minder goed dwaan (Kai Y 25 Nov)"
+  },
+  {
+   "key": "S0117L03U01",
+   "old": [
+    "I think that I'm doing worse than last time",
+    "ik tink dat ik it minder doch as de lêste kear"
+   ],
+   "new": [
+    "I think that I'm doing worse than last time",
+    "ik tink dat ik it minder goed doch as de lêste kear"
+   ],
+   "why": "S0135L02U02 precedent: doing worse = minder goed dwaan (Kai Y 25 Nov)"
+  },
+  {
+   "key": "S0121L01B01",
+   "old": [
+    "it's unusual that I'm doing worse",
+    "it is ûngewoan dat ik it minder doch"
+   ],
+   "new": [
+    "it's unusual that I'm doing worse",
+    "it is ûngewoan dat ik it minder goed doch"
+   ],
+   "why": "S0135L02U02 precedent: doing worse = minder goed dwaan (Kai Y 25 Nov)"
+  },
+  {
+   "key": "S0121L01U04",
+   "old": [
+    "it's unusual that I'm doing worse than yesterday",
+    "it is ûngewoan dat ik it minder doch as juster"
+   ],
+   "new": [
+    "it's unusual that I'm doing worse than yesterday",
+    "it is ûngewoan dat ik it minder goed doch as juster"
+   ],
+   "why": "S0135L02U02 precedent: doing worse = minder goed dwaan (Kai Y 25 Nov)"
+  },
+  {
+   "key": "S0139L01U04",
+   "old": [
+    "I'm sorry that I'm doing worse than yesterday",
+    "it spyt my dat ik it minder doch as juster"
+   ],
+   "new": [
+    "I'm sorry that I'm doing worse than yesterday",
+    "it spyt my dat ik it minder goed doch as juster"
+   ],
+   "why": "S0135L02U02 precedent: doing worse = minder goed dwaan (Kai Y 25 Nov)"
+  },
+  {
+   "key": "S0235L01U03",
+   "old": [
+    "someone who said that I'm doing worse isn't my friend",
+    "ien dy't sei dat ik it minder doch is myn freon net"
+   ],
+   "new": [
+    "someone who said that I'm doing worse isn't my friend",
+    "ien dy't sei dat ik it minder goed doch is myn freon net"
+   ],
+   "why": "S0135L02U02 precedent: doing worse = minder goed dwaan (Kai Y 25 Nov)"
+  },
+  {
+   "key": "SEED114",
+   "old": [
+    "I feel as if I'm doing worse today than yesterday.",
+    "Ik ha it gefoel dat ik it hjoed minder doch as juster."
+   ],
+   "new": [
+    "I feel as if I'm doing worse today than yesterday.",
+    "Ik ha it gefoel dat ik it hjoed minder goed doch as juster."
+   ],
+   "why": "S0135L02U02 precedent: doing worse = minder goed dwaan (Kai Y 25 Nov)"
+  },
+  {
+   "key": "S0114L02C04",
+   "old": [
+    "worse",
+    "minder"
+   ],
+   "new": [
+    "worse",
+    "minder goed"
+   ],
+   "why": "component row mirrors LEGO S0114L02's component worse|minder goed"
+  }
+ ]
+}

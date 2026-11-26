@@ -1,0 +1,345 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 260,
+   "expect": {
+    "target_text": "Ամենադոյզն գաղափարը չունիմ։"
+   },
+   "set": {
+    "target_text": "Բնաւ գաղափար չունիմ։",
+    "target_text_roman": "pənav kaghapar chunim."
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 173,
+   "expect": {
+    "target_text": "Ոչ, շնորհակալ եմ, կրնամ առանձինս գլուխ հանել։"
+   },
+   "set": {
+    "target_text": "Ոչ, շնորհակալ եմ, կրնամ մինակս գլուխ հանել։",
+    "target_text_roman": "voch, shənorhagal em, gərnam minags kəlukh hanel."
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0260L02",
+   "expect": {
+    "target_text": "ամենադոյզն գաղափարը"
+   },
+   "set": {
+    "target_text": "բնաւ գաղափար",
+    "target_text_roman": "pənav kaghapar",
+    "components": [
+     {
+      "known": "at all",
+      "target": "բնաւ"
+     },
+     {
+      "known": "idea",
+      "target": "գաղափար"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0173L05",
+   "expect": {
+    "target_text": "առանձինս"
+   },
+   "set": {
+    "target_text": "մինակս",
+    "target_text_roman": "minags"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0173L05B01",
+   "expect": {
+    "target_text": "առանձինս երթալ"
+   },
+   "set": {
+    "target_text": "մինակս երթալ",
+    "target_text_roman": "minags yertal",
+    "word_count": 12,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0173L05B02",
+   "expect": {
+    "target_text": "առանձինս սորվիլ"
+   },
+   "set": {
+    "target_text": "մինակս սորվիլ",
+    "target_text_roman": "minags sorvil",
+    "word_count": 13,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0173L05B03",
+   "expect": {
+    "target_text": "կրնամ առանձինս գլուխ հանել"
+   },
+   "set": {
+    "target_text": "կրնամ մինակս գլուխ հանել",
+    "target_text_roman": "gərnam minags kəlukh hanel",
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0173L05U01",
+   "expect": {
+    "target_text": "չեմ ուզեր առանձինս հոն երթալ"
+   },
+   "set": {
+    "target_text": "չեմ ուզեր մինակս հոն երթալ",
+    "target_text_roman": "chem uzer minags hon yertal",
+    "word_count": 26,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0173L05U02",
+   "expect": {
+    "target_text": "կը փորձեմ առանձինս հայերէն սորվիլ"
+   },
+   "set": {
+    "target_text": "կը փորձեմ մինակս հայերէն սորվիլ",
+    "target_text_roman": "gə portsem minags hayeren sorvil",
+    "word_count": 31,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0173L05U03",
+   "expect": {
+    "target_text": "չեմ կրնար առանձինս զայն նորոգել"
+   },
+   "set": {
+    "target_text": "չեմ կրնար մինակս զայն նորոգել",
+    "target_text_roman": "chem gərnar minags zayn norokel",
+    "word_count": 29,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0173L05U04",
+   "expect": {
+    "target_text": "այս իրիկուն պիտի ուզէի առանձինս հանգստանալ"
+   },
+   "set": {
+    "target_text": "այս իրիկուն պիտի ուզէի մինակս հանգստանալ",
+    "target_text_roman": "ays irigun bidi uzei minags hanksdanal",
+    "word_count": 40,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0173L05U05",
+   "expect": {
+    "target_text": "պիտի չկարենամ առանձինս այս աշխատանքը աւարտել"
+   },
+   "set": {
+    "target_text": "պիտի չկարենամ մինակս այս աշխատանքը աւարտել",
+    "target_text_roman": "bidi chəgarenam minags ays ashkhadankə avardel",
+    "word_count": 42,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0173L05U06",
+   "expect": {
+    "target_text": "Ոչ, շնորհակալ եմ, կրնամ առանձինս գլուխ հանել։"
+   },
+   "set": {
+    "target_text": "Ոչ, շնորհակալ եմ, կրնամ մինակս գլուխ հանել։",
+    "target_text_roman": "voch, shənorhagal em, gərnam minags kəlukh hanel.",
+    "word_count": 43,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0204L02U02",
+   "expect": {
+    "target_text": "կ՚ուզէի որ ան օգնէ որովհետեւ չէի կրնար առանձինս գլուխ հանել"
+   },
+   "set": {
+    "target_text": "կ՚ուզէի որ ան օգնէ որովհետեւ չէի կրնար մինակս գլուխ հանել",
+    "target_text_roman": "guzei vor an okne vorovhedev chei gərnar minags kəlukh hanel",
+    "word_count": 57,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0204L04U05",
+   "expect": {
+    "target_text": "պիտի չկարենամ առանձինս կարգադրութիւններով զբաղիլ"
+   },
+   "set": {
+    "target_text": "պիտի չկարենամ մինակս կարգադրութիւններով զբաղիլ",
+    "target_text_roman": "bidi chəgarenam minags garkatrutyunnerov əzpaghil",
+    "word_count": 46,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0208L01U01",
+   "expect": {
+    "target_text": "չէի ուզեր առանձինս հոն երթալ"
+   },
+   "set": {
+    "target_text": "չէի ուզեր մինակս հոն երթալ",
+    "target_text_roman": "chei uzer minags hon yertal",
+    "word_count": 26,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0209L03U04",
+   "expect": {
+    "target_text": "կը սիրեմ առանձինս ժամանակ անցընել"
+   },
+   "set": {
+    "target_text": "կը սիրեմ մինակս ժամանակ անցընել",
+    "target_text_roman": "gə sirem minags zhamanag antsənel",
+    "word_count": 31,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0249L01U05",
+   "expect": {
+    "target_text": "կ՚ուզեմ որ ինծի օգնես որովհետեւ չեմ կրնար առանձինս գլուխ հանել"
+   },
+   "set": {
+    "target_text": "կ՚ուզեմ որ ինծի օգնես որովհետեւ չեմ կրնար մինակս գլուխ հանել",
+    "target_text_roman": "guzem vor indzi oknes vorovhedev chem gərnar minags kəlukh hanel",
+    "word_count": 60,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0260L02B01",
+   "expect": {
+    "target_text": "ատոր մասին ամենադոյզն գաղափարը"
+   },
+   "set": {
+    "target_text": "ատոր մասին բնաւ գաղափար",
+    "target_text_roman": "ador masin pənav kaghapar",
+    "word_count": 23,
+    "lego_position": "end"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0260L02B02",
+   "expect": {
+    "target_text": "հիմա ամենադոյզն գաղափարը չունիմ"
+   },
+   "set": {
+    "target_text": "հիմա բնաւ գաղափար չունիմ",
+    "target_text_roman": "hima pənav kaghapar chunim",
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0260L02B03",
+   "expect": {
+    "target_text": "բայց ամենադոյզն գաղափարը չունիմ"
+   },
+   "set": {
+    "target_text": "բայց բնաւ գաղափար չունիմ",
+    "target_text_roman": "payts pənav kaghapar chunim",
+    "word_count": 24,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0260L02U01",
+   "expect": {
+    "target_text": "ատոր մասին ամենադոյզն գաղափարը չունիմ"
+   },
+   "set": {
+    "target_text": "ատոր մասին բնաւ գաղափար չունիմ",
+    "target_text_roman": "ador masin pənav kaghapar chunim",
+    "word_count": 30,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0260L02U02",
+   "expect": {
+    "target_text": "կը ցաւիմ, բայց ամենադոյզն գաղափարը չունիմ"
+   },
+   "set": {
+    "target_text": "կը ցաւիմ, բայց բնաւ գաղափար չունիմ",
+    "target_text_roman": "gə tsavim, payts pənav kaghapar chunim",
+    "word_count": 34,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0260L02U03",
+   "expect": {
+    "target_text": "այս լեզուին մասին ամենադոյզն գաղափարը չունիմ"
+   },
+   "set": {
+    "target_text": "այս լեզուին մասին բնաւ գաղափար չունիմ",
+    "target_text_roman": "ays lezvin masin pənav kaghapar chunim",
+    "word_count": 37,
+    "lego_position": "middle"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0260L02U04",
+   "expect": {
+    "target_text": "ամենադոյզն գաղափարը չունիմ, դժբախտաբար"
+   },
+   "set": {
+    "target_text": "բնաւ գաղափար չունիմ, դժբախտաբար",
+    "target_text_roman": "pənav kaghapar chunim, təzhpakhdapar",
+    "word_count": 31,
+    "lego_position": "start"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "hyw_for_eng:S0139L03U03",
+   "expect": {
+    "target_text": "չէինք յուսար այնքան կանուխ աւարտել",
+    "known_text": "we didn't hope to finish so early"
+   },
+   "set": {
+    "known_text": "we didn't expect to finish so early",
+    "target_text": "չէինք սպասեր այնքան կանուխ աւարտել",
+    "target_text_roman": "cheink əsbaser aynkan ganukh avardel",
+    "word_count": 34
+   }
+  }
+ ]
+}
