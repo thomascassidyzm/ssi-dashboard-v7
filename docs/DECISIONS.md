@@ -1,3 +1,16 @@
+## 2026-11-26 — Round-map refresh: at most once a minute per process (cs #528·AL)
+
+Supabase emailed >80% CPU on ssi-popty. The live activity recorder (5 s samples) put
+`REFRESH MATERIALIZED VIEW CONCURRENTLY course_round_index` first by active time in every
+content-writing hour of 25-26 Nov (63, 116, 50 samples/h at 22Z, 23Z, 01Z; 46% of all active
+samples at 23Z). Cause: the 2 s debounce in services/shared/round-index-refresh.cjs only folds
+bursts, and governor-paced writers write every few seconds, so each write bought a whole-estate
+refresh. Fix: a 60 s floor between refreshes (ROUND_INDEX_MIN_INTERVAL_MS), an armed timer is no
+longer pushed back by later writes, the last write is still always followed by a refresh;
+`immediate` callers are unaffected. Better (less CPU on the learners' DB), simpler (one floor, no
+schema), cheaper (one refresh a minute instead of one per write). Cost: the round map can lag a
+write by up to a minute; the nightly backstop is unchanged.
+
 ## 2026-11-22 — An agreed audio job reserves its size once, then renders 15 at a time (cs #502·AK)
 
 **Tom, 2026-11-22** (r-2026-11-22-once-an-audio-job-is-agreed): "There's no particular reason, once we've agreed to a job, for that job to be running in series. One clip at a time. The size of the job is a fixed thing." The guards stay.

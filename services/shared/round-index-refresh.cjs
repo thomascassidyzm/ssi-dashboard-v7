@@ -57,6 +57,25 @@ const REFRESH_SQL = 'REFRESH MATERIALIZED VIEW CONCURRENTLY course_round_index';
 const DEBOUNCE_MS = Number(process.env.ROUND_INDEX_DEBOUNCE_MS || 2000);
 
 /**
+ * The floor between two refreshes from this process (#528·AL, 2026-11-26).
+ * The 2 s debounce only coalesces a burst. A writer PACED by the load
+ * governor writes every few seconds, so every write outlived the debounce and
+ * bought its own whole-estate refresh: on the night of 25-26 Nov the refresh
+ * was the single largest consumer of active time on the live database (up to
+ * 46% of all active backend samples in an hour) and Supabase emailed >80% CPU.
+ * With this floor a sustained writer costs one refresh a minute, and the last
+ * write is still followed by a refresh, at most a minute later. `immediate`
+ * (a script about to exit) is not held by it.
+ */
+const MIN_INTERVAL_MS = Number(process.env.ROUND_INDEX_MIN_INTERVAL_MS || 60000);
+let lastStarted = 0;            // when the last refresh began, for the floor
+
+/** Delay for a non-immediate run: the debounce, or longer if the floor says so. */
+function flooredDelay() {
+  return Math.max(DEBOUNCE_MS, lastStarted + MIN_INTERVAL_MS - Date.now());
+}
+
+/**
  * The secret lives in .env.psql, gitignored and provisioned per machine, so a
  * checkout that has never been provisioned (the prod checkout, a fresh
  * worktree) has the code but not the URL. ROUND_INDEX_ENV_PSQL names the file
@@ -120,6 +139,7 @@ async function runPending() {
   if (!batch) return;
 
   const started = Date.now();
+  lastStarted = started;
   const courses = [...batch.courses].join(', ') || 'unknown';
   let result;
   try {
@@ -143,7 +163,7 @@ async function runPending() {
   // A write that arrived while we were running gets its own run: the view must
   // be refreshed after the LAST write, not after the one that happened to start
   // the refresh.
-  if (pending && !timer) armTimer(DEBOUNCE_MS, pending);
+  if (pending && !timer) armTimer(pending.immediate ? 0 : flooredDelay(), pending);
 }
 
 /**
@@ -178,8 +198,11 @@ function requestRoundIndexRefresh(courseCode, opts = {}) {
   // write is still covered, after it.
   if (inFlight) return pending.promise;
 
+  // A timer already armed keeps its time unless this caller is waiting: a
+  // steady trickle of writes must not push the refresh back for ever.
+  if (timer && !opts.immediate) return pending.promise;
   if (timer) clearTimeout(timer);
-  armTimer(opts.immediate ? 0 : DEBOUNCE_MS, pending);
+  armTimer(opts.immediate ? 0 : flooredDelay(), pending);
   return pending.promise;
 }
 
@@ -197,7 +220,7 @@ function __setRefreshImpl(fn, log) {
   impl = fn || refreshNow;
   if (log) logger = log;
   if (timer) { clearTimeout(timer); timer = null; }
-  pending = null; inFlight = null; runCount = 0;
+  pending = null; inFlight = null; runCount = 0; lastStarted = 0;
 }
 const __runCount = () => runCount;
 
@@ -208,6 +231,7 @@ module.exports = {
   databaseUrl,
   REFRESH_SQL,
   DEBOUNCE_MS,
+  MIN_INTERVAL_MS,
   __setRefreshImpl,
   __runCount,
 };
