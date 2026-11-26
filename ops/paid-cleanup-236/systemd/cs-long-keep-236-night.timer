@@ -1,8 +1,8 @@
 [Unit]
-Description=cs #236 night runner 22:20 UTC (24, 25, 26 Nov windows; resumes from ledgers)
+Description=cs #236 night runner 22:20 UTC (24-28 Nov windows; resumes from ledgers)
 
 [Timer]
-OnCalendar=2026-11-24,25,26 22:20:00 UTC
+OnCalendar=2026-11-24..28 22:20:00 UTC
 Persistent=false
 
 [Install]
