@@ -1,3 +1,17 @@
+## 2026-11-26 — Deploy walker follows the load-gate governor; a code deploy restarts only the units it touches (cs #619, sweep #536·AL row 5)
+
+services/shared/db-load-gate.cjs loaded its governor through `require(f)` over a path list, and
+tools/deploy/unit-restart-set.cjs marks any unit with an unfollowable require "never spared", so every
+unit was incomplete and every Popty code deploy restarted all three services. Fix: the vendored
+governor is now a literal require the walker follows; the out-of-tree candidates (command-surface,
+$CS_HOME) are one named call site listed in OUT_OF_TREE_SITES, made provable by insideRepo() refusing
+any in-repo path there; the walker also reads `require.resolve('pg', {paths})` (now reached, inside
+the vendored governor) as the bare package it is. Version-picking order unchanged. Replay of the 100
+first-parent main commits of the 7 days to 26 Nov: restart-all 24 → 14, 10 now partial (mostly
+course-editor commits restarting production-api alone), unit restarts 72 → 56. Better (no needless
+cold caches / dropped Kai edits), simpler (no new mechanism — the walker's own rule now sees the
+file), cheaper (16 fewer service restarts a week on that sample). Doubt still restarts everything.
+
 ## 2026-11-26 — popty.app is built on watson-1 and uploaded prebuilt, hourly, only on deployable change (cs #537, amended)
 
 Tom: "popty will have to build locally too - perhaps on a schedule, to not choke the machines". Supersedes the API-build

@@ -69,17 +69,30 @@ const GOVERNED = Symbol.for('popty.dbLoadGate.governedClient')
 const isLiveHost = (h) => /(^|\.)supabase\.(co|com)$/i.test(String(h || '').trim())
 const isLiveRestUrl = (u) => /^https:\/\/[a-z0-9-]+\.supabase\.co\/rest\/v1\//i.test(String(u || ''))
 
+// The vendored governor, required by a LITERAL path so tools/deploy/unit-restart-set.cjs can follow it:
+// a dynamic require of a variable here made every unit "never spared" and every Popty deploy restart all three
+// services (63 of 218 deploys in the week to 26 Nov; design sweep #536·AL row 5). Loaded lazily, as before.
+const loadVendoredGovernor = () => require('./db-load-governor.cjs')
+const REPO_ROOT = path.resolve(__dirname, '..', '..')
+const insideRepo = (f) => { const r = path.relative(REPO_ROOT, path.resolve(f)); return !r.startsWith('..') && !path.isAbsolute(r) }
+
 /** The governor module: command-surface's when it is newer, else the vendored copy. */
 function loadGovernorModule() {
-  const files = [
+  // OUT-OF-TREE candidates only. A Popty deploy cannot change these files, so the restart walker
+  // skips this one call by name (OUT_OF_TREE_SITES in unit-restart-set.cjs) — and insideRepo() makes that
+  // skip provable: an in-repo path is never loaded here, it would have to be a literal require above.
+  const outOfTree = [
     process.env.CS_HOME && path.join(process.env.CS_HOME, 'ops', 'db-load-governor.cjs'),
     path.join(os.homedir(), 'command-surface', 'ops', 'db-load-governor.cjs'),
-    path.join(__dirname, 'db-load-governor.cjs'),
-  ].filter(Boolean)
+  ].filter((f) => f && !insideRepo(f))
+  const loaders = [
+    ...outOfTree.map((outOfTreeGovernorPath) => [outOfTreeGovernorPath, () => require(outOfTreeGovernorPath)]),
+    [path.join(__dirname, 'db-load-governor.cjs'), loadVendoredGovernor],
+  ]
   let best = null
-  for (const f of files) {
+  for (const [f, load] of loaders) {
     try {
-      const m = require(f)
+      const m = load()
       if (m && typeof m.createGovernor === 'function' && (!best || (m.GOVERNOR_VERSION || 0) > (best.m.GOVERNOR_VERSION || 0))) best = { m, f }
     } catch { /* next */ }
   }

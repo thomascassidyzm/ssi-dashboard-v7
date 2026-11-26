@@ -31,6 +31,16 @@
 const path = require('path');
 
 const JS = /\.(c|m)?js$/;
+
+// Dynamic requires the walk may skip, by file and EXACT argument text. Only a
+// site whose own code refuses any path inside the repo belongs here — then the
+// skip is provable: nothing it loads can be changed by a Popty deploy. Each
+// entry is one site, never a pattern.
+//   db-load-gate: command-surface's newer governor (~/command-surface or
+//   $CS_HOME); the vendored copy is a literal require the walk follows.
+const OUT_OF_TREE_SITES = new Set([
+  'services/shared/db-load-gate.cjs\0outOfTreeGovernorPath',
+]);
 // Changes that alter the process environment of every unit, not just code.
 const EVERYTHING = [
   /(^|\/)(package\.json|package-lock\.json|pnpm-lock\.yaml|npm-shrinkwrap\.json|\.npmrc|\.nvmrc)$/,
@@ -78,6 +88,11 @@ function requireArgs (src) {
 function specsOf (arg) {
   // require() / require(...) in prose: no identifier, nothing it could load.
   if (!/[\w$]/.test(arg)) return { specs: [], resolvable: true };
+  // require.resolve('pkg', { paths }) — alone or wrapped in require(...): the
+  // request is a bare package name, i.e. node_modules (the lockfile rule);
+  // the options only move the search. The vendored db-load-governor does this.
+  const bare = /^(?:require\.resolve\s*\(\s*)?(["'])((?:@[\w.-]+\/)?[\w][\w.-]*)\1\s*,/.exec(arg);
+  if (bare) return { specs: [{ spec: bare[2] }], resolvable: true, literal: true };
   const lit = /^(["'])([^"'`$]*)\1$/.exec(arg);
   if (lit) return { specs: [{ spec: lit[2] }], resolvable: true, literal: true };
   const tpl = /^`([^`]*)`$/.exec(arg);
@@ -136,6 +151,7 @@ function graphOf ({ readFile, listDir = () => null, entries }) {
     texts.push(src);
     if (!JS.test(f)) continue;                      // a required .json is a leaf
     for (const arg of requireArgs(src)) {
+      if (OUT_OF_TREE_SITES.has(`${f}\0${arg}`)) continue;
       const { specs, resolvable, literal } = specsOf(arg);
       if (!resolvable) { unresolved.push({ file: f, arg: arg.slice(0, 60) }); continue; }
       for (const { spec, prefix } of specs) {
@@ -201,4 +217,4 @@ function unitsFor (changedLive, graphs) {
   return { units: all.filter((u) => units.has(u)), reasons };
 }
 
-module.exports = { graphOf, unitsFor, requireArgs, specsOf, mentions, EVERYTHING };
+module.exports = { graphOf, unitsFor, requireArgs, specsOf, mentions, EVERYTHING, OUT_OF_TREE_SITES };
