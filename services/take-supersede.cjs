@@ -83,6 +83,58 @@ function isSameSlot(ctx, { courseCode, textNorm, cadence, voiceId, role }) {
 }
 
 /**
+ * An ILIKE pattern that every stored spelling of this line matches.
+ *
+ * The take's text is stored RAW (as the phone sent it) inside quality_notes,
+ * while isSameSlot compares normalizeForAudio forms — which only folds case,
+ * collapses whitespace and tidies trailing punctuation. So the pattern keeps
+ * only the runs of letters, marks and digits, in order, joined by '%': any
+ * spelling that normalises to the same line contains those runs in that order,
+ * case-folded by ILIKE. It is a superset filter, never the decision — the
+ * exact comparison still runs on every row returned. Letter/mark/digit runs
+ * carry no LIKE metacharacters (% _ \) and nothing JSON escapes, so the
+ * pattern needs no escaping. Built from the raw text, not the JS-lowercased
+ * form, so Postgres folds both sides of the comparison the same way.
+ *
+ * Returns null when the line has no such run (all punctuation); the read then
+ * falls back to course only — still paged, so still complete.
+ */
+function textLikePattern(text) {
+  const runs = String(text || '').match(/[\p{L}\p{M}\p{N}]+/gu)
+  if (!runs || runs.length === 0) return null
+  return `%"text":"%${runs.join('%')}%`
+}
+
+const PAGE_SIZE = 1000
+// A runaway backstop, not a budget: one line with this many takes is a bug elsewhere.
+const MAX_PAGES = 50
+
+/**
+ * Every provenance row that could be an earlier take of this line in this
+ * course, read page by page until a short page, ordered by the primary key so
+ * pages are stable. Returns { data, error } with error as a message string.
+ */
+async function readCandidateRows(supabase, courseCode, text) {
+  const textPattern = textLikePattern(text)
+  const rows = []
+  for (let page = 0; page < MAX_PAGES; page++) {
+    let q = supabase
+      .from('recording_provenance')
+      .select('audio_uuid, quality_notes')
+      .like('quality_notes', `%"course_code":"${courseCode}"%`)
+    if (textPattern) q = q.ilike('quality_notes', textPattern)
+    const from = page * PAGE_SIZE
+    const { data, error } = await q.order('audio_uuid', { ascending: true }).range(from, from + PAGE_SIZE - 1)
+    if (error) return { data: null, error: error.message }
+    const batch = data || []
+    rows.push(...batch)
+    if (batch.length < PAGE_SIZE) return { data: rows, error: null }
+  }
+  // Refuse rather than mark from a partial read: the reader falls back to recency.
+  return { data: null, error: `more than ${MAX_PAGES * PAGE_SIZE} candidate rows for one line; nothing marked` }
+}
+
+/**
  * Mark every earlier take of this line/cadence/voice as superseded by `audioUuid`.
  *
  * Best-effort by contract: it returns a result, it never throws, and the caller
@@ -109,15 +161,12 @@ async function supersedeEarlierTakes(supabase, {
 
   try {
     // The table has no course/text/cadence columns — identity rides in the
-    // quality_notes JSON — so the match has to happen here. Narrow the read as
-    // far as PostgREST allows first: only rows whose notes mention this course
-    // and are not already marked.
-    const { data, error } = await supabase
-      .from('recording_provenance')
-      .select('audio_uuid, quality_notes')
-      .like('quality_notes', `%"course_code":"${courseCode}"%`)
-
-    if (error) return { ...empty, error: error.message }
+    // quality_notes JSON — so the exact match has to happen here. Narrow the
+    // read on BOTH course and line text, and page it: PostgREST caps one read
+    // at 1,000 rows, and a course-only read missed every earlier take past
+    // that (design sweep row 8, 2026-11-26).
+    const { data, error } = await readCandidateRows(supabase, courseCode, text)
+    if (error) return { ...empty, error }
 
     const targets = []
     for (const row of data || []) {
@@ -151,4 +200,4 @@ async function supersedeEarlierTakes(supabase, {
   }
 }
 
-module.exports = { supersedeEarlierTakes, isSameSlot, parseContext }
+module.exports = { supersedeEarlierTakes, isSameSlot, parseContext, textLikePattern }

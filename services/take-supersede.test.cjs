@@ -25,12 +25,18 @@ function stubDb(rows) {
     updates,
     from() {
       return {
-        select: () => ({
-          like: async () => ({
-            data: rows.map(r => ({ audio_uuid: r.audio_uuid, quality_notes: JSON.stringify(r.ctx) })),
-            error: null
-          })
-        }),
+        select: () => {
+          const chain = {
+            like: () => chain,
+            ilike: () => chain,
+            order: () => chain,
+            range: async () => ({
+              data: rows.map(r => ({ audio_uuid: r.audio_uuid, quality_notes: JSON.stringify(r.ctx) })),
+              error: null
+            })
+          }
+          return chain
+        },
         update(patch) {
           return {
             eq: async (_col, val) => {
@@ -135,7 +141,8 @@ describe('marking the redone take', () => {
   })
 
   it('reports a database failure instead of throwing — an upload must never fail for this', async () => {
-    const db = { from: () => ({ select: () => ({ like: async () => ({ data: null, error: { message: 'boom' } }) }) }) }
+    const chain = { like: () => chain, ilike: () => chain, order: () => chain, range: async () => ({ data: null, error: { message: 'boom' } }) }
+    const db = { from: () => ({ select: () => chain }) }
     const r = await supersedeEarlierTakes(db, args)
     expect(r.error).toBe('boom')
     expect(r.superseded).toEqual([])
