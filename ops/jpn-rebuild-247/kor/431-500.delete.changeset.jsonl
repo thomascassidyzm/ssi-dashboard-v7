@@ -1,0 +1,1169 @@
+{"format":"ssi-changeset/1","id":"kor_for_eng-cs247-431-500-delete","course":"kor_for_eng","job":"#247·AL","why":"rebuilt baskets 431-500: old rows of LEGOs whose new basket landed fully voiced (134); 0 LEGOs kept old","computed_from":"431-500.insert.changeset.jsonl.applied.jsonl + plan-431-500.json","created_at":"2026-11-27T05:23:36.562Z","ops":1168,"kai_go":"kai:2026-11-24T17:26Z \"sounds like we need to build first, then rescan to make sure we're up to date with the fixes\""}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0432L01B01","expect":{"seed_number":432,"lego_index":1,"known_text":"meaning","target_text":"뜻일"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0432L01B02","expect":{"seed_number":432,"lego_index":1,"known_text":"the meaning today","target_text":"오늘 뜻일"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0432L01B03","expect":{"seed_number":432,"lego_index":1,"known_text":"could mean together","target_text":"같이 뜻일"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0432L01U01","expect":{"seed_number":432,"lego_index":1,"known_text":"that could mean something","target_text":"뜻일 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0432L01U02","expect":{"seed_number":432,"lego_index":1,"known_text":"she said it could mean","target_text":"뜻일 수 있다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0432L01U03","expect":{"seed_number":432,"lego_index":1,"known_text":"he heard about the meaning","target_text":"뜻일 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0432L01U04","expect":{"seed_number":432,"lego_index":1,"known_text":"she knows the meaning","target_text":"뜻일 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0432L01U05","expect":{"seed_number":432,"lego_index":1,"known_text":"that could mean something today","target_text":"오늘 뜻일 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0432L03B01","expect":{"seed_number":432,"lego_index":3,"known_text":"ask","target_text":"물어봐"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0432L03B02","expect":{"seed_number":432,"lego_index":3,"known_text":"want you to ask","target_text":"물어봐 달라는"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0432L03B03","expect":{"seed_number":432,"lego_index":3,"known_text":"ask could mean","target_text":"물어봐 달라는 뜻일"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0432L03U01","expect":{"seed_number":432,"lego_index":3,"known_text":"they could mean that they want you to ask","target_text":"그들은 물어봐 달라는 뜻일 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0432L03U02","expect":{"seed_number":432,"lego_index":3,"known_text":"that could mean they want you to ask","target_text":"물어봐 달라는 뜻일 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0432L03U03","expect":{"seed_number":432,"lego_index":3,"known_text":"she wants you to ask together","target_text":"같이 물어봐 달라는 뜻일 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0432L03U04","expect":{"seed_number":432,"lego_index":3,"known_text":"I heard they want you to ask","target_text":"물어봐 달라는 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0432L03U05","expect":{"seed_number":432,"lego_index":3,"known_text":"he knows they want you to ask","target_text":"물어봐 달라는 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0433L01B01","expect":{"seed_number":433,"lego_index":1,"known_text":"the film","target_text":"영화가"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0433L01B02","expect":{"seed_number":433,"lego_index":1,"known_text":"the film today","target_text":"오늘 영화가"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0433L01B03","expect":{"seed_number":433,"lego_index":1,"known_text":"the film together","target_text":"같이 영화가"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0433L01U01","expect":{"seed_number":433,"lego_index":1,"known_text":"I heard about the film","target_text":"영화가 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0433L01U02","expect":{"seed_number":433,"lego_index":1,"known_text":"she knows about the film","target_text":"영화가 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0433L01U03","expect":{"seed_number":433,"lego_index":1,"known_text":"he told me about the film","target_text":"영화가 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0433L01U04","expect":{"seed_number":433,"lego_index":1,"known_text":"she heard about the film today","target_text":"오늘 영화가 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0433L01U05","expect":{"seed_number":433,"lego_index":1,"known_text":"I know about the film just now","target_text":"방금 영화가 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0433L02B01","expect":{"seed_number":433,"lego_index":2,"known_text":"failed to find","target_text":"알아내지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0433L02B02","expect":{"seed_number":433,"lego_index":2,"known_text":"couldn't find out today","target_text":"오늘 알아내지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0433L02B03","expect":{"seed_number":433,"lego_index":2,"known_text":"couldn't find out alone","target_text":"혼자 알아내지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0433L02U01","expect":{"seed_number":433,"lego_index":2,"known_text":"she couldn't find out","target_text":"알아내지 못했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0433L02U02","expect":{"seed_number":433,"lego_index":2,"known_text":"he couldn't find out today","target_text":"오늘 알아내지 못했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0433L02U03","expect":{"seed_number":433,"lego_index":2,"known_text":"they couldn't find out together","target_text":"같이 알아내지 못했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0433L02U04","expect":{"seed_number":433,"lego_index":2,"known_text":"she couldn't find out alone","target_text":"혼자 알아내지 못했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0433L02U05","expect":{"seed_number":433,"lego_index":2,"known_text":"he couldn't find out just now","target_text":"방금 알아내지 못했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0433L03B01","expect":{"seed_number":433,"lego_index":3,"known_text":"when it starts","target_text":"언제 시작하는지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0433L03B02","expect":{"seed_number":433,"lego_index":3,"known_text":"when the film starts","target_text":"영화가 언제 시작하는지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0433L03B03","expect":{"seed_number":433,"lego_index":3,"known_text":"couldn't find out when","target_text":"시작하는지 알아내지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0433L03U01","expect":{"seed_number":433,"lego_index":3,"known_text":"they couldn't find out when the film started","target_text":"그들은 영화가 언제 시작하는지 알아내지 못했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0433L03U02","expect":{"seed_number":433,"lego_index":3,"known_text":"she couldn't find out when it starts","target_text":"언제 시작하는지 알아내지 못했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0433L03U03","expect":{"seed_number":433,"lego_index":3,"known_text":"he couldn't find out when the film starts","target_text":"영화가 언제 시작하는지 알아내지 못했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0433L03U04","expect":{"seed_number":433,"lego_index":3,"known_text":"I heard when it starts","target_text":"언제 시작하는지 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0433L03U05","expect":{"seed_number":433,"lego_index":3,"known_text":"she knows when it starts","target_text":"언제 시작하는지 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L01B01","expect":{"seed_number":434,"lego_index":1,"known_text":"receiving","target_text":"받는"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L01B02","expect":{"seed_number":434,"lego_index":1,"known_text":"receiving today","target_text":"오늘 받는"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L01B03","expect":{"seed_number":434,"lego_index":1,"known_text":"receiving alone","target_text":"혼자 받는"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L01U01","expect":{"seed_number":434,"lego_index":1,"known_text":"I heard about receiving","target_text":"받는 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L01U02","expect":{"seed_number":434,"lego_index":1,"known_text":"she knows about receiving","target_text":"받는 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L01U03","expect":{"seed_number":434,"lego_index":1,"known_text":"he told me about receiving","target_text":"받는 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L01U04","expect":{"seed_number":434,"lego_index":1,"known_text":"she heard about receiving today","target_text":"오늘 받는 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L01U05","expect":{"seed_number":434,"lego_index":1,"known_text":"I saw receiving just now","target_text":"방금 받는 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L02B01","expect":{"seed_number":434,"lego_index":2,"known_text":"pupil","target_text":"학생"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L02B02","expect":{"seed_number":434,"lego_index":2,"known_text":"student today","target_text":"오늘 학생"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L02B03","expect":{"seed_number":434,"lego_index":2,"known_text":"students receiving","target_text":"받는 학생"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L02U01","expect":{"seed_number":434,"lego_index":2,"known_text":"I heard about the pupil","target_text":"학생 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L02U02","expect":{"seed_number":434,"lego_index":2,"known_text":"she knows the pupil","target_text":"학생 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L02U03","expect":{"seed_number":434,"lego_index":2,"known_text":"he told me about students","target_text":"학생 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L02U04","expect":{"seed_number":434,"lego_index":2,"known_text":"she heard about students receiving","target_text":"받는 학생 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L02U05","expect":{"seed_number":434,"lego_index":2,"known_text":"I saw students today","target_text":"오늘 학생 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L03B01","expect":{"seed_number":434,"lego_index":3,"known_text":"the number","target_text":"수를"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L03B02","expect":{"seed_number":434,"lego_index":3,"known_text":"number of students","target_text":"학생 수를"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L03B03","expect":{"seed_number":434,"lego_index":3,"known_text":"number receiving","target_text":"받는 학생 수를"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L03U01","expect":{"seed_number":434,"lego_index":3,"known_text":"I heard about the number","target_text":"수에 대해 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L03U02","expect":{"seed_number":434,"lego_index":3,"known_text":"she knows the number","target_text":"수를 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L03U03","expect":{"seed_number":434,"lego_index":3,"known_text":"he heard about the number of students","target_text":"학생 수에 대해 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L03U04","expect":{"seed_number":434,"lego_index":3,"known_text":"she heard about the number receiving","target_text":"받는 학생 수에 대해 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L03U05","expect":{"seed_number":434,"lego_index":3,"known_text":"I saw the number today","target_text":"오늘 수를 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L04B01","expect":{"seed_number":434,"lego_index":4,"known_text":"reduce","target_text":"줄일"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L04B02","expect":{"seed_number":434,"lego_index":4,"known_text":"reduce the number","target_text":"수를 줄일"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L04B03","expect":{"seed_number":434,"lego_index":4,"known_text":"reduce the number receiving","target_text":"받는 학생 수를 줄일"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L04U01","expect":{"seed_number":434,"lego_index":4,"known_text":"she can reduce the number","target_text":"수를 줄일 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L04U02","expect":{"seed_number":434,"lego_index":4,"known_text":"he can reduce the number of students","target_text":"학생 수를 줄일 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L04U03","expect":{"seed_number":434,"lego_index":4,"known_text":"she can reduce together","target_text":"같이 줄일 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L04U04","expect":{"seed_number":434,"lego_index":4,"known_text":"he can reduce alone","target_text":"혼자 줄일 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L04U05","expect":{"seed_number":434,"lego_index":4,"known_text":"she can reduce today","target_text":"오늘 줄일 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L05B01","expect":{"seed_number":434,"lego_index":5,"known_text":"could it?","target_text":"수 있을까요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L05B02","expect":{"seed_number":434,"lego_index":5,"known_text":"could reduce today?","target_text":"오늘 줄일 수 있을까요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L05B03","expect":{"seed_number":434,"lego_index":5,"known_text":"could together?","target_text":"같이 수 있을까요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L05U01","expect":{"seed_number":434,"lego_index":5,"known_text":"could they cut the number of students they take?","target_text":"받는 학생 수를 줄일 수 있을까요?"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L05U02","expect":{"seed_number":434,"lego_index":5,"known_text":"could she cut the number?","target_text":"수를 줄일 수 있을까요?"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L05U03","expect":{"seed_number":434,"lego_index":5,"known_text":"could they do it together?","target_text":"같이 줄일 수 있을까요?"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L05U04","expect":{"seed_number":434,"lego_index":5,"known_text":"could she reduce the number alone?","target_text":"혼자 수를 줄일 수 있을까요?"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0434L05U05","expect":{"seed_number":434,"lego_index":5,"known_text":"could he reduce students receiving today?","target_text":"오늘 받는 학생 수를 줄일 수 있을까요?"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0435L01B01","expect":{"seed_number":435,"lego_index":1,"known_text":"if want","target_text":"원하면"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0435L01B02","expect":{"seed_number":435,"lego_index":1,"known_text":"if want today","target_text":"오늘 원하면"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0435L01B03","expect":{"seed_number":435,"lego_index":1,"known_text":"if want together","target_text":"같이 원하면"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0435L01U01","expect":{"seed_number":435,"lego_index":1,"known_text":"yes they could if they wanted to","target_text":"네 원하면 할 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0435L01U02","expect":{"seed_number":435,"lego_index":1,"known_text":"if you want you can","target_text":"원하면 할 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0435L01U03","expect":{"seed_number":435,"lego_index":1,"known_text":"if you want you can today","target_text":"오늘 원하면 할 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0435L01U04","expect":{"seed_number":435,"lego_index":1,"known_text":"if you want you can together","target_text":"같이 원하면 할 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0435L01U05","expect":{"seed_number":435,"lego_index":1,"known_text":"if you want you can alone","target_text":"혼자 원하면 할 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0436L01B01","expect":{"seed_number":436,"lego_index":1,"known_text":"minimum","target_text":"최소"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0436L01B02","expect":{"seed_number":436,"lego_index":1,"known_text":"minimum today","target_text":"오늘 최소"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0436L01B03","expect":{"seed_number":436,"lego_index":1,"known_text":"minimum together","target_text":"같이 최소"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0436L01U01","expect":{"seed_number":436,"lego_index":1,"known_text":"I heard about the minimum","target_text":"최소 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0436L01U02","expect":{"seed_number":436,"lego_index":1,"known_text":"she knows the minimum","target_text":"최소 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0436L01U03","expect":{"seed_number":436,"lego_index":1,"known_text":"he told me about the minimum","target_text":"최소 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0436L01U04","expect":{"seed_number":436,"lego_index":1,"known_text":"she heard about the minimum today","target_text":"오늘 최소 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0436L01U05","expect":{"seed_number":436,"lego_index":1,"known_text":"I saw the minimum just now","target_text":"방금 최소 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0436L02B01","expect":{"seed_number":436,"lego_index":2,"known_text":"number of people","target_text":"인원이"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0436L02B02","expect":{"seed_number":436,"lego_index":2,"known_text":"minimum number of people","target_text":"최소 인원이"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0436L02B03","expect":{"seed_number":436,"lego_index":2,"known_text":"number of people today","target_text":"오늘 인원이"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0436L02U01","expect":{"seed_number":436,"lego_index":2,"known_text":"I heard about the number of people","target_text":"인원이 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0436L02U02","expect":{"seed_number":436,"lego_index":2,"known_text":"she knows the number of people","target_text":"인원이 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0436L02U03","expect":{"seed_number":436,"lego_index":2,"known_text":"he heard about the minimum number","target_text":"최소 인원이 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0436L02U04","expect":{"seed_number":436,"lego_index":2,"known_text":"she told me about the number of people","target_text":"인원이 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0436L02U05","expect":{"seed_number":436,"lego_index":2,"known_text":"I saw the minimum number today","target_text":"오늘 최소 인원이 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0436L03B01","expect":{"seed_number":436,"lego_index":3,"known_text":"needed","target_text":"필요한"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0436L03B02","expect":{"seed_number":436,"lego_index":3,"known_text":"minimum needed","target_text":"필요한 최소"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0436L03B03","expect":{"seed_number":436,"lego_index":3,"known_text":"needed number","target_text":"필요한 인원이"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0436L03U01","expect":{"seed_number":436,"lego_index":3,"known_text":"no there's a minimum number they need","target_text":"아니요 필요한 최소 인원이 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0436L03U02","expect":{"seed_number":436,"lego_index":3,"known_text":"there's a minimum number needed","target_text":"필요한 최소 인원이 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0436L03U03","expect":{"seed_number":436,"lego_index":3,"known_text":"I heard about the minimum needed","target_text":"필요한 최소 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0436L03U04","expect":{"seed_number":436,"lego_index":3,"known_text":"she knows the minimum people needed","target_text":"필요한 최소 인원이 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0436L03U05","expect":{"seed_number":436,"lego_index":3,"known_text":"he heard about the number needed","target_text":"필요한 인원이 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0437L01B01","expect":{"seed_number":437,"lego_index":1,"known_text":"collect and","target_text":"모으고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0437L01B02","expect":{"seed_number":437,"lego_index":1,"known_text":"collect and today","target_text":"오늘 모으고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0437L01B03","expect":{"seed_number":437,"lego_index":1,"known_text":"collect and together","target_text":"같이 모으고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0437L01U01","expect":{"seed_number":437,"lego_index":1,"known_text":"I heard about collecting","target_text":"모으고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0437L01U02","expect":{"seed_number":437,"lego_index":1,"known_text":"she knows about raising","target_text":"모으고 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0437L01U03","expect":{"seed_number":437,"lego_index":1,"known_text":"he told me about collecting","target_text":"모으고 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0437L01U04","expect":{"seed_number":437,"lego_index":1,"known_text":"she heard about collecting today","target_text":"오늘 모으고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0437L01U05","expect":{"seed_number":437,"lego_index":1,"known_text":"I saw them collecting just now","target_text":"방금 모으고 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0437L02B01","expect":{"seed_number":437,"lego_index":2,"known_text":"charity","target_text":"자선을"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0437L02B02","expect":{"seed_number":437,"lego_index":2,"known_text":"raise for charity","target_text":"자선을 위해"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0437L02B03","expect":{"seed_number":437,"lego_index":2,"known_text":"charity and collecting","target_text":"자선을 모으고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0437L02U01","expect":{"seed_number":437,"lego_index":2,"known_text":"they wanted to raise as much as possible for charity","target_text":"그들은 자선을 위해 가능한 한 많이 모으고 싶어했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0437L02U02","expect":{"seed_number":437,"lego_index":2,"known_text":"she wanted to collect as much as possible for charity","target_text":"자선을 위해 가능한 한 많이 모으고 싶어했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0437L02U03","expect":{"seed_number":437,"lego_index":2,"known_text":"he heard about collecting for charity","target_text":"자선을 위해 모으고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0437L02U05","expect":{"seed_number":437,"lego_index":2,"known_text":"I heard they wanted to collect for charity","target_text":"자선을 위해 모으고 싶어했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0438L01B01","expect":{"seed_number":438,"lego_index":1,"known_text":"have to","target_text":"해야"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0438L01B02","expect":{"seed_number":438,"lego_index":1,"known_text":"have to today","target_text":"오늘 해야"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0438L01B03","expect":{"seed_number":438,"lego_index":1,"known_text":"have to together","target_text":"같이 해야"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0438L01U01","expect":{"seed_number":438,"lego_index":1,"known_text":"I heard about what she has to do","target_text":"해야 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0438L01U02","expect":{"seed_number":438,"lego_index":1,"known_text":"she knows what he has to do","target_text":"해야 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0438L01U03","expect":{"seed_number":438,"lego_index":1,"known_text":"he told me what they have to do","target_text":"해야 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0438L01U04","expect":{"seed_number":438,"lego_index":1,"known_text":"she heard about what they have to today","target_text":"오늘 해야 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0438L01U05","expect":{"seed_number":438,"lego_index":1,"known_text":"I saw what she has to do just now","target_text":"방금 해야 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0438L02B01","expect":{"seed_number":438,"lego_index":2,"known_text":"decide and","target_text":"결정하고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0438L02B02","expect":{"seed_number":438,"lego_index":2,"known_text":"decide and today","target_text":"오늘 결정하고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0438L02B03","expect":{"seed_number":438,"lego_index":2,"known_text":"decide what he should","target_text":"그가 뭘 결정하고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0438L02U01","expect":{"seed_number":438,"lego_index":2,"known_text":"they didn't want to decide what he should do","target_text":"그들은 그가 뭘 해야 하는지 결정하고 싶어하지 않았어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0438L02U02","expect":{"seed_number":438,"lego_index":2,"known_text":"she didn't want to decide what to do","target_text":"뭘 해야 하는지 결정하고 싶어하지 않았어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0438L02U03","expect":{"seed_number":438,"lego_index":2,"known_text":"he didn't want to decide together","target_text":"같이 결정하고 싶어하지 않았어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0438L02U04","expect":{"seed_number":438,"lego_index":2,"known_text":"she didn't want to decide today","target_text":"오늘 결정하고 싶어하지 않았어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0438L02U05","expect":{"seed_number":438,"lego_index":2,"known_text":"I heard about deciding what he should do","target_text":"그가 뭘 결정하고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0439L01B01","expect":{"seed_number":439,"lego_index":1,"known_text":"die","target_text":"죽고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0439L01B02","expect":{"seed_number":439,"lego_index":1,"known_text":"die together","target_text":"같이 죽고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0439L01B03","expect":{"seed_number":439,"lego_index":1,"known_text":"die today","target_text":"오늘 죽고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0439L01U01","expect":{"seed_number":439,"lego_index":1,"known_text":"they don't want to die","target_text":"그들은 죽고 싶어하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0439L01U02","expect":{"seed_number":439,"lego_index":1,"known_text":"she doesn't want to die","target_text":"죽고 싶어하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0439L01U03","expect":{"seed_number":439,"lego_index":1,"known_text":"he doesn't want to die today","target_text":"오늘 죽고 싶어하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0439L01U04","expect":{"seed_number":439,"lego_index":1,"known_text":"she doesn't want to die together","target_text":"같이 죽고 싶어하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0440L01B01","expect":{"seed_number":440,"lego_index":1,"known_text":"young","target_text":"젊을"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0440L01B02","expect":{"seed_number":440,"lego_index":1,"known_text":"still young","target_text":"아직 젊을"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0440L01B03","expect":{"seed_number":440,"lego_index":1,"known_text":"young today","target_text":"오늘 젊을"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0440L01U01","expect":{"seed_number":440,"lego_index":1,"known_text":"I heard about being young","target_text":"젊은 것에 대해 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0440L01U02","expect":{"seed_number":440,"lego_index":1,"known_text":"she knows about being young","target_text":"젊을 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0440L01U03","expect":{"seed_number":440,"lego_index":1,"known_text":"he told me about still being young","target_text":"아직 젊은 것에 대해 얘기해 줬어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0440L01U04","expect":{"seed_number":440,"lego_index":1,"known_text":"she heard about being young today","target_text":"오늘 젊은 것에 대해 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0440L02B01","expect":{"seed_number":440,"lego_index":2,"known_text":"travel and","target_text":"여행하고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0440L02B02","expect":{"seed_number":440,"lego_index":2,"known_text":"travel and today","target_text":"오늘 여행하고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0440L02B03","expect":{"seed_number":440,"lego_index":2,"known_text":"travel and together","target_text":"같이 여행하고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0440L02U01","expect":{"seed_number":440,"lego_index":2,"known_text":"they want to travel while they're still young","target_text":"그들은 아직 젊을 때 여행하고 싶어해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0440L02U02","expect":{"seed_number":440,"lego_index":2,"known_text":"she wants to travel while still young","target_text":"아직 젊을 때 여행하고 싶어해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0440L02U03","expect":{"seed_number":440,"lego_index":2,"known_text":"he wants to travel together","target_text":"같이 여행하고 싶어해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0440L02U04","expect":{"seed_number":440,"lego_index":2,"known_text":"she wants to travel today","target_text":"오늘 여행하고 싶어해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0441L01B01","expect":{"seed_number":441,"lego_index":1,"known_text":"an approach","target_text":"접근법"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0441L01B02","expect":{"seed_number":441,"lego_index":1,"known_text":"an approach today","target_text":"오늘 접근법"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0441L01B03","expect":{"seed_number":441,"lego_index":1,"known_text":"an approach together","target_text":"같이 접근법"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0441L01U01","expect":{"seed_number":441,"lego_index":1,"known_text":"I heard about the approach","target_text":"접근법 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0441L01U02","expect":{"seed_number":441,"lego_index":1,"known_text":"she knows the approach","target_text":"접근법 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0441L01U03","expect":{"seed_number":441,"lego_index":1,"known_text":"he told me about the approach","target_text":"접근법 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0441L01U04","expect":{"seed_number":441,"lego_index":1,"known_text":"she heard about the approach today","target_text":"오늘 접근법 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0441L01U05","expect":{"seed_number":441,"lego_index":1,"known_text":"I saw the approach just now","target_text":"방금 접근법 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0442L01B01","expect":{"seed_number":442,"lego_index":1,"known_text":"develop and","target_text":"개발하고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0442L01B02","expect":{"seed_number":442,"lego_index":1,"known_text":"develop and today","target_text":"오늘 개발하고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0442L01B03","expect":{"seed_number":442,"lego_index":1,"known_text":"develop and together","target_text":"같이 개발하고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0442L01U01","expect":{"seed_number":442,"lego_index":1,"known_text":"I heard about developing","target_text":"개발하고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0442L01U02","expect":{"seed_number":442,"lego_index":1,"known_text":"she knows about developing","target_text":"개발하고 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0442L01U03","expect":{"seed_number":442,"lego_index":1,"known_text":"he told me about developing","target_text":"개발하고 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0442L01U04","expect":{"seed_number":442,"lego_index":1,"known_text":"she heard about developing today","target_text":"오늘 개발하고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0442L01U05","expect":{"seed_number":442,"lego_index":1,"known_text":"I saw them developing just now","target_text":"방금 개발하고 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0442L02B01","expect":{"seed_number":442,"lego_index":2,"known_text":"the approach","target_text":"접근법을"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0442L02B02","expect":{"seed_number":442,"lego_index":2,"known_text":"develop the approach","target_text":"접근법을 개발하고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0442L02B03","expect":{"seed_number":442,"lego_index":2,"known_text":"new approach","target_text":"새로운 접근법을"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0442L02U01","expect":{"seed_number":442,"lego_index":2,"known_text":"did they want to develop a new approach?","target_text":"그들은 새로운 접근법을 개발하고 싶어했어요?"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0442L02U02","expect":{"seed_number":442,"lego_index":2,"known_text":"she wanted to develop a new approach","target_text":"새로운 접근법을 개발하고 싶어했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0442L02U03","expect":{"seed_number":442,"lego_index":2,"known_text":"he wanted to develop the approach together","target_text":"같이 접근법을 개발하고 싶어했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0442L02U04","expect":{"seed_number":442,"lego_index":2,"known_text":"she wanted to develop the approach today","target_text":"오늘 접근법을 개발하고 싶어했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0442L02U05","expect":{"seed_number":442,"lego_index":2,"known_text":"I heard she wanted to develop a new approach","target_text":"새로운 접근법을 개발하고 싶어했다고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0442L02U06","expect":{"seed_number":442,"lego_index":2,"known_text":"they are learning a new approach","target_text":"그들은 새로운 접근법을 배우고 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0442L02U07","expect":{"seed_number":442,"lego_index":2,"known_text":"you should consider a new approach","target_text":"새로운 접근법을 생각해 봐야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0442L02U08","expect":{"seed_number":442,"lego_index":2,"known_text":"they should consider a new approach","target_text":"그들은 새로운 접근법을 생각해 봐야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0443L01B01","expect":{"seed_number":443,"lego_index":1,"known_text":"the same way","target_text":"같은 방식으로"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0443L01B02","expect":{"seed_number":443,"lego_index":1,"known_text":"keep doing the same way","target_text":"같은 방식으로 계속하고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0443L01B03","expect":{"seed_number":443,"lego_index":1,"known_text":"same way together","target_text":"같이 방식으로"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0443L01U01","expect":{"seed_number":443,"lego_index":1,"known_text":"no they wanted to keep doing it the same way","target_text":"아니요 같은 방식으로 계속하고 싶어했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0443L01U02","expect":{"seed_number":443,"lego_index":1,"known_text":"she wanted to keep doing it the same way","target_text":"같은 방식으로 계속하고 싶어했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0443L01U03","expect":{"seed_number":443,"lego_index":1,"known_text":"he wanted to keep going the same way together","target_text":"같이 같은 방식으로 계속하고 싶어했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0443L01U04","expect":{"seed_number":443,"lego_index":1,"known_text":"she wanted to keep the same way today","target_text":"오늘 같은 방식으로 계속하고 싶어했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0443L01U05","expect":{"seed_number":443,"lego_index":1,"known_text":"I heard they wanted to keep the same way","target_text":"같은 방식으로 계속하고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0443L01U06","expect":{"seed_number":443,"lego_index":1,"known_text":"if I had known I wouldn't have said it the same way","target_text":"알았더라면 같은 방식으로 말하지 않았을 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0444L01B01","expect":{"seed_number":444,"lego_index":1,"known_text":"that it can","target_text":"있다고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0444L01B02","expect":{"seed_number":444,"lego_index":1,"known_text":"it can be done","target_text":"할 수 있다고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0444L01B03","expect":{"seed_number":444,"lego_index":1,"known_text":"can be done today","target_text":"오늘 할 수 있다고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0444L01U01","expect":{"seed_number":444,"lego_index":1,"known_text":"I heard that it can be done","target_text":"할 수 있다고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0444L01U02","expect":{"seed_number":444,"lego_index":1,"known_text":"she knows it can be done","target_text":"할 수 있다고 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0444L01U03","expect":{"seed_number":444,"lego_index":1,"known_text":"he thought it could be done","target_text":"할 수 있다고 생각했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0444L01U04","expect":{"seed_number":444,"lego_index":1,"known_text":"she told me it can be done today","target_text":"오늘 할 수 있다고 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0444L01U05","expect":{"seed_number":444,"lego_index":1,"known_text":"I think it can be done together","target_text":"같이 할 수 있다고 생각했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0444L02B01","expect":{"seed_number":444,"lego_index":2,"known_text":"efficiently","target_text":"효율적으로"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0444L02B02","expect":{"seed_number":444,"lego_index":2,"known_text":"more efficiently","target_text":"더 효율적으로"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0444L02B03","expect":{"seed_number":444,"lego_index":2,"known_text":"done more efficiently","target_text":"더 효율적으로 할"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0444L02U01","expect":{"seed_number":444,"lego_index":2,"known_text":"yes they thought it could be done more efficiently","target_text":"네 더 효율적으로 할 수 있다고 생각했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0444L02U02","expect":{"seed_number":444,"lego_index":2,"known_text":"she thought it could be done more efficiently","target_text":"더 효율적으로 할 수 있다고 생각했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0444L02U03","expect":{"seed_number":444,"lego_index":2,"known_text":"he thought it can be done efficiently","target_text":"효율적으로 할 수 있다고 생각했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0444L02U04","expect":{"seed_number":444,"lego_index":2,"known_text":"she said it can be done more efficiently today","target_text":"오늘 더 효율적으로 할 수 있다고 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0444L02U05","expect":{"seed_number":444,"lego_index":2,"known_text":"I think it can be done more efficiently together","target_text":"같이 더 효율적으로 할 수 있다고 생각했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0444L02U06","expect":{"seed_number":444,"lego_index":2,"known_text":"we are going to do it efficiently","target_text":"우리는 효율적으로 할 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0444L02U07","expect":{"seed_number":444,"lego_index":2,"known_text":"they are learning efficiently","target_text":"그들은 효율적으로 배우고 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0444L02U08","expect":{"seed_number":444,"lego_index":2,"known_text":"we must do it efficiently","target_text":"우리는 효율적으로 해야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0444L02U09","expect":{"seed_number":444,"lego_index":2,"known_text":"it's important to do it efficiently","target_text":"효율적으로 하는 게 중요해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0444L02U10","expect":{"seed_number":444,"lego_index":2,"known_text":"I'm going to do it as efficiently as possible","target_text":"가능한 한 효율적으로 할 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0445L01B01","expect":{"seed_number":445,"lego_index":1,"known_text":"carry","target_text":"들"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0445L01B02","expect":{"seed_number":445,"lego_index":1,"known_text":"carry today","target_text":"오늘 들"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0445L01B03","expect":{"seed_number":445,"lego_index":1,"known_text":"carry together","target_text":"같이 들"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0445L01U01","expect":{"seed_number":445,"lego_index":1,"known_text":"I heard about carrying","target_text":"들 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0445L01U02","expect":{"seed_number":445,"lego_index":1,"known_text":"she knows about lifting","target_text":"들 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0445L01U03","expect":{"seed_number":445,"lego_index":1,"known_text":"he told me about carrying","target_text":"들 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0445L01U04","expect":{"seed_number":445,"lego_index":1,"known_text":"she heard about carrying today","target_text":"오늘 들 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0445L01U05","expect":{"seed_number":445,"lego_index":1,"known_text":"I saw her carrying just now","target_text":"방금 들 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0445L02B01","expect":{"seed_number":445,"lego_index":2,"known_text":"the bag","target_text":"가방을"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0445L02B02","expect":{"seed_number":445,"lego_index":2,"known_text":"carry the bag","target_text":"가방을 들"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0445L02B03","expect":{"seed_number":445,"lego_index":2,"known_text":"that suitcase","target_text":"그 가방을"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0445L02U01","expect":{"seed_number":445,"lego_index":2,"known_text":"they will be able to carry that suitcase","target_text":"그들은 그 가방을 들 수 있을 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0445L02U02","expect":{"seed_number":445,"lego_index":2,"known_text":"she will be able to carry the bag","target_text":"가방을 들 수 있을 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0445L02U03","expect":{"seed_number":445,"lego_index":2,"known_text":"he will be able to carry that bag","target_text":"그 가방을 들 수 있을 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0445L02U04","expect":{"seed_number":445,"lego_index":2,"known_text":"she will be able to carry together","target_text":"같이 가방을 들 수 있을 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0445L02U05","expect":{"seed_number":445,"lego_index":2,"known_text":"I will be able to carry today","target_text":"오늘 가방을 들 수 있을 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0445L02U06","expect":{"seed_number":445,"lego_index":2,"known_text":"I'm going to carry that suitcase","target_text":"제가 그 가방을 들 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0445L02U07","expect":{"seed_number":445,"lego_index":2,"known_text":"if you want they can carry that suitcase","target_text":"원하면 그들이 그 가방을 들 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0445L02U08","expect":{"seed_number":445,"lego_index":2,"known_text":"I like that suitcase","target_text":"그 가방을 좋아해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0446L01B01","expect":{"seed_number":446,"lego_index":1,"known_text":"break","target_text":"깰"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0446L01B02","expect":{"seed_number":446,"lego_index":1,"known_text":"break today","target_text":"오늘 깰"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0446L01B03","expect":{"seed_number":446,"lego_index":1,"known_text":"break together","target_text":"같이 깰"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0446L01U01","expect":{"seed_number":446,"lego_index":1,"known_text":"I heard about breaking","target_text":"깰 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0446L01U02","expect":{"seed_number":446,"lego_index":1,"known_text":"she knows about breaking","target_text":"깰 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0446L01U03","expect":{"seed_number":446,"lego_index":1,"known_text":"he told me about breaking","target_text":"깰 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0446L01U04","expect":{"seed_number":446,"lego_index":1,"known_text":"she heard about breaking today","target_text":"오늘 깰 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0446L01U05","expect":{"seed_number":446,"lego_index":1,"known_text":"I saw her breaking just now","target_text":"방금 깰 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0446L03B01","expect":{"seed_number":446,"lego_index":3,"known_text":"the window","target_text":"창문을"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0446L03B02","expect":{"seed_number":446,"lego_index":3,"known_text":"break the window","target_text":"창문을 깰"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0446L03B03","expect":{"seed_number":446,"lego_index":3,"known_text":"that window","target_text":"그 창문을"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0446L03U01","expect":{"seed_number":446,"lego_index":3,"known_text":"they won't be able to break that window","target_text":"그들은 그 창문을 깰 수 없을 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0446L03U02","expect":{"seed_number":446,"lego_index":3,"known_text":"she won't be able to break the window","target_text":"창문을 깰 수 없을 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0446L03U03","expect":{"seed_number":446,"lego_index":3,"known_text":"he won't be able to break that window","target_text":"그 창문을 깰 수 없을 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0446L03U04","expect":{"seed_number":446,"lego_index":3,"known_text":"she won't be able to break the window together","target_text":"같이 창문을 깰 수 없을 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0446L03U05","expect":{"seed_number":446,"lego_index":3,"known_text":"I heard she won't be able to break the window","target_text":"창문을 깰 수 없을 거라고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0447L01B01","expect":{"seed_number":447,"lego_index":1,"known_text":"meal","target_text":"식사"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0447L01B02","expect":{"seed_number":447,"lego_index":1,"known_text":"meal today","target_text":"오늘 식사"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0447L01B03","expect":{"seed_number":447,"lego_index":1,"known_text":"after the meal","target_text":"식사 후에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0447L01U01","expect":{"seed_number":447,"lego_index":1,"known_text":"I heard about the meal","target_text":"식사 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0447L01U02","expect":{"seed_number":447,"lego_index":1,"known_text":"she knows about the meal","target_text":"식사 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0447L01U03","expect":{"seed_number":447,"lego_index":1,"known_text":"he told me about the meal","target_text":"식사 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0447L01U04","expect":{"seed_number":447,"lego_index":1,"known_text":"she heard about the meal today","target_text":"오늘 식사 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0447L01U05","expect":{"seed_number":447,"lego_index":1,"known_text":"I saw them at the meal just now","target_text":"방금 식사 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0447L01U06","expect":{"seed_number":447,"lego_index":1,"known_text":"after the meal I want to relax","target_text":"식사 후에 쉬고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0447L01U07","expect":{"seed_number":447,"lego_index":1,"known_text":"there isn't time after the meal","target_text":"식사 후에 시간이 없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0447L01U08","expect":{"seed_number":447,"lego_index":1,"known_text":"there wasn't time after the meal","target_text":"식사 후에 시간이 없었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0447L01U09","expect":{"seed_number":447,"lego_index":1,"known_text":"where do you want to meet after the meal?","target_text":"식사 후에 어디에서 만나고 싶어요?"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0447L01U10","expect":{"seed_number":447,"lego_index":1,"known_text":"although I wanted to see you I didn't have time after the meal","target_text":"만나고 싶었지만 식사 후에 시간이 없었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0447L02B01","expect":{"seed_number":447,"lego_index":2,"known_text":"to home","target_text":"집까지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0447L02B02","expect":{"seed_number":447,"lego_index":2,"known_text":"home after the meal","target_text":"식사 후에 집까지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0447L02B03","expect":{"seed_number":447,"lego_index":2,"known_text":"home together","target_text":"같이 집까지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0447L02U01","expect":{"seed_number":447,"lego_index":2,"known_text":"I heard about going home","target_text":"집까지 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0447L02U02","expect":{"seed_number":447,"lego_index":2,"known_text":"she knows about going home","target_text":"집까지 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0447L02U03","expect":{"seed_number":447,"lego_index":2,"known_text":"he told me about going home after the meal","target_text":"식사 후에 집까지 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0447L02U04","expect":{"seed_number":447,"lego_index":2,"known_text":"she heard about going home today","target_text":"오늘 집까지 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0447L02U05","expect":{"seed_number":447,"lego_index":2,"known_text":"I saw them going home just now","target_text":"방금 집까지 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0447L03B01","expect":{"seed_number":447,"lego_index":3,"known_text":"drive","target_text":"데려다줄"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0447L03B02","expect":{"seed_number":447,"lego_index":3,"known_text":"take home","target_text":"집까지 데려다줄"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0447L03B03","expect":{"seed_number":447,"lego_index":3,"known_text":"drive home after meal","target_text":"식사 후에 집까지 데려다줄"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0447L03U01","expect":{"seed_number":447,"lego_index":3,"known_text":"will they be able to drive us home after the meal?","target_text":"식사 후에 그들이 집까지 데려다줄 수 있을까요?"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0447L03U02","expect":{"seed_number":447,"lego_index":3,"known_text":"will she be able to drive us home?","target_text":"집까지 데려다줄 수 있을까요?"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0447L03U03","expect":{"seed_number":447,"lego_index":3,"known_text":"will they be able to drive us home after the meal together?","target_text":"같이 식사 후에 집까지 데려다줄 수 있을까요?"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0447L03U04","expect":{"seed_number":447,"lego_index":3,"known_text":"he won't be able to drive us home after the meal","target_text":"식사 후에 그는 집까지 데려다줄 수 없을 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0448L01B01","expect":{"seed_number":448,"lego_index":1,"known_text":"gladly","target_text":"기꺼이"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0448L01B02","expect":{"seed_number":448,"lego_index":1,"known_text":"gladly help","target_text":"기꺼이 도와줄"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0448L01B03","expect":{"seed_number":448,"lego_index":1,"known_text":"gladly help today","target_text":"오늘 기꺼이"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0448L01U01","expect":{"seed_number":448,"lego_index":1,"known_text":"yes they'll be happy to help","target_text":"네 기꺼이 도와줄 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0448L01U02","expect":{"seed_number":448,"lego_index":1,"known_text":"she'll be happy to help","target_text":"기꺼이 도와줄 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0448L01U03","expect":{"seed_number":448,"lego_index":1,"known_text":"he'll be happy to help today","target_text":"오늘 기꺼이 도와줄 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0448L01U04","expect":{"seed_number":448,"lego_index":1,"known_text":"she'll be happy to help together","target_text":"같이 기꺼이 도와줄 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0448L01U05","expect":{"seed_number":448,"lego_index":1,"known_text":"I heard she'll be happy to help","target_text":"기꺼이 도와줄 거라고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0448L01B04","expect":{"seed_number":448,"lego_index":1,"known_text":"he's going to be happy to help","target_text":"그는 기꺼이 도와줄 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0449L01B01","expect":{"seed_number":449,"lego_index":1,"known_text":"almost","target_text":"거의"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0449L01B02","expect":{"seed_number":449,"lego_index":1,"known_text":"almost today","target_text":"오늘 거의"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0449L01B03","expect":{"seed_number":449,"lego_index":1,"known_text":"almost together","target_text":"같이 거의"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0449L01U01","expect":{"seed_number":449,"lego_index":1,"known_text":"I heard it was almost","target_text":"거의 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0449L01U02","expect":{"seed_number":449,"lego_index":1,"known_text":"she knows it was almost","target_text":"거의 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0449L01U03","expect":{"seed_number":449,"lego_index":1,"known_text":"he told me it was almost","target_text":"거의 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0449L01U04","expect":{"seed_number":449,"lego_index":1,"known_text":"she heard it was almost done today","target_text":"오늘 거의 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0449L01U05","expect":{"seed_number":449,"lego_index":1,"known_text":"I saw it was almost done just now","target_text":"방금 거의 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0450L02B01","expect":{"seed_number":450,"lego_index":2,"known_text":"have to ride","target_text":"타야"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0450L02B02","expect":{"seed_number":450,"lego_index":2,"known_text":"have to ride themselves","target_text":"직접 타야"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0450L02B03","expect":{"seed_number":450,"lego_index":2,"known_text":"have to ride today","target_text":"오늘 타야"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0450L02U01","expect":{"seed_number":450,"lego_index":2,"known_text":"I heard they have to ride","target_text":"타야 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0450L02U02","expect":{"seed_number":450,"lego_index":2,"known_text":"she knows they have to catch it","target_text":"타야 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0450L02U03","expect":{"seed_number":450,"lego_index":2,"known_text":"he told me they have to catch it themselves","target_text":"직접 타야 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0450L02U04","expect":{"seed_number":450,"lego_index":2,"known_text":"she heard about having to catch it today","target_text":"오늘 타야 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0450L02U05","expect":{"seed_number":450,"lego_index":2,"known_text":"I think they have to catch it themselves","target_text":"직접 타야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0450L03B01","expect":{"seed_number":450,"lego_index":3,"known_text":"the train","target_text":"기차를"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0450L03B02","expect":{"seed_number":450,"lego_index":3,"known_text":"catch the train","target_text":"기차를 타야"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0450L03B03","expect":{"seed_number":450,"lego_index":3,"known_text":"catch the train themselves","target_text":"기차를 직접 타야"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0450L03U01","expect":{"seed_number":450,"lego_index":3,"known_text":"no they have to catch the train themselves","target_text":"아니요 그들은 기차를 직접 타야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0450L03U02","expect":{"seed_number":450,"lego_index":3,"known_text":"they have to catch the train themselves","target_text":"그들은 기차를 직접 타야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0450L03U03","expect":{"seed_number":450,"lego_index":3,"known_text":"she has to catch the train","target_text":"기차를 타야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0450L03U04","expect":{"seed_number":450,"lego_index":3,"known_text":"he has to catch the train themselves today","target_text":"오늘 기차를 직접 타야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0450L03U05","expect":{"seed_number":450,"lego_index":3,"known_text":"he must catch the train","target_text":"그는 기차를 타야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0451L01B01","expect":{"seed_number":451,"lego_index":1,"known_text":"do and","target_text":"하고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0451L01B02","expect":{"seed_number":451,"lego_index":1,"known_text":"do and today","target_text":"오늘 하고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0451L01B03","expect":{"seed_number":451,"lego_index":1,"known_text":"do and together","target_text":"같이 하고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0451L01U01","expect":{"seed_number":451,"lego_index":1,"known_text":"they said what they wanted to do","target_text":"그들은 하고 싶은 걸 말했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0451L01U02","expect":{"seed_number":451,"lego_index":1,"known_text":"she said what she wanted to do","target_text":"하고 싶은 걸 말했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0451L01U03","expect":{"seed_number":451,"lego_index":1,"known_text":"he said what he wanted to do together","target_text":"같이 하고 싶은 걸 말했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0451L01U04","expect":{"seed_number":451,"lego_index":1,"known_text":"she said what she wanted to do today","target_text":"오늘 하고 싶은 걸 말했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0451L01U05","expect":{"seed_number":451,"lego_index":1,"known_text":"I heard what she wanted to do","target_text":"하고 싶은 걸 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0452L01B01","expect":{"seed_number":452,"lego_index":1,"known_text":"didn't say","target_text":"말하지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0452L01B02","expect":{"seed_number":452,"lego_index":1,"known_text":"didn't say what","target_text":"하고 싶은 걸 말하지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0452L01B03","expect":{"seed_number":452,"lego_index":1,"known_text":"didn't say together","target_text":"같이 말하지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0452L01U01","expect":{"seed_number":452,"lego_index":1,"known_text":"they didn't say what they wanted to do","target_text":"그들은 하고 싶은 걸 말하지 않았어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0452L01U02","expect":{"seed_number":452,"lego_index":1,"known_text":"she didn't say what she wanted to do","target_text":"하고 싶은 걸 말하지 않았어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0452L01U03","expect":{"seed_number":452,"lego_index":1,"known_text":"he didn't say what he wanted to do today","target_text":"오늘 하고 싶은 걸 말하지 않았어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0452L01U04","expect":{"seed_number":452,"lego_index":1,"known_text":"she didn't say what she wanted to do together","target_text":"같이 하고 싶은 걸 말하지 않았어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0452L01U05","expect":{"seed_number":452,"lego_index":1,"known_text":"I heard she didn't say","target_text":"말하지 않았다고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0453L01B01","expect":{"seed_number":453,"lego_index":1,"known_text":"saw","target_text":"봤는지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0453L01B02","expect":{"seed_number":453,"lego_index":1,"known_text":"who they saw","target_text":"누구를 봤는지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0453L01B03","expect":{"seed_number":453,"lego_index":1,"known_text":"saw last night","target_text":"어젯밤에 봤는지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0453L01U01","expect":{"seed_number":453,"lego_index":1,"known_text":"did they say who they saw last night?","target_text":"그들이 어젯밤에 누구를 봤는지 말했어요?"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0453L01U02","expect":{"seed_number":453,"lego_index":1,"known_text":"did she say who she saw?","target_text":"누구를 봤는지 말했어요?"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0453L01U03","expect":{"seed_number":453,"lego_index":1,"known_text":"did he say who he saw last night?","target_text":"어젯밤에 누구를 봤는지 말했어요?"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0453L01U04","expect":{"seed_number":453,"lego_index":1,"known_text":"I heard about who they saw last night","target_text":"어젯밤에 누구를 봤는지 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0453L01U05","expect":{"seed_number":453,"lego_index":1,"known_text":"she knows who they saw","target_text":"누구를 봤는지 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L01B01","expect":{"seed_number":454,"lego_index":1,"known_text":"to visit","target_text":"놀러"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L01B02","expect":{"seed_number":454,"lego_index":1,"known_text":"visit today","target_text":"오늘 놀러"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L01B03","expect":{"seed_number":454,"lego_index":1,"known_text":"visit together","target_text":"같이 놀러"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L01U01","expect":{"seed_number":454,"lego_index":1,"known_text":"I heard about visiting","target_text":"놀러 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L01U02","expect":{"seed_number":454,"lego_index":1,"known_text":"she knows about visiting","target_text":"놀러 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L01U03","expect":{"seed_number":454,"lego_index":1,"known_text":"he told me about visiting","target_text":"놀러 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L01U04","expect":{"seed_number":454,"lego_index":1,"known_text":"she heard about visiting today","target_text":"오늘 놀러 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L01U05","expect":{"seed_number":454,"lego_index":1,"known_text":"I saw them visiting just now","target_text":"방금 놀러 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L02B01","expect":{"seed_number":454,"lego_index":2,"known_text":"at about","target_text":"시쯤"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L02B02","expect":{"seed_number":454,"lego_index":2,"known_text":"at about six","target_text":"여섯 시쯤"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L02B03","expect":{"seed_number":454,"lego_index":2,"known_text":"at about today","target_text":"오늘 시쯤"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L02U01","expect":{"seed_number":454,"lego_index":2,"known_text":"I heard about at about six o'clock","target_text":"시쯤 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L02U02","expect":{"seed_number":454,"lego_index":2,"known_text":"she knows about at about six","target_text":"여섯 시쯤 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L02U03","expect":{"seed_number":454,"lego_index":2,"known_text":"he told me about at about six today","target_text":"오늘 여섯 시쯤 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L02U04","expect":{"seed_number":454,"lego_index":2,"known_text":"she heard about at about six just now","target_text":"방금 시쯤 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L02U05","expect":{"seed_number":454,"lego_index":2,"known_text":"I saw them at about six","target_text":"여섯 시쯤 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L02U06","expect":{"seed_number":454,"lego_index":2,"known_text":"I think I'll be ready at about six o'clock","target_text":"여섯 시쯤 준비될 것 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L02U07","expect":{"seed_number":454,"lego_index":2,"known_text":"I hope you'll finish at about six o'clock","target_text":"여섯 시쯤 끝나면 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L03B01","expect":{"seed_number":454,"lego_index":3,"known_text":"came","target_text":"왔어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L03B02","expect":{"seed_number":454,"lego_index":3,"known_text":"came to visit","target_text":"놀러 왔어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L03B03","expect":{"seed_number":454,"lego_index":3,"known_text":"came at about six","target_text":"시쯤 놀러 왔어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L03U01","expect":{"seed_number":454,"lego_index":3,"known_text":"I heard she came","target_text":"왔다고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L03U02","expect":{"seed_number":454,"lego_index":3,"known_text":"she knows he came","target_text":"왔다는 걸 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L03U03","expect":{"seed_number":454,"lego_index":3,"known_text":"he came to visit at about six","target_text":"여섯 시쯤 놀러 왔어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L03U04","expect":{"seed_number":454,"lego_index":3,"known_text":"she came to visit today","target_text":"오늘 놀러 왔어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L03U05","expect":{"seed_number":454,"lego_index":3,"known_text":"I saw him come to visit just now","target_text":"방금 놀러 왔어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L04B01","expect":{"seed_number":454,"lego_index":4,"known_text":"friends","target_text":"친구들이"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L04B02","expect":{"seed_number":454,"lego_index":4,"known_text":"friends came","target_text":"친구들이 왔어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L04B03","expect":{"seed_number":454,"lego_index":4,"known_text":"friends visited","target_text":"친구들이 놀러 왔어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L04U01","expect":{"seed_number":454,"lego_index":4,"known_text":"our friends came round at about six o'clock","target_text":"친구들이 여섯 시쯤 놀러 왔어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L04U02","expect":{"seed_number":454,"lego_index":4,"known_text":"my friends came to visit today","target_text":"오늘 친구들이 놀러 왔어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L04U03","expect":{"seed_number":454,"lego_index":4,"known_text":"my friends came together","target_text":"같이 친구들이 왔어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L04U04","expect":{"seed_number":454,"lego_index":4,"known_text":"my friends came to visit just now","target_text":"방금 친구들이 놀러 왔어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0454L04U05","expect":{"seed_number":454,"lego_index":4,"known_text":"I heard my friends came","target_text":"친구들이 왔다고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0455L01B01","expect":{"seed_number":455,"lego_index":1,"known_text":"have to leave","target_text":"떠나야"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0455L01B02","expect":{"seed_number":455,"lego_index":1,"known_text":"have to leave today","target_text":"오늘 떠나야"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0455L01B03","expect":{"seed_number":455,"lego_index":1,"known_text":"have to leave together","target_text":"같이 떠나야"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0455L01U01","expect":{"seed_number":455,"lego_index":1,"known_text":"I heard about having to leave","target_text":"떠나야 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0455L01U02","expect":{"seed_number":455,"lego_index":1,"known_text":"she knows about leaving","target_text":"떠나야 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0455L01U03","expect":{"seed_number":455,"lego_index":1,"known_text":"he told me about having to leave","target_text":"떠나야 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0455L01U04","expect":{"seed_number":455,"lego_index":1,"known_text":"she heard about having to leave today","target_text":"오늘 떠나야 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0455L01U05","expect":{"seed_number":455,"lego_index":1,"known_text":"I had to leave just now","target_text":"방금 떠나야 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0455L01U06","expect":{"seed_number":455,"lego_index":1,"known_text":"we're going to have to leave","target_text":"우리는 떠나야 할 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0455L01U07","expect":{"seed_number":455,"lego_index":1,"known_text":"we have to leave as quickly as possible","target_text":"가능한 한 빨리 떠나야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0455L02B01","expect":{"seed_number":455,"lego_index":2,"known_text":"children","target_text":"아이들이"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0455L02B02","expect":{"seed_number":455,"lego_index":2,"known_text":"children have to leave","target_text":"아이들이 떠나야"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0455L02B03","expect":{"seed_number":455,"lego_index":2,"known_text":"children had to leave","target_text":"아이들이 떠나야 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0455L02U01","expect":{"seed_number":455,"lego_index":2,"known_text":"I heard about the children","target_text":"아이들이 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0455L02U02","expect":{"seed_number":455,"lego_index":2,"known_text":"she knows the children had to leave","target_text":"아이들이 떠나야 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0455L02U03","expect":{"seed_number":455,"lego_index":2,"known_text":"he told me the children had to leave","target_text":"아이들이 떠나야 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0455L02U04","expect":{"seed_number":455,"lego_index":2,"known_text":"she heard the children had to leave today","target_text":"오늘 아이들이 떠나야 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0455L02U05","expect":{"seed_number":455,"lego_index":2,"known_text":"I saw the children had to leave just now","target_text":"방금 아이들이 떠나야 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0455L02U06","expect":{"seed_number":455,"lego_index":2,"known_text":"together the children went","target_text":"같이 아이들이 갔어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0455L03B01","expect":{"seed_number":455,"lego_index":3,"known_text":"because tired","target_text":"피곤해서"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0455L03B02","expect":{"seed_number":455,"lego_index":3,"known_text":"tired so leaving","target_text":"피곤해서 떠나야"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0455L03B03","expect":{"seed_number":455,"lego_index":3,"known_text":"children tired","target_text":"아이들이 피곤해서"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0455L03U01","expect":{"seed_number":455,"lego_index":3,"known_text":"we had to leave because the children were tired","target_text":"아이들이 피곤해서 떠나야 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0455L03U02","expect":{"seed_number":455,"lego_index":3,"known_text":"she had to leave because she was tired","target_text":"피곤해서 떠나야 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0455L03U03","expect":{"seed_number":455,"lego_index":3,"known_text":"he had to leave because he was tired today","target_text":"오늘 피곤해서 떠나야 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0455L03U04","expect":{"seed_number":455,"lego_index":3,"known_text":"she heard they were tired","target_text":"피곤해서 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0455L03U05","expect":{"seed_number":455,"lego_index":3,"known_text":"I know the children were tired","target_text":"아이들이 피곤해서 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0456L01B01","expect":{"seed_number":456,"lego_index":1,"known_text":"might","target_text":"수도"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0456L01B02","expect":{"seed_number":456,"lego_index":1,"known_text":"might be there","target_text":"거기 있을 수도"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0456L01B03","expect":{"seed_number":456,"lego_index":1,"known_text":"might today","target_text":"오늘 수도"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0456L01U01","expect":{"seed_number":456,"lego_index":1,"known_text":"I heard she might","target_text":"수도 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0456L01U02","expect":{"seed_number":456,"lego_index":1,"known_text":"she knows he might","target_text":"수도 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0456L01U03","expect":{"seed_number":456,"lego_index":1,"known_text":"he told me she might be there","target_text":"거기 있을 수도 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0456L01U04","expect":{"seed_number":456,"lego_index":1,"known_text":"she heard about it today","target_text":"오늘 수도 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0456L01U05","expect":{"seed_number":456,"lego_index":1,"known_text":"I saw she might be there","target_text":"거기 있을 수도 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0456L02B01","expect":{"seed_number":456,"lego_index":2,"known_text":"might be but","target_text":"있지만"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0456L02B02","expect":{"seed_number":456,"lego_index":2,"known_text":"might be there but","target_text":"거기 있지만"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0456L02B03","expect":{"seed_number":456,"lego_index":2,"known_text":"might be but today","target_text":"오늘 있지만"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0456L02U01","expect":{"seed_number":456,"lego_index":2,"known_text":"I heard she might be there but","target_text":"있지만 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0456L02U02","expect":{"seed_number":456,"lego_index":2,"known_text":"she knows he might be there but","target_text":"거기 있지만 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0456L02U03","expect":{"seed_number":456,"lego_index":2,"known_text":"he told me she might be there but","target_text":"있지만 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0456L02U04","expect":{"seed_number":456,"lego_index":2,"known_text":"she heard about it today but","target_text":"오늘 있지만 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0456L03B01","expect":{"seed_number":456,"lego_index":3,"known_text":"possibility","target_text":"가능성이"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0456L03B02","expect":{"seed_number":456,"lego_index":3,"known_text":"not much possibility","target_text":"별로 가능성이"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0456L03B03","expect":{"seed_number":456,"lego_index":3,"known_text":"possibility not there","target_text":"가능성이 없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0456L03U01","expect":{"seed_number":456,"lego_index":3,"known_text":"he might be there but it's not very likely","target_text":"그가 거기 있을 수도 있지만 별로 가능성이 없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0456L03U02","expect":{"seed_number":456,"lego_index":3,"known_text":"she might be there but there's not much possibility","target_text":"거기 있을 수도 있지만 별로 가능성이 없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0456L03U03","expect":{"seed_number":456,"lego_index":3,"known_text":"there's not much possibility today","target_text":"오늘 별로 가능성이 없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0456L03U04","expect":{"seed_number":456,"lego_index":3,"known_text":"I heard there's not much possibility","target_text":"별로 가능성이 없다고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0456L03U05","expect":{"seed_number":456,"lego_index":3,"known_text":"she knows the possibility is not there","target_text":"가능성이 없다는 걸 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L01B01","expect":{"seed_number":457,"lego_index":1,"known_text":"various","target_text":"다양한"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L01B02","expect":{"seed_number":457,"lego_index":1,"known_text":"various today","target_text":"오늘 다양한"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L01B03","expect":{"seed_number":457,"lego_index":1,"known_text":"various together","target_text":"같이 다양한"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L01U01","expect":{"seed_number":457,"lego_index":1,"known_text":"I heard about various things","target_text":"다양한 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L01U02","expect":{"seed_number":457,"lego_index":1,"known_text":"she knows about various things","target_text":"다양한 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L01U03","expect":{"seed_number":457,"lego_index":1,"known_text":"he told me about various things","target_text":"다양한 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L01U04","expect":{"seed_number":457,"lego_index":1,"known_text":"she heard about various things today","target_text":"오늘 다양한 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L01U05","expect":{"seed_number":457,"lego_index":1,"known_text":"I saw various things just now","target_text":"방금 다양한 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L01B04","expect":{"seed_number":457,"lego_index":1,"known_text":"can do different things","target_text":"다양한 걸 할 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L02B01","expect":{"seed_number":457,"lego_index":2,"known_text":"of the problem","target_text":"문제의"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L02B02","expect":{"seed_number":457,"lego_index":2,"known_text":"problem of today","target_text":"오늘 문제의"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L02B03","expect":{"seed_number":457,"lego_index":2,"known_text":"problem together","target_text":"같이 문제의"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L02U01","expect":{"seed_number":457,"lego_index":2,"known_text":"I heard about the problem","target_text":"문제의 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L02U02","expect":{"seed_number":457,"lego_index":2,"known_text":"she knows about the problem","target_text":"문제의 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L02U03","expect":{"seed_number":457,"lego_index":2,"known_text":"he told me about the problem","target_text":"문제의 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L02U04","expect":{"seed_number":457,"lego_index":2,"known_text":"she heard about the problem today","target_text":"오늘 문제의 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L02U05","expect":{"seed_number":457,"lego_index":2,"known_text":"I saw the problem just now","target_text":"방금 문제의 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L03B01","expect":{"seed_number":457,"lego_index":3,"known_text":"of the area","target_text":"분야의"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L03B02","expect":{"seed_number":457,"lego_index":3,"known_text":"various areas","target_text":"다양한 분야의"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L03B03","expect":{"seed_number":457,"lego_index":3,"known_text":"problem area","target_text":"문제의 분야의"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L03U01","expect":{"seed_number":457,"lego_index":3,"known_text":"I heard about the area","target_text":"분야의 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L03U02","expect":{"seed_number":457,"lego_index":3,"known_text":"she knows about the area","target_text":"분야의 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L03U03","expect":{"seed_number":457,"lego_index":3,"known_text":"he told me about various areas","target_text":"다양한 분야의 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L03U04","expect":{"seed_number":457,"lego_index":3,"known_text":"she heard about the area today","target_text":"오늘 분야의 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L03U05","expect":{"seed_number":457,"lego_index":3,"known_text":"I saw various areas just now","target_text":"방금 다양한 분야의 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L05B01","expect":{"seed_number":457,"lego_index":5,"known_text":"part of","target_text":"일부는"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L05B03","expect":{"seed_number":457,"lego_index":5,"known_text":"part of the problem is","target_text":"문제의 일부는"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L05U01","expect":{"seed_number":457,"lego_index":5,"known_text":"part of the problem is the number of different areas","target_text":"문제의 일부는 다양한 분야의 수예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L05U02","expect":{"seed_number":457,"lego_index":5,"known_text":"she knows part of the problem","target_text":"문제의 일부는 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L05U03","expect":{"seed_number":457,"lego_index":5,"known_text":"I heard part of the problem is various","target_text":"문제의 일부는 다양한 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L05U04","expect":{"seed_number":457,"lego_index":5,"known_text":"he told me part of the problem is various areas","target_text":"문제의 일부는 다양한 분야의 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0457L05U05","expect":{"seed_number":457,"lego_index":5,"known_text":"she knows part of the problem is the count","target_text":"문제의 일부는 수라는 걸 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0458L01B01","expect":{"seed_number":458,"lego_index":1,"known_text":"much more","target_text":"훨씬"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0458L01B02","expect":{"seed_number":458,"lego_index":1,"known_text":"much more today","target_text":"오늘 훨씬"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0458L01B03","expect":{"seed_number":458,"lego_index":1,"known_text":"much more together","target_text":"같이 훨씬"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0458L01U01","expect":{"seed_number":458,"lego_index":1,"known_text":"I heard it was much more","target_text":"훨씬 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0458L01U02","expect":{"seed_number":458,"lego_index":1,"known_text":"she knows it was much better","target_text":"훨씬 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0458L01U03","expect":{"seed_number":458,"lego_index":1,"known_text":"he told me it was much more","target_text":"훨씬 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0458L01U04","expect":{"seed_number":458,"lego_index":1,"known_text":"she heard it was much more today","target_text":"오늘 훨씬 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0458L01U05","expect":{"seed_number":458,"lego_index":1,"known_text":"I saw it was much better just now","target_text":"방금 훨씬 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0458L01U06","expect":{"seed_number":458,"lego_index":1,"known_text":"I hope I'll be able to speak much better","target_text":"훨씬 더 잘 말할 수 있으면 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0458L01U07","expect":{"seed_number":458,"lego_index":1,"known_text":"if I had known, I would have done it much differently","target_text":"알았더라면 훨씬 다르게 했을 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0458L02B01","expect":{"seed_number":458,"lego_index":2,"known_text":"in the past","target_text":"과거에는"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0458L02B02","expect":{"seed_number":458,"lego_index":2,"known_text":"in the past today","target_text":"오늘 과거에는"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0458L02B03","expect":{"seed_number":458,"lego_index":2,"known_text":"in the past much","target_text":"과거에는 훨씬"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0458L02U01","expect":{"seed_number":458,"lego_index":2,"known_text":"I heard about the past","target_text":"과거에는 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0458L02U02","expect":{"seed_number":458,"lego_index":2,"known_text":"she knows about the past","target_text":"과거에는 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0458L02U03","expect":{"seed_number":458,"lego_index":2,"known_text":"he told me about the past","target_text":"과거에는 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0458L02U04","expect":{"seed_number":458,"lego_index":2,"known_text":"she heard about the past today","target_text":"오늘 과거에는 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0458L02U05","expect":{"seed_number":458,"lego_index":2,"known_text":"I saw it in the past","target_text":"과거에는 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0458L03B01","expect":{"seed_number":458,"lego_index":3,"known_text":"was easy","target_text":"쉬웠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0458L03B02","expect":{"seed_number":458,"lego_index":3,"known_text":"was much easier","target_text":"훨씬 더 쉬웠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0458L03B03","expect":{"seed_number":458,"lego_index":3,"known_text":"in the past much easier","target_text":"과거에는 훨씬 쉬웠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0458L03U01","expect":{"seed_number":458,"lego_index":3,"known_text":"it was all much easier in the past","target_text":"과거에는 다 훨씬 더 쉬웠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0458L03U02","expect":{"seed_number":458,"lego_index":3,"known_text":"it was much easier in the past","target_text":"과거에는 훨씬 더 쉬웠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0458L03U03","expect":{"seed_number":458,"lego_index":3,"known_text":"it was much easier together","target_text":"같이 훨씬 더 쉬웠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0458L03U04","expect":{"seed_number":458,"lego_index":3,"known_text":"she knows it was easy","target_text":"쉬웠다는 걸 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0458L03U05","expect":{"seed_number":458,"lego_index":3,"known_text":"I heard it was much easier","target_text":"훨씬 더 쉬웠다고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0459L01B01","expect":{"seed_number":459,"lego_index":1,"known_text":"in front of","target_text":"앞에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0459L01B02","expect":{"seed_number":459,"lego_index":1,"known_text":"in front of today","target_text":"오늘 앞에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0459L01B03","expect":{"seed_number":459,"lego_index":1,"known_text":"in front of together","target_text":"같이 앞에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0459L01U01","expect":{"seed_number":459,"lego_index":1,"known_text":"I heard about in front","target_text":"앞에 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0459L01U02","expect":{"seed_number":459,"lego_index":1,"known_text":"she knows about in front","target_text":"앞에 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0459L01U03","expect":{"seed_number":459,"lego_index":1,"known_text":"he told me about in front","target_text":"앞에 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0459L01U04","expect":{"seed_number":459,"lego_index":1,"known_text":"she heard about in front today","target_text":"오늘 앞에 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0459L01U05","expect":{"seed_number":459,"lego_index":1,"known_text":"I saw it in front just now","target_text":"방금 앞에 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0459L02B01","expect":{"seed_number":459,"lego_index":2,"known_text":"sign","target_text":"표지판"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0459L02B03","expect":{"seed_number":459,"lego_index":2,"known_text":"blue sign","target_text":"파란 표지판"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0459L02U01","expect":{"seed_number":459,"lego_index":2,"known_text":"it wasn't in front of the blue sign","target_text":"파란 표지판 앞에 있지 않았어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0459L02U02","expect":{"seed_number":459,"lego_index":2,"known_text":"she knows about the sign in front","target_text":"표지판 앞에 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0459L02U03","expect":{"seed_number":459,"lego_index":2,"known_text":"he told me it wasn't in front of the blue sign","target_text":"파란 표지판 앞에 있지 않았다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0459L02U04","expect":{"seed_number":459,"lego_index":2,"known_text":"she heard about the sign","target_text":"표지판 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0459L02U05","expect":{"seed_number":459,"lego_index":2,"known_text":"I saw the sign in front today","target_text":"오늘 표지판 앞에 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0459L02U06","expect":{"seed_number":459,"lego_index":2,"known_text":"I think it's in front of the sign","target_text":"표지판 앞에 있는 것 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0460L02B01","expect":{"seed_number":460,"lego_index":2,"known_text":"hotel","target_text":"호텔"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0460L02B02","expect":{"seed_number":460,"lego_index":2,"known_text":"hotel today","target_text":"오늘 호텔"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0460L02B03","expect":{"seed_number":460,"lego_index":2,"known_text":"find hotel","target_text":"호텔 찾고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0460L02U01","expect":{"seed_number":460,"lego_index":2,"known_text":"I heard about the hotel","target_text":"호텔 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0460L02U02","expect":{"seed_number":460,"lego_index":2,"known_text":"she knows about the hotel","target_text":"호텔 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0460L02U03","expect":{"seed_number":460,"lego_index":2,"known_text":"he told me about the hotel","target_text":"호텔 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0460L02U04","expect":{"seed_number":460,"lego_index":2,"known_text":"she heard about the hotel today","target_text":"오늘 호텔 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0460L02U05","expect":{"seed_number":460,"lego_index":2,"known_text":"I want to find the hotel","target_text":"호텔 찾고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0460L03B01","expect":{"seed_number":460,"lego_index":3,"known_text":"shop","target_text":"가게를"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0460L03B02","expect":{"seed_number":460,"lego_index":3,"known_text":"find the shop","target_text":"가게를 찾고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0460L03B03","expect":{"seed_number":460,"lego_index":3,"known_text":"shop at the hotel","target_text":"호텔 가게를"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0460L03U01","expect":{"seed_number":460,"lego_index":3,"known_text":"I heard about the shop","target_text":"가게에 대해 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0460L03U02","expect":{"seed_number":460,"lego_index":3,"known_text":"she knows about the shop","target_text":"가게를 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0460L03U03","expect":{"seed_number":460,"lego_index":3,"known_text":"he wants to find the shop","target_text":"가게를 찾고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0460L03U04","expect":{"seed_number":460,"lego_index":3,"known_text":"she heard about the shop today","target_text":"오늘 가게에 대해 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0460L03U05","expect":{"seed_number":460,"lego_index":3,"known_text":"I want to find the shop near the hotel","target_text":"호텔 가게를 찾고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0460L03U06","expect":{"seed_number":460,"lego_index":3,"known_text":"I want to find a shop before you leave","target_text":"떠나기 전에 가게를 찾고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0460L03U07","expect":{"seed_number":460,"lego_index":3,"known_text":"I want to find a shop as quickly as possible","target_text":"가능한 한 빨리 가게를 찾고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0460L04B01","expect":{"seed_number":460,"lego_index":4,"known_text":"near","target_text":"근처에서"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0460L04B02","expect":{"seed_number":460,"lego_index":4,"known_text":"near the hotel","target_text":"호텔 근처에서"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0460L04B03","expect":{"seed_number":460,"lego_index":4,"known_text":"near the shop","target_text":"근처에서 가게를"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0460L04U01","expect":{"seed_number":460,"lego_index":4,"known_text":"I want to find a shop near the hotel","target_text":"호텔 근처에서 가게를 찾고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0460L04U02","expect":{"seed_number":460,"lego_index":4,"known_text":"she wants to find a shop nearby","target_text":"근처에서 가게를 찾고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0460L04U03","expect":{"seed_number":460,"lego_index":4,"known_text":"I heard about near the hotel","target_text":"호텔 근처에서 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0460L04U04","expect":{"seed_number":460,"lego_index":4,"known_text":"she knows the shop is near the hotel","target_text":"호텔 근처에서 가게를 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0460L04U05","expect":{"seed_number":460,"lego_index":4,"known_text":"he wants to find something near the hotel today","target_text":"오늘 호텔 근처에서 찾고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0460L04U06","expect":{"seed_number":460,"lego_index":4,"known_text":"I don't know what they were doing near the hotel","target_text":"그들이 호텔 근처에서 뭘 하고 있었는지 몰라요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0460L04U07","expect":{"seed_number":460,"lego_index":4,"known_text":"I can do it near the hotel","target_text":"호텔 근처에서 할 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0460L04U08","expect":{"seed_number":460,"lego_index":4,"known_text":"I want to find a shop near the hotel as quickly as possible","target_text":"가능한 한 빨리 호텔 근처에서 가게를 찾고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0461L01B01","expect":{"seed_number":461,"lego_index":1,"known_text":"shop","target_text":"가게"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0461L01B02","expect":{"seed_number":461,"lego_index":1,"known_text":"shop today","target_text":"오늘 가게"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0461L01B03","expect":{"seed_number":461,"lego_index":1,"known_text":"shop together","target_text":"같이 가게"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0461L01U01","expect":{"seed_number":461,"lego_index":1,"known_text":"I heard about the shop","target_text":"가게에 대해 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0461L01U02","expect":{"seed_number":461,"lego_index":1,"known_text":"she knows about the shop","target_text":"가게 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0461L01U03","expect":{"seed_number":461,"lego_index":1,"known_text":"he told me about the shop","target_text":"가게 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0461L01U04","expect":{"seed_number":461,"lego_index":1,"known_text":"she heard about the shop today","target_text":"오늘 가게에 대해 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0461L01U05","expect":{"seed_number":461,"lego_index":1,"known_text":"I saw the shop just now","target_text":"방금 가게를 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0461L02B01","expect":{"seed_number":461,"lego_index":2,"known_text":"postcards","target_text":"엽서를"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0461L02B02","expect":{"seed_number":461,"lego_index":2,"known_text":"buy postcards","target_text":"엽서를 살"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0461L02B03","expect":{"seed_number":461,"lego_index":2,"known_text":"postcards at the shop","target_text":"엽서를 가게"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0461L02U01","expect":{"seed_number":461,"lego_index":2,"known_text":"a shop where I can buy some postcards","target_text":"엽서를 살 수 있는 가게"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0461L02U02","expect":{"seed_number":461,"lego_index":2,"known_text":"I heard about buying postcards","target_text":"엽서 사는 것에 대해 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0461L02U03","expect":{"seed_number":461,"lego_index":2,"known_text":"she knows where to buy postcards","target_text":"엽서를 살 수 있는 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0461L02U04","expect":{"seed_number":461,"lego_index":2,"known_text":"I want to buy postcards today","target_text":"오늘 엽서를 살 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0461L02U05","expect":{"seed_number":461,"lego_index":2,"known_text":"he told me about the postcard shop","target_text":"엽서를 가게 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0462L02B01","expect":{"seed_number":462,"lego_index":2,"known_text":"during","target_text":"중에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0462L02B03","expect":{"seed_number":462,"lego_index":2,"known_text":"during today","target_text":"오늘 중에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0462L02U01","expect":{"seed_number":462,"lego_index":2,"known_text":"I heard about during the war","target_text":"전쟁 중에 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0462L02U02","expect":{"seed_number":462,"lego_index":2,"known_text":"she knows about during the war","target_text":"전쟁 중에 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0462L02U03","expect":{"seed_number":462,"lego_index":2,"known_text":"he told me about during the war","target_text":"전쟁 중에 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0462L02U04","expect":{"seed_number":462,"lego_index":2,"known_text":"she heard about during the war today","target_text":"오늘 전쟁 중에 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0462L02U05","expect":{"seed_number":462,"lego_index":2,"known_text":"I saw them during the war","target_text":"전쟁 중에 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0462L04B01","expect":{"seed_number":462,"lego_index":4,"known_text":"in Italy","target_text":"이탈리아에서"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0462L04B02","expect":{"seed_number":462,"lego_index":4,"known_text":"fought in Italy","target_text":"이탈리아에서 싸웠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0462L04B03","expect":{"seed_number":462,"lego_index":4,"known_text":"during the war in Italy","target_text":"전쟁 중에 이탈리아에서"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0462L04U01","expect":{"seed_number":462,"lego_index":4,"known_text":"I heard about Italy","target_text":"이탈리아에서 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0462L04U02","expect":{"seed_number":462,"lego_index":4,"known_text":"she knows about fighting in Italy","target_text":"이탈리아에서 싸우는 것에 대해 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0462L04U03","expect":{"seed_number":462,"lego_index":4,"known_text":"he fought in Italy during the war","target_text":"전쟁 중에 이탈리아에서 싸웠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0462L04U04","expect":{"seed_number":462,"lego_index":4,"known_text":"she fought in Italy today","target_text":"오늘 이탈리아에서 싸웠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0462L04U05","expect":{"seed_number":462,"lego_index":4,"known_text":"I heard about fighting in Italy","target_text":"이탈리아에서 싸우는 것에 대해 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0462L05B01","expect":{"seed_number":462,"lego_index":5,"known_text":"grandfather","target_text":"할아버지는"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0462L05B02","expect":{"seed_number":462,"lego_index":5,"known_text":"grandfather fought","target_text":"할아버지는 싸웠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0462L05B03","expect":{"seed_number":462,"lego_index":5,"known_text":"grandfather fought in Italy","target_text":"할아버지는 이탈리아에서 싸웠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0462L05U01","expect":{"seed_number":462,"lego_index":5,"known_text":"my grandfather fought in Italy during the war","target_text":"제 할아버지는 전쟁 중에 이탈리아에서 싸웠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0462L05U02","expect":{"seed_number":462,"lego_index":5,"known_text":"my grandfather fought during the war","target_text":"제 할아버지는 전쟁 중에 싸웠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0462L05U04","expect":{"seed_number":462,"lego_index":5,"known_text":"I heard about my grandfather","target_text":"제 할아버지는 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0462L05U05","expect":{"seed_number":462,"lego_index":5,"known_text":"she knows my grandfather fought","target_text":"제 할아버지는 싸웠다는 걸 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0463L02B01","expect":{"seed_number":463,"lego_index":2,"known_text":"number","target_text":"번호"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0463L02B02","expect":{"seed_number":463,"lego_index":2,"known_text":"room number","target_text":"방 번호"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0463L02B03","expect":{"seed_number":463,"lego_index":2,"known_text":"my room number","target_text":"제 방 번호"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0463L02U01","expect":{"seed_number":463,"lego_index":2,"known_text":"I heard about the number","target_text":"번호 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0463L02U02","expect":{"seed_number":463,"lego_index":2,"known_text":"she knows the number","target_text":"번호 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0463L02U03","expect":{"seed_number":463,"lego_index":2,"known_text":"he told me the room number","target_text":"방 번호 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0463L02U04","expect":{"seed_number":463,"lego_index":2,"known_text":"she heard about the room number today","target_text":"오늘 방 번호 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0463L02U05","expect":{"seed_number":463,"lego_index":2,"known_text":"I know my room number","target_text":"제 방 번호 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0464L01B01","expect":{"seed_number":464,"lego_index":1,"known_text":"once","target_text":"한 번"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0464L01B02","expect":{"seed_number":464,"lego_index":1,"known_text":"once today","target_text":"오늘 한 번"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0464L01B03","expect":{"seed_number":464,"lego_index":1,"known_text":"once together","target_text":"같이 한 번"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0464L01U01","expect":{"seed_number":464,"lego_index":1,"known_text":"I heard about once","target_text":"한 번 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0464L01U02","expect":{"seed_number":464,"lego_index":1,"known_text":"she knows about once","target_text":"한 번 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0464L01U03","expect":{"seed_number":464,"lego_index":1,"known_text":"he told me about once","target_text":"한 번 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0464L01U04","expect":{"seed_number":464,"lego_index":1,"known_text":"she heard about it once today","target_text":"오늘 한 번 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0464L01U05","expect":{"seed_number":464,"lego_index":1,"known_text":"I saw it once just now","target_text":"방금 한 번 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0464L03B01","expect":{"seed_number":464,"lego_index":3,"known_text":"told but","target_text":"줬는데"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0464L03B02","expect":{"seed_number":464,"lego_index":3,"known_text":"told and she forgot","target_text":"줬는데 잊어버렸어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0464L03B03","expect":{"seed_number":464,"lego_index":3,"known_text":"told once but","target_text":"한 번 줬는데"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0464L03U01","expect":{"seed_number":464,"lego_index":3,"known_text":"I told her my room number once but she forgot it","target_text":"방 번호를 한 번 말해 줬는데 그녀가 잊어버렸어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0464L03U02","expect":{"seed_number":464,"lego_index":3,"known_text":"I told her the number once but she forgot","target_text":"번호를 한 번 말해 줬는데 그녀가 잊어버렸어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0464L03U03","expect":{"seed_number":464,"lego_index":3,"known_text":"I told her but she forgot","target_text":"말해 줬는데 그녀가 잊어버렸어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0464L03U04","expect":{"seed_number":464,"lego_index":3,"known_text":"he told her but she forgot today","target_text":"오늘 말해 줬는데 그녀가 잊어버렸어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0464L03U05","expect":{"seed_number":464,"lego_index":3,"known_text":"I heard she told her once but","target_text":"한 번 줬는데 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0465L01B01","expect":{"seed_number":465,"lego_index":1,"known_text":"next time","target_text":"다음에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0465L01B02","expect":{"seed_number":465,"lego_index":1,"known_text":"next time today","target_text":"오늘 다음에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0465L01B03","expect":{"seed_number":465,"lego_index":1,"known_text":"next time together","target_text":"같이 다음에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0465L01U01","expect":{"seed_number":465,"lego_index":1,"known_text":"next time I will ask her what her name is","target_text":"다음에 이름이 뭔지 물어볼 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0465L01U02","expect":{"seed_number":465,"lego_index":1,"known_text":"she will ask next time","target_text":"다음에 물어볼 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0465L01U03","expect":{"seed_number":465,"lego_index":1,"known_text":"I heard about next time","target_text":"다음에 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0465L01U04","expect":{"seed_number":465,"lego_index":1,"known_text":"she knows about next time","target_text":"다음에 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0465L01U05","expect":{"seed_number":465,"lego_index":1,"known_text":"he told me about next time","target_text":"다음에 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0466L01B01","expect":{"seed_number":466,"lego_index":1,"known_text":"wall","target_text":"담"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0466L01B02","expect":{"seed_number":466,"lego_index":1,"known_text":"wall today","target_text":"오늘 담"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0466L01B03","expect":{"seed_number":466,"lego_index":1,"known_text":"wall together","target_text":"같이 담"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0466L01U01","expect":{"seed_number":466,"lego_index":1,"known_text":"I heard about the wall","target_text":"담 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0466L01U02","expect":{"seed_number":466,"lego_index":1,"known_text":"she knows about the wall","target_text":"담 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0466L01U03","expect":{"seed_number":466,"lego_index":1,"known_text":"he told me about the wall","target_text":"담 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0466L01U04","expect":{"seed_number":466,"lego_index":1,"known_text":"she heard about the wall today","target_text":"오늘 담 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0466L01U05","expect":{"seed_number":466,"lego_index":1,"known_text":"I saw the wall just now","target_text":"방금 담 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0466L02B01","expect":{"seed_number":466,"lego_index":2,"known_text":"over","target_text":"너머로"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0466L02B03","expect":{"seed_number":466,"lego_index":2,"known_text":"over today","target_text":"오늘 너머로"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0466L02U01","expect":{"seed_number":466,"lego_index":2,"known_text":"I heard about going over","target_text":"너머로 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0466L02U02","expect":{"seed_number":466,"lego_index":2,"known_text":"she knows about going over the wall","target_text":"담 너머로 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0466L02U03","expect":{"seed_number":466,"lego_index":2,"known_text":"he told me about going over the wall","target_text":"담 너머로 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0466L02U04","expect":{"seed_number":466,"lego_index":2,"known_text":"she heard about over the wall today","target_text":"오늘 담 너머로 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0466L02U05","expect":{"seed_number":466,"lego_index":2,"known_text":"I saw it go over the wall","target_text":"담 너머로 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0466L03B01","expect":{"seed_number":466,"lego_index":3,"known_text":"let me throw","target_text":"던질게요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0466L03B02","expect":{"seed_number":466,"lego_index":3,"known_text":"throw over","target_text":"너머로 던질게요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0466L03B03","expect":{"seed_number":466,"lego_index":3,"known_text":"throw today","target_text":"오늘 던질게요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0466L03U01","expect":{"seed_number":466,"lego_index":3,"known_text":"let me throw it over the wall","target_text":"담 너머로 던질게요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0466L03U02","expect":{"seed_number":466,"lego_index":3,"known_text":"I'll throw it over the wall today","target_text":"오늘 담 너머로 던질게요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0466L03U03","expect":{"seed_number":466,"lego_index":3,"known_text":"I'll throw it together","target_text":"같이 던질게요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0466L03U04","expect":{"seed_number":466,"lego_index":3,"known_text":"I'll throw it over the wall now","target_text":"지금 담 너머로 던질게요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0467L01B01","expect":{"seed_number":467,"lego_index":1,"known_text":"next to","target_text":"옆에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0467L01B02","expect":{"seed_number":467,"lego_index":1,"known_text":"next to today","target_text":"오늘 옆에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0467L01B03","expect":{"seed_number":467,"lego_index":1,"known_text":"next to together","target_text":"같이 옆에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0467L01U01","expect":{"seed_number":467,"lego_index":1,"known_text":"I heard about next to it","target_text":"옆에 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0467L01U02","expect":{"seed_number":467,"lego_index":1,"known_text":"she knows about next to it","target_text":"옆에 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0467L01U03","expect":{"seed_number":467,"lego_index":1,"known_text":"he told me about next to it","target_text":"옆에 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0467L01U04","expect":{"seed_number":467,"lego_index":1,"known_text":"she heard about next to it today","target_text":"오늘 옆에 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0467L01U05","expect":{"seed_number":467,"lego_index":1,"known_text":"I saw it next to it just now","target_text":"방금 옆에 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0467L02B01","expect":{"seed_number":467,"lego_index":2,"known_text":"car park","target_text":"주차장"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0467L02B03","expect":{"seed_number":467,"lego_index":2,"known_text":"car park today","target_text":"오늘 주차장"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0467L02U01","expect":{"seed_number":467,"lego_index":2,"known_text":"it's next to the car park","target_text":"주차장 옆에 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0467L02U02","expect":{"seed_number":467,"lego_index":2,"known_text":"she knows about the car park","target_text":"주차장 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0467L02U03","expect":{"seed_number":467,"lego_index":2,"known_text":"he told me it's next to the car park","target_text":"주차장 옆에 있다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0467L02U04","expect":{"seed_number":467,"lego_index":2,"known_text":"she heard about the car park today","target_text":"오늘 주차장 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0467L02U05","expect":{"seed_number":467,"lego_index":2,"known_text":"I saw it next to the car park","target_text":"주차장 옆에 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0468L01B01","expect":{"seed_number":468,"lego_index":1,"known_text":"world","target_text":"세상은"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0468L01B02","expect":{"seed_number":468,"lego_index":1,"known_text":"world today","target_text":"오늘 세상은"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0468L01B03","expect":{"seed_number":468,"lego_index":1,"known_text":"world together","target_text":"같이 세상은"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0468L01U01","expect":{"seed_number":468,"lego_index":1,"known_text":"I heard about the world","target_text":"세상은 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0468L01U02","expect":{"seed_number":468,"lego_index":1,"known_text":"she knows about the world","target_text":"세상은 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0468L01U03","expect":{"seed_number":468,"lego_index":1,"known_text":"he told me about the world","target_text":"세상은 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0468L01U04","expect":{"seed_number":468,"lego_index":1,"known_text":"she heard about the world today","target_text":"오늘 세상은 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0468L01U05","expect":{"seed_number":468,"lego_index":1,"known_text":"I saw the world just now","target_text":"방금 세상은 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0469L01B01","expect":{"seed_number":469,"lego_index":1,"known_text":"meaning","target_text":"뜻은"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0469L01B02","expect":{"seed_number":469,"lego_index":1,"known_text":"meaning today","target_text":"오늘 뜻은"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0469L01B03","expect":{"seed_number":469,"lego_index":1,"known_text":"meaning together","target_text":"같이 뜻은"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0469L01U01","expect":{"seed_number":469,"lego_index":1,"known_text":"I heard about the meaning","target_text":"뜻은 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0469L01U02","expect":{"seed_number":469,"lego_index":1,"known_text":"she knows the meaning","target_text":"뜻은 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0469L01U03","expect":{"seed_number":469,"lego_index":1,"known_text":"he told me about the meaning","target_text":"뜻은 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0469L01U04","expect":{"seed_number":469,"lego_index":1,"known_text":"she heard about the meaning today","target_text":"오늘 뜻은 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0469L01U05","expect":{"seed_number":469,"lego_index":1,"known_text":"I saw the meaning just now","target_text":"방금 뜻은 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0470L01B01","expect":{"seed_number":470,"lego_index":1,"known_text":"high","target_text":"높이"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0470L01B02","expect":{"seed_number":470,"lego_index":1,"known_text":"how high","target_text":"얼마나 높이"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0470L01B03","expect":{"seed_number":470,"lego_index":1,"known_text":"high today","target_text":"오늘 높이"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0470L01U01","expect":{"seed_number":470,"lego_index":1,"known_text":"I heard how high","target_text":"얼마나 높이 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0470L01U02","expect":{"seed_number":470,"lego_index":1,"known_text":"she knows how high","target_text":"얼마나 높이 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0470L01U03","expect":{"seed_number":470,"lego_index":1,"known_text":"he told me how high","target_text":"얼마나 높이 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0470L01U04","expect":{"seed_number":470,"lego_index":1,"known_text":"she heard about height today","target_text":"오늘 높이 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0470L01U05","expect":{"seed_number":470,"lego_index":1,"known_text":"I saw how high just now","target_text":"방금 얼마나 높이 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0470L02B01","expect":{"seed_number":470,"lego_index":2,"known_text":"stopping","target_text":"멈추기"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0470L02B03","expect":{"seed_number":470,"lego_index":2,"known_text":"stopping today","target_text":"오늘 멈추기"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0470L02U01","expect":{"seed_number":470,"lego_index":2,"known_text":"I heard about stopping","target_text":"멈추기 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0470L02U02","expect":{"seed_number":470,"lego_index":2,"known_text":"she knows before stopping","target_text":"멈추기 전에 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0470L02U03","expect":{"seed_number":470,"lego_index":2,"known_text":"he told me about before stopping","target_text":"멈추기 전에 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0470L02U04","expect":{"seed_number":470,"lego_index":2,"known_text":"she heard about stopping today","target_text":"오늘 멈추기 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0470L02U05","expect":{"seed_number":470,"lego_index":2,"known_text":"I saw before stopping","target_text":"멈추기 전에 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0470L03B01","expect":{"seed_number":470,"lego_index":3,"known_text":"climb and","target_text":"오르고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0470L03B02","expect":{"seed_number":470,"lego_index":3,"known_text":"climb high","target_text":"높이 오르고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0470L03B03","expect":{"seed_number":470,"lego_index":3,"known_text":"before climbing","target_text":"멈추기 전에 높이 오르고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0470L03U01","expect":{"seed_number":470,"lego_index":3,"known_text":"how high do you want to climb before we stop?","target_text":"멈추기 전에 얼마나 높이 오르고 싶어요?"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0470L03U02","expect":{"seed_number":470,"lego_index":3,"known_text":"she wants to climb high","target_text":"높이 오르고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0470L03U03","expect":{"seed_number":470,"lego_index":3,"known_text":"he wants to climb before stopping","target_text":"멈추기 전에 오르고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0470L03U04","expect":{"seed_number":470,"lego_index":3,"known_text":"she heard about climbing high","target_text":"높이 오르고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0470L03U05","expect":{"seed_number":470,"lego_index":3,"known_text":"I want to climb how high today?","target_text":"오늘 얼마나 높이 오르고 싶어요?"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0471L01B01","expect":{"seed_number":471,"lego_index":1,"known_text":"to rest","target_text":"쉬려고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0471L01B02","expect":{"seed_number":471,"lego_index":1,"known_text":"stop to rest","target_text":"쉬려고 멈추고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0471L01B03","expect":{"seed_number":471,"lego_index":1,"known_text":"to rest today","target_text":"오늘 쉬려고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0471L01U01","expect":{"seed_number":471,"lego_index":1,"known_text":"do you want to stop for a rest?","target_text":"좀 쉬려고 멈추고 싶어요?"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0471L01U02","expect":{"seed_number":471,"lego_index":1,"known_text":"she wants to stop to rest","target_text":"쉬려고 멈추고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0471L01U03","expect":{"seed_number":471,"lego_index":1,"known_text":"he wants to stop to rest today","target_text":"오늘 쉬려고 멈추고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0471L01U04","expect":{"seed_number":471,"lego_index":1,"known_text":"I heard about stopping to rest","target_text":"쉬려고 멈추고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0471L01U05","expect":{"seed_number":471,"lego_index":1,"known_text":"she knows about stopping to rest","target_text":"쉬려고 멈추고 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0473L01B01","expect":{"seed_number":473,"lego_index":1,"known_text":"don't want","target_text":"원하지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0473L01B02","expect":{"seed_number":473,"lego_index":1,"known_text":"don't want it","target_text":"그건 원하지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0473L01B03","expect":{"seed_number":473,"lego_index":1,"known_text":"don't want today","target_text":"오늘 원하지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0473L01U01","expect":{"seed_number":473,"lego_index":1,"known_text":"I don't want it","target_text":"그건 원하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0473L01U02","expect":{"seed_number":473,"lego_index":1,"known_text":"she doesn't want it today","target_text":"오늘 그건 원하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0473L01U03","expect":{"seed_number":473,"lego_index":1,"known_text":"he doesn't want it together","target_text":"같이 그건 원하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0473L01U04","expect":{"seed_number":473,"lego_index":1,"known_text":"why doesn't he want it?","target_text":"그는 왜 그건 원하지 않아요?"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0474L01B01","expect":{"seed_number":474,"lego_index":1,"known_text":"free","target_text":"무료라고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0474L01B02","expect":{"seed_number":474,"lego_index":1,"known_text":"even if free","target_text":"무료라고 해도"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0474L01B03","expect":{"seed_number":474,"lego_index":1,"known_text":"free today","target_text":"오늘 무료라고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0474L01U01","expect":{"seed_number":474,"lego_index":1,"known_text":"I don't even want it as a free offer","target_text":"무료라고 해도 원하지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0474L01U02","expect":{"seed_number":474,"lego_index":1,"known_text":"he heard about the free offer","target_text":"무료라고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0474L01U03","expect":{"seed_number":474,"lego_index":1,"known_text":"she knows about the free offer","target_text":"무료라고 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0474L01U04","expect":{"seed_number":474,"lego_index":1,"known_text":"I heard about free today","target_text":"오늘 무료라고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0474L01U05","expect":{"seed_number":474,"lego_index":1,"known_text":"he told me about the free offer","target_text":"무료라고 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0475L01B01","expect":{"seed_number":475,"lego_index":1,"known_text":"to consider","target_text":"고려할"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0475L01B02","expect":{"seed_number":475,"lego_index":1,"known_text":"consider today","target_text":"오늘 고려할"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0475L01B03","expect":{"seed_number":475,"lego_index":1,"known_text":"consider together","target_text":"같이 고려할"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0475L01U01","expect":{"seed_number":475,"lego_index":1,"known_text":"I heard about considering","target_text":"고려할 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0475L01U02","expect":{"seed_number":475,"lego_index":1,"known_text":"she knows about considering","target_text":"고려할 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0475L01U03","expect":{"seed_number":475,"lego_index":1,"known_text":"he told me about considering","target_text":"고려할 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0475L01U04","expect":{"seed_number":475,"lego_index":1,"known_text":"she heard about considering today","target_text":"오늘 고려할 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0476L01B01","expect":{"seed_number":476,"lego_index":1,"known_text":"for it to end","target_text":"끝나기를"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0476L01B02","expect":{"seed_number":476,"lego_index":1,"known_text":"waiting for it to end","target_text":"끝나기를 기다리고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0476L01B03","expect":{"seed_number":476,"lego_index":1,"known_text":"end today","target_text":"오늘 끝나기를"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0476L01U01","expect":{"seed_number":476,"lego_index":1,"known_text":"I heard about waiting for it to end","target_text":"끝나기를 기다리고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0476L01U02","expect":{"seed_number":476,"lego_index":1,"known_text":"she knows about waiting for it to end","target_text":"끝나기를 기다리고 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0476L01U03","expect":{"seed_number":476,"lego_index":1,"known_text":"he told me about waiting for it to end","target_text":"끝나기를 기다리고 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0476L01U04","expect":{"seed_number":476,"lego_index":1,"known_text":"she heard about waiting for it to end today","target_text":"오늘 끝나기를 기다리고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0476L01U05","expect":{"seed_number":476,"lego_index":1,"known_text":"I'm waiting for it to end","target_text":"끝나기를 기다리고 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0477L01B01","expect":{"seed_number":477,"lego_index":1,"known_text":"second","target_text":"둘째"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0477L01B02","expect":{"seed_number":477,"lego_index":1,"known_text":"second today","target_text":"오늘 둘째"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0477L01B03","expect":{"seed_number":477,"lego_index":1,"known_text":"second together","target_text":"같이 둘째"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0477L01U01","expect":{"seed_number":477,"lego_index":1,"known_text":"I heard about the second","target_text":"둘째 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0477L01U02","expect":{"seed_number":477,"lego_index":1,"known_text":"she knows about the second","target_text":"둘째 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0477L01U03","expect":{"seed_number":477,"lego_index":1,"known_text":"he told me about the second","target_text":"둘째 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0477L01U04","expect":{"seed_number":477,"lego_index":1,"known_text":"she heard about the second today","target_text":"오늘 둘째 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0477L01U05","expect":{"seed_number":477,"lego_index":1,"known_text":"I saw the second just now","target_text":"방금 둘째 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0477L03B01","expect":{"seed_number":477,"lego_index":3,"known_text":"was sick","target_text":"아팠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0477L03B02","expect":{"seed_number":477,"lego_index":3,"known_text":"been sick since","target_text":"날부터 아팠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0477L03B03","expect":{"seed_number":477,"lego_index":3,"known_text":"sick today","target_text":"오늘 아팠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0477L03U01","expect":{"seed_number":477,"lego_index":3,"known_text":"he's been sick since the second day of the holidays","target_text":"그는 휴가 둘째 날부터 아팠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0477L03U02","expect":{"seed_number":477,"lego_index":3,"known_text":"she's been sick since the second day","target_text":"둘째 날부터 아팠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0477L03U03","expect":{"seed_number":477,"lego_index":3,"known_text":"he's been sick since the holiday","target_text":"휴가 날부터 아팠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0477L03U04","expect":{"seed_number":477,"lego_index":3,"known_text":"I heard she was sick","target_text":"아팠다고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0477L03U05","expect":{"seed_number":477,"lego_index":3,"known_text":"she knows he was sick since the second day","target_text":"둘째 날부터 아팠다는 걸 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0478L01B01","expect":{"seed_number":478,"lego_index":1,"known_text":"heart","target_text":"마음이"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0478L01B02","expect":{"seed_number":478,"lego_index":1,"known_text":"heart today","target_text":"오늘 마음이"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0478L01B03","expect":{"seed_number":478,"lego_index":1,"known_text":"heart together","target_text":"같이 마음이"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0478L01U01","expect":{"seed_number":478,"lego_index":1,"known_text":"I heard about the heart","target_text":"마음이 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0478L01U02","expect":{"seed_number":478,"lego_index":1,"known_text":"she knows about the heart","target_text":"마음이 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0478L01U03","expect":{"seed_number":478,"lego_index":1,"known_text":"he told me about the heart","target_text":"마음이 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0478L01U04","expect":{"seed_number":478,"lego_index":1,"known_text":"she heard about the heart today","target_text":"오늘 마음이 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0478L01U05","expect":{"seed_number":478,"lego_index":1,"known_text":"I saw the heart just now","target_text":"방금 마음이 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0478L02B01","expect":{"seed_number":478,"lego_index":2,"known_text":"is kind","target_text":"착해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0478L02B02","expect":{"seed_number":478,"lego_index":2,"known_text":"kind heart","target_text":"마음이 착해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0478L02B03","expect":{"seed_number":478,"lego_index":2,"known_text":"really kind","target_text":"정말 마음이 착해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0478L02U01","expect":{"seed_number":478,"lego_index":2,"known_text":"she has such a kind heart","target_text":"그녀는 정말 마음이 착해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0478L02U05","expect":{"seed_number":478,"lego_index":2,"known_text":"she's kind today","target_text":"오늘 마음이 착해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0478L02U06","expect":{"seed_number":478,"lego_index":2,"known_text":"is he kind?","target_text":"그는 마음이 착해요?"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0478L02U07","expect":{"seed_number":478,"lego_index":2,"known_text":"he is really kind","target_text":"그는 정말 마음이 착해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0479L01B01","expect":{"seed_number":479,"lego_index":1,"known_text":"minimum","target_text":"최소한의"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0479L01B02","expect":{"seed_number":479,"lego_index":1,"known_text":"least I can do","target_text":"할 수 있는 최소한의"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0479L01B03","expect":{"seed_number":479,"lego_index":1,"known_text":"minimum thing","target_text":"최소한의 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0479L01U01","expect":{"seed_number":479,"lego_index":1,"known_text":"it's the least I could do","target_text":"제가 할 수 있는 최소한의 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0479L01U02","expect":{"seed_number":479,"lego_index":1,"known_text":"she did the least she could","target_text":"할 수 있는 최소한의 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0479L01U03","expect":{"seed_number":479,"lego_index":1,"known_text":"I heard about the minimum","target_text":"최소한의 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0479L01U04","expect":{"seed_number":479,"lego_index":1,"known_text":"she knows the minimum","target_text":"최소한의 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0479L01U05","expect":{"seed_number":479,"lego_index":1,"known_text":"he told me about the minimum","target_text":"최소한의 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0480L02B01","expect":{"seed_number":480,"lego_index":2,"known_text":"no matter what","target_text":"하든"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0480L02B02","expect":{"seed_number":480,"lego_index":2,"known_text":"whatever he says","target_text":"뭐라고 하든"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0480L02B03","expect":{"seed_number":480,"lego_index":2,"known_text":"whatever today","target_text":"오늘 하든"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0480L02U01","expect":{"seed_number":480,"lego_index":2,"known_text":"whatever he says it's not far ahead now","target_text":"그가 뭐라고 하든 이제 멀지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0480L02U02","expect":{"seed_number":480,"lego_index":2,"known_text":"whatever she says it's not far","target_text":"뭐라고 하든 멀지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0480L02U03","expect":{"seed_number":480,"lego_index":2,"known_text":"I heard about whatever","target_text":"하든 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0480L02U04","expect":{"seed_number":480,"lego_index":2,"known_text":"she knows whatever she says","target_text":"뭐라고 하든 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0480L02U05","expect":{"seed_number":480,"lego_index":2,"known_text":"it's not far now whatever she says","target_text":"뭐라고 하든 이제 멀지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0481L01B01","expect":{"seed_number":481,"lego_index":1,"known_text":"remaining","target_text":"남은"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0481L01B02","expect":{"seed_number":481,"lego_index":1,"known_text":"remaining today","target_text":"오늘 남은"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0481L01B03","expect":{"seed_number":481,"lego_index":1,"known_text":"remaining together","target_text":"같이 남은"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0481L01U01","expect":{"seed_number":481,"lego_index":1,"known_text":"I heard about what's remaining","target_text":"남은 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0481L01U02","expect":{"seed_number":481,"lego_index":1,"known_text":"she knows what's left","target_text":"남은 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0481L01U03","expect":{"seed_number":481,"lego_index":1,"known_text":"he told me about what's remaining","target_text":"남은 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0481L01U04","expect":{"seed_number":481,"lego_index":1,"known_text":"she heard about what's remaining today","target_text":"오늘 남은 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0481L01U05","expect":{"seed_number":481,"lego_index":1,"known_text":"I saw what's left just now","target_text":"방금 남은 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0481L02B01","expect":{"seed_number":481,"lego_index":2,"known_text":"real","target_text":"진짜"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0481L02B02","expect":{"seed_number":481,"lego_index":2,"known_text":"really today","target_text":"오늘 진짜"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0481L02B03","expect":{"seed_number":481,"lego_index":2,"known_text":"really together","target_text":"같이 진짜"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0481L02U01","expect":{"seed_number":481,"lego_index":2,"known_text":"I heard it's real","target_text":"진짜 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0481L02U02","expect":{"seed_number":481,"lego_index":2,"known_text":"she knows it's real","target_text":"진짜 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0481L02U03","expect":{"seed_number":481,"lego_index":2,"known_text":"he told me it's real","target_text":"진짜 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0481L02U04","expect":{"seed_number":481,"lego_index":2,"known_text":"she heard it's real today","target_text":"오늘 진짜 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0481L02U05","expect":{"seed_number":481,"lego_index":2,"known_text":"I saw it's real just now","target_text":"방금 진짜 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0481L02U06","expect":{"seed_number":481,"lego_index":2,"known_text":"we are learning real Korean","target_text":"우리는 진짜 한국어를 배우고 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0481L02U07","expect":{"seed_number":481,"lego_index":2,"known_text":"I hope I'll be able to speak real Korean","target_text":"진짜 한국어로 말할 수 있으면 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0481L02U08","expect":{"seed_number":481,"lego_index":2,"known_text":"you should consider the real problems","target_text":"진짜 문제를 생각해 봐야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0481L02U09","expect":{"seed_number":481,"lego_index":2,"known_text":"there was a real problem","target_text":"진짜 문제가 있었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0481L04B01","expect":{"seed_number":481,"lego_index":4,"known_text":"is hope","target_text":"희망이에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0481L04B02","expect":{"seed_number":481,"lego_index":4,"known_text":"real hope","target_text":"진짜 희망이에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0481L04B03","expect":{"seed_number":481,"lego_index":4,"known_text":"only hope remaining","target_text":"남은 유일한 희망이에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0481L04U01","expect":{"seed_number":481,"lego_index":4,"known_text":"it's the only real hope we have left","target_text":"우리에게 남은 유일한 진짜 희망이에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0481L04U02","expect":{"seed_number":481,"lego_index":4,"known_text":"it's the only real hope","target_text":"유일한 진짜 희망이에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0481L04U03","expect":{"seed_number":481,"lego_index":4,"known_text":"I heard it's hope","target_text":"희망이라고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0481L04U04","expect":{"seed_number":481,"lego_index":4,"known_text":"she knows it's the real hope","target_text":"진짜 희망이라는 걸 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0481L04U05","expect":{"seed_number":481,"lego_index":4,"known_text":"he told me it's the remaining hope","target_text":"남은 희망이라고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0482L01B01","expect":{"seed_number":482,"lego_index":1,"known_text":"not","target_text":"않다는"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0482L01B02","expect":{"seed_number":482,"lego_index":1,"known_text":"not serious","target_text":"않다는 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0482L01B03","expect":{"seed_number":482,"lego_index":1,"known_text":"that they're not","target_text":"그들이 않다는"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0482L01U01","expect":{"seed_number":482,"lego_index":1,"known_text":"I heard it's not the case","target_text":"않다는 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0482L01U02","expect":{"seed_number":482,"lego_index":1,"known_text":"she knows it's not","target_text":"않다는 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0482L01U03","expect":{"seed_number":482,"lego_index":1,"known_text":"he told me they're not","target_text":"그들이 않다는 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0482L01U04","expect":{"seed_number":482,"lego_index":1,"known_text":"she heard about it not being","target_text":"않다는 것에 대해 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0482L01U05","expect":{"seed_number":482,"lego_index":1,"known_text":"you must understand that it's not easy","target_text":"쉽지 않다는 걸 이해해야 해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0482L02B01","expect":{"seed_number":482,"lego_index":2,"known_text":"hope","target_text":"희망은"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0482L02B02","expect":{"seed_number":482,"lego_index":2,"known_text":"only hope","target_text":"유일한 희망은"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0482L02B03","expect":{"seed_number":482,"lego_index":2,"known_text":"real hope","target_text":"진짜 희망은"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0482L02U01","expect":{"seed_number":482,"lego_index":2,"known_text":"I heard about the hope","target_text":"희망은 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0482L02U02","expect":{"seed_number":482,"lego_index":2,"known_text":"she knows the hope","target_text":"희망은 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0482L02U03","expect":{"seed_number":482,"lego_index":2,"known_text":"he told me the only hope","target_text":"유일한 희망은 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0482L02U04","expect":{"seed_number":482,"lego_index":2,"known_text":"she heard the real hope today","target_text":"오늘 진짜 희망은 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0482L02U05","expect":{"seed_number":482,"lego_index":2,"known_text":"I saw the hope just now","target_text":"방금 희망은 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0482L03B01","expect":{"seed_number":482,"lego_index":3,"known_text":"serious","target_text":"진지하지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0482L03B02","expect":{"seed_number":482,"lego_index":3,"known_text":"not serious","target_text":"진지하지 않다는"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0482L03B03","expect":{"seed_number":482,"lego_index":3,"known_text":"not serious at all","target_text":"진지하지 않다는 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0482L03U01","expect":{"seed_number":482,"lego_index":3,"known_text":"the only real hope is that they're not serious","target_text":"유일한 진짜 희망은 그들이 진지하지 않다는 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0482L03U02","expect":{"seed_number":482,"lego_index":3,"known_text":"the real hope is they're not serious","target_text":"진짜 희망은 그들이 진지하지 않다는 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0482L03U03","expect":{"seed_number":482,"lego_index":3,"known_text":"I heard they're not serious","target_text":"진지하지 않다는 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0482L03U04","expect":{"seed_number":482,"lego_index":3,"known_text":"she knows they're not serious","target_text":"진지하지 않다는 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0482L03U05","expect":{"seed_number":482,"lego_index":3,"known_text":"he told me they're not serious","target_text":"진지하지 않다는 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0483L01B01","expect":{"seed_number":483,"lego_index":1,"known_text":"easy","target_text":"쉬운"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0483L01B02","expect":{"seed_number":483,"lego_index":1,"known_text":"easy today","target_text":"오늘 쉬운"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0483L01B03","expect":{"seed_number":483,"lego_index":1,"known_text":"easy together","target_text":"같이 쉬운"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0483L01U01","expect":{"seed_number":483,"lego_index":1,"known_text":"I heard about the easy way","target_text":"쉬운 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0483L01U02","expect":{"seed_number":483,"lego_index":1,"known_text":"she knows the easy way","target_text":"쉬운 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0483L01U03","expect":{"seed_number":483,"lego_index":1,"known_text":"he told me about easy","target_text":"쉬운 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0483L01U04","expect":{"seed_number":483,"lego_index":1,"known_text":"she heard about easy today","target_text":"오늘 쉬운 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0483L01U05","expect":{"seed_number":483,"lego_index":1,"known_text":"I saw the easy way just now","target_text":"방금 쉬운 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0483L02B01","expect":{"seed_number":483,"lego_index":2,"known_text":"originally","target_text":"원래"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0483L02B02","expect":{"seed_number":483,"lego_index":2,"known_text":"originally easy","target_text":"원래 쉬운"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0483L02B03","expect":{"seed_number":483,"lego_index":2,"known_text":"not originally","target_text":"원래 아니에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0483L02U01","expect":{"seed_number":483,"lego_index":2,"known_text":"I heard it's not originally","target_text":"원래 아니라고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0483L02U02","expect":{"seed_number":483,"lego_index":2,"known_text":"she knows it's not meant to be","target_text":"원래 그렇게 될 운명이 아니라는 걸 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0483L02U03","expect":{"seed_number":483,"lego_index":2,"known_text":"he told me about what's original","target_text":"원래 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0483L02U04","expect":{"seed_number":483,"lego_index":2,"known_text":"she heard about originally","target_text":"오늘 원래 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0483L02U05","expect":{"seed_number":483,"lego_index":2,"known_text":"I think it's originally","target_text":"원래 생각해요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0483L02B04","expect":{"seed_number":483,"lego_index":2,"known_text":"it's meant to be like this","target_text":"원래 이런 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0483L02U06","expect":{"seed_number":483,"lego_index":2,"known_text":"life isn't easy but it's not meant to be easy","target_text":"인생은 쉽지 않지만 원래 쉬운 건 아니에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0484L01B01","expect":{"seed_number":484,"lego_index":1,"known_text":"challenge","target_text":"도전이에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0484L01B02","expect":{"seed_number":484,"lego_index":1,"known_text":"challenge today","target_text":"오늘 도전이에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0484L01B03","expect":{"seed_number":484,"lego_index":1,"known_text":"challenge together","target_text":"같이 도전이에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0484L01U01","expect":{"seed_number":484,"lego_index":1,"known_text":"it's meant to be a challenge","target_text":"원래 도전이에요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0484L01U02","expect":{"seed_number":484,"lego_index":1,"known_text":"I heard it's a challenge","target_text":"도전이라고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0484L01U03","expect":{"seed_number":484,"lego_index":1,"known_text":"she knows it's a challenge","target_text":"도전이라는 걸 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0484L01U04","expect":{"seed_number":484,"lego_index":1,"known_text":"he told me it's a challenge","target_text":"도전이라고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0484L01U05","expect":{"seed_number":484,"lego_index":1,"known_text":"she heard it's originally a challenge","target_text":"원래 도전이라고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0485L02B01","expect":{"seed_number":485,"lego_index":2,"known_text":"leaving","target_text":"떠나는"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0485L02B02","expect":{"seed_number":485,"lego_index":2,"known_text":"leaving today","target_text":"오늘 떠나는"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0485L02B03","expect":{"seed_number":485,"lego_index":2,"known_text":"leaving together","target_text":"같이 떠나는"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0485L02U01","expect":{"seed_number":485,"lego_index":2,"known_text":"I heard about leaving","target_text":"떠나는 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0485L02U02","expect":{"seed_number":485,"lego_index":2,"known_text":"she knows about leaving","target_text":"떠나는 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0485L02U03","expect":{"seed_number":485,"lego_index":2,"known_text":"he told me about leaving","target_text":"떠나는 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0485L02U04","expect":{"seed_number":485,"lego_index":2,"known_text":"she heard about leaving today","target_text":"오늘 떠나는 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0485L02U05","expect":{"seed_number":485,"lego_index":2,"known_text":"I saw leaving just now","target_text":"방금 떠나는 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0485L02U06","expect":{"seed_number":485,"lego_index":2,"known_text":"I don't like leaving","target_text":"떠나는 게 싫어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0485L03B01","expect":{"seed_number":485,"lego_index":3,"known_text":"happily","target_text":"행복하게"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0485L03B02","expect":{"seed_number":485,"lego_index":3,"known_text":"make happy","target_text":"행복하게 해"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0485L03B03","expect":{"seed_number":485,"lego_index":3,"known_text":"more happy than leaving","target_text":"떠나는 것보다 더 행복하게"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0485L03U01","expect":{"seed_number":485,"lego_index":3,"known_text":"nothing would make me happier than to get away","target_text":"떠나는 것보다 더 행복하게 해 줄 건 없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0485L03U02","expect":{"seed_number":485,"lego_index":3,"known_text":"nothing would make me happier","target_text":"더 행복하게 해 줄 건 없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0485L03U03","expect":{"seed_number":485,"lego_index":3,"known_text":"I heard about being happy","target_text":"행복하게 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0485L03U04","expect":{"seed_number":485,"lego_index":3,"known_text":"she knows about being happy","target_text":"행복하게 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0485L03U05","expect":{"seed_number":485,"lego_index":3,"known_text":"he told me about being happy","target_text":"행복하게 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0486L01B01","expect":{"seed_number":486,"lego_index":1,"known_text":"eyes","target_text":"눈이"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0486L01B02","expect":{"seed_number":486,"lego_index":1,"known_text":"eyes today","target_text":"오늘 눈이"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0486L01B03","expect":{"seed_number":486,"lego_index":1,"known_text":"eyes together","target_text":"같이 눈이"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0486L01U01","expect":{"seed_number":486,"lego_index":1,"known_text":"I heard about the eyes","target_text":"눈이 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0486L01U02","expect":{"seed_number":486,"lego_index":1,"known_text":"she knows about the eyes","target_text":"눈이 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0486L01U03","expect":{"seed_number":486,"lego_index":1,"known_text":"he told me about the eyes","target_text":"눈이 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0486L01U04","expect":{"seed_number":486,"lego_index":1,"known_text":"she heard about the eyes today","target_text":"오늘 눈이 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0486L01U05","expect":{"seed_number":486,"lego_index":1,"known_text":"I saw the eyes just now","target_text":"방금 눈이 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0486L02B01","expect":{"seed_number":486,"lego_index":2,"known_text":"beautiful","target_text":"아름다운"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0486L02B02","expect":{"seed_number":486,"lego_index":2,"known_text":"beautiful eyes","target_text":"눈이 아름다운"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0486L02B03","expect":{"seed_number":486,"lego_index":2,"known_text":"beautiful today","target_text":"오늘 아름다운"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0486L02U01","expect":{"seed_number":486,"lego_index":2,"known_text":"I think your eyes are beautiful","target_text":"눈이 아름다운 것 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0486L02U02","expect":{"seed_number":486,"lego_index":2,"known_text":"she knows the eyes are beautiful","target_text":"눈이 아름다운 걸 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0486L02U03","expect":{"seed_number":486,"lego_index":2,"known_text":"I heard about beautiful things","target_text":"아름다운 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0486L02U04","expect":{"seed_number":486,"lego_index":2,"known_text":"she knows about beautiful","target_text":"아름다운 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0486L02U05","expect":{"seed_number":486,"lego_index":2,"known_text":"he told me about beautiful today","target_text":"오늘 아름다운 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0486L02U06","expect":{"seed_number":486,"lego_index":2,"known_text":"I want to see her beautiful eyes","target_text":"그녀의 아름다운 눈이 보고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0486L02U07","expect":{"seed_number":486,"lego_index":2,"known_text":"before you leave I want to see your beautiful eyes","target_text":"떠나기 전에 아름다운 눈이 보고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0486L02U08","expect":{"seed_number":486,"lego_index":2,"known_text":"there are many beautiful people","target_text":"아름다운 사람들이 많아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0487L02B01","expect":{"seed_number":487,"lego_index":2,"known_text":"under","target_text":"아래에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0487L02B03","expect":{"seed_number":487,"lego_index":2,"known_text":"under today","target_text":"오늘 아래에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0487L02U01","expect":{"seed_number":487,"lego_index":2,"known_text":"it's under the bridge","target_text":"다리 아래에 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0487L02U03","expect":{"seed_number":487,"lego_index":2,"known_text":"he told me it's under the bridge","target_text":"다리 아래에 있다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0487L02U04","expect":{"seed_number":487,"lego_index":2,"known_text":"she heard about under the bridge today","target_text":"오늘 다리 아래에 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0487L02U05","expect":{"seed_number":487,"lego_index":2,"known_text":"I saw it under the bridge","target_text":"다리 아래에 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0487L02U06","expect":{"seed_number":487,"lego_index":2,"known_text":"we can stay under the bridge","target_text":"우리는 다리 아래에 있을 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0487L02U07","expect":{"seed_number":487,"lego_index":2,"known_text":"what's under the bridge","target_text":"다리 아래에 뭐가 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0488L01B01","expect":{"seed_number":488,"lego_index":1,"known_text":"line","target_text":"선"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0488L01B02","expect":{"seed_number":488,"lego_index":1,"known_text":"yellow line","target_text":"노란 선"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0488L01B03","expect":{"seed_number":488,"lego_index":1,"known_text":"that yellow line","target_text":"그 노란 선"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0488L01U01","expect":{"seed_number":488,"lego_index":1,"known_text":"I heard about the line","target_text":"선 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0488L01U02","expect":{"seed_number":488,"lego_index":1,"known_text":"she knows about the line","target_text":"선 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0488L01U04","expect":{"seed_number":488,"lego_index":1,"known_text":"she heard about the yellow line today","target_text":"오늘 노란 선 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0488L01U05","expect":{"seed_number":488,"lego_index":1,"known_text":"I saw the yellow line just now","target_text":"방금 노란 선 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0488L02B01","expect":{"seed_number":488,"lego_index":2,"known_text":"other side","target_text":"반대편에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0488L02B02","expect":{"seed_number":488,"lego_index":2,"known_text":"other side of the line","target_text":"선 반대편에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0488L02B03","expect":{"seed_number":488,"lego_index":2,"known_text":"other side of yellow line","target_text":"노란 선 반대편에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0488L02U01","expect":{"seed_number":488,"lego_index":2,"known_text":"it's on the other side of that yellow line","target_text":"그 노란 선 반대편에 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0488L02U02","expect":{"seed_number":488,"lego_index":2,"known_text":"she knows about the other side","target_text":"반대편에 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0488L02U03","expect":{"seed_number":488,"lego_index":2,"known_text":"he told me it's on the other side of the line","target_text":"선 반대편에 있다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0488L02U04","expect":{"seed_number":488,"lego_index":2,"known_text":"she heard about the other side today","target_text":"오늘 반대편에 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0488L02U05","expect":{"seed_number":488,"lego_index":2,"known_text":"I saw it on the other side of the yellow line","target_text":"노란 선 반대편에 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L02B01","expect":{"seed_number":489,"lego_index":2,"known_text":"cup","target_text":"잔을"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L02B02","expect":{"seed_number":489,"lego_index":2,"known_text":"cup right now","target_text":"당장 잔을"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L02B03","expect":{"seed_number":489,"lego_index":2,"known_text":"coffee cup","target_text":"커피 한 잔을"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L02U01","expect":{"seed_number":489,"lego_index":2,"known_text":"I heard about the cup","target_text":"잔에 대해 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L02U02","expect":{"seed_number":489,"lego_index":2,"known_text":"she knows about the cup","target_text":"잔을 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L02U03","expect":{"seed_number":489,"lego_index":2,"known_text":"he told me about the cup","target_text":"잔을 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L02U04","expect":{"seed_number":489,"lego_index":2,"known_text":"she heard about the cup today","target_text":"오늘 잔에 대해 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L02U05","expect":{"seed_number":489,"lego_index":2,"known_text":"I saw the coffee cup","target_text":"커피 한 잔을 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L04B01","expect":{"seed_number":489,"lego_index":4,"known_text":"strong","target_text":"진한"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L04B02","expect":{"seed_number":489,"lego_index":4,"known_text":"strong coffee","target_text":"진한 커피"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L04B03","expect":{"seed_number":489,"lego_index":4,"known_text":"strong coffee cup","target_text":"진한 커피 한 잔을"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L04U01","expect":{"seed_number":489,"lego_index":4,"known_text":"I heard about strong coffee","target_text":"진한 커피 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L04U02","expect":{"seed_number":489,"lego_index":4,"known_text":"she knows about strong coffee","target_text":"진한 커피 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L04U03","expect":{"seed_number":489,"lego_index":4,"known_text":"he told me about strong coffee","target_text":"진한 커피 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L04U04","expect":{"seed_number":489,"lego_index":4,"known_text":"she heard about the strong coffee cup","target_text":"진한 커피 한 잔에 대해 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L04U05","expect":{"seed_number":489,"lego_index":4,"known_text":"she can make a strong cup of coffee","target_text":"그녀는 진한 커피 한 잔을 만들 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L05B01","expect":{"seed_number":489,"lego_index":5,"known_text":"make","target_text":"만들어"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L05B02","expect":{"seed_number":489,"lego_index":5,"known_text":"make coffee","target_text":"커피 만들어"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L05B03","expect":{"seed_number":489,"lego_index":5,"known_text":"make a strong cup","target_text":"진한 커피 한 잔을 만들어"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L05U01","expect":{"seed_number":489,"lego_index":5,"known_text":"I heard about making","target_text":"만들어 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L05U02","expect":{"seed_number":489,"lego_index":5,"known_text":"she knows about making","target_text":"만들어 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L05U03","expect":{"seed_number":489,"lego_index":5,"known_text":"he told me about making","target_text":"만들어 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L05U04","expect":{"seed_number":489,"lego_index":5,"known_text":"she heard about making today","target_text":"오늘 만들어 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L05U05","expect":{"seed_number":489,"lego_index":5,"known_text":"I want to make you a strong cup of coffee","target_text":"진한 커피 한 잔을 만들어 주고 싶어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L05U06","expect":{"seed_number":489,"lego_index":5,"known_text":"I'd like you to make me a strong cup of coffee before you leave","target_text":"떠나기 전에 진한 커피 한 잔을 만들어 주면 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L05U07","expect":{"seed_number":489,"lego_index":5,"known_text":"can you make me a strong cup of coffee right now","target_text":"지금 당장 진한 커피 한 잔을 만들어 줄 수 있어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L05U08","expect":{"seed_number":489,"lego_index":5,"known_text":"I'd like you to make me a strong cup of coffee as quickly as possible","target_text":"가능한 한 빨리 진한 커피 한 잔을 만들어 주면 좋겠어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L06B01","expect":{"seed_number":489,"lego_index":6,"known_text":"if not","target_text":"않으면"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L06B02","expect":{"seed_number":489,"lego_index":6,"known_text":"if not today","target_text":"오늘 않으면"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L06B03","expect":{"seed_number":489,"lego_index":6,"known_text":"if not together","target_text":"같이 않으면"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L06U01","expect":{"seed_number":489,"lego_index":6,"known_text":"if you don't make me a strong cup of coffee right now","target_text":"지금 당장 진한 커피 한 잔을 만들어 주지 않으면"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L06U02","expect":{"seed_number":489,"lego_index":6,"known_text":"if she doesn't give","target_text":"주지 않으면"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L06U03","expect":{"seed_number":489,"lego_index":6,"known_text":"if he doesn't make and give","target_text":"만들어 주지 않으면"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L06U04","expect":{"seed_number":489,"lego_index":6,"known_text":"I heard about if not","target_text":"않으면 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0489L06U05","expect":{"seed_number":489,"lego_index":6,"known_text":"she knows about if not","target_text":"않으면 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0490L01B01","expect":{"seed_number":490,"lego_index":1,"known_text":"trust","target_text":"믿지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0490L01B02","expect":{"seed_number":490,"lego_index":1,"known_text":"trust today","target_text":"오늘 믿지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0490L01B03","expect":{"seed_number":490,"lego_index":1,"known_text":"trust together","target_text":"같이 믿지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0490L01U01","expect":{"seed_number":490,"lego_index":1,"known_text":"I heard about trusting","target_text":"믿지 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0490L01U02","expect":{"seed_number":490,"lego_index":1,"known_text":"she knows about trusting","target_text":"믿지 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0490L01U03","expect":{"seed_number":490,"lego_index":1,"known_text":"he told me about trusting","target_text":"믿지 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0490L01U04","expect":{"seed_number":490,"lego_index":1,"known_text":"she heard about not trusting today","target_text":"오늘 믿지 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0490L01U05","expect":{"seed_number":490,"lego_index":1,"known_text":"I won't trust","target_text":"믿지 않을 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0490L01U06","expect":{"seed_number":490,"lego_index":1,"known_text":"why don't you trust anyone","target_text":"왜 아무도 믿지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0490L02B01","expect":{"seed_number":490,"lego_index":2,"known_text":"absolutely","target_text":"절대"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0490L02B02","expect":{"seed_number":490,"lego_index":2,"known_text":"absolutely not trust","target_text":"절대 믿지"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0490L02B03","expect":{"seed_number":490,"lego_index":2,"known_text":"absolutely today","target_text":"오늘 절대"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0490L02U01","expect":{"seed_number":490,"lego_index":2,"known_text":"I heard absolutely","target_text":"절대 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0490L02U02","expect":{"seed_number":490,"lego_index":2,"known_text":"she knows absolutely","target_text":"절대 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0490L02U03","expect":{"seed_number":490,"lego_index":2,"known_text":"he told me absolutely","target_text":"절대 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0490L02U04","expect":{"seed_number":490,"lego_index":2,"known_text":"she heard about absolutely today","target_text":"오늘 절대 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0490L02U05","expect":{"seed_number":490,"lego_index":2,"known_text":"I will absolutely never trust","target_text":"절대 믿지 않을 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0490L02B04","expect":{"seed_number":490,"lego_index":2,"known_text":"never going to trust","target_text":"절대 믿지 않을 거예요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0491L01B01","expect":{"seed_number":491,"lego_index":1,"known_text":"appearance","target_text":"모습이"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0491L01B02","expect":{"seed_number":491,"lego_index":1,"known_text":"appearance today","target_text":"오늘 모습이"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0491L01B03","expect":{"seed_number":491,"lego_index":1,"known_text":"appearance together","target_text":"같이 모습이"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0491L01U01","expect":{"seed_number":491,"lego_index":1,"known_text":"I heard about the appearance","target_text":"모습이 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0491L01U02","expect":{"seed_number":491,"lego_index":1,"known_text":"she knows about the way","target_text":"모습이 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0491L01U03","expect":{"seed_number":491,"lego_index":1,"known_text":"he told me about the appearance","target_text":"모습이 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0491L01U04","expect":{"seed_number":491,"lego_index":1,"known_text":"she heard about the appearance today","target_text":"오늘 모습이 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0491L01U05","expect":{"seed_number":491,"lego_index":1,"known_text":"I saw the appearance just now","target_text":"방금 모습이 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0491L02B01","expect":{"seed_number":491,"lego_index":2,"known_text":"trying to help","target_text":"도와주려고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0491L02B02","expect":{"seed_number":491,"lego_index":2,"known_text":"trying to help today","target_text":"오늘 도와주려고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0491L02B03","expect":{"seed_number":491,"lego_index":2,"known_text":"way of trying to help","target_text":"도와주려고 하는 모습이"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0491L02U01","expect":{"seed_number":491,"lego_index":2,"known_text":"I love the way you try to help","target_text":"도와주려고 하는 모습이 좋아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0491L02U02","expect":{"seed_number":491,"lego_index":2,"known_text":"I heard about trying to help","target_text":"도와주려고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0491L02U03","expect":{"seed_number":491,"lego_index":2,"known_text":"she knows about trying to help","target_text":"도와주려고 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0491L02U04","expect":{"seed_number":491,"lego_index":2,"known_text":"he told me about trying to help","target_text":"도와주려고 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0491L02U05","expect":{"seed_number":491,"lego_index":2,"known_text":"she heard about trying to help today","target_text":"오늘 도와주려고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0492L02B01","expect":{"seed_number":492,"lego_index":2,"known_text":"places","target_text":"장소들"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0492L02B02","expect":{"seed_number":492,"lego_index":2,"known_text":"those places","target_text":"그 장소들"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0492L02B03","expect":{"seed_number":492,"lego_index":2,"known_text":"those places where","target_text":"그 장소들 중에 어디가"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0492L02U01","expect":{"seed_number":492,"lego_index":2,"known_text":"which of those places do you think is the most interesting?","target_text":"그 장소들 중에 어디가 가장 재미있는 것 같아요?"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0492L02U02","expect":{"seed_number":492,"lego_index":2,"known_text":"I heard about the places","target_text":"장소들 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0492L02U03","expect":{"seed_number":492,"lego_index":2,"known_text":"she knows the places","target_text":"장소들 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0492L02U04","expect":{"seed_number":492,"lego_index":2,"known_text":"he told me about those places","target_text":"그 장소들 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0492L02U05","expect":{"seed_number":492,"lego_index":2,"known_text":"I saw those places today","target_text":"오늘 그 장소들 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0493L01B01","expect":{"seed_number":493,"lego_index":1,"known_text":"come","target_text":"올"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0493L01B02","expect":{"seed_number":493,"lego_index":1,"known_text":"what's coming","target_text":"뭐가 올"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0493L01B03","expect":{"seed_number":493,"lego_index":1,"known_text":"coming next","target_text":"다음에 올"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0493L01U01","expect":{"seed_number":493,"lego_index":1,"known_text":"what's going to come next?","target_text":"다음에 뭐가 올 거예요?"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0493L01U02","expect":{"seed_number":493,"lego_index":1,"known_text":"she knows what's coming next","target_text":"다음에 뭐가 올 건지 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0493L01U03","expect":{"seed_number":493,"lego_index":1,"known_text":"I heard about what's coming","target_text":"뭐가 올 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0493L01U04","expect":{"seed_number":493,"lego_index":1,"known_text":"she knows about what's coming","target_text":"뭐가 올 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0493L01U05","expect":{"seed_number":493,"lego_index":1,"known_text":"he told me about what's coming next","target_text":"다음에 올 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L01B01","expect":{"seed_number":494,"lego_index":1,"known_text":"first","target_text":"첫"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L01B02","expect":{"seed_number":494,"lego_index":1,"known_text":"first today","target_text":"오늘 첫"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L01B03","expect":{"seed_number":494,"lego_index":1,"known_text":"first together","target_text":"같이 첫"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L01U01","expect":{"seed_number":494,"lego_index":1,"known_text":"I heard about the first","target_text":"첫 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L01U02","expect":{"seed_number":494,"lego_index":1,"known_text":"she knows about the first","target_text":"첫 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L01U03","expect":{"seed_number":494,"lego_index":1,"known_text":"he told me about the first","target_text":"첫 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L01U04","expect":{"seed_number":494,"lego_index":1,"known_text":"she heard about the first today","target_text":"오늘 첫 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L01U05","expect":{"seed_number":494,"lego_index":1,"known_text":"I saw the first just now","target_text":"방금 첫 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L02B01","expect":{"seed_number":494,"lego_index":2,"known_text":"ordinal","target_text":"번째"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L02B02","expect":{"seed_number":494,"lego_index":2,"known_text":"first","target_text":"첫 번째"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L02B03","expect":{"seed_number":494,"lego_index":2,"known_text":"first today","target_text":"오늘 첫 번째"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L02U01","expect":{"seed_number":494,"lego_index":2,"known_text":"I heard about the ordinal","target_text":"번째 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L02U02","expect":{"seed_number":494,"lego_index":2,"known_text":"she knows about the first one","target_text":"첫 번째 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L02U03","expect":{"seed_number":494,"lego_index":2,"known_text":"he told me about the first","target_text":"첫 번째 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L02U04","expect":{"seed_number":494,"lego_index":2,"known_text":"she heard about the first today","target_text":"오늘 첫 번째 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L02U05","expect":{"seed_number":494,"lego_index":2,"known_text":"I saw the first just now","target_text":"방금 첫 번째 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L03B01","expect":{"seed_number":494,"lego_index":3,"known_text":"of the show","target_text":"공연의"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L03B02","expect":{"seed_number":494,"lego_index":3,"known_text":"first part of the show","target_text":"공연의 첫 번째"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L03B03","expect":{"seed_number":494,"lego_index":3,"known_text":"show today","target_text":"오늘 공연의"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L03U01","expect":{"seed_number":494,"lego_index":3,"known_text":"I heard about the show","target_text":"공연의 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L03U02","expect":{"seed_number":494,"lego_index":3,"known_text":"she knows about the show","target_text":"공연의 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L03U03","expect":{"seed_number":494,"lego_index":3,"known_text":"he told me about the show","target_text":"공연의 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L03U04","expect":{"seed_number":494,"lego_index":3,"known_text":"she heard about the show today","target_text":"오늘 공연의 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L03U05","expect":{"seed_number":494,"lego_index":3,"known_text":"I saw the first part of the show","target_text":"공연의 첫 번째 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L04B01","expect":{"seed_number":494,"lego_index":4,"known_text":"part","target_text":"부분이"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L04B02","expect":{"seed_number":494,"lego_index":4,"known_text":"first part","target_text":"첫 번째 부분이"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L04B03","expect":{"seed_number":494,"lego_index":4,"known_text":"first part of the show","target_text":"공연의 첫 번째 부분이"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L04U01","expect":{"seed_number":494,"lego_index":4,"known_text":"I heard about the part","target_text":"부분이 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L04U02","expect":{"seed_number":494,"lego_index":4,"known_text":"she knows about the first part","target_text":"첫 번째 부분이 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L04U03","expect":{"seed_number":494,"lego_index":4,"known_text":"he told me about the first part of the show","target_text":"공연의 첫 번째 부분이 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L04U04","expect":{"seed_number":494,"lego_index":4,"known_text":"she heard about the part today","target_text":"오늘 부분이 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L04U05","expect":{"seed_number":494,"lego_index":4,"known_text":"I saw the first part of the show","target_text":"공연의 첫 번째 부분이 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L05B01","expect":{"seed_number":494,"lego_index":5,"known_text":"happens","target_text":"일어나요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L05B02","expect":{"seed_number":494,"lego_index":5,"known_text":"what happens","target_text":"뭐가 일어나요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L05B03","expect":{"seed_number":494,"lego_index":5,"known_text":"happens after","target_text":"끝나면 뭐가 일어나요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L05U01","expect":{"seed_number":494,"lego_index":5,"known_text":"what happens after the first part of the show?","target_text":"공연의 첫 번째 부분이 끝나면 뭐가 일어나요?"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L05U02","expect":{"seed_number":494,"lego_index":5,"known_text":"she knows what happens","target_text":"뭐가 일어나요 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L05U03","expect":{"seed_number":494,"lego_index":5,"known_text":"I heard about what happens","target_text":"뭐가 일어나요 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L05U04","expect":{"seed_number":494,"lego_index":5,"known_text":"he told me what happens","target_text":"뭐가 일어나요 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0494L05U05","expect":{"seed_number":494,"lego_index":5,"known_text":"she heard about what happens today","target_text":"오늘 뭐가 일어나요 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0495L01B01","expect":{"seed_number":495,"lego_index":1,"known_text":"important","target_text":"중요할"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0495L01B02","expect":{"seed_number":495,"lego_index":1,"known_text":"when important","target_text":"중요할 때"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0495L01B03","expect":{"seed_number":495,"lego_index":1,"known_text":"important today","target_text":"오늘 중요할"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0495L01U01","expect":{"seed_number":495,"lego_index":1,"known_text":"I heard about when it matters","target_text":"중요할 때 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0495L01U02","expect":{"seed_number":495,"lego_index":1,"known_text":"she knows when it matters","target_text":"중요할 때 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0495L01U03","expect":{"seed_number":495,"lego_index":1,"known_text":"he told me when it matters","target_text":"중요할 때 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0495L01U04","expect":{"seed_number":495,"lego_index":1,"known_text":"she heard when it matters today","target_text":"오늘 중요할 때 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0495L01U05","expect":{"seed_number":495,"lego_index":1,"known_text":"I saw it when it mattered","target_text":"중요할 때 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0496L01B01","expect":{"seed_number":496,"lego_index":1,"known_text":"lose","target_text":"질"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0496L01B02","expect":{"seed_number":496,"lego_index":1,"known_text":"lose today","target_text":"오늘 질"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0496L01B03","expect":{"seed_number":496,"lego_index":1,"known_text":"lose together","target_text":"같이 질"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0496L01U01","expect":{"seed_number":496,"lego_index":1,"known_text":"I heard about losing","target_text":"질 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0496L01U02","expect":{"seed_number":496,"lego_index":1,"known_text":"she knows about losing","target_text":"질 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0496L01U03","expect":{"seed_number":496,"lego_index":1,"known_text":"he told me about losing","target_text":"질 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0496L01U04","expect":{"seed_number":496,"lego_index":1,"known_text":"she heard about losing today","target_text":"오늘 질 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0496L01U05","expect":{"seed_number":496,"lego_index":1,"known_text":"I saw her losing","target_text":"질 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0496L02B01","expect":{"seed_number":496,"lego_index":2,"known_text":"plan","target_text":"계획은"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0496L02B02","expect":{"seed_number":496,"lego_index":2,"known_text":"no plan","target_text":"계획은 없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0496L02B03","expect":{"seed_number":496,"lego_index":2,"known_text":"plan to lose","target_text":"질 계획은"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0496L02U01","expect":{"seed_number":496,"lego_index":2,"known_text":"I'm not planning to lose when it really matters","target_text":"정말 중요할 때 질 계획은 없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0496L02U02","expect":{"seed_number":496,"lego_index":2,"known_text":"I have no plan to lose","target_text":"질 계획은 없어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0496L02U03","expect":{"seed_number":496,"lego_index":2,"known_text":"I heard about the plan","target_text":"계획은 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0496L02U04","expect":{"seed_number":496,"lego_index":2,"known_text":"she knows about the plan","target_text":"계획은 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0496L02U05","expect":{"seed_number":496,"lego_index":2,"known_text":"he told me there's no plan","target_text":"계획은 없다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0497L01B01","expect":{"seed_number":497,"lego_index":1,"known_text":"thing","target_text":"것"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0497L01B02","expect":{"seed_number":497,"lego_index":1,"known_text":"the thing today","target_text":"오늘 것"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0497L01B03","expect":{"seed_number":497,"lego_index":1,"known_text":"the thing together","target_text":"같이 것"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0497L01U01","expect":{"seed_number":497,"lego_index":1,"known_text":"I heard about the thing","target_text":"것 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0497L01U02","expect":{"seed_number":497,"lego_index":1,"known_text":"she knows the thing","target_text":"것 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0497L01U03","expect":{"seed_number":497,"lego_index":1,"known_text":"he told me the thing","target_text":"것 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0497L01U04","expect":{"seed_number":497,"lego_index":1,"known_text":"she heard the thing today","target_text":"오늘 것 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0497L01U05","expect":{"seed_number":497,"lego_index":1,"known_text":"I saw the thing just now","target_text":"방금 것 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0497L02B01","expect":{"seed_number":497,"lego_index":2,"known_text":"must sleep","target_text":"자야"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0497L02B02","expect":{"seed_number":497,"lego_index":2,"known_text":"must sleep today","target_text":"오늘 자야"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0497L02B03","expect":{"seed_number":497,"lego_index":2,"known_text":"must sleep together","target_text":"같이 자야"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0497L02U01","expect":{"seed_number":497,"lego_index":2,"known_text":"I heard about having to sleep","target_text":"자야 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0497L02U02","expect":{"seed_number":497,"lego_index":2,"known_text":"she knows she must sleep","target_text":"자야 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0497L02U03","expect":{"seed_number":497,"lego_index":2,"known_text":"he told me about having to sleep","target_text":"자야 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0497L02U04","expect":{"seed_number":497,"lego_index":2,"known_text":"she heard about having to sleep today","target_text":"오늘 자야 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0497L02U05","expect":{"seed_number":497,"lego_index":2,"known_text":"I think she needs some sleep","target_text":"좀 자야 할 것 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0499L01B01","expect":{"seed_number":499,"lego_index":1,"known_text":"maybe","target_text":"아마"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0499L01B02","expect":{"seed_number":499,"lego_index":1,"known_text":"maybe today","target_text":"오늘 아마"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0499L01B03","expect":{"seed_number":499,"lego_index":1,"known_text":"maybe together","target_text":"같이 아마"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0499L01U01","expect":{"seed_number":499,"lego_index":1,"known_text":"I heard maybe","target_text":"아마 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0499L01U02","expect":{"seed_number":499,"lego_index":1,"known_text":"she knows maybe","target_text":"아마 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0499L01U03","expect":{"seed_number":499,"lego_index":1,"known_text":"he told me maybe","target_text":"아마 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0499L01U04","expect":{"seed_number":499,"lego_index":1,"known_text":"she heard maybe today","target_text":"오늘 아마 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0499L01U05","expect":{"seed_number":499,"lego_index":1,"known_text":"I saw it maybe","target_text":"아마 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0499L02B01","expect":{"seed_number":499,"lego_index":2,"known_text":"open and","target_text":"열고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0499L02B02","expect":{"seed_number":499,"lego_index":2,"known_text":"open the door","target_text":"문을 열고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0499L02B03","expect":{"seed_number":499,"lego_index":2,"known_text":"open and today","target_text":"오늘 열고"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0499L02U01","expect":{"seed_number":499,"lego_index":2,"known_text":"I heard about opening","target_text":"열고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0499L02U02","expect":{"seed_number":499,"lego_index":2,"known_text":"she knows about opening","target_text":"열고 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0499L02U03","expect":{"seed_number":499,"lego_index":2,"known_text":"he told me about opening","target_text":"열고 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0499L02U04","expect":{"seed_number":499,"lego_index":2,"known_text":"she heard about opening the door","target_text":"문을 열고 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0499L02U05","expect":{"seed_number":499,"lego_index":2,"known_text":"I saw the door opening","target_text":"문을 열고 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0499L03B01","expect":{"seed_number":499,"lego_index":3,"known_text":"close","target_text":"닫아야"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0499L03B02","expect":{"seed_number":499,"lego_index":3,"known_text":"close the window","target_text":"창문을 닫아야"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0499L03B03","expect":{"seed_number":499,"lego_index":3,"known_text":"open and close","target_text":"열고 창문을 닫아야"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0499L03U01","expect":{"seed_number":499,"lego_index":3,"known_text":"maybe we should open the door and close the window","target_text":"아마 문을 열고 창문을 닫아야 할 것 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0499L03U02","expect":{"seed_number":499,"lego_index":3,"known_text":"she should close the window","target_text":"창문을 닫아야 할 것 같아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0499L03U03","expect":{"seed_number":499,"lego_index":3,"known_text":"I heard about closing the window","target_text":"창문을 닫아야 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0499L03U04","expect":{"seed_number":499,"lego_index":3,"known_text":"she knows she must close the window","target_text":"창문을 닫아야 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0499L03U05","expect":{"seed_number":499,"lego_index":3,"known_text":"he told me to close the window","target_text":"창문을 닫아야 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0500L01B01","expect":{"seed_number":500,"lego_index":1,"known_text":"two","target_text":"두"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0500L01B02","expect":{"seed_number":500,"lego_index":1,"known_text":"two today","target_text":"오늘 두"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0500L01B03","expect":{"seed_number":500,"lego_index":1,"known_text":"two together","target_text":"같이 두"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0500L01U01","expect":{"seed_number":500,"lego_index":1,"known_text":"I heard about two","target_text":"두 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0500L01U02","expect":{"seed_number":500,"lego_index":1,"known_text":"she knows about two","target_text":"두 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0500L01U03","expect":{"seed_number":500,"lego_index":1,"known_text":"he told me about two","target_text":"두 했다고 했어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0500L01U04","expect":{"seed_number":500,"lego_index":1,"known_text":"she heard about two today","target_text":"오늘 두 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0500L01U05","expect":{"seed_number":500,"lego_index":1,"known_text":"I saw two just now","target_text":"방금 두 봤어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0500L02B01","expect":{"seed_number":500,"lego_index":2,"known_text":"between","target_text":"사이에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0500L02B02","expect":{"seed_number":500,"lego_index":2,"known_text":"between the two","target_text":"두 사이에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0500L02B03","expect":{"seed_number":500,"lego_index":2,"known_text":"between the two girls","target_text":"두 여자아이 사이에"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0500L02U01","expect":{"seed_number":500,"lego_index":2,"known_text":"why don't you want to sit between the two girls?","target_text":"왜 두 여자아이 사이에 앉고 싶지 않아요?"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0500L02U02","expect":{"seed_number":500,"lego_index":2,"known_text":"she doesn't want to sit between the two girls","target_text":"두 여자아이 사이에 앉고 싶지 않아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0500L02U03","expect":{"seed_number":500,"lego_index":2,"known_text":"I heard about between","target_text":"사이에 들었어요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0500L02U04","expect":{"seed_number":500,"lego_index":2,"known_text":"she knows about between","target_text":"사이에 알아요"}}
+{"op":"phrase.delete","phrase_id":"kor_for_eng:S0500L02U05","expect":{"seed_number":500,"lego_index":2,"known_text":"he told me about between the two","target_text":"두 사이에 했다고 했어요"}}
+{"op":"seed.update","seed_number":432,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":433,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":434,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":435,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":436,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":437,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":438,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":439,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":440,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":441,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":442,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":443,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":444,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":445,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":446,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":447,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":448,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":449,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":450,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":451,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":452,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":453,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":454,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":455,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":456,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":457,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":458,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":459,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":460,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":461,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":462,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":463,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":464,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":465,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":466,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":467,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":468,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":469,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":470,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":471,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":473,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":474,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":475,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":476,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":477,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":478,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":479,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":480,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":481,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":482,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":483,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":484,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":485,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":486,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":487,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":488,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":489,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":490,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":491,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":492,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":493,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":494,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":495,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":496,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":497,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":499,"set":{"approved_at":null}}
+{"op":"seed.update","seed_number":500,"set":{"approved_at":null}}
