@@ -1,0 +1,899 @@
+{
+ "at": "2026-11-27T02:59:02.225Z",
+ "on": "nightly copy (copy-read validate)",
+ "seeds_checked": 668,
+ "seeds_passed": 523,
+ "failures": [
+  {
+   "seed": 8,
+   "issues": [
+    "L3: 1 duplicate phrase(s) within this LEGO: \"I'm going to try to explain what I mean\""
+   ]
+  },
+  {
+   "seed": 10,
+   "issues": [
+    "L3: 1 duplicate phrase(s) within this LEGO: \"I'm not sure if I can remember the whole sentence\""
+   ]
+  },
+  {
+   "seed": 12,
+   "issues": [
+    "L4: 1 duplicate phrase(s) within this LEGO: \"I wouldn't like to guess what's going to happen tomorrow\""
+   ]
+  },
+  {
+   "seed": 14,
+   "issues": [
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "seed": 15,
+   "issues": [
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "seed": 17,
+   "issues": [
+    "L3: 1 duplicate phrase(s) within this LEGO: \"She wants to find out what the answer is.\""
+   ]
+  },
+  {
+   "seed": 18,
+   "issues": [
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "seed": 23,
+   "issues": [
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "seed": 24,
+   "issues": [
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "seed": 27,
+   "issues": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "seed": 29,
+   "issues": [
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "seed": 30,
+   "issues": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 34,
+   "issues": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"He doesn't want to be quiet when other people are here.\""
+   ]
+  },
+  {
+   "seed": 35,
+   "issues": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 37,
+   "issues": [
+    "L4: 1 duplicate phrase(s) within this LEGO: \"I started to think about it carefully last month\""
+   ]
+  },
+  {
+   "seed": 49,
+   "issues": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 76,
+   "issues": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 108,
+   "issues": [
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "seed": 139,
+   "issues": [
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 141,
+   "issues": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 143,
+   "issues": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 161,
+   "issues": [
+    "L2: 5 phrase(s) fail containment",
+    "L2: BUILD: need 3+, got 0 (5 component phrases excluded)"
+   ]
+  },
+  {
+   "seed": 164,
+   "issues": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"An interesting book\""
+   ]
+  },
+  {
+   "seed": 177,
+   "issues": [
+    "L1: USE: need 5+, got 4",
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 180,
+   "issues": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 185,
+   "issues": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 186,
+   "issues": [
+    "L3: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 190,
+   "issues": [
+    "L2: USE: need 5+, got 3",
+    "L3: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 193,
+   "issues": [
+    "L3: USE: need 5+, got 3"
+   ]
+  },
+  {
+   "seed": 196,
+   "issues": [
+    "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "seed": 213,
+   "issues": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 214,
+   "issues": [
+    "L3: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 215,
+   "issues": [
+    "L1: 7 phrase(s) fail containment",
+    "L1: BUILD: need 3+, got 1 (7 component phrases excluded)"
+   ]
+  },
+  {
+   "seed": 217,
+   "issues": [
+    "L1: USE: need 5+, got 1"
+   ]
+  },
+  {
+   "seed": 223,
+   "issues": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 235,
+   "issues": [
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 238,
+   "issues": [
+    "L1: BUILD: need 3+, got 0"
+   ]
+  },
+  {
+   "seed": 241,
+   "issues": [
+    "L1: USE: need 5+, got 3"
+   ]
+  },
+  {
+   "seed": 248,
+   "issues": [
+    "L3: 1 phrase(s) fail containment",
+    "L3: BUILD: need 3+, got 1 (1 component phrases excluded) (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "seed": 259,
+   "issues": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 261,
+   "issues": [
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 262,
+   "issues": [
+    "L2: USE: need 5+, got 2"
+   ]
+  },
+  {
+   "seed": 263,
+   "issues": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"I don't know who you mean.\""
+   ]
+  },
+  {
+   "seed": 264,
+   "issues": [
+    "L1: USE: need 5+, got 3"
+   ]
+  },
+  {
+   "seed": 265,
+   "issues": [
+    "L1: USE: need 5+, got 3"
+   ]
+  },
+  {
+   "seed": 266,
+   "issues": [
+    "L1: USE: need 5+, got 1",
+    "L2: USE: need 5+, got 2"
+   ]
+  },
+  {
+   "seed": 267,
+   "issues": [
+    "L1: USE: need 5+, got 1",
+    "L2: USE: need 5+, got 3"
+   ]
+  },
+  {
+   "seed": 268,
+   "issues": [
+    "L2: USE: need 5+, got 2"
+   ]
+  },
+  {
+   "seed": 269,
+   "issues": [
+    "L1: USE: need 5+, got 0",
+    "L2: USE: need 5+, got 4",
+    "L3: USE: need 5+, got 2"
+   ]
+  },
+  {
+   "seed": 270,
+   "issues": [
+    "L1: USE: need 5+, got 1",
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 271,
+   "issues": [
+    "L1: USE: need 5+, got 2"
+   ]
+  },
+  {
+   "seed": 272,
+   "issues": [
+    "L1: USE: need 5+, got 3",
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 274,
+   "issues": [
+    "L1: USE: need 5+, got 3",
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 277,
+   "issues": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 279,
+   "issues": [
+    "L1: USE: need 5+, got 4",
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 280,
+   "issues": [
+    "L1: USE: need 5+, got 4",
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 281,
+   "issues": [
+    "L3: USE: need 5+, got 1"
+   ]
+  },
+  {
+   "seed": 283,
+   "issues": [
+    "L1: USE: need 5+, got 0"
+   ]
+  },
+  {
+   "seed": 288,
+   "issues": [
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 289,
+   "issues": [
+    "L3: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "seed": 291,
+   "issues": [
+    "L2: USE: need 5+, got 0"
+   ]
+  },
+  {
+   "seed": 297,
+   "issues": [
+    "L2: USE: need 5+, got 2"
+   ]
+  },
+  {
+   "seed": 312,
+   "issues": [
+    "L3: 1 duplicate phrase(s) within this LEGO: \"She's going to be there tomorrow night.\""
+   ]
+  },
+  {
+   "seed": 316,
+   "issues": [
+    "L4: 1 duplicate phrase(s) within this LEGO: \"She's going to be there on Monday.\""
+   ]
+  },
+  {
+   "seed": 318,
+   "issues": [
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "seed": 338,
+   "issues": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "seed": 342,
+   "issues": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 343,
+   "issues": [
+    "L1: 2 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 344,
+   "issues": [
+    "L1: 1 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 345,
+   "issues": [
+    "L1: 1 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 348,
+   "issues": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"She didn't want to know what was going to happen.\""
+   ]
+  },
+  {
+   "seed": 352,
+   "issues": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 355,
+   "issues": [
+    "L2: 2 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 358,
+   "issues": [
+    "L3: 1 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 363,
+   "issues": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "seed": 364,
+   "issues": [
+    "L3: 1 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 365,
+   "issues": [
+    "L1: 6 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 367,
+   "issues": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 374,
+   "issues": [
+    "L1: 1 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 377,
+   "issues": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 385,
+   "issues": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"Did you agree with her?\""
+   ]
+  },
+  {
+   "seed": 389,
+   "issues": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"That person over there.\""
+   ]
+  },
+  {
+   "seed": 390,
+   "issues": [
+    "L2: 1 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 391,
+   "issues": [
+    "L1: 1 phrase(s) fail containment",
+    "L2: 1 duplicate phrase(s) within this LEGO: \"the one who is walking towards the bus\""
+   ]
+  },
+  {
+   "seed": 392,
+   "issues": [
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "seed": 396,
+   "issues": [
+    "L2: 3 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 398,
+   "issues": [
+    "L3: 1 duplicate phrase(s) within this LEGO: \"We want to become more patient with our children.\""
+   ]
+  },
+  {
+   "seed": 413,
+   "issues": [
+    "L3: 1 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 415,
+   "issues": [
+    "L2: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "seed": 424,
+   "issues": [
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 427,
+   "issues": [
+    "L1: 1 phrase(s) fail containment",
+    "L3: 1 duplicate phrase(s) within this LEGO: \"They wouldn't like you to think that they're bored.\""
+   ]
+  },
+  {
+   "seed": 437,
+   "issues": [
+    "L3: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 444,
+   "issues": [
+    "L1: 1 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 447,
+   "issues": [
+    "L3: 1 duplicate phrase(s) within this LEGO: \"Will they be able to drive us home after the meal?\""
+   ]
+  },
+  {
+   "seed": 458,
+   "issues": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 466,
+   "issues": [
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 468,
+   "issues": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"It's a big world.\""
+   ]
+  },
+  {
+   "seed": 474,
+   "issues": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 479,
+   "issues": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"it's the least I could do\""
+   ]
+  },
+  {
+   "seed": 484,
+   "issues": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"It's meant to be a challenge.\""
+   ]
+  },
+  {
+   "seed": 485,
+   "issues": [
+    "L4: BUILD: need 3+, got 1 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "seed": 489,
+   "issues": [
+    "L4: 1 duplicate phrase(s) within this LEGO: \"If you don't make me a strong cup of coffee right now.\""
+   ]
+  },
+  {
+   "seed": 492,
+   "issues": [
+    "L5: 1 duplicate phrase(s) within this LEGO: \"Which of those places do you think is the most interesting?\""
+   ]
+  },
+  {
+   "seed": 503,
+   "issues": [
+    "L3: 1 duplicate phrase(s) within this LEGO: \"I hate making trouble but that one's mine.\""
+   ]
+  },
+  {
+   "seed": 506,
+   "issues": [
+    "L3: USE: need 5+, got 4",
+    "L4: 1 duplicate phrase(s) within this LEGO: \"I used to live around here years ago before we moved.\""
+   ]
+  },
+  {
+   "seed": 507,
+   "issues": [
+    "L1: 2 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 511,
+   "issues": [
+    "L4: 1 duplicate phrase(s) within this LEGO: \"The news took several hours to reach everyone in the office.\""
+   ]
+  },
+  {
+   "seed": 512,
+   "issues": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"Can you hold the door open while I fetch the keys?\""
+   ]
+  },
+  {
+   "seed": 513,
+   "issues": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 523,
+   "issues": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 525,
+   "issues": [
+    "L1: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 530,
+   "issues": [
+    "L1: USE: need 5+, got 3"
+   ]
+  },
+  {
+   "seed": 532,
+   "issues": [
+    "L2: USE: need 5+, got 2"
+   ]
+  },
+  {
+   "seed": 535,
+   "issues": [
+    "L2: 1 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 544,
+   "issues": [
+    "L3: 1 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 548,
+   "issues": [
+    "L2: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "seed": 555,
+   "issues": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)",
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 558,
+   "issues": [
+    "L1: 1 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 559,
+   "issues": [
+    "L3: 1 duplicate phrase(s) within this LEGO: \"Have you found the path through the wood?\""
+   ]
+  },
+  {
+   "seed": 561,
+   "issues": [
+    "L1: 2 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 568,
+   "issues": [
+    "L3: 1 duplicate phrase(s) within this LEGO: \"I'm expecting to see an improvement next time we meet\""
+   ]
+  },
+  {
+   "seed": 570,
+   "issues": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"How much are you willing to pay for your ticket?\""
+   ]
+  },
+  {
+   "seed": 577,
+   "issues": [
+    "L2: USE: need 5+, got 4",
+    "L3: 1 duplicate phrase(s) within this LEGO: \"we've been waiting for the news from the hospital\""
+   ]
+  },
+  {
+   "seed": 578,
+   "issues": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"Somewhere warmer.\""
+   ]
+  },
+  {
+   "seed": 588,
+   "issues": [
+    "L1: 1 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 591,
+   "issues": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"She followed me down to the shops.\""
+   ]
+  },
+  {
+   "seed": 598,
+   "issues": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"he's heard a thousand stories about what they were doing\""
+   ]
+  },
+  {
+   "seed": 601,
+   "issues": [
+    "L1: BUILD: need 3+, got 2 (1 bare-LEGO phrase(s) don't count — a BUILD/USE phrase is the LEGO used IN a phrase with prior vocabulary, never the LEGO alone)"
+   ]
+  },
+  {
+   "seed": 602,
+   "issues": [
+    "L2: 1 duplicate phrase(s) within this LEGO: \"How it started in the first place.\""
+   ]
+  },
+  {
+   "seed": 604,
+   "issues": [
+    "L1: 1 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 605,
+   "issues": [
+    "L1: 1 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 613,
+   "issues": [
+    "L1: 2 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 616,
+   "issues": [
+    "L1: 1 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 619,
+   "issues": [
+    "L1: 1 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 620,
+   "issues": [
+    "L2: 1 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 621,
+   "issues": [
+    "L3: 1 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 622,
+   "issues": [
+    "L1: 1 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 623,
+   "issues": [
+    "L2: USE: need 5+, got 4"
+   ]
+  },
+  {
+   "seed": 627,
+   "issues": [
+    "L1: 1 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 629,
+   "issues": [
+    "L1: 1 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 631,
+   "issues": [
+    "L1: 2 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 636,
+   "issues": [
+    "L1: 1 phrase(s) fail containment"
+   ]
+  },
+  {
+   "seed": 653,
+   "issues": [
+    "L1: USE: need 5+, got 2"
+   ]
+  },
+  {
+   "seed": 654,
+   "issues": [
+    "L1: 1 duplicate phrase(s) within this LEGO: \"I'm not sure if I can help you, sir.\""
+   ]
+  },
+  {
+   "seed": 667,
+   "issues": [
+    "L1: USE: need 5+, got 4"
+   ]
+  }
+ ]
+}
