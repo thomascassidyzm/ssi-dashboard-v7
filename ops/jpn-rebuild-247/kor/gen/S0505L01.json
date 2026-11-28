@@ -1,0 +1,29 @@
+{
+ "lego": {
+  "seed_number": 505,
+  "lego_index": 1,
+  "known": "so that not",
+  "target": "않도록"
+ },
+ "at": "2026-11-26T12:47:54.928Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 218,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"could we cut the number of pupils so that they don't fight\" (unknown gloss \"pupils\")",
+  "USE \"could we cut the number of pupils so that they don't fight\" → \"싸우지 않도록 학생 수를 줄일 수 있을까요\": popty:knownSide [{\"known\":\"could we cut the number of pupils so that they don't fight\",\"target\":\"싸우지 않도록 학생 수를 줄일 수 있을까요\",\"problem\":\"unknown gloss \\\"pupils\\\"\"}]",
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"so that not\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

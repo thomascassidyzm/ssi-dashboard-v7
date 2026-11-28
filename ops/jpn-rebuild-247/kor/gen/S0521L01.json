@@ -1,0 +1,26 @@
+{
+ "lego": {
+  "seed_number": 521,
+  "lego_index": 1,
+  "known": "afraid",
+  "target": "봐"
+ },
+ "at": "2026-11-26T17:47:56.150Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 237,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"I went directly because I was afraid I'd be late if I ate\" (unknown gloss \"ate\")",
+  "USE \"I went directly because I was afraid I'd be late if I ate\" → \"먹으면 늦을까 봐 바로 갔어요\": popty:knownSide [{\"known\":\"I went directly because I was afraid I'd be late if I ate\",\"target\":\"먹으면 늦을까 봐 바로 갔어요\",\"problem\":\"unknown gloss \\\"ate\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

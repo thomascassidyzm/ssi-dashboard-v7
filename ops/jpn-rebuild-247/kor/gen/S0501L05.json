@@ -1,0 +1,116 @@
+{
+ "lego": {
+  "seed_number": 501,
+  "lego_index": 5,
+  "known": "if there is",
+  "target": "있다면"
+ },
+ "at": "2026-11-26T11:15:47.616Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 192,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"if there is\" initially, medially AND finally.",
+  "NEIGH 0.28 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.44 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 501,
+   "lego_index": 5,
+   "lego_known": "if there is",
+   "lego_target": "있다면",
+   "phrase_role": "build",
+   "known_text": "if there is a chance",
+   "target_text": "기회가 있다면",
+   "pad": []
+  },
+  {
+   "seed_number": 501,
+   "lego_index": 5,
+   "lego_known": "if there is",
+   "lego_target": "있다면",
+   "phrase_role": "build",
+   "known_text": "if there is still a possibility",
+   "target_text": "아직도 가능성이 있다면",
+   "pad": []
+  },
+  {
+   "seed_number": 501,
+   "lego_index": 5,
+   "lego_known": "if there is",
+   "lego_target": "있다면",
+   "phrase_role": "build",
+   "known_text": "if there is anything else",
+   "target_text": "다른 말도 있다면",
+   "pad": []
+  },
+  {
+   "seed_number": 501,
+   "lego_index": 5,
+   "lego_known": "if there is",
+   "lego_target": "있다면",
+   "phrase_role": "build",
+   "known_text": "if there is the minimum number of people",
+   "target_text": "최소 인원이 있다면",
+   "pad": []
+  },
+  {
+   "seed_number": 501,
+   "lego_index": 5,
+   "lego_known": "if there is",
+   "lego_target": "있다면",
+   "phrase_role": "use",
+   "known_text": "if there is a chance I would help",
+   "target_text": "기회가 있다면 도와줄 텐데요",
+   "pad": []
+  },
+  {
+   "seed_number": 501,
+   "lego_index": 5,
+   "lego_known": "if there is",
+   "lego_target": "있다면",
+   "phrase_role": "use",
+   "known_text": "if there is anything else should we ask right now",
+   "target_text": "다른 말도 있다면 당장 물어봐야 할까요",
+   "pad": []
+  },
+  {
+   "seed_number": 501,
+   "lego_index": 5,
+   "lego_known": "if there is",
+   "lego_target": "있다면",
+   "phrase_role": "use",
+   "known_text": "if there is a possibility I can write about that man",
+   "target_text": "가능성이 있다면 그 남자에 대해 쓸 수 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 501,
+   "lego_index": 5,
+   "lego_known": "if there is",
+   "lego_target": "있다면",
+   "phrase_role": "use",
+   "known_text": "if there is still a chance let me throw that suitcase over the wall",
+   "target_text": "아직도 기회가 있다면 그 가방을 담 너머로 던질게요",
+   "pad": []
+  },
+  {
+   "seed_number": 501,
+   "lego_index": 5,
+   "lego_known": "if there is",
+   "lego_target": "있다면",
+   "phrase_role": "use",
+   "known_text": "if there is the minimum number of people must we book directly",
+   "target_text": "최소 인원이 있다면 바로 예약해야 할까요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,25 @@
+{
+ "lego": {
+  "seed_number": 508,
+  "lego_index": 3,
+  "known": "no point",
+  "target": "소용없어요"
+ },
+ "at": "2026-11-26T12:54:33.163Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "buildUseFloors"
+ ],
+ "attempts": 2,
+ "secs": 173,
+ "floorsOnly": false,
+ "lastReasons": [
+  "buildUseFloors: 1 duplicate phrase(s) within this LEGO: \"도시로 가면 소용없어요\""
+ ],
+ "rows": [],
+ "keep": false
+}

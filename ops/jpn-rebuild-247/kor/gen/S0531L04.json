@@ -1,0 +1,26 @@
+{
+ "lego": {
+  "seed_number": 531,
+  "lego_index": 4,
+  "known": "anyone",
+  "target": "아무나"
+ },
+ "at": "2026-11-28T15:27:18.559Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 188,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"anyone try raising your hands\" (unknown gloss \"raising\")",
+  "USE \"anyone try raising your hands\" → \"아무나 손 들어 봐요\": popty:knownSide [{\"known\":\"anyone try raising your hands\",\"target\":\"아무나 손 들어 봐요\",\"problem\":\"unknown gloss \\\"raising\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

@@ -1,0 +1,116 @@
+{
+ "lego": {
+  "seed_number": 534,
+  "lego_index": 4,
+  "known": "in the weather",
+  "target": "날씨에"
+ },
+ "at": "2026-11-28T15:33:42.641Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 181,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"in the weather\" initially, medially AND finally.",
+  "NEIGH 0.22 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.33 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 534,
+   "lego_index": 4,
+   "lego_known": "in the weather",
+   "lego_target": "날씨에",
+   "phrase_role": "build",
+   "known_text": "in the dreadful weather",
+   "target_text": "끔찍한 날씨에",
+   "pad": []
+  },
+  {
+   "seed_number": 534,
+   "lego_index": 4,
+   "lego_known": "in the weather",
+   "lego_target": "날씨에",
+   "phrase_role": "build",
+   "known_text": "not go outside in the weather",
+   "target_text": "날씨에 밖에 나가지",
+   "pad": []
+  },
+  {
+   "seed_number": 534,
+   "lego_index": 4,
+   "lego_known": "in the weather",
+   "lego_target": "날씨에",
+   "phrase_role": "build",
+   "known_text": "the child who left in the weather",
+   "target_text": "날씨에 떠난 아이",
+   "pad": []
+  },
+  {
+   "seed_number": 534,
+   "lego_index": 4,
+   "lego_known": "in the weather",
+   "lego_target": "날씨에",
+   "phrase_role": "build",
+   "known_text": "safely in the dreadful weather",
+   "target_text": "끔찍한 날씨에 안전하게",
+   "pad": []
+  },
+  {
+   "seed_number": 534,
+   "lego_index": 4,
+   "lego_known": "in the weather",
+   "lego_target": "날씨에",
+   "phrase_role": "use",
+   "known_text": "the children didn't go outside in the weather",
+   "target_text": "아이들이 날씨에 밖에 나가지 않았어요",
+   "pad": []
+  },
+  {
+   "seed_number": 534,
+   "lego_index": 4,
+   "lego_known": "in the weather",
+   "lego_target": "날씨에",
+   "phrase_role": "use",
+   "known_text": "can anyone win the game in the weather",
+   "target_text": "날씨에 아무나 게임을 이길 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 534,
+   "lego_index": 4,
+   "lego_known": "in the weather",
+   "lego_target": "날씨에",
+   "phrase_role": "use",
+   "known_text": "our friends came in the dreadful weather trying to help",
+   "target_text": "친구들이 끔찍한 날씨에 도와주려고 왔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 534,
+   "lego_index": 4,
+   "lego_known": "in the weather",
+   "lego_target": "날씨에",
+   "phrase_role": "use",
+   "known_text": "the children said they want to go outside in the weather",
+   "target_text": "아이들이 날씨에 밖에 나가고 싶다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 534,
+   "lego_index": 4,
+   "lego_known": "in the weather",
+   "lego_target": "날씨에",
+   "phrase_role": "use",
+   "known_text": "the children moved to the city in the dreadful weather last year",
+   "target_text": "아이들이 작년에 끔찍한 날씨에 도시로 이사했어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

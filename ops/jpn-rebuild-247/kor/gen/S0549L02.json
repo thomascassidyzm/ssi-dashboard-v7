@@ -1,0 +1,127 @@
+{
+ "lego": {
+  "seed_number": 549,
+  "lego_index": 2,
+  "known": "have got to because",
+  "target": "해야 하니까요"
+ },
+ "at": "2026-11-28T16:05:07.619Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 162,
+ "floorsOnly": true,
+ "lastReasons": [
+  "FRAME 0.30 < 0.34: your matrix clauses collapse to 3 shape(s) against a declared pool of 40. Vary the MATRIX CLAUSE, not the tail — a swapped tail is the same frame stamped again.",
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"have got to because\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 549,
+   "lego_index": 2,
+   "lego_known": "have got to because",
+   "lego_target": "해야 하니까요",
+   "phrase_role": "build",
+   "known_text": "because I have got to be quiet",
+   "target_text": "조용히 해야 하니까요",
+   "pad": []
+  },
+  {
+   "seed_number": 549,
+   "lego_index": 2,
+   "lego_known": "have got to because",
+   "lego_target": "해야 하니까요",
+   "phrase_role": "build",
+   "known_text": "because I have got to do it alone",
+   "target_text": "혼자 해야 하니까요",
+   "pad": []
+  },
+  {
+   "seed_number": 549,
+   "lego_index": 2,
+   "lego_known": "have got to because",
+   "lego_target": "해야 하니까요",
+   "phrase_role": "build",
+   "known_text": "because I have got to do it, right now",
+   "target_text": "해야 하니까요 당장",
+   "pad": []
+  },
+  {
+   "seed_number": 549,
+   "lego_index": 2,
+   "lego_known": "have got to because",
+   "lego_target": "해야 하니까요",
+   "phrase_role": "build",
+   "known_text": "because our friends have got to do it right now",
+   "target_text": "친구들이 당장 해야 하니까요",
+   "pad": []
+  },
+  {
+   "seed_number": 549,
+   "lego_index": 2,
+   "lego_known": "have got to because",
+   "lego_target": "해야 하니까요",
+   "phrase_role": "use",
+   "known_text": "because whenever I feel angry I have got to be quiet",
+   "target_text": "화가 날 때마다 조용히 해야 하니까요",
+   "pad": []
+  },
+  {
+   "seed_number": 549,
+   "lego_index": 2,
+   "lego_known": "have got to because",
+   "lego_target": "해야 하니까요",
+   "phrase_role": "use",
+   "known_text": "because although I hate it I have got to do it",
+   "target_text": "싫지만 해야 하니까요",
+   "pad": []
+  },
+  {
+   "seed_number": 549,
+   "lego_index": 2,
+   "lego_known": "have got to because",
+   "lego_target": "해야 하니까요",
+   "phrase_role": "use",
+   "known_text": "because if I go I have got to do it alone",
+   "target_text": "가면 혼자 해야 하니까요",
+   "pad": []
+  },
+  {
+   "seed_number": 549,
+   "lego_index": 2,
+   "lego_known": "have got to because",
+   "lego_target": "해야 하니까요",
+   "phrase_role": "use",
+   "known_text": "because next time I have got to do it slowly",
+   "target_text": "다음에 천천히 해야 하니까요",
+   "pad": []
+  },
+  {
+   "seed_number": 549,
+   "lego_index": 2,
+   "lego_known": "have got to because",
+   "lego_target": "해야 하니까요",
+   "phrase_role": "use",
+   "known_text": "because the children have got to be quiet",
+   "target_text": "조용히 해야 하니까요 아이들이",
+   "pad": []
+  },
+  {
+   "seed_number": 549,
+   "lego_index": 2,
+   "lego_known": "have got to because",
+   "lego_target": "해야 하니까요",
+   "phrase_role": "use",
+   "known_text": "because the student has got to do it efficiently",
+   "target_text": "학생은 효율적으로 해야 하니까요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

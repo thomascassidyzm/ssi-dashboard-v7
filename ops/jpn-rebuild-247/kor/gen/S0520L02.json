@@ -1,0 +1,30 @@
+{
+ "lego": {
+  "seed_number": 520,
+  "lego_index": 2,
+  "known": "might have happened",
+  "target": "일어났을"
+ },
+ "at": "2026-11-26T17:45:42.936Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "vocab",
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 183,
+ "floorsOnly": false,
+ "lastReasons": [
+  "vocab: 1 phrase(s) use target words not yet introduced: [{\"phrase\":\"일어났을 수도 있지만 걱정해도 소용없어요\",\"unknown\":\"걱정해도\"}]",
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"it might have happened but there's no point worrying\" (unknown gloss \"worrying\")",
+  "USE \"it might have happened but there's no point worrying\" → \"일어났을 수도 있지만 걱정해도 소용없어요\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"일어났을 수도 있지만 걱정해도 소용없어요\",\"unknown\":\"걱정해도\"}],\"total\":1}; popty:knownSide [{\"known\":\"it might have happened but there's no point worrying\",\"target\":\"일어났을 수도 있지만 걱정해도 소용없어요\",\"problem\":\"unknown gloss \\\"worrying\\\"\"}]",
+  "NEIGH 0.28 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.44 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

@@ -1,0 +1,146 @@
+{
+ "lego": {
+  "seed_number": 550,
+  "lego_index": 2,
+  "known": "end",
+  "target": "끝"
+ },
+ "at": "2026-11-28T16:07:54.442Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 204,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"end\" initially, medially AND finally.",
+  "NEIGH 0.13 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.17 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 550,
+   "lego_index": 2,
+   "lego_known": "end",
+   "lego_target": "끝",
+   "phrase_role": "build",
+   "known_text": "the end of the show",
+   "target_text": "공연의 끝",
+   "pad": []
+  },
+  {
+   "seed_number": 550,
+   "lego_index": 2,
+   "lego_known": "end",
+   "lego_target": "끝",
+   "phrase_role": "build",
+   "known_text": "the end part",
+   "target_text": "끝 부분이",
+   "pad": []
+  },
+  {
+   "seed_number": 550,
+   "lego_index": 2,
+   "lego_known": "end",
+   "lego_target": "끝",
+   "phrase_role": "build",
+   "known_text": "near the end of the village",
+   "target_text": "마을의 끝 근처에서",
+   "pad": []
+  },
+  {
+   "seed_number": 550,
+   "lego_index": 2,
+   "lego_known": "end",
+   "lego_target": "끝",
+   "phrase_role": "build",
+   "known_text": "towards the end of the office",
+   "target_text": "사무실의 끝 쪽으로",
+   "pad": []
+  },
+  {
+   "seed_number": 550,
+   "lego_index": 2,
+   "lego_known": "end",
+   "lego_target": "끝",
+   "phrase_role": "use",
+   "known_text": "the end part was beautiful",
+   "target_text": "끝 부분이 아름다웠어요",
+   "pad": []
+  },
+  {
+   "seed_number": 550,
+   "lego_index": 2,
+   "lego_known": "end",
+   "lego_target": "끝",
+   "phrase_role": "use",
+   "known_text": "I used to think the end part of the show was beautiful",
+   "target_text": "공연의 끝 부분이 아름다웠다고 생각했었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 550,
+   "lego_index": 2,
+   "lego_known": "end",
+   "lego_target": "끝",
+   "phrase_role": "use",
+   "known_text": "I want to live near the end of the village",
+   "target_text": "마을의 끝 근처에서 살고 싶어요",
+   "pad": []
+  },
+  {
+   "seed_number": 550,
+   "lego_index": 2,
+   "lego_known": "end",
+   "lego_target": "끝",
+   "phrase_role": "use",
+   "known_text": "why did you go towards the end of the office",
+   "target_text": "왜 사무실의 끝 쪽으로 갔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 550,
+   "lego_index": 2,
+   "lego_known": "end",
+   "lego_target": "끝",
+   "phrase_role": "use",
+   "known_text": "the end part of the village wasn't far",
+   "target_text": "마을의 끝 부분이 멀지 않았어요",
+   "pad": []
+  },
+  {
+   "seed_number": 550,
+   "lego_index": 2,
+   "lego_known": "end",
+   "lego_target": "끝",
+   "phrase_role": "use",
+   "known_text": "the children are standing near the end of the village",
+   "target_text": "아이들이 마을의 끝 근처에 서 있어요",
+   "pad": []
+  },
+  {
+   "seed_number": 550,
+   "lego_index": 2,
+   "lego_known": "end",
+   "lego_target": "끝",
+   "phrase_role": "use",
+   "known_text": "the end part of the problem was much easier",
+   "target_text": "문제의 끝 부분이 훨씬 쉬웠어요",
+   "pad": []
+  },
+  {
+   "seed_number": 550,
+   "lego_index": 2,
+   "lego_known": "end",
+   "lego_target": "끝",
+   "phrase_role": "use",
+   "known_text": "could the children run towards the end of the village",
+   "target_text": "아이들이 마을의 끝 쪽으로 뛸 수 있을까요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

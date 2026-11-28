@@ -1,0 +1,116 @@
+{
+ "lego": {
+  "seed_number": 530,
+  "lego_index": 1,
+  "known": "to count",
+  "target": "셀"
+ },
+ "at": "2026-11-28T15:22:34.727Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 192,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"to count\" initially, medially AND finally.",
+  "NEIGH 0.11 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.11 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 530,
+   "lego_index": 1,
+   "lego_known": "to count",
+   "lego_target": "셀",
+   "phrase_role": "build",
+   "known_text": "until I count the keys",
+   "target_text": "열쇠를 셀 때까지",
+   "pad": []
+  },
+  {
+   "seed_number": 530,
+   "lego_index": 1,
+   "lego_known": "to count",
+   "lego_target": "셀",
+   "phrase_role": "build",
+   "known_text": "to count the postcards",
+   "target_text": "엽서를 셀",
+   "pad": []
+  },
+  {
+   "seed_number": 530,
+   "lego_index": 1,
+   "lego_known": "to count",
+   "lego_target": "셀",
+   "phrase_role": "build",
+   "known_text": "might count the keys",
+   "target_text": "열쇠를 셀 수도",
+   "pad": []
+  },
+  {
+   "seed_number": 530,
+   "lego_index": 1,
+   "lego_known": "to count",
+   "lego_target": "셀",
+   "phrase_role": "build",
+   "known_text": "that you can never count",
+   "target_text": "절대 셀 수 없는",
+   "pad": []
+  },
+  {
+   "seed_number": 530,
+   "lego_index": 1,
+   "lego_known": "to count",
+   "lego_target": "셀",
+   "phrase_role": "use",
+   "known_text": "raise your hands until I count",
+   "target_text": "셀 때까지 손 들어",
+   "pad": []
+  },
+  {
+   "seed_number": 530,
+   "lego_index": 1,
+   "lego_known": "to count",
+   "lego_target": "셀",
+   "phrase_role": "use",
+   "known_text": "could you count those things right now",
+   "target_text": "당장 그것들을 셀 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 530,
+   "lego_index": 1,
+   "lego_known": "to count",
+   "lego_target": "셀",
+   "phrase_role": "use",
+   "known_text": "it's a number nobody can count",
+   "target_text": "아무도 셀 수 없는 수예요",
+   "pad": []
+  },
+  {
+   "seed_number": 530,
+   "lego_index": 1,
+   "lego_known": "to count",
+   "lego_target": "셀",
+   "phrase_role": "use",
+   "known_text": "the children might count the postcards but there's no point",
+   "target_text": "아이들이 엽서를 셀 수도 있지만 소용없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 530,
+   "lego_index": 1,
+   "lego_known": "to count",
+   "lego_target": "셀",
+   "phrase_role": "use",
+   "known_text": "next time could you count the keys",
+   "target_text": "다음에 열쇠를 셀 수 있을까요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

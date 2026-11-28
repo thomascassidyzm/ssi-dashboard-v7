@@ -1,0 +1,136 @@
+{
+ "lego": {
+  "seed_number": 536,
+  "lego_index": 4,
+  "known": "used to think",
+  "target": "생각했었어요"
+ },
+ "at": "2026-11-28T15:41:53.198Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 156,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"used to think\" initially, medially AND finally.",
+  "NEIGH 0.23 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.36 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 536,
+   "lego_index": 4,
+   "lego_known": "used to think",
+   "lego_target": "생각했었어요",
+   "phrase_role": "build",
+   "known_text": "I used to think but",
+   "target_text": "생각했었어요 하지만",
+   "pad": []
+  },
+  {
+   "seed_number": 536,
+   "lego_index": 4,
+   "lego_known": "used to think",
+   "lego_target": "생각했었어요",
+   "phrase_role": "build",
+   "known_text": "I used to think it was free",
+   "target_text": "무료라고 생각했었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 536,
+   "lego_index": 4,
+   "lego_known": "used to think",
+   "lego_target": "생각했었어요",
+   "phrase_role": "build",
+   "known_text": "I used to think the children were bored",
+   "target_text": "아이들이 지루해한다고 생각했었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 536,
+   "lego_index": 4,
+   "lego_known": "used to think",
+   "lego_target": "생각했었어요",
+   "phrase_role": "build",
+   "known_text": "I used to think it was beautiful but",
+   "target_text": "아름다웠다고 생각했었어요 하지만",
+   "pad": []
+  },
+  {
+   "seed_number": 536,
+   "lego_index": 4,
+   "lego_known": "used to think",
+   "lego_target": "생각했었어요",
+   "phrase_role": "use",
+   "known_text": "I used to think the children were bored but they were sick",
+   "target_text": "아이들이 지루해한다고 생각했었어요 하지만 아팠어요",
+   "pad": []
+  },
+  {
+   "seed_number": 536,
+   "lego_index": 4,
+   "lego_known": "used to think",
+   "lego_target": "생각했었어요",
+   "phrase_role": "use",
+   "known_text": "why did you use to think the plan was stupid",
+   "target_text": "왜 계획은 어리석었다고 생각했었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 536,
+   "lego_index": 4,
+   "lego_known": "used to think",
+   "lego_target": "생각했었어요",
+   "phrase_role": "use",
+   "known_text": "did you use to think that anyone could win the game",
+   "target_text": "아무나 게임을 이길 수 있다고 생각했었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 536,
+   "lego_index": 4,
+   "lego_known": "used to think",
+   "lego_target": "생각했었어요",
+   "phrase_role": "use",
+   "known_text": "I used to think my father wanted to grow tomatoes",
+   "target_text": "제 아버지는 토마토를 키우고 싶어한다고 생각했었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 536,
+   "lego_index": 4,
+   "lego_known": "used to think",
+   "lego_target": "생각했었어요",
+   "phrase_role": "use",
+   "known_text": "I used to think my mother didn't like that place",
+   "target_text": "제 어머니는 그곳을 안 좋아한다고 생각했었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 536,
+   "lego_index": 4,
+   "lego_known": "used to think",
+   "lego_target": "생각했었어요",
+   "phrase_role": "use",
+   "known_text": "in the past I used to think the news was good",
+   "target_text": "과거에는 그 소식이 좋았다고 생각했었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 536,
+   "lego_index": 4,
+   "lego_known": "used to think",
+   "lego_target": "생각했었어요",
+   "phrase_role": "use",
+   "known_text": "I used to think my grandfather was worried about the economy",
+   "target_text": "할아버지는 경제에 걱정된다고 생각했었어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

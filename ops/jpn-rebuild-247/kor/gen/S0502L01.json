@@ -1,0 +1,26 @@
+{
+ "lego": {
+  "seed_number": 502,
+  "lego_index": 1,
+  "known": "road",
+  "target": "길을"
+ },
+ "at": "2026-11-26T11:14:54.627Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 135,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"walking along the beautiful road and\" (unknown gloss \"along\")",
+  "BUILD \"walking along the beautiful road and\" → \"아름다운 길을 걷고\": popty:knownSide [{\"known\":\"walking along the beautiful road and\",\"target\":\"아름다운 길을 걷고\",\"problem\":\"unknown gloss \\\"along\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

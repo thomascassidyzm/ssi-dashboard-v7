@@ -1,0 +1,124 @@
+{
+ "lego": {
+  "seed_number": 501,
+  "lego_index": 2,
+  "known": "only",
+  "target": "수만"
+ },
+ "at": "2026-11-26T11:12:09.799Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 182,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"only\" initially, medially AND finally."
+ ],
+ "rows": [
+  {
+   "seed_number": 501,
+   "lego_index": 2,
+   "lego_known": "only",
+   "lego_target": "수만",
+   "phrase_role": "build",
+   "known_text": "could only play",
+   "target_text": "놀 수만",
+   "pad": []
+  },
+  {
+   "seed_number": 501,
+   "lego_index": 2,
+   "lego_known": "only",
+   "lego_target": "수만",
+   "phrase_role": "build",
+   "known_text": "we could only spend a few days",
+   "target_text": "며칠 보낼 수만",
+   "pad": []
+  },
+  {
+   "seed_number": 501,
+   "lego_index": 2,
+   "lego_known": "only",
+   "lego_target": "수만",
+   "phrase_role": "build",
+   "known_text": "a car park you can only walk to",
+   "target_text": "걸어갈 수만 있는 주차장",
+   "pad": []
+  },
+  {
+   "seed_number": 501,
+   "lego_index": 2,
+   "lego_known": "only",
+   "lego_target": "수만",
+   "phrase_role": "build",
+   "known_text": "if only she could reach the top",
+   "target_text": "꼭대기에 닿을 수만 있다면",
+   "pad": []
+  },
+  {
+   "seed_number": 501,
+   "lego_index": 2,
+   "lego_known": "only",
+   "lego_target": "수만",
+   "phrase_role": "use",
+   "known_text": "if only the children could play at home",
+   "target_text": "아이들이 집에서 놀 수만 있다면",
+   "pad": []
+  },
+  {
+   "seed_number": 501,
+   "lego_index": 2,
+   "lego_known": "only",
+   "lego_target": "수만",
+   "phrase_role": "use",
+   "known_text": "if only I could I would help",
+   "target_text": "할 수만 있다면 도와줄 텐데요",
+   "pad": []
+  },
+  {
+   "seed_number": 501,
+   "lego_index": 2,
+   "lego_known": "only",
+   "lego_target": "수만",
+   "phrase_role": "use",
+   "known_text": "if only you could come it's going to be okay",
+   "target_text": "올 수만 있다면 괜찮을 거예요",
+   "pad": []
+  },
+  {
+   "seed_number": 501,
+   "lego_index": 2,
+   "lego_known": "only",
+   "lego_target": "수만",
+   "phrase_role": "use",
+   "known_text": "if only we could walk to school it would be better",
+   "target_text": "학교까지 걸어갈 수만 있다면 나을 거예요",
+   "pad": []
+  },
+  {
+   "seed_number": 501,
+   "lego_index": 2,
+   "lego_known": "only",
+   "lego_target": "수만",
+   "phrase_role": "use",
+   "known_text": "could we only watch the games",
+   "target_text": "경기를 볼 수만 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 501,
+   "lego_index": 2,
+   "lego_known": "only",
+   "lego_target": "수만",
+   "phrase_role": "use",
+   "known_text": "if only our friends could come on Tuesday",
+   "target_text": "친구들이 화요일에 올 수만 있다면",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

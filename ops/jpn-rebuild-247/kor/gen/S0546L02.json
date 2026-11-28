@@ -1,0 +1,27 @@
+{
+ "lego": {
+  "seed_number": 546,
+  "lego_index": 2,
+  "known": "dirty",
+  "target": "더럽고"
+ },
+ "at": "2026-11-28T15:59:43.010Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 191,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"the world is dirty and wide but their hearts are kind\" (unknown gloss \"hearts\")",
+  "USE \"the world is dirty and wide but their hearts are kind\" → \"세상은 더럽고 넓어요 하지만 그들의 마음이 착해요\": popty:knownSide [{\"known\":\"the world is dirty and wide but their hearts are kind\",\"target\":\"세상은 더럽고 넓어요 하지만 그들의 마음이 착해요\",\"problem\":\"unknown gloss \\\"hearts\\\"\"}]",
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"dirty\" initially, medially AND finally."
+ ],
+ "rows": [],
+ "keep": false
+}

@@ -1,0 +1,35 @@
+{
+ "lego": {
+  "seed_number": 546,
+  "lego_index": 3,
+  "known": "is wet",
+  "target": "젖어 있어요"
+ },
+ "at": "2026-11-28T16:01:09.775Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "buildUseFloors",
+  "containment"
+ ],
+ "attempts": 2,
+ "secs": 191,
+ "floorsOnly": false,
+ "lastReasons": [
+  "buildUseFloors: USE: need 5+, got 3 (4 component phrases excluded)",
+  "containment: 5 phrase(s) do not contain the LEGO's target: 젖어 있는 여자아이 | 아이들이 젖어 있는 동안 밖에 나가지 말아요 | 소용없어요 그녀의 책이 젖어 있으니까요",
+  "BUILD \"the girl who is wet\" → \"젖어 있는 여자아이\": popty:containment {\"pass\":false,\"failing\":1,\"examples\":[\"젖어 있는 여자아이\"],\"reasons\":[]}",
+  "USE \"while the children are wet don't go outside\" → \"아이들이 젖어 있는 동안 밖에 나가지 말아요\": popty:containment {\"pass\":false,\"failing\":1,\"examples\":[\"아이들이 젖어 있는 동안 밖에 나가지 말아요\"],\"reasons\":[]}",
+  "USE \"there's no point because her book is wet\" → \"소용없어요 그녀의 책이 젖어 있으니까요\": popty:containment {\"pass\":false,\"failing\":1,\"examples\":[\"소용없어요 그녀의 책이 젖어 있으니까요\"],\"reasons\":[]}",
+  "USE \"I told you the children are wet\" → \"아이들이 젖어 있다고 말했어요\": popty:containment {\"pass\":false,\"failing\":1,\"examples\":[\"아이들이 젖어 있다고 말했어요\"],\"reasons\":[]}",
+  "USE \"if the children are wet it's your turn\" → \"아이들이 젖어 있다면 차례예요\": popty:containment {\"pass\":false,\"failing\":1,\"examples\":[\"아이들이 젖어 있다면 차례예요\"],\"reasons\":[]}",
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"is wet\" initially, medially AND finally.",
+  "NEIGH 0.18 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.27 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

@@ -1,0 +1,29 @@
+{
+ "lego": {
+  "seed_number": 520,
+  "lego_index": 3,
+  "known": "to the whole",
+  "target": "전체에게"
+ },
+ "at": "2026-11-26T17:45:59.884Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "vocab"
+ ],
+ "attempts": 2,
+ "secs": 174,
+ "floorsOnly": false,
+ "lastReasons": [
+  "vocab: 3 phrase(s) use target words not yet introduced: [{\"phrase\":\"회사 전체에게 도전이에요\",\"unknown\":\"회사\"},{\"phrase\":\"회사 전체에게 일어났을\",\"unknown\":\"회사\"},{\"phrase\":\"아무도 회사 전체에게 말 안 했어요\",\"unknown\":\"회사\"}]",
+  "BUILD \"it's a challenge to the whole company\" → \"회사 전체에게 도전이에요\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"회사 전체에게 도전이에요\",\"unknown\":\"회사\"}],\"total\":1}",
+  "BUILD \"might have happened to the whole company\" → \"회사 전체에게 일어났을\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"회사 전체에게 일어났을\",\"unknown\":\"회사\"}],\"total\":1}",
+  "USE \"nobody told the whole company\" → \"아무도 회사 전체에게 말 안 했어요\": popty:vocab {\"pass\":false,\"violations\":[{\"phrase\":\"아무도 회사 전체에게 말 안 했어요\",\"unknown\":\"회사\"}],\"total\":1}",
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"to the whole\" initially, medially AND finally."
+ ],
+ "rows": [],
+ "keep": false
+}

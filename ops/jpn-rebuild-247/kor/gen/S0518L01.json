@@ -1,0 +1,115 @@
+{
+ "lego": {
+  "seed_number": 518,
+  "lego_index": 1,
+  "known": "to imagine",
+  "target": "상상할"
+ },
+ "at": "2026-11-26T17:42:40.143Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 11323,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.28 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.44 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 518,
+   "lego_index": 1,
+   "lego_known": "to imagine",
+   "lego_target": "상상할",
+   "phrase_role": "build",
+   "known_text": "able to imagine a new life",
+   "target_text": "새로운 삶을 상상할 수 있는",
+   "pad": []
+  },
+  {
+   "seed_number": 518,
+   "lego_index": 1,
+   "lego_known": "to imagine",
+   "lego_target": "상상할",
+   "phrase_role": "build",
+   "known_text": "a person able to imagine",
+   "target_text": "상상할 수 있는 사람",
+   "pad": []
+  },
+  {
+   "seed_number": 518,
+   "lego_index": 1,
+   "lego_known": "to imagine",
+   "lego_target": "상상할",
+   "phrase_role": "build",
+   "known_text": "to imagine a happy family",
+   "target_text": "행복한 가족을 상상할",
+   "pad": []
+  },
+  {
+   "seed_number": 518,
+   "lego_index": 1,
+   "lego_known": "to imagine",
+   "lego_target": "상상할",
+   "phrase_role": "build",
+   "known_text": "never able to imagine",
+   "target_text": "절대 상상할 수 없는",
+   "pad": []
+  },
+  {
+   "seed_number": 518,
+   "lego_index": 1,
+   "lego_known": "to imagine",
+   "lego_target": "상상할",
+   "phrase_role": "use",
+   "known_text": "is it possible to imagine a new approach",
+   "target_text": "새로운 접근법을 상상할 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 518,
+   "lego_index": 1,
+   "lego_known": "to imagine",
+   "lego_target": "상상할",
+   "phrase_role": "use",
+   "known_text": "it's a challenge that nobody is able to imagine",
+   "target_text": "아무도 상상할 수 없는 도전이에요",
+   "pad": []
+  },
+  {
+   "seed_number": 518,
+   "lego_index": 1,
+   "lego_known": "to imagine",
+   "lego_target": "상상할",
+   "phrase_role": "use",
+   "known_text": "if the children are able to imagine a happy family it's real hope",
+   "target_text": "아이들이 행복한 가족을 상상할 수 있다면 진짜 희망이에요",
+   "pad": []
+  },
+  {
+   "seed_number": 518,
+   "lego_index": 1,
+   "lego_known": "to imagine",
+   "lego_target": "상상할",
+   "phrase_role": "use",
+   "known_text": "because I was tired I wasn't able to imagine",
+   "target_text": "피곤해서 상상할 수 없었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 518,
+   "lego_index": 1,
+   "lego_known": "to imagine",
+   "lego_target": "상상할",
+   "phrase_role": "use",
+   "known_text": "in the past it wasn't possible to imagine a new life",
+   "target_text": "과거에는 새로운 삶을 상상할 수 없었어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

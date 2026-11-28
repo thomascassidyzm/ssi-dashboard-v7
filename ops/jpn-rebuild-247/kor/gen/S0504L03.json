@@ -1,0 +1,135 @@
+{
+ "lego": {
+  "seed_number": 504,
+  "lego_index": 3,
+  "known": "the grass",
+  "target": "잔디밭을"
+ },
+ "at": "2026-11-26T12:46:04.000Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 179,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.27 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.45 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 504,
+   "lego_index": 3,
+   "lego_known": "the grass",
+   "lego_target": "잔디밭을",
+   "phrase_role": "build",
+   "known_text": "across the grass",
+   "target_text": "잔디밭을 가로질러",
+   "pad": []
+  },
+  {
+   "seed_number": 504,
+   "lego_index": 3,
+   "lego_known": "the grass",
+   "lego_target": "잔디밭을",
+   "phrase_role": "build",
+   "known_text": "who like the grass",
+   "target_text": "잔디밭을 좋아하는",
+   "pad": []
+  },
+  {
+   "seed_number": 504,
+   "lego_index": 3,
+   "lego_known": "the grass",
+   "lego_target": "잔디밭을",
+   "phrase_role": "build",
+   "known_text": "the children will run across the grass",
+   "target_text": "아이들이 잔디밭을 가로질러 뛸",
+   "pad": []
+  },
+  {
+   "seed_number": 504,
+   "lego_index": 3,
+   "lego_known": "the grass",
+   "lego_target": "잔디밭을",
+   "phrase_role": "build",
+   "known_text": "maybe went across the grass",
+   "target_text": "아마 잔디밭을 가로질러 갔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 504,
+   "lego_index": 3,
+   "lego_known": "the grass",
+   "lego_target": "잔디밭을",
+   "phrase_role": "use",
+   "known_text": "next time could we run across the grass",
+   "target_text": "다음에 잔디밭을 가로질러 뛸 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 504,
+   "lego_index": 3,
+   "lego_known": "the grass",
+   "lego_target": "잔디밭을",
+   "phrase_role": "use",
+   "known_text": "why did you go across the grass",
+   "target_text": "왜 잔디밭을 가로질러 갔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 504,
+   "lego_index": 3,
+   "lego_known": "the grass",
+   "lego_target": "잔디밭을",
+   "phrase_role": "use",
+   "known_text": "the children went across the grass on wednesday",
+   "target_text": "아이들이 수요일에 잔디밭을 가로질러 갔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 504,
+   "lego_index": 3,
+   "lego_known": "the grass",
+   "lego_target": "잔디밭을",
+   "phrase_role": "use",
+   "known_text": "the children who like the grass came",
+   "target_text": "잔디밭을 좋아하는 아이들이 왔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 504,
+   "lego_index": 3,
+   "lego_known": "the grass",
+   "lego_target": "잔디밭을",
+   "phrase_role": "use",
+   "known_text": "if we go across the grass right now could we reach the top",
+   "target_text": "당장 잔디밭을 가로질러 가면 꼭대기에 닿을 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 504,
+   "lego_index": 3,
+   "lego_known": "the grass",
+   "lego_target": "잔디밭을",
+   "phrase_role": "use",
+   "known_text": "could we walk to school across the grass",
+   "target_text": "학교까지 잔디밭을 가로질러 걸어갈 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 504,
+   "lego_index": 3,
+   "lego_known": "the grass",
+   "lego_target": "잔디밭을",
+   "phrase_role": "use",
+   "known_text": "our friends came across the grass",
+   "target_text": "친구들이 잔디밭을 가로질러 왔어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

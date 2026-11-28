@@ -1,0 +1,127 @@
+{
+ "lego": {
+  "seed_number": 502,
+  "lego_index": 6,
+  "known": "almost did",
+  "target": "뻔했어요"
+ },
+ "at": "2026-11-26T12:42:39.768Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 178,
+ "floorsOnly": true,
+ "lastReasons": [
+  "FRAME 0.30 < 0.34: your matrix clauses collapse to 3 shape(s) against a declared pool of 40. Vary the MATRIX CLAUSE, not the tail — a swapped tail is the same frame stamped again.",
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"almost did\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 502,
+   "lego_index": 6,
+   "lego_known": "almost did",
+   "lego_target": "뻔했어요",
+   "phrase_role": "build",
+   "known_text": "almost turned",
+   "target_text": "거의 돌 뻔했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 502,
+   "lego_index": 6,
+   "lego_known": "almost did",
+   "lego_target": "뻔했어요",
+   "phrase_role": "build",
+   "known_text": "almost came",
+   "target_text": "거의 올 뻔했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 502,
+   "lego_index": 6,
+   "lego_known": "almost did",
+   "lego_target": "뻔했어요",
+   "phrase_role": "build",
+   "known_text": "almost turned to the left",
+   "target_text": "거의 왼쪽으로 돌 뻔했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 502,
+   "lego_index": 6,
+   "lego_known": "almost did",
+   "lego_target": "뻔했어요",
+   "phrase_role": "build",
+   "known_text": "almost agreed with her",
+   "target_text": "그녀에게 거의 동의할 뻔했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 502,
+   "lego_index": 6,
+   "lego_known": "almost did",
+   "lego_target": "뻔했어요",
+   "phrase_role": "use",
+   "known_text": "the children almost turned to the left because they were tired",
+   "target_text": "아이들이 피곤해서 거의 왼쪽으로 돌 뻔했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 502,
+   "lego_index": 6,
+   "lego_known": "almost did",
+   "lego_target": "뻔했어요",
+   "phrase_role": "use",
+   "known_text": "our friends almost came on tuesday",
+   "target_text": "친구들이 화요일에 거의 올 뻔했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 502,
+   "lego_index": 6,
+   "lego_known": "almost did",
+   "lego_target": "뻔했어요",
+   "phrase_role": "use",
+   "known_text": "why did my mother almost come on wednesday",
+   "target_text": "왜 제 어머니는 수요일에 거의 올 뻔했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 502,
+   "lego_index": 6,
+   "lego_known": "almost did",
+   "lego_target": "뻔했어요",
+   "phrase_role": "use",
+   "known_text": "the student who's sitting over there almost agreed",
+   "target_text": "저기 앉아 있는 학생은 거의 동의할 뻔했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 502,
+   "lego_index": 6,
+   "lego_known": "almost did",
+   "lego_target": "뻔했어요",
+   "phrase_role": "use",
+   "known_text": "grandfather almost agreed with her",
+   "target_text": "할아버지는 그녀에게 거의 동의할 뻔했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 502,
+   "lego_index": 6,
+   "lego_known": "almost did",
+   "lego_target": "뻔했어요",
+   "phrase_role": "use",
+   "known_text": "my son almost turned to the left instead of right",
+   "target_text": "제 아들은 오른쪽 대신 거의 왼쪽으로 돌 뻔했어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

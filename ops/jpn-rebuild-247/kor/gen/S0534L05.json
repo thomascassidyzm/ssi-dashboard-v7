@@ -1,0 +1,26 @@
+{
+ "lego": {
+  "seed_number": 534,
+  "lego_index": 5,
+  "known": "don't",
+  "target": "말아요"
+ },
+ "at": "2026-11-28T15:34:44.932Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "zut"
+ ],
+ "attempts": 2,
+ "secs": 136,
+ "floorsOnly": false,
+ "lastReasons": [
+  "zut: 1 phrase(s) collide with an existing known->target mapping: [{\"known\":\"don't get left behind\",\"new_target\":\"뒤처지지 말아요\",\"existing_target\":\"뒤처지지 않을\",\"existing_seed\":505}]",
+  "BUILD \"don't get left behind\" → \"뒤처지지 말아요\": popty:zut {\"pass\":false,\"collisions\":[{\"known\":\"don't get left behind\",\"new_target\":\"뒤처지지 말아요\",\"existing_target\":\"뒤처지지 않을\",\"existing_seed\":505}],\"total\":1}; ZUT whole course: \"don't get left behind\" is \"뒤처지지 않을\" at seed 505"
+ ],
+ "rows": [],
+ "keep": false
+}

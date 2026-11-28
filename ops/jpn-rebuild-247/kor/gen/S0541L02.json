@@ -1,0 +1,116 @@
+{
+ "lego": {
+  "seed_number": 541,
+  "lego_index": 2,
+  "known": "to breathe",
+  "target": "숨을 쉬어"
+ },
+ "at": "2026-11-28T15:48:10.127Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 227,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"to breathe\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 541,
+   "lego_index": 2,
+   "lego_known": "to breathe",
+   "lego_target": "숨을 쉬어",
+   "phrase_role": "build",
+   "known_text": "breathe slowly",
+   "target_text": "천천히 숨을 쉬어",
+   "pad": []
+  },
+  {
+   "seed_number": 541,
+   "lego_index": 2,
+   "lego_known": "to breathe",
+   "lego_target": "숨을 쉬어",
+   "phrase_role": "build",
+   "known_text": "breathe but slowly",
+   "target_text": "숨을 쉬어 하지만 천천히",
+   "pad": []
+  },
+  {
+   "seed_number": 541,
+   "lego_index": 2,
+   "lego_known": "to breathe",
+   "lego_target": "숨을 쉬어",
+   "phrase_role": "build",
+   "known_text": "when you move breathe",
+   "target_text": "움직이면 숨을 쉬어",
+   "pad": []
+  },
+  {
+   "seed_number": 541,
+   "lego_index": 2,
+   "lego_known": "to breathe",
+   "lego_target": "숨을 쉬어",
+   "phrase_role": "build",
+   "known_text": "climb and breathe",
+   "target_text": "오르고 숨을 쉬어",
+   "pad": []
+  },
+  {
+   "seed_number": 541,
+   "lego_index": 2,
+   "lego_known": "to breathe",
+   "lego_target": "숨을 쉬어",
+   "phrase_role": "use",
+   "known_text": "before you start breathe slowly",
+   "target_text": "시작하기 전에 천천히 숨을 쉬어",
+   "pad": []
+  },
+  {
+   "seed_number": 541,
+   "lego_index": 2,
+   "lego_known": "to breathe",
+   "lego_target": "숨을 쉬어",
+   "phrase_role": "use",
+   "known_text": "breathe slowly it's important",
+   "target_text": "천천히 숨을 쉬어 중요해요",
+   "pad": []
+  },
+  {
+   "seed_number": 541,
+   "lego_index": 2,
+   "lego_known": "to breathe",
+   "lego_target": "숨을 쉬어",
+   "phrase_role": "use",
+   "known_text": "next time breathe slowly",
+   "target_text": "다음에 천천히 숨을 쉬어",
+   "pad": []
+  },
+  {
+   "seed_number": 541,
+   "lego_index": 2,
+   "lego_known": "to breathe",
+   "lego_target": "숨을 쉬어",
+   "phrase_role": "use",
+   "known_text": "climb slowly and breathe",
+   "target_text": "천천히 오르고 숨을 쉬어",
+   "pad": []
+  },
+  {
+   "seed_number": 541,
+   "lego_index": 2,
+   "lego_known": "to breathe",
+   "lego_target": "숨을 쉬어",
+   "phrase_role": "use",
+   "known_text": "breathe right now but slowly",
+   "target_text": "당장 숨을 쉬어 하지만 천천히",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

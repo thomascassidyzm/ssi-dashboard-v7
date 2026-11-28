@@ -1,0 +1,30 @@
+{
+ "lego": {
+  "seed_number": 526,
+  "lego_index": 2,
+  "known": "to believe",
+  "target": "믿기"
+ },
+ "at": "2026-11-26T17:54:21.885Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 179,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 2 phrase(s) use English the learner has not been given. \"before believing\" (unknown gloss \"believing\"); \"on the first day our friends came to check before they believed\" (unknown gloss \"believed\")",
+  "BUILD \"before believing\" → \"믿기 전에\": popty:knownSide [{\"known\":\"before believing\",\"target\":\"믿기 전에\",\"problem\":\"unknown gloss \\\"believing\\\"\"}]",
+  "USE \"on the first day our friends came to check before they believed\" → \"첫날에 친구들이 믿기 전에 확인하려고 왔어요\": popty:knownSide [{\"known\":\"on the first day our friends came to check before they believed\",\"target\":\"첫날에 친구들이 믿기 전에 확인하려고 왔어요\",\"problem\":\"unknown gloss \\\"believed\\\"\"}]",
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"to believe\" initially, medially AND finally.",
+  "NEIGH 0.22 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.33 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

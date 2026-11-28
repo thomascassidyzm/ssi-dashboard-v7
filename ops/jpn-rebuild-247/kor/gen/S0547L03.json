@@ -1,0 +1,116 @@
+{
+ "lego": {
+  "seed_number": 547,
+  "lego_index": 3,
+  "known": "was because",
+  "target": "있었으니까요"
+ },
+ "at": "2026-11-28T16:03:19.579Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 157,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"was because\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 547,
+   "lego_index": 3,
+   "lego_known": "was because",
+   "lego_target": "있었으니까요",
+   "phrase_role": "build",
+   "known_text": "because it was wet",
+   "target_text": "젖어 있었으니까요",
+   "pad": []
+  },
+  {
+   "seed_number": 547,
+   "lego_index": 3,
+   "lego_known": "was because",
+   "lego_target": "있었으니까요",
+   "phrase_role": "build",
+   "known_text": "because it was getting late",
+   "target_text": "늦어지고 있었으니까요",
+   "pad": []
+  },
+  {
+   "seed_number": 547,
+   "lego_index": 3,
+   "lego_known": "was because",
+   "lego_target": "있었으니까요",
+   "phrase_role": "build",
+   "known_text": "because the dog was standing",
+   "target_text": "개가 서 있었으니까요",
+   "pad": []
+  },
+  {
+   "seed_number": 547,
+   "lego_index": 3,
+   "lego_known": "was because",
+   "lego_target": "있었으니까요",
+   "phrase_role": "build",
+   "known_text": "because the children were holding the keys",
+   "target_text": "아이들이 열쇠를 들고 있었으니까요",
+   "pad": []
+  },
+  {
+   "seed_number": 547,
+   "lego_index": 3,
+   "lego_known": "was because",
+   "lego_target": "있었으니까요",
+   "phrase_role": "use",
+   "known_text": "because on the first day the dog was playing in the mud",
+   "target_text": "첫날에 개가 진흙에서 놀고 있었으니까요",
+   "pad": []
+  },
+  {
+   "seed_number": 547,
+   "lego_index": 3,
+   "lego_known": "was because",
+   "lego_target": "있었으니까요",
+   "phrase_role": "use",
+   "known_text": "because our friends who left were sitting near the entrance",
+   "target_text": "떠난 친구들이 입구 근처에 앉아 있었으니까요",
+   "pad": []
+  },
+  {
+   "seed_number": 547,
+   "lego_index": 3,
+   "lego_known": "was because",
+   "lego_target": "있었으니까요",
+   "phrase_role": "use",
+   "known_text": "because the children were slowly walking towards the car park",
+   "target_text": "아이들이 천천히 주차장 쪽으로 걷고 있었으니까요",
+   "pad": []
+  },
+  {
+   "seed_number": 547,
+   "lego_index": 3,
+   "lego_known": "was because",
+   "lego_target": "있었으니까요",
+   "phrase_role": "use",
+   "known_text": "because grandfather was standing opposite the post office",
+   "target_text": "할아버지는 우체국 맞은편에 서 있었으니까요",
+   "pad": []
+  },
+  {
+   "seed_number": 547,
+   "lego_index": 3,
+   "lego_known": "was because",
+   "lego_target": "있었으니까요",
+   "phrase_role": "use",
+   "known_text": "because the dog was dirty and wet",
+   "target_text": "개가 더럽고 젖어 있었으니까요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,112 @@
+{
+ "lego": {
+  "seed_number": 512,
+  "lego_index": 1,
+  "known": "while",
+  "target": "동안"
+ },
+ "at": "2026-11-26T14:24:31.512Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 1,
+ "secs": 77,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 512,
+   "lego_index": 1,
+   "lego_known": "while",
+   "lego_target": "동안",
+   "phrase_role": "build",
+   "known_text": "while working",
+   "target_text": "일하는 동안",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 1,
+   "lego_known": "while",
+   "lego_target": "동안",
+   "phrase_role": "build",
+   "known_text": "while working at home",
+   "target_text": "집에서 일하는 동안",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 1,
+   "lego_known": "while",
+   "lego_target": "동안",
+   "phrase_role": "build",
+   "known_text": "while sitting over there",
+   "target_text": "저기 앉아 있는 동안",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 1,
+   "lego_known": "while",
+   "lego_target": "동안",
+   "phrase_role": "build",
+   "known_text": "while talking with a friend",
+   "target_text": "친구와 이야기하고 있는 동안",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 1,
+   "lego_known": "while",
+   "lego_target": "동안",
+   "phrase_role": "use",
+   "known_text": "our friends came while I was sitting over there",
+   "target_text": "저기 앉아 있는 동안 친구들이 왔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 1,
+   "lego_known": "while",
+   "lego_target": "동안",
+   "phrase_role": "use",
+   "known_text": "could we play while you work",
+   "target_text": "일하는 동안 놀 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 1,
+   "lego_known": "while",
+   "lego_target": "동안",
+   "phrase_role": "use",
+   "known_text": "I was tired so I couldn't hear while you were talking with a friend",
+   "target_text": "피곤해서 친구와 이야기하고 있는 동안 못 들었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 1,
+   "lego_known": "while",
+   "lego_target": "동안",
+   "phrase_role": "use",
+   "known_text": "it was quiet while you were working at home",
+   "target_text": "집에서 일하는 동안 조용했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 512,
+   "lego_index": 1,
+   "lego_known": "while",
+   "lego_target": "동안",
+   "phrase_role": "use",
+   "known_text": "we moved to the city while you were working",
+   "target_text": "일하는 동안 도시로 이사했어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

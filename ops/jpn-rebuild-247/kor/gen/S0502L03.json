@@ -1,0 +1,126 @@
+{
+ "lego": {
+  "seed_number": 502,
+  "lego_index": 3,
+  "known": "to lose",
+  "target": "잃을"
+ },
+ "at": "2026-11-26T12:39:43.219Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 5089,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"to lose\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 502,
+   "lego_index": 3,
+   "lego_known": "to lose",
+   "lego_target": "잃을",
+   "phrase_role": "build",
+   "known_text": "a friend you can't lose",
+   "target_text": "잃을 수 없는 친구",
+   "pad": []
+  },
+  {
+   "seed_number": 502,
+   "lego_index": 3,
+   "lego_known": "to lose",
+   "lego_target": "잃을",
+   "phrase_role": "build",
+   "known_text": "you might lose the way",
+   "target_text": "길을 잃을 수도",
+   "pad": []
+  },
+  {
+   "seed_number": 502,
+   "lego_index": 3,
+   "lego_known": "to lose",
+   "lego_target": "잃을",
+   "phrase_role": "build",
+   "known_text": "until we lose hope",
+   "target_text": "희망을 잃을 때까지",
+   "pad": []
+  },
+  {
+   "seed_number": 502,
+   "lego_index": 3,
+   "lego_known": "to lose",
+   "lego_target": "잃을",
+   "phrase_role": "build",
+   "known_text": "almost lose the way",
+   "target_text": "거의 길을 잃을",
+   "pad": []
+  },
+  {
+   "seed_number": 502,
+   "lego_index": 3,
+   "lego_known": "to lose",
+   "lego_target": "잃을",
+   "phrase_role": "use",
+   "known_text": "if we go to the left it seems like we'll lose the way",
+   "target_text": "왼쪽으로 가면 길을 잃을 것 같네요",
+   "pad": []
+  },
+  {
+   "seed_number": 502,
+   "lego_index": 3,
+   "lego_known": "to lose",
+   "lego_target": "잃을",
+   "phrase_role": "use",
+   "known_text": "could the children lose the way near the hotel",
+   "target_text": "아이들이 호텔 근처에서 길을 잃을 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 502,
+   "lego_index": 3,
+   "lego_known": "to lose",
+   "lego_target": "잃을",
+   "phrase_role": "use",
+   "known_text": "you're a friend I can never lose",
+   "target_text": "절대 잃을 수 없는 친구예요",
+   "pad": []
+  },
+  {
+   "seed_number": 502,
+   "lego_index": 3,
+   "lego_known": "to lose",
+   "lego_target": "잃을",
+   "phrase_role": "use",
+   "known_text": "they fight until they lose hope",
+   "target_text": "희망을 잃을 때까지 싸워요",
+   "pad": []
+  },
+  {
+   "seed_number": 502,
+   "lego_index": 3,
+   "lego_known": "to lose",
+   "lego_target": "잃을",
+   "phrase_role": "use",
+   "known_text": "we might lose the way but it's a challenge",
+   "target_text": "길을 잃을 수도 있지만 도전이에요",
+   "pad": []
+  },
+  {
+   "seed_number": 502,
+   "lego_index": 3,
+   "lego_known": "to lose",
+   "lego_target": "잃을",
+   "phrase_role": "use",
+   "known_text": "the children are tired so it seems like they'll lose the way",
+   "target_text": "아이들이 피곤해서 길을 잃을 것 같네요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

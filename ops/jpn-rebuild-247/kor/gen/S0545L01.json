@@ -1,0 +1,114 @@
+{
+ "lego": {
+  "seed_number": 545,
+  "lego_index": 1,
+  "known": "clean",
+  "target": "깨끗한"
+ },
+ "at": "2026-11-28T15:54:12.454Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 174,
+ "floorsOnly": true,
+ "lastReasons": [
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"clean\" initially, medially AND finally."
+ ],
+ "rows": [
+  {
+   "seed_number": 545,
+   "lego_index": 1,
+   "lego_known": "clean",
+   "lego_target": "깨끗한",
+   "phrase_role": "build",
+   "known_text": "the boy wearing a clean shirt",
+   "target_text": "깨끗한 셔츠를 입은 남자아이",
+   "pad": []
+  },
+  {
+   "seed_number": 545,
+   "lego_index": 1,
+   "lego_known": "clean",
+   "lego_target": "깨끗한",
+   "phrase_role": "build",
+   "known_text": "while fetching clean water",
+   "target_text": "깨끗한 물 가져오는 동안",
+   "pad": []
+  },
+  {
+   "seed_number": 545,
+   "lego_index": 1,
+   "lego_known": "clean",
+   "lego_target": "깨끗한",
+   "phrase_role": "build",
+   "known_text": "should store in a clean room",
+   "target_text": "깨끗한 방에 보관해야",
+   "pad": []
+  },
+  {
+   "seed_number": 545,
+   "lego_index": 1,
+   "lego_known": "clean",
+   "lego_target": "깨끗한",
+   "phrase_role": "build",
+   "known_text": "next to the clean car park",
+   "target_text": "깨끗한 주차장 옆에",
+   "pad": []
+  },
+  {
+   "seed_number": 545,
+   "lego_index": 1,
+   "lego_known": "clean",
+   "lego_target": "깨끗한",
+   "phrase_role": "use",
+   "known_text": "my son has gone to look for a clean cup",
+   "target_text": "제 아들은 깨끗한 잔을 찾으러 갔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 545,
+   "lego_index": 1,
+   "lego_known": "clean",
+   "lego_target": "깨끗한",
+   "phrase_role": "use",
+   "known_text": "my father didn't choose the clean shirt because he was tired",
+   "target_text": "제 아버지는 피곤해서 깨끗한 셔츠를 선택하지 않았어요",
+   "pad": []
+  },
+  {
+   "seed_number": 545,
+   "lego_index": 1,
+   "lego_known": "clean",
+   "lego_target": "깨끗한",
+   "phrase_role": "use",
+   "known_text": "could we carry the clean bed",
+   "target_text": "깨끗한 침대를 들 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 545,
+   "lego_index": 1,
+   "lego_known": "clean",
+   "lego_target": "깨끗한",
+   "phrase_role": "use",
+   "known_text": "on the first day my mother found a clean yellow dress",
+   "target_text": "첫날에 제 어머니는 깨끗한 노란 원피스를 찾았어요",
+   "pad": []
+  },
+  {
+   "seed_number": 545,
+   "lego_index": 1,
+   "lego_known": "clean",
+   "lego_target": "깨끗한",
+   "phrase_role": "use",
+   "known_text": "because I'm worried that I might forget the clean keys",
+   "target_text": "깨끗한 열쇠를 잊어버릴까 봐 걱정돼서요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

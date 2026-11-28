@@ -1,0 +1,115 @@
+{
+ "lego": {
+  "seed_number": 538,
+  "lego_index": 1,
+  "known": "seem as though I don't care",
+  "target": "상관없어 보이고"
+ },
+ "at": "2026-11-28T15:44:22.783Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 214,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.28 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.44 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 538,
+   "lego_index": 1,
+   "lego_known": "seem as though I don't care",
+   "lego_target": "상관없어 보이고",
+   "phrase_role": "build",
+   "known_text": "seem as though I don't care to the whole family",
+   "target_text": "가족 전체에게 상관없어 보이고",
+   "pad": []
+  },
+  {
+   "seed_number": 538,
+   "lego_index": 1,
+   "lego_known": "seem as though I don't care",
+   "lego_target": "상관없어 보이고",
+   "phrase_role": "build",
+   "known_text": "want to seem as though I don't care but",
+   "target_text": "상관없어 보이고 싶어하지만",
+   "pad": []
+  },
+  {
+   "seed_number": 538,
+   "lego_index": 1,
+   "lego_known": "seem as though I don't care",
+   "lego_target": "상관없어 보이고",
+   "phrase_role": "build",
+   "known_text": "I said I want to seem as though I don't care",
+   "target_text": "상관없어 보이고 싶다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 538,
+   "lego_index": 1,
+   "lego_known": "seem as though I don't care",
+   "lego_target": "상관없어 보이고",
+   "phrase_role": "use",
+   "known_text": "I said I never again want to seem as though I don't care",
+   "target_text": "다시는 상관없어 보이고 싶지 않다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 538,
+   "lego_index": 1,
+   "lego_known": "seem as though I don't care",
+   "lego_target": "상관없어 보이고",
+   "phrase_role": "use",
+   "known_text": "I said I don't want to seem as though I don't care to the whole family",
+   "target_text": "가족 전체에게 상관없어 보이고 싶지 않다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 538,
+   "lego_index": 1,
+   "lego_known": "seem as though I don't care",
+   "lego_target": "상관없어 보이고",
+   "phrase_role": "use",
+   "known_text": "I used to think I wanted to seem as though I don't care",
+   "target_text": "상관없어 보이고 싶다고 생각했었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 538,
+   "lego_index": 1,
+   "lego_known": "seem as though I don't care",
+   "lego_target": "상관없어 보이고",
+   "phrase_role": "use",
+   "known_text": "why would I want to seem as though I don't care",
+   "target_text": "왜 상관없어 보이고 싶어할까요",
+   "pad": []
+  },
+  {
+   "seed_number": 538,
+   "lego_index": 1,
+   "lego_known": "seem as though I don't care",
+   "lego_target": "상관없어 보이고",
+   "phrase_role": "use",
+   "known_text": "in the past I said I wanted to seem as though I don't care",
+   "target_text": "과거에는 상관없어 보이고 싶다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 538,
+   "lego_index": 1,
+   "lego_known": "seem as though I don't care",
+   "lego_target": "상관없어 보이고",
+   "phrase_role": "use",
+   "known_text": "I said I want to seem as though I don't care but I was wrong",
+   "target_text": "상관없어 보이고 싶다고 했어요 하지만 틀렸어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

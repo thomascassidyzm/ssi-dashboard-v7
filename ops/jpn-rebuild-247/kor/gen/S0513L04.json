@@ -1,0 +1,29 @@
+{
+ "lego": {
+  "seed_number": 513,
+  "lego_index": 4,
+  "known": "when moved",
+  "target": "움직이면"
+ },
+ "at": "2026-11-26T14:31:00.826Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 169,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"if I move my head to the left it continues to hurt\" (unknown gloss \"continues\")",
+  "USE \"if I move my head to the left it continues to hurt\" → \"머리를 왼쪽으로 움직이면 계속 아파요\": popty:knownSide [{\"known\":\"if I move my head to the left it continues to hurt\",\"target\":\"머리를 왼쪽으로 움직이면 계속 아파요\",\"problem\":\"unknown gloss \\\"continues\\\"\"}]",
+  "POS 0.00 < 0.34: the LEGO sits in 0 position(s). Put \"when moved\" initially, medially AND finally.",
+  "NEIGH 0.00 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.00 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}

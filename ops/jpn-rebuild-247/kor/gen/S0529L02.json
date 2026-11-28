@@ -1,0 +1,27 @@
+{
+ "lego": {
+  "seed_number": 529,
+  "lego_index": 2,
+  "known": "raise",
+  "target": "들어"
+ },
+ "at": "2026-11-28T15:21:37.902Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "zut"
+ ],
+ "attempts": 2,
+ "secs": 148,
+ "floorsOnly": false,
+ "lastReasons": [
+  "zut: 1 phrase(s) collide with an existing known->target mapping: [{\"known\":\"raise both hands\",\"new_target\":\"양손을 들어\",\"existing_target\":\"양손을 다 들고 있어요\",\"existing_seed\":324}]",
+  "BUILD \"raise both hands\" → \"양손을 들어\": popty:zut {\"pass\":false,\"collisions\":[{\"known\":\"raise both hands\",\"new_target\":\"양손을 들어\",\"existing_target\":\"양손을 다 들고 있어요\",\"existing_seed\":324}],\"total\":1}; ZUT whole course: \"raise both hands\" is \"양손을 다 들고 있어요\" at seed 324",
+  "NEIGH 0.25 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket."
+ ],
+ "rows": [],
+ "keep": false
+}

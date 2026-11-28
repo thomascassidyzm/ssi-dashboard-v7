@@ -1,0 +1,115 @@
+{
+ "lego": {
+  "seed_number": 506,
+  "lego_index": 1,
+  "known": "years",
+  "target": "년"
+ },
+ "at": "2026-11-26T12:49:10.424Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 186,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.22 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.22 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 506,
+   "lego_index": 1,
+   "lego_known": "years",
+   "lego_target": "년",
+   "phrase_role": "build",
+   "known_text": "for a few years",
+   "target_text": "몇 년 동안",
+   "pad": []
+  },
+  {
+   "seed_number": 506,
+   "lego_index": 1,
+   "lego_known": "years",
+   "lego_target": "년",
+   "phrase_role": "build",
+   "known_text": "in a few years",
+   "target_text": "몇 년 안에",
+   "pad": []
+  },
+  {
+   "seed_number": 506,
+   "lego_index": 1,
+   "lego_known": "years",
+   "lego_target": "년",
+   "phrase_role": "build",
+   "known_text": "our friends who left several years ago",
+   "target_text": "여러 년 전에 떠난 친구들이",
+   "pad": []
+  },
+  {
+   "seed_number": 506,
+   "lego_index": 1,
+   "lego_known": "years",
+   "lego_target": "년",
+   "phrase_role": "build",
+   "known_text": "came for the first time in a few years",
+   "target_text": "몇 년 만에 왔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 506,
+   "lego_index": 1,
+   "lego_known": "years",
+   "lego_target": "년",
+   "phrase_role": "use",
+   "known_text": "could the children walk to school in a few years",
+   "target_text": "아이들이 몇 년 안에 학교까지 걸어갈 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 506,
+   "lego_index": 1,
+   "lego_known": "years",
+   "lego_target": "년",
+   "phrase_role": "use",
+   "known_text": "I haven't seen my brother for a few years",
+   "target_text": "몇 년 동안 제 남동생을 못 봤어요",
+   "pad": []
+  },
+  {
+   "seed_number": 506,
+   "lego_index": 1,
+   "lego_known": "years",
+   "lego_target": "년",
+   "phrase_role": "use",
+   "known_text": "I wanted to see you but I didn't have time for a few years",
+   "target_text": "만나고 싶었지만 몇 년 동안 시간이 없었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 506,
+   "lego_index": 1,
+   "lego_known": "years",
+   "lego_target": "년",
+   "phrase_role": "use",
+   "known_text": "our friends who left several years ago came on wednesday",
+   "target_text": "여러 년 전에 떠난 친구들이 수요일에 왔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 506,
+   "lego_index": 1,
+   "lego_known": "years",
+   "lego_target": "년",
+   "phrase_role": "use",
+   "known_text": "our friends came on tuesday for the first time in a few years",
+   "target_text": "친구들이 화요일에 몇 년 만에 왔어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

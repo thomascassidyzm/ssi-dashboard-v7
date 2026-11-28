@@ -1,0 +1,115 @@
+{
+ "lego": {
+  "seed_number": 510,
+  "lego_index": 1,
+  "known": "place",
+  "target": "곳을"
+ },
+ "at": "2026-11-26T14:20:44.181Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 5230,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.22 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.22 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 510,
+   "lego_index": 1,
+   "lego_known": "place",
+   "lego_target": "곳을",
+   "phrase_role": "build",
+   "known_text": "a beautiful place",
+   "target_text": "아름다운 곳을",
+   "pad": []
+  },
+  {
+   "seed_number": 510,
+   "lego_index": 1,
+   "lego_known": "place",
+   "lego_target": "곳을",
+   "phrase_role": "build",
+   "known_text": "a place to watch the games",
+   "target_text": "경기를 볼 곳을",
+   "pad": []
+  },
+  {
+   "seed_number": 510,
+   "lego_index": 1,
+   "lego_known": "place",
+   "lego_target": "곳을",
+   "phrase_role": "build",
+   "known_text": "a place to spend a few days",
+   "target_text": "며칠 보낼 곳을",
+   "pad": []
+  },
+  {
+   "seed_number": 510,
+   "lego_index": 1,
+   "lego_known": "place",
+   "lego_target": "곳을",
+   "phrase_role": "build",
+   "known_text": "I'm trying to find a place to play",
+   "target_text": "놀 곳을 찾으려고 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 510,
+   "lego_index": 1,
+   "lego_known": "place",
+   "lego_target": "곳을",
+   "phrase_role": "use",
+   "known_text": "I've never seen such a beautiful place",
+   "target_text": "그런 아름다운 곳을 본 적 없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 510,
+   "lego_index": 1,
+   "lego_known": "place",
+   "lego_target": "곳을",
+   "phrase_role": "use",
+   "known_text": "on wednesday I went to see a beautiful place",
+   "target_text": "수요일에 아름다운 곳을 보러 갔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 510,
+   "lego_index": 1,
+   "lego_known": "place",
+   "lego_target": "곳을",
+   "phrase_role": "use",
+   "known_text": "the children said that they want to look for a place to play",
+   "target_text": "아이들이 놀 곳을 찾고 싶다고 했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 510,
+   "lego_index": 1,
+   "lego_known": "place",
+   "lego_target": "곳을",
+   "phrase_role": "use",
+   "known_text": "why are you trying to find a place to watch the games",
+   "target_text": "왜 경기를 볼 곳을 찾으려고 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 510,
+   "lego_index": 1,
+   "lego_known": "place",
+   "lego_target": "곳을",
+   "phrase_role": "use",
+   "known_text": "because the children are tired I'm trying to find a place to spend a few days",
+   "target_text": "아이들이 피곤해서 며칠 보낼 곳을 찾으려고 해요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

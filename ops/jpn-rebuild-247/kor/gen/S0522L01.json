@@ -1,0 +1,125 @@
+{
+ "lego": {
+  "seed_number": 522,
+  "lego_index": 1,
+  "known": "was stupid",
+  "target": "어리석었다고"
+ },
+ "at": "2026-11-26T17:48:37.955Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 158,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.20 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.30 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [
+  {
+   "seed_number": 522,
+   "lego_index": 1,
+   "lego_known": "was stupid",
+   "lego_target": "어리석었다고",
+   "phrase_role": "build",
+   "known_text": "the plan was very stupid",
+   "target_text": "계획은 아주 어리석었다고",
+   "pad": []
+  },
+  {
+   "seed_number": 522,
+   "lego_index": 1,
+   "lego_known": "was stupid",
+   "lego_target": "어리석었다고",
+   "phrase_role": "build",
+   "known_text": "didn't think it was stupid",
+   "target_text": "어리석었다고 생각하지 않았어요",
+   "pad": []
+  },
+  {
+   "seed_number": 522,
+   "lego_index": 1,
+   "lego_known": "was stupid",
+   "lego_target": "어리석었다고",
+   "phrase_role": "build",
+   "known_text": "agreed it was fairly stupid",
+   "target_text": "꽤 어리석었다고 동의했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 522,
+   "lego_index": 1,
+   "lego_known": "was stupid",
+   "lego_target": "어리석었다고",
+   "phrase_role": "build",
+   "known_text": "could we agree it was stupid",
+   "target_text": "어리석었다고 동의할 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 522,
+   "lego_index": 1,
+   "lego_known": "was stupid",
+   "lego_target": "어리석었다고",
+   "phrase_role": "use",
+   "known_text": "why did you agree that the plan was stupid",
+   "target_text": "왜 계획은 어리석었다고 동의했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 522,
+   "lego_index": 1,
+   "lego_known": "was stupid",
+   "lego_target": "어리석었다고",
+   "phrase_role": "use",
+   "known_text": "in the past our friends didn't think it was stupid",
+   "target_text": "과거에는 친구들이 어리석었다고 생각하지 않았어요",
+   "pad": []
+  },
+  {
+   "seed_number": 522,
+   "lego_index": 1,
+   "lego_known": "was stupid",
+   "lego_target": "어리석었다고",
+   "phrase_role": "use",
+   "known_text": "my grandfather agreed with her that it was much more stupid",
+   "target_text": "할아버지는 훨씬 어리석었다고 그녀에게 동의했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 522,
+   "lego_index": 1,
+   "lego_known": "was stupid",
+   "lego_target": "어리석었다고",
+   "phrase_role": "use",
+   "known_text": "could we agree it was really stupid",
+   "target_text": "진짜 어리석었다고 동의할 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 522,
+   "lego_index": 1,
+   "lego_known": "was stupid",
+   "lego_target": "어리석었다고",
+   "phrase_role": "use",
+   "known_text": "the children didn't think it was stupid because they were tired",
+   "target_text": "아이들이 피곤해서 어리석었다고 생각하지 않았어요",
+   "pad": []
+  },
+  {
+   "seed_number": 522,
+   "lego_index": 1,
+   "lego_known": "was stupid",
+   "lego_target": "어리석었다고",
+   "phrase_role": "use",
+   "known_text": "I agreed with her that it was stupid",
+   "target_text": "어리석었다고 그녀에게 동의했어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

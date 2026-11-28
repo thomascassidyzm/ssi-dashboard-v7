@@ -1,0 +1,112 @@
+{
+ "lego": {
+  "seed_number": 510,
+  "lego_index": 2,
+  "known": "to park",
+  "target": "주차할"
+ },
+ "at": "2026-11-26T14:21:08.377Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": true,
+ "blocked": false,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 5205,
+ "floorsOnly": false,
+ "lastReasons": [],
+ "rows": [
+  {
+   "seed_number": 510,
+   "lego_index": 2,
+   "lego_known": "to park",
+   "lego_target": "주차할",
+   "phrase_role": "build",
+   "known_text": "a place to park",
+   "target_text": "주차할 곳을",
+   "pad": []
+  },
+  {
+   "seed_number": 510,
+   "lego_index": 2,
+   "lego_known": "to park",
+   "lego_target": "주차할",
+   "phrase_role": "build",
+   "known_text": "places to park",
+   "target_text": "주차할 장소들",
+   "pad": []
+  },
+  {
+   "seed_number": 510,
+   "lego_index": 2,
+   "lego_known": "to park",
+   "lego_target": "주차할",
+   "phrase_role": "build",
+   "known_text": "to park next to the car park",
+   "target_text": "주차장 옆에 주차할",
+   "pad": []
+  },
+  {
+   "seed_number": 510,
+   "lego_index": 2,
+   "lego_known": "to park",
+   "lego_target": "주차할",
+   "phrase_role": "build",
+   "known_text": "to park on the other side of the bridge",
+   "target_text": "다리 반대편에 주차할",
+   "pad": []
+  },
+  {
+   "seed_number": 510,
+   "lego_index": 2,
+   "lego_known": "to park",
+   "lego_target": "주차할",
+   "phrase_role": "use",
+   "known_text": "could we park in front of the post office",
+   "target_text": "우체국 앞에 주차할 수 있을까요",
+   "pad": []
+  },
+  {
+   "seed_number": 510,
+   "lego_index": 2,
+   "lego_known": "to park",
+   "lego_target": "주차할",
+   "phrase_role": "use",
+   "known_text": "I'm trying to find a place to park near the hotel",
+   "target_text": "호텔 근처에서 주차할 곳을 찾으려고 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 510,
+   "lego_index": 2,
+   "lego_known": "to park",
+   "lego_target": "주차할",
+   "phrase_role": "use",
+   "known_text": "I might park on the other side but there's no point",
+   "target_text": "반대편에 주차할 수도 있지만 소용없어요",
+   "pad": []
+  },
+  {
+   "seed_number": 510,
+   "lego_index": 2,
+   "lego_known": "to park",
+   "lego_target": "주차할",
+   "phrase_role": "use",
+   "known_text": "I told them they could park next to the bridge",
+   "target_text": "그들에게 다리 옆에 주차할 수 있다고 말했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 510,
+   "lego_index": 2,
+   "lego_known": "to park",
+   "lego_target": "주차할",
+   "phrase_role": "use",
+   "known_text": "I've never seen a place to park in front of the hotel",
+   "target_text": "호텔 앞에 주차할 곳을 본 적 없어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

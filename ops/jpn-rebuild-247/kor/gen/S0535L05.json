@@ -1,0 +1,114 @@
+{
+ "lego": {
+  "seed_number": 535,
+  "lego_index": 5,
+  "known": "promised",
+  "target": "약속했어요"
+ },
+ "at": "2026-11-28T15:38:30.121Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 133,
+ "floorsOnly": true,
+ "lastReasons": [
+  "FRAME 0.33 < 0.34: your matrix clauses collapse to 3 shape(s) against a declared pool of 40. Vary the MATRIX CLAUSE, not the tail — a swapped tail is the same frame stamped again."
+ ],
+ "rows": [
+  {
+   "seed_number": 535,
+   "lego_index": 5,
+   "lego_known": "promised",
+   "lego_target": "약속했어요",
+   "phrase_role": "build",
+   "known_text": "promised to help",
+   "target_text": "도와주겠다고 약속했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 535,
+   "lego_index": 5,
+   "lego_known": "promised",
+   "lego_target": "약속했어요",
+   "phrase_role": "build",
+   "known_text": "promised the whole family",
+   "target_text": "가족 전체에게 약속했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 535,
+   "lego_index": 5,
+   "lego_known": "promised",
+   "lego_target": "약속했어요",
+   "phrase_role": "build",
+   "known_text": "I promised last year",
+   "target_text": "작년에 약속했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 535,
+   "lego_index": 5,
+   "lego_known": "promised",
+   "lego_target": "약속했어요",
+   "phrase_role": "build",
+   "known_text": "the children promised",
+   "target_text": "아이들이 약속했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 535,
+   "lego_index": 5,
+   "lego_known": "promised",
+   "lego_target": "약속했어요",
+   "phrase_role": "use",
+   "known_text": "our friends promised to help",
+   "target_text": "친구들이 도와주겠다고 약속했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 535,
+   "lego_index": 5,
+   "lego_known": "promised",
+   "lego_target": "약속했어요",
+   "phrase_role": "use",
+   "known_text": "on new year's day I promised the whole family",
+   "target_text": "새해 첫날에 가족 전체에게 약속했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 535,
+   "lego_index": 5,
+   "lego_known": "promised",
+   "lego_target": "약속했어요",
+   "phrase_role": "use",
+   "known_text": "I was sick but I promised to help",
+   "target_text": "아팠어요 하지만 도와주겠다고 약속했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 535,
+   "lego_index": 5,
+   "lego_known": "promised",
+   "lego_target": "약속했어요",
+   "phrase_role": "use",
+   "known_text": "I promised that we can win the game",
+   "target_text": "게임을 이길 수 있다고 약속했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 535,
+   "lego_index": 5,
+   "lego_known": "promised",
+   "lego_target": "약속했어요",
+   "phrase_role": "use",
+   "known_text": "grandfather promised to help a family",
+   "target_text": "할아버지는 가족을 도와주겠다고 약속했어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

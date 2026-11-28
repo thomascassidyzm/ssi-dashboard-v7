@@ -1,0 +1,125 @@
+{
+ "lego": {
+  "seed_number": 503,
+  "lego_index": 1,
+  "known": "hate",
+  "target": "싫지만"
+ },
+ "at": "2026-11-26T12:43:04.671Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 201,
+ "floorsOnly": true,
+ "lastReasons": [
+  "FRAME 0.30 < 0.34: your matrix clauses collapse to 3 shape(s) against a declared pool of 40. Vary the MATRIX CLAUSE, not the tail — a swapped tail is the same frame stamped again.",
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"hate\" initially, medially AND finally."
+ ],
+ "rows": [
+  {
+   "seed_number": 503,
+   "lego_index": 1,
+   "lego_known": "hate",
+   "lego_target": "싫지만",
+   "phrase_role": "build",
+   "known_text": "I hate the plan but",
+   "target_text": "계획은 싫지만",
+   "pad": []
+  },
+  {
+   "seed_number": 503,
+   "lego_index": 1,
+   "lego_known": "hate",
+   "lego_target": "싫지만",
+   "phrase_role": "build",
+   "known_text": "I hate stopping but",
+   "target_text": "멈추기 싫지만",
+   "pad": []
+  },
+  {
+   "seed_number": 503,
+   "lego_index": 1,
+   "lego_known": "hate",
+   "lego_target": "싫지만",
+   "phrase_role": "build",
+   "known_text": "although I hate it I agreed",
+   "target_text": "싫지만 동의했어요",
+   "pad": []
+  },
+  {
+   "seed_number": 503,
+   "lego_index": 1,
+   "lego_known": "hate",
+   "lego_target": "싫지만",
+   "phrase_role": "build",
+   "known_text": "I hate the second half but",
+   "target_text": "후반전이 싫지만",
+   "pad": []
+  },
+  {
+   "seed_number": 503,
+   "lego_index": 1,
+   "lego_known": "hate",
+   "lego_target": "싫지만",
+   "phrase_role": "use",
+   "known_text": "I hate the plan but it's the only real hope for us",
+   "target_text": "계획은 싫지만 우리에게 유일한 진짜 희망이에요",
+   "pad": []
+  },
+  {
+   "seed_number": 503,
+   "lego_index": 1,
+   "lego_known": "hate",
+   "lego_target": "싫지만",
+   "phrase_role": "use",
+   "known_text": "I must sleep right now although I hate it",
+   "target_text": "싫지만 당장 자야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 503,
+   "lego_index": 1,
+   "lego_known": "hate",
+   "lego_target": "싫지만",
+   "phrase_role": "use",
+   "known_text": "you hate the second half but why did you come",
+   "target_text": "후반전이 싫지만 왜 왔어요",
+   "pad": []
+  },
+  {
+   "seed_number": 503,
+   "lego_index": 1,
+   "lego_known": "hate",
+   "lego_target": "싫지만",
+   "phrase_role": "use",
+   "known_text": "I hate war but my grandfather fought in Italy",
+   "target_text": "전쟁 싫지만 할아버지는 이탈리아에서 싸웠어요",
+   "pad": []
+  },
+  {
+   "seed_number": 503,
+   "lego_index": 1,
+   "lego_known": "hate",
+   "lego_target": "싫지만",
+   "phrase_role": "use",
+   "known_text": "I hate my appearance but my heart is kind",
+   "target_text": "제 모습이 싫지만 마음이 착해요",
+   "pad": []
+  },
+  {
+   "seed_number": 503,
+   "lego_index": 1,
+   "lego_known": "hate",
+   "lego_target": "싫지만",
+   "phrase_role": "use",
+   "known_text": "I hate stopping but I didn't think it was right",
+   "target_text": "멈추기 싫지만 맞다고 생각하지 않았어요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

@@ -1,0 +1,124 @@
+{
+ "lego": {
+  "seed_number": 527,
+  "lego_index": 3,
+  "known": "told me",
+  "target": "해 줬는지"
+ },
+ "at": "2026-11-28T15:19:09.684Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [],
+ "attempts": 2,
+ "secs": 187,
+ "floorsOnly": true,
+ "lastReasons": [
+  "NEIGH 0.25 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket."
+ ],
+ "rows": [
+  {
+   "seed_number": 527,
+   "lego_index": 3,
+   "lego_known": "told me",
+   "lego_target": "해 줬는지",
+   "phrase_role": "build",
+   "known_text": "whether the children told me",
+   "target_text": "아이들이 해 줬는지",
+   "pad": []
+  },
+  {
+   "seed_number": 527,
+   "lego_index": 3,
+   "lego_known": "told me",
+   "lego_target": "해 줬는지",
+   "phrase_role": "build",
+   "known_text": "why our friends told me",
+   "target_text": "친구들이 왜 해 줬는지",
+   "pad": []
+  },
+  {
+   "seed_number": 527,
+   "lego_index": 3,
+   "lego_known": "told me",
+   "lego_target": "해 줬는지",
+   "phrase_role": "build",
+   "known_text": "whether our friends told me directly",
+   "target_text": "친구들이 바로 해 줬는지",
+   "pad": []
+  },
+  {
+   "seed_number": 527,
+   "lego_index": 3,
+   "lego_known": "told me",
+   "lego_target": "해 줬는지",
+   "phrase_role": "build",
+   "known_text": "guess why the children told me",
+   "target_text": "아이들이 왜 해 줬는지 맞춰 봐요",
+   "pad": []
+  },
+  {
+   "seed_number": 527,
+   "lego_index": 3,
+   "lego_known": "told me",
+   "lego_target": "해 줬는지",
+   "phrase_role": "use",
+   "known_text": "I have to find out why the children told me",
+   "target_text": "아이들이 왜 해 줬는지 알아내야 해요",
+   "pad": []
+  },
+  {
+   "seed_number": 527,
+   "lego_index": 3,
+   "lego_known": "told me",
+   "lego_target": "해 줬는지",
+   "phrase_role": "use",
+   "known_text": "I wonder why our friends told me directly",
+   "target_text": "친구들이 왜 바로 해 줬는지 궁금해요",
+   "pad": []
+  },
+  {
+   "seed_number": 527,
+   "lego_index": 3,
+   "lego_known": "told me",
+   "lego_target": "해 줬는지",
+   "phrase_role": "use",
+   "known_text": "I wanted to know whether the children told me directly",
+   "target_text": "아이들이 바로 해 줬는지 알고 싶었어요",
+   "pad": []
+  },
+  {
+   "seed_number": 527,
+   "lego_index": 3,
+   "lego_known": "told me",
+   "lego_target": "해 줬는지",
+   "phrase_role": "use",
+   "known_text": "I'm worried I might forget whether the children told me anything else",
+   "target_text": "아이들이 다른 말도 해 줬는지 잊어버릴까 봐 걱정돼서요",
+   "pad": []
+  },
+  {
+   "seed_number": 527,
+   "lego_index": 3,
+   "lego_known": "told me",
+   "lego_target": "해 줬는지",
+   "phrase_role": "use",
+   "known_text": "guess why our friends told me anything else",
+   "target_text": "친구들이 왜 다른 말도 해 줬는지 맞춰 봐요",
+   "pad": []
+  },
+  {
+   "seed_number": 527,
+   "lego_index": 3,
+   "lego_known": "told me",
+   "lego_target": "해 줬는지",
+   "phrase_role": "use",
+   "known_text": "I wonder whether our friends told me anything else",
+   "target_text": "친구들이 다른 말도 해 줬는지 궁금해요",
+   "pad": []
+  }
+ ],
+ "keep": true
+}

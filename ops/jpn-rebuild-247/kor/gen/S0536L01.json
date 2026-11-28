@@ -1,0 +1,26 @@
+{
+ "lego": {
+  "seed_number": 536,
+  "lego_index": 1,
+  "known": "the thing that",
+  "target": "것은"
+ },
+ "at": "2026-11-28T15:39:17.595Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 164,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"I never chose the thing that was wrong\" (unknown gloss \"chose\")",
+  "USE \"I never chose the thing that was wrong\" → \"잘못된 것은 절대 선택하지 않았어요\": popty:knownSide [{\"known\":\"I never chose the thing that was wrong\",\"target\":\"잘못된 것은 절대 선택하지 않았어요\",\"problem\":\"unknown gloss \\\"chose\\\"\"}]"
+ ],
+ "rows": [],
+ "keep": false
+}

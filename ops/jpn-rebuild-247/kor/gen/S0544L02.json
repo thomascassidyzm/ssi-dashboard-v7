@@ -1,0 +1,29 @@
+{
+ "lego": {
+  "seed_number": 544,
+  "lego_index": 2,
+  "known": "whoever the person",
+  "target": "사람이 누구든"
+ },
+ "at": "2026-11-28T15:53:14.938Z",
+ "job": "#247·AL",
+ "http": 200,
+ "ok": false,
+ "blocked": true,
+ "error": null,
+ "failing": [
+  "knownSide"
+ ],
+ "attempts": 2,
+ "secs": 192,
+ "floorsOnly": false,
+ "lastReasons": [
+  "knownSide: 1 phrase(s) use English the learner has not been given. \"whoever is making excuses never listened\" (unknown gloss \"listened\")",
+  "USE \"whoever is making excuses never listened\" → \"변명하는 사람이 누구든 절대 듣지 않았어요\": popty:knownSide [{\"known\":\"whoever is making excuses never listened\",\"target\":\"변명하는 사람이 누구든 절대 듣지 않았어요\",\"problem\":\"unknown gloss \\\"listened\\\"\"}]",
+  "POS 0.33 < 0.34: the LEGO sits in 1 position(s). Put \"whoever the person\" initially, medially AND finally.",
+  "NEIGH 0.15 < 0.3: too few distinct words touch the LEGO. Give it different left and right neighbours across the basket.",
+  "JUNCT 0.20 < 0.5: the same neighbour pair repeats. Change what comes immediately before AND after the LEGO together."
+ ],
+ "rows": [],
+ "keep": false
+}
